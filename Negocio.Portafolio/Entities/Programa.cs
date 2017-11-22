@@ -142,6 +142,7 @@ namespace Negocio.Portafolio
             this.NombrePrograma = programa.NombrePrograma;
             this.Descripcion = programa.Descripcion;
             this.Cupos = programa.Cupos;
+            this.idInstitucion = programa.IdInstitucion;
             this.FechaInicio = programa.FechaInicio;
             this.FechaTermino = programa.FechaTermino;
             this.TipoCurso = programa.TipoCurso;
