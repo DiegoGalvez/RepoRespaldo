@@ -18,8 +18,8 @@ namespace Negocio.Portafolio
         private string _descripcion;
         private Nullable<int> _cupos;
         private Nullable<int> idInstitucion;
-        private DateTime fechaInicio;
-        private DateTime fechaTermino;
+        private Nullable<DateTime> fechaInicio;
+        private Nullable<DateTime> fechaTermino;
         private TipoCursos tipoCurso;
         private string estado;
         //private DateTime fechaCreacionCurso;
@@ -194,12 +194,12 @@ namespace Negocio.Portafolio
             get { return idInstitucion; }
             set { idInstitucion = value; }
         }
-        public DateTime FechaInicio
+        public Nullable<DateTime> FechaInicio
         {
             get { return fechaInicio; } 
             set { fechaInicio = value; }
         }
-        public DateTime FechaTermino
+        public Nullable<DateTime> FechaTermino
         {
             get { return fechaTermino; } 
             set { fechaTermino = value; }
