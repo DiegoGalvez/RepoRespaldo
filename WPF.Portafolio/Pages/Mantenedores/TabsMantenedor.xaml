@@ -1,0 +1,32 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.Mantenedores.TabsMantenedor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages.Mantenedores"
+      mc:Ignorable="d" 
+      d:DesignHeight="660" d:DesignWidth="1080"
+      Title="TabsMantenedor" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1010"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Grid.Column="1" HorizontalAlignment="Left" Height="540" Margin="100,20,100,0" VerticalAlignment="Top" Width="810" FlowDirection="RightToLeft" >
+            <TabItem Header="CEL">
+                <Frame Source="/WPF.Portafolio;component/Pages/Instituciones/ListaInstituciones.xaml" Height="500"></Frame>
+            </TabItem>
+            <TabItem Header="Programa">
+            </TabItem>
+            <TabItem Header="Familia Anfitriona">
+            </TabItem>
+            <TabItem Header="Alumnos">
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarAlumnos.xaml" Height="500"></Frame>
+            </TabItem>
+            <TabItem Header="Usuarios">
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarUsuarios.xaml" Height="500"></Frame>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>

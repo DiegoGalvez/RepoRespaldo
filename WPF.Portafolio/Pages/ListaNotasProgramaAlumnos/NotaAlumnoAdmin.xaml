@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPF.Portafolio.Pages.ListaNotasProgramaAlumnos.NotaAlumnoAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Portafolio.Pages.ListaNotasProgramaAlumnos"
+        mc:Ignorable="d"
+        Title="Modificar notas alumno" Height="400" Width="400" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" 
+        HorizontalAlignment="Center" ResizeMode="NoResize" SizeToContent="WidthAndHeight" VerticalAlignment="Center"
+        VerticalContentAlignment="Center" BorderThickness="1">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Margin="50,50,50,50" Width="300">
+        <Label x:Name="lblNombreAlumno" Content="Alumno" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Margin="110,6,110,0"/>
+        <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15" Margin="0,40,0,0"/>
+        <DataGrid x:Name="dgNotasProgramas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55,75,41,104" Height="121" Width="204" />
+        <Button x:Name="btnGuardar" Content="Guardar" Width="75" Height="30" Margin="55,210,170,60" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Width="75" Height="30" Margin="184,210,41,60"/>
+    </Grid>
+</Window>

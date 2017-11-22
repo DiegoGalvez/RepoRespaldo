@@ -1,0 +1,27 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.SolicitudesAlumno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Solicitudes Alumnos"
+      Background="White">
+
+    <Grid>
+        <Label x:Name="lbTitulo" Content="Solicitudes" Margin="347,43,348,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.79,-0.284"/>
+        <Label x:Name="lbsubtitle" Content="Cursos en el extranjero" HorizontalAlignment="Left" Margin="346,99,0,475"/>
+        <Label x:Name="lbPais" Content="Pais" HorizontalAlignment="Left" Margin="218,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.572,0.042"/>
+        <Label x:Name="lbFiltro" Content="Filtrar por:" HorizontalAlignment="Left" Margin="154,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.394,0.574"/>
+        <ComboBox x:Name="CBPais" HorizontalAlignment="Left" Margin="252,138,0,0" VerticalAlignment="Top" Width="90">
+
+        </ComboBox>
+        <Label x:Name="LBEspecialidad" Content="Especialidad" HorizontalAlignment="Left" Margin="346,137,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="422,138,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnFiltrar" Content="Filtrar" HorizontalAlignment="Left" Margin="570,137,0,0" VerticalAlignment="Top" Width="76"/>
+        <DataGrid x:Name="dataGrid" Margin="100,212,100,162">
+            
+        </DataGrid>
+    </Grid>
+</Page>

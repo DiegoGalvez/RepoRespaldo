@@ -1,0 +1,46 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.CrearPrograma"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages"
+      mc:Ignorable="d"
+      Background="White"
+      Title="CrearPrograma" Width="780" Height="652.5">
+
+    <Grid Margin="10">
+        <Canvas Margin="10">
+            <Rectangle Fill="#FFF4F4F5" Height="178" Canvas.Left="136" Stroke="Black" Canvas.Top="88" Width="240"/>
+            <Label x:Name="lblNombre" Content="Nombre de Programa:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="57"/>
+            <TextBox x:Name="txtNombrePrograma" Height="23" Canvas.Left="138" TextWrapping="Wrap" Canvas.Top="57" Width="238"/>
+            <TextBlock x:Name="tbDescripcion" Canvas.Left="138" TextWrapping="Wrap" Text="" Canvas.Top="88" Height="178" Width="238">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Label x:Name="lblDescripcion" Content="Descripción: " HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="60" Canvas.Top="88"/>
+            <Label x:Name="lblCupos" Content="Cupos: " HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="448" Canvas.Top="289"/>
+            <TextBox x:Name="txtCupos" Height="23" Canvas.Left="504" TextWrapping="Wrap" Canvas.Top="292" Width="122"/>
+            <Label x:Name="lblFechaInicio" Content="Fecha Inicio: " Canvas.Left="418" Canvas.Top="94"/>
+            <Label x:Name="lblFechaTermino" Content="Fecha Termino: " Canvas.Left="405" Canvas.Top="158"/>
+            <Label x:Name="lblTipoPrograma" Content="Tipo Programa: " Canvas.Left="405" Canvas.Top="225"/>
+            <ComboBox x:Name="cbTipoPrograma" Canvas.Left="504" Canvas.Top="228" Width="143"/>
+            <DatePicker x:Name="dtInicio" Canvas.Left="504" Canvas.Top="160"/>
+            <DatePicker x:Name="dtTermino" Canvas.Left="504" Canvas.Top="95"/>
+            <DataGrid x:Name="dgActividades" AutoGenerateColumns="False" IsReadOnly="True" Canvas.Left="10" Canvas.Top="389" Height="162" Width="720">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre Actividad" Width="160"/>
+                    <DataGridTextColumn Header="Descripción" Width="400"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="lblActividad" FontSize="18" Content="Actividades" Canvas.Left="182" Canvas.Top="335"/>
+            <Button x:Name="btnAceptar" Content="Confirmar" Canvas.Left="427" Canvas.Top="570" Width="75"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" Canvas.Left="551" Canvas.Top="570" Width="75"/>
+            <Label x:Name="lblTitulo" Content="Crear un Programa" FontSize="24" VerticalAlignment="Top" Canvas.Left="272" Canvas.Top="10" Width="210"/>
+            <Button x:Name="btnAgregar" Content="Agregar" Canvas.Left="318" Canvas.Top="344" Width="74" Click="btnAgregar_Click"/>
+            <Button x:Name="btnModificar" Content="Modificar" Canvas.Left="424" Canvas.Top="344" Width="74"/>
+            <Button x:Name="btnBorrar" Content="Borrar" Canvas.Left="530" Canvas.Top="344" Width="76" RenderTransformOrigin="0.697,0.519"/>
+        </Canvas>
+
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.Familias.ListasFamiliasPostulantes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages.Familias"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      mc:Ignorable="d" 
+      Height="660" Width="1080"
+      Title="ListasFamiliasPostulantes">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1010"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Black" Margin="100,10,100,100" Grid.Column="1" >
+            <Canvas Background="White">
+                <Label x:Name="lblTitulo" Content="Familias anfitrionas postulando" FontSize="30" Margin="200,20,200,0" />
+                <Label Name="lblFiltros" Content="Filtros:" FontSize="18" HorizontalAlignment="Left" Canvas.Left="136" Canvas.Top="84" Width="61"/>
+                <TextBox x:Name="txtNombreApellido" Controls:TextBoxHelper.Watermark=" Buscar por nombre o apellido" Height="33" Text=""  Canvas.Left="136" Canvas.Top="123" Width="179" TextChanged="txtNombreApellido_TextChanged" />
+                <DataGrid x:Name="dgPostulantes" Width="540" Height="306" AutoGenerateColumns="False" IsReadOnly="True" Canvas.Left="142" Canvas.Top="206" SelectionChanged="dgPostulantes_SelectionChanged" BorderBrush="Red">
+                    <DataGrid.Columns>
+                        <!--NOMBRE IDENTIFICACION CORREO TELEFONO_CONTACTO ID_PAIS ID_CIUDAD -->
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre }"/>
+                        <DataGridTextColumn Header="Identificacion" Binding="{Binding Identificacion}"/>
+                        <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"/>
+                        <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
+                        <DataGridTextColumn Header="Pais" Binding="{Binding Pais}"/>
+                        <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <ComboBox x:Name="cbEstado" Canvas.Left="507" Canvas.Top="123" Width="179" Height="33" SelectionChanged="cbEstado_SelectionChanged">
+                </ComboBox>
+                <Label x:Name="lblInfo1" Content="Haga click en el nombre para saber mas detalles del alumno" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="142" Canvas.Top="169"/>
+
+            </Canvas>
+        </Border>
+
+
+
+
+
+    </Grid>
+</Page>

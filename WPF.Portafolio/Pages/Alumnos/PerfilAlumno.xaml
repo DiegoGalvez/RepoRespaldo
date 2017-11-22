@@ -1,0 +1,42 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.Alumnos.PerfilAlumno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages.Alumnos"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="PerfilAlumno"
+      Background="White">
+
+    <Grid>
+        <Label x:Name="label" Content="Mis Datos" FontSize="20" HorizontalAlignment="Left" Margin="44,121,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="405" Margin="43,177,0,0" Stroke="Black" VerticalAlignment="Top" Width="465"/>
+        <Label x:Name="lblPais" Content="País" FontSize="18" HorizontalAlignment="Left" Margin="63,199,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCiudad" Content="Ciudad" FontSize="18" HorizontalAlignment="Left" Margin="63,237,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRut" Content="Rut" FontSize="18" HorizontalAlignment="Left" Margin="66,277,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNombre" Content="Nombre" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,316,0,0"/>
+        <Label x:Name="lblApellido" Content="Apellido" FontSize="18" HorizontalAlignment="Left" Margin="66,355,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCorreo" Content="Correo" FontSize="18" HorizontalAlignment="Left" Margin="67,394,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cboPais" HorizontalAlignment="Left" Margin="183,210,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboCiudad" HorizontalAlignment="Left" Margin="183,238,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="31" Margin="183,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label1" Content="-" FontSize="18" HorizontalAlignment="Left" Margin="308,277,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDigito" HorizontalAlignment="Left" Height="31" Margin="340,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="32"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="183,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="183,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="183,404,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Editar" FontSize="18" HorizontalAlignment="Left" Margin="358,445,0,0" VerticalAlignment="Top" Width="94" Height="35"/>
+        <Label x:Name="lblSituacion" Content="Situación Financiera: " FontSize="18" HorizontalAlignment="Left" Margin="67,526,0,0" VerticalAlignment="Top" Height="34" Width="177"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="234" Margin="585,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="353"/>
+        <Label x:Name="label2" Content="Cambiar Contraseña" FontSize="20" HorizontalAlignment="Left" Margin="596,140,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblActual" Content="Actual" FontSize="18" HorizontalAlignment="Left" Margin="606,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.271,-0.166"/>
+        <Label x:Name="lblNueva" Content="Nueva" FontSize="18" HorizontalAlignment="Left" Margin="606,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRepetirNueva" Content="Repetir Nueva" FontSize="18" HorizontalAlignment="Left" Margin="606,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,0.123"/>
+        <TextBox x:Name="txtActual" HorizontalAlignment="Left" Height="23" Margin="753,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNueva" HorizontalAlignment="Left" Height="23" Margin="753,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtRepetirNueva" HorizontalAlignment="Left" Height="23" Margin="753,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnCAmbiar" Content="Cambiar" FontSize="18" HorizontalAlignment="Left" Margin="710,344,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Page>

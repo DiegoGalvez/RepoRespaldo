@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E88A19B7-9BA3-41F5-8AC3-AF2EFFEE7428}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPF.Portafolio</RootNamespace>
+    <AssemblyName>WPF.Portafolio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.0.184, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.0-alpha0184\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.PdfViewer.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Wpf, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InicioSesion.xaml.cs">
+      <DependentUpon>InicioSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AcercaDe.xaml.cs">
+      <DependentUpon>AcercaDe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdministrarAlumnos.xaml.cs">
+      <DependentUpon>AdministrarAlumnos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdministrarUsuarios.xaml.cs">
+      <DependentUpon>AdministrarUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\Detalle.xaml.cs">
+      <DependentUpon>Detalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\DetalleCurso.xaml.cs">
+      <DependentUpon>DetalleCurso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\DetallePostulacion.xaml.cs">
+      <DependentUpon>DetallePostulacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\Inicio.xaml.cs">
+      <DependentUpon>Inicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\LoginAlumno.xaml.cs">
+      <DependentUpon>LoginAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\PerfilAlumno.xaml.cs">
+      <DependentUpon>PerfilAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\RegistrarAlumno.xaml.cs">
+      <DependentUpon>RegistrarAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Familias\DetallePostulacionFamilia.xaml.cs">
+      <DependentUpon>DetallePostulacionFamilia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Familias\ListasFamiliasPostulantes.xaml.cs">
+      <DependentUpon>ListasFamiliasPostulantes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Instituciones\ListaInstituciones.xaml.cs">
+      <DependentUpon>ListaInstituciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Instituciones\MantenedorInstitucion.xaml.cs">
+      <DependentUpon>MantenedorInstitucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaNotasProgramaAlumnos\NotaAlumnoAdmin.xaml.cs">
+      <DependentUpon>NotaAlumnoAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaNotasProgramaAlumnos\NotasProgramaAlumno.xaml.cs">
+      <DependentUpon>NotasProgramaAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Mantenedores\TabsMantenedor.xaml.cs">
+      <DependentUpon>TabsMantenedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Programas\AdministrarProgramas.xaml.cs">
+      <DependentUpon>AdministrarProgramas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Programas\AgregarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Programas\AgregarActividad.Designer.cs">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Programas\CrearPrograma.xaml.cs">
+      <DependentUpon>CrearPrograma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alumnos\PostulacionAlumno.xaml.cs">
+      <DependentUpon>PostulacionAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Familias\RegistroFamilia.xaml.cs">
+      <DependentUpon>RegistroFamilia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaNotasProgramaAlumnos\ListaAlumnos.xaml.cs">
+      <DependentUpon>ListaAlumnos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SolicitudesAlumno.xaml.cs">
+      <DependentUpon>SolicitudesAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Servicios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Pages\Programas\AgregarActividad.resx">
+      <DependentUpon>AgregarActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Entypo.ttf" />
+    <None Include="Service References\Servicios\Servicios.wsdl" />
+    <None Include="Service References\Servicios\Servicios.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Servicios\Servicios1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Servicios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Servicios\Servicios.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Servicios\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Servicios\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Servicios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALC.Portafolio\DALC.Portafolio.csproj">
+      <Project>{44e75161-ddc5-40b2-805e-220ff261d19c}</Project>
+      <Name>DALC.Portafolio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio.Portafolio\Negocio.Portafolio.csproj">
+      <Project>{5d26a97f-73f4-4673-8433-83589603f8c5}</Project>
+      <Name>Negocio.Portafolio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiciosWCF.Portafolio\ServiciosWCF.Portafolio.csproj">
+      <Project>{52b55aef-c0e1-49eb-8039-a88c573331d5}</Project>
+      <Name>ServiciosWCF.Portafolio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="InicioSesion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AcercaDe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdministrarAlumnos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AdministrarUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Alumnos\Detalle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\DetalleCurso.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\DetallePostulacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\Inicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\LoginAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\PerfilAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Alumnos\RegistrarAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Familias\DetallePostulacionFamilia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Familias\ListasFamiliasPostulantes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Instituciones\ListaInstituciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Instituciones\MantenedorInstitucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListaNotasProgramaAlumnos\NotaAlumnoAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListaNotasProgramaAlumnos\NotasProgramaAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Mantenedores\TabsMantenedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Programas\AdministrarProgramas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Programas\CrearPrograma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Alumnos\PostulacionAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Familias\RegistroFamilia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ListaNotasProgramaAlumnos\ListaAlumnos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SolicitudesAlumno.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\AlumnosMenu.png" />
+    <Resource Include="Img\icono_AlumnoPostulates.png" />
+    <Resource Include="Img\icons8-accreditation.png" />
+    <Resource Include="Img\icons8-analyze.png" />
+    <Resource Include="Img\icons8-certificate.png" />
+    <Resource Include="Img\icons8-exam.png" />
+    <Resource Include="Img\icons8-family.png" />
+    <Resource Include="Img\icons8-overview.png" />
+    <Resource Include="Img\icons8-pie-chart.png" />
+    <Resource Include="Img\icons8-report-card.png" />
+    <Resource Include="Img\icons8-student-male.png" />
+    <Resource Include="Img\icons8-true-false.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-logout-rounded-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-school.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-photo-gallery-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\logosf.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
