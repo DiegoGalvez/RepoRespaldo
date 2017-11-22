@@ -39,6 +39,7 @@ namespace DALC.Portafolio
         public virtual DbSet<INTERCAMBIO> INTERCAMBIO { get; set; }
         public virtual DbSet<NOTAS> NOTAS { get; set; }
         public virtual DbSet<PAIS> PAIS { get; set; }
+        public virtual DbSet<PROGRAMA_ACTIVIDAD> PROGRAMA_ACTIVIDAD { get; set; }
         public virtual DbSet<PROGRAMAS> PROGRAMAS { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<V_FAMILIA_ANFITRIONA> V_FAMILIA_ANFITRIONA { get; set; }
@@ -542,6 +543,43 @@ namespace DALC.Portafolio
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_PROGRAMA_ACTIVIDAD", p_ID_PROGRAMAParameter, p_ID_ACTIVIDADParameter);
         }
     
+        public virtual int INS_PROGRAMAS(string p_NOMBRE_PROGRAMA, string p_DESCRIPCION, Nullable<decimal> p_CUPOS, Nullable<decimal> p_ID_INSTITUCION, Nullable<System.DateTime> p_FECHA_INICIO, Nullable<System.DateTime> p_FECHA_TERMINO, string p_TIPO_CURSO, string p_ESTADO)
+        {
+            var p_NOMBRE_PROGRAMAParameter = p_NOMBRE_PROGRAMA != null ?
+                new ObjectParameter("P_NOMBRE_PROGRAMA", p_NOMBRE_PROGRAMA) :
+                new ObjectParameter("P_NOMBRE_PROGRAMA", typeof(string));
+    
+            var p_DESCRIPCIONParameter = p_DESCRIPCION != null ?
+                new ObjectParameter("P_DESCRIPCION", p_DESCRIPCION) :
+                new ObjectParameter("P_DESCRIPCION", typeof(string));
+    
+            var p_CUPOSParameter = p_CUPOS.HasValue ?
+                new ObjectParameter("P_CUPOS", p_CUPOS) :
+                new ObjectParameter("P_CUPOS", typeof(decimal));
+    
+            var p_ID_INSTITUCIONParameter = p_ID_INSTITUCION.HasValue ?
+                new ObjectParameter("P_ID_INSTITUCION", p_ID_INSTITUCION) :
+                new ObjectParameter("P_ID_INSTITUCION", typeof(decimal));
+    
+            var p_FECHA_INICIOParameter = p_FECHA_INICIO.HasValue ?
+                new ObjectParameter("P_FECHA_INICIO", p_FECHA_INICIO) :
+                new ObjectParameter("P_FECHA_INICIO", typeof(System.DateTime));
+    
+            var p_FECHA_TERMINOParameter = p_FECHA_TERMINO.HasValue ?
+                new ObjectParameter("P_FECHA_TERMINO", p_FECHA_TERMINO) :
+                new ObjectParameter("P_FECHA_TERMINO", typeof(System.DateTime));
+    
+            var p_TIPO_CURSOParameter = p_TIPO_CURSO != null ?
+                new ObjectParameter("P_TIPO_CURSO", p_TIPO_CURSO) :
+                new ObjectParameter("P_TIPO_CURSO", typeof(string));
+    
+            var p_ESTADOParameter = p_ESTADO != null ?
+                new ObjectParameter("P_ESTADO", p_ESTADO) :
+                new ObjectParameter("P_ESTADO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_PROGRAMAS", p_NOMBRE_PROGRAMAParameter, p_DESCRIPCIONParameter, p_CUPOSParameter, p_ID_INSTITUCIONParameter, p_FECHA_INICIOParameter, p_FECHA_TERMINOParameter, p_TIPO_CURSOParameter, p_ESTADOParameter);
+        }
+    
         public virtual int INS_USUARIO(Nullable<decimal> p_ID_USUARIO, string p_PASSWORD, Nullable<decimal> p_ID_FAMILIA, Nullable<decimal> p_ID_ADMINISTRATIVO, Nullable<decimal> p_ID_ENCARGADO_CEL, string p_NOMBRE_USUARIO, Nullable<decimal> p_ID_ENCARGADO_CEM, Nullable<decimal> p_ID_ALUMNO, string p_ROL)
         {
             var p_ID_USUARIOParameter = p_ID_USUARIO.HasValue ?
@@ -944,7 +982,7 @@ namespace DALC.Portafolio
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_PROGRAMA_ACTIVIDAD", p_ID_PROGRAMAParameter, p_ID_ACTIVIDADParameter);
         }
     
-        public virtual int UPD_PROGRAMAS(Nullable<System.DateTime> p_FECHA_TERMINO, Nullable<decimal> p_ID_PROGRAMA, Nullable<decimal> p_CUPOS, string p_TIPO_CURSO, string p_DESCRIPCION, Nullable<System.DateTime> p_FECHA_INICIO, string p_NOMBRE_PROGRAMA, string p_ESTADO)
+        public virtual int UPD_PROGRAMAS(Nullable<System.DateTime> p_FECHA_TERMINO, Nullable<decimal> p_ID_PROGRAMA, Nullable<decimal> p_CUPOS, Nullable<decimal> p_ID_INSTITUCION, string p_TIPO_CURSO, string p_DESCRIPCION, Nullable<System.DateTime> p_FECHA_INICIO, string p_NOMBRE_PROGRAMA, string p_ESTADO)
         {
             var p_FECHA_TERMINOParameter = p_FECHA_TERMINO.HasValue ?
                 new ObjectParameter("P_FECHA_TERMINO", p_FECHA_TERMINO) :
@@ -957,6 +995,10 @@ namespace DALC.Portafolio
             var p_CUPOSParameter = p_CUPOS.HasValue ?
                 new ObjectParameter("P_CUPOS", p_CUPOS) :
                 new ObjectParameter("P_CUPOS", typeof(decimal));
+    
+            var p_ID_INSTITUCIONParameter = p_ID_INSTITUCION.HasValue ?
+                new ObjectParameter("P_ID_INSTITUCION", p_ID_INSTITUCION) :
+                new ObjectParameter("P_ID_INSTITUCION", typeof(decimal));
     
             var p_TIPO_CURSOParameter = p_TIPO_CURSO != null ?
                 new ObjectParameter("P_TIPO_CURSO", p_TIPO_CURSO) :
@@ -978,7 +1020,7 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ESTADO", p_ESTADO) :
                 new ObjectParameter("P_ESTADO", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_PROGRAMAS", p_FECHA_TERMINOParameter, p_ID_PROGRAMAParameter, p_CUPOSParameter, p_TIPO_CURSOParameter, p_DESCRIPCIONParameter, p_FECHA_INICIOParameter, p_NOMBRE_PROGRAMAParameter, p_ESTADOParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_PROGRAMAS", p_FECHA_TERMINOParameter, p_ID_PROGRAMAParameter, p_CUPOSParameter, p_ID_INSTITUCIONParameter, p_TIPO_CURSOParameter, p_DESCRIPCIONParameter, p_FECHA_INICIOParameter, p_NOMBRE_PROGRAMAParameter, p_ESTADOParameter);
         }
     
         public virtual int UPD_USUARIO(Nullable<decimal> p_ID_USUARIO, string p_PASSWORD, Nullable<decimal> p_ID_FAMILIA, Nullable<decimal> p_ID_ADMINISTRATIVO, Nullable<decimal> p_ID_ENCARGADO_CEL, string p_NOMBRE_USUARIO, Nullable<decimal> p_ID_ENCARGADO_CEM, Nullable<decimal> p_ID_ALUMNO, string p_ROL)
@@ -1020,39 +1062,6 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ROL", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_USUARIO", p_ID_USUARIOParameter, p_PASSWORDParameter, p_ID_FAMILIAParameter, p_ID_ADMINISTRATIVOParameter, p_ID_ENCARGADO_CELParameter, p_NOMBRE_USUARIOParameter, p_ID_ENCARGADO_CEMParameter, p_ID_ALUMNOParameter, p_ROLParameter);
-        }
-    
-        public virtual int INS_PROGRAMAS(string p_NOMBRE_PROGRAMA, string p_DESCRIPCION, Nullable<decimal> p_CUPOS, Nullable<System.DateTime> p_FECHA_INICIO, Nullable<System.DateTime> p_FECHA_TERMINO, string p_TIPO_CURSO, string p_ESTADO)
-        {
-            var p_NOMBRE_PROGRAMAParameter = p_NOMBRE_PROGRAMA != null ?
-                new ObjectParameter("P_NOMBRE_PROGRAMA", p_NOMBRE_PROGRAMA) :
-                new ObjectParameter("P_NOMBRE_PROGRAMA", typeof(string));
-    
-            var p_DESCRIPCIONParameter = p_DESCRIPCION != null ?
-                new ObjectParameter("P_DESCRIPCION", p_DESCRIPCION) :
-                new ObjectParameter("P_DESCRIPCION", typeof(string));
-    
-            var p_CUPOSParameter = p_CUPOS.HasValue ?
-                new ObjectParameter("P_CUPOS", p_CUPOS) :
-                new ObjectParameter("P_CUPOS", typeof(decimal));
-    
-            var p_FECHA_INICIOParameter = p_FECHA_INICIO.HasValue ?
-                new ObjectParameter("P_FECHA_INICIO", p_FECHA_INICIO) :
-                new ObjectParameter("P_FECHA_INICIO", typeof(System.DateTime));
-    
-            var p_FECHA_TERMINOParameter = p_FECHA_TERMINO.HasValue ?
-                new ObjectParameter("P_FECHA_TERMINO", p_FECHA_TERMINO) :
-                new ObjectParameter("P_FECHA_TERMINO", typeof(System.DateTime));
-    
-            var p_TIPO_CURSOParameter = p_TIPO_CURSO != null ?
-                new ObjectParameter("P_TIPO_CURSO", p_TIPO_CURSO) :
-                new ObjectParameter("P_TIPO_CURSO", typeof(string));
-    
-            var p_ESTADOParameter = p_ESTADO != null ?
-                new ObjectParameter("P_ESTADO", p_ESTADO) :
-                new ObjectParameter("P_ESTADO", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_PROGRAMAS", p_NOMBRE_PROGRAMAParameter, p_DESCRIPCIONParameter, p_CUPOSParameter, p_FECHA_INICIOParameter, p_FECHA_TERMINOParameter, p_TIPO_CURSOParameter, p_ESTADOParameter);
         }
     }
 }

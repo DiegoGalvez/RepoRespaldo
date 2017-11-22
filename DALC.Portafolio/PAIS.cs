@@ -20,6 +20,7 @@ namespace DALC.Portafolio
             this.CIUDAD = new HashSet<CIUDAD>();
             this.ENCARGADO_CEL = new HashSet<ENCARGADO_CEL>();
             this.ENCARGADO_CEM = new HashSet<ENCARGADO_CEM>();
+            this.INSTITUCION = new HashSet<INSTITUCION>();
         }
     
         public int ID_PAIS { get; set; }
@@ -32,5 +33,7 @@ namespace DALC.Portafolio
         public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INSTITUCION> INSTITUCION { get; set; }
     }
 }

@@ -148,14 +148,15 @@
           <Key>
             <PropertyRef Name="ID_PROGRAMA" />
           </Key>
-          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_PROGRAMA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="CUPOS" Type="number" Precision="10" Scale="0" />
+          <Property Name="ID_INSTITUCION" Type="number" Precision="10" Scale="0" Nullable="false" />
           <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
           <Property Name="FECHA_TERMINO" Type="date" Nullable="false" />
           <Property Name="TIPO_CURSO" Type="varchar2" MaxLength="50" Nullable="false" />
-          <Property Name="ESTADO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -248,7 +249,7 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
           <Property Name="DIRECCION_FAMILIA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="CORREO_FAMILIA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="TELEFONO_FAMILIA" Type="number" Precision="12" Scale="0" Nullable="false" />
-          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_PROGRAMA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="CUPOS" Type="number" Precision="10" Scale="0" />
@@ -344,6 +345,30 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_INSTITUCION_CIUDAD">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="0..1" />
+          <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="INSTITUCION">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSTITUCION_PAIS">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="0..1" />
+          <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="INSTITUCION">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_INTERCAMBIO_ADMINISTRATIVO">
           <End Role="ADMINISTRATIVO" Type="Self.ADMINISTRATIVO" Multiplicity="0..1" />
           <End Role="INTERCAMBIO" Type="Self.INTERCAMBIO" Multiplicity="*" />
@@ -380,18 +405,6 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_INTERCAMBIO_PROGRAMAS">
-          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="0..1" />
-          <End Role="INTERCAMBIO" Type="Self.INTERCAMBIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMAS">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Principal>
-            <Dependent Role="INTERCAMBIO">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_NOTAS_ALUMNOS">
           <End Role="ALUMNOS" Type="Self.ALUMNOS" Multiplicity="1" />
           <End Role="NOTAS" Type="Self.NOTAS" Multiplicity="*" />
@@ -401,18 +414,6 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
             </Principal>
             <Dependent Role="NOTAS">
               <PropertyRef Name="ID_ALUMNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NOTAS_PROGRAMAS">
-          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="1" />
-          <End Role="NOTAS" Type="Self.NOTAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMAS">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Principal>
-            <Dependent Role="NOTAS">
-              <PropertyRef Name="ID_PROGRAMA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -428,15 +429,15 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PROGRAMAACTIVIDAD_PROGRAMAS">
-          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="1" />
-          <End Role="PROGRAMA_ACTIVIDAD" Type="Self.PROGRAMA_ACTIVIDAD" Multiplicity="*" />
+        <Association Name="FK_PROGRAMAS_INSTITUCION">
+          <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PROGRAMAS">
-              <PropertyRef Name="ID_PROGRAMA" />
+            <Principal Role="INSTITUCION">
+              <PropertyRef Name="ID_INSTITUCION" />
             </Principal>
-            <Dependent Role="PROGRAMA_ACTIVIDAD">
-              <PropertyRef Name="ID_PROGRAMA" />
+            <Dependent Role="PROGRAMAS">
+              <PropertyRef Name="ID_INSTITUCION" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -649,6 +650,7 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
           <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_CUPOS" Type="number" Mode="In" />
+          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
           <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
@@ -769,6 +771,7 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
           <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_CUPOS" Type="number" Mode="In" />
+          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
           <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
@@ -884,6 +887,14 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <End Role="CIUDAD" EntitySet="CIUDAD" />
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
           </AssociationSet>
+          <AssociationSet Name="FK_INSTITUCION_CIUDAD" Association="Self.FK_INSTITUCION_CIUDAD">
+            <End Role="CIUDAD" EntitySet="CIUDAD" />
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSTITUCION_PAIS" Association="Self.FK_INSTITUCION_PAIS">
+            <End Role="PAIS" EntitySet="PAIS" />
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+          </AssociationSet>
           <AssociationSet Name="FK_INTERCAMBIO_ADMINISTRATIVO" Association="Self.FK_INTERCAMBIO_ADMINISTRATIVO">
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
@@ -896,25 +907,17 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_INTERCAMBIO_PROGRAMAS" Association="Self.FK_INTERCAMBIO_PROGRAMAS">
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-            <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
-          </AssociationSet>
           <AssociationSet Name="FK_NOTAS_ALUMNOS" Association="Self.FK_NOTAS_ALUMNOS">
             <End Role="ALUMNOS" EntitySet="ALUMNOS" />
-            <End Role="NOTAS" EntitySet="NOTAS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NOTAS_PROGRAMAS" Association="Self.FK_NOTAS_PROGRAMAS">
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
             <End Role="NOTAS" EntitySet="NOTAS" />
           </AssociationSet>
           <AssociationSet Name="FK_PROGRAMAACTIVIDAD_ACTIVIDAD" Association="Self.FK_PROGRAMAACTIVIDAD_ACTIVIDAD">
             <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
             <End Role="PROGRAMA_ACTIVIDAD" EntitySet="PROGRAMA_ACTIVIDAD" />
           </AssociationSet>
-          <AssociationSet Name="FK_PROGRAMAACTIVIDAD_PROGRAMAS" Association="Self.FK_PROGRAMAACTIVIDAD_PROGRAMAS">
+          <AssociationSet Name="FK_PROGRAMAS_INSTITUCION" Association="Self.FK_PROGRAMAS_INSTITUCION">
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-            <End Role="PROGRAMA_ACTIVIDAD" EntitySet="PROGRAMA_ACTIVIDAD" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_ADMINISTRATIVO" Association="Self.FK_USUARIO_ADMINISTRATIVO">
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
@@ -941,99 +944,600 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ModelCEM" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="NOMBREACTIVIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PROGRAMA_ACTIVIDAD" Relationship="Self.FK_PROGRAMAACTIVIDAD_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="PROGRAMA_ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="ADMINISTRATIVO">
+          <Key>
+            <PropertyRef Name="ID_ADMINISTRATIVO" />
+          </Key>
+          <Property Name="ID_ADMINISTRATIVO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CARGO" Type="Int32" />
+          <NavigationProperty Name="CARGO" Relationship="Self.FK_ADMINISTRATIVO_CARGO" FromRole="ADMINISTRATIVO" ToRole="CARGO" />
+          <NavigationProperty Name="INTERCAMBIO" Relationship="Self.FK_INTERCAMBIO_ADMINISTRATIVO" FromRole="ADMINISTRATIVO" ToRole="INTERCAMBIO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ADMINISTRATIVO" FromRole="ADMINISTRATIVO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="ALUMNOS">
+          <Key>
+            <PropertyRef Name="ID_ALUMNO" />
+          </Key>
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
+          <Property Name="DV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESERVA" Type="Int32" />
+          <Property Name="TELEFONO" Type="Int64" Nullable="false" />
+          <Property Name="ESTADO_MORA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INTERCAMBIO" Relationship="Self.FK_INTERCAMBIO_ALUMNOS" FromRole="ALUMNOS" ToRole="INTERCAMBIO" />
+          <NavigationProperty Name="NOTAS" Relationship="Self.FK_NOTAS_ALUMNOS" FromRole="ALUMNOS" ToRole="NOTAS" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ALUMNOS" FromRole="ALUMNOS" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="CARGO">
+          <Key>
+            <PropertyRef Name="ID_CARGO" />
+          </Key>
+          <Property Name="ID_CARGO" Type="Int32" Nullable="false" />
+          <Property Name="NOM_CARGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADMINISTRATIVO" Relationship="Self.FK_ADMINISTRATIVO_CARGO" FromRole="CARGO" ToRole="ADMINISTRATIVO" />
+        </EntityType>
+        <EntityType Name="CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="NOM_CIUDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PAIS" Type="Int32" />
+          <NavigationProperty Name="PAIS" Relationship="Self.FK_CIUDAD_PAIS" FromRole="CIUDAD" ToRole="PAIS" />
+          <NavigationProperty Name="ENCARGADO_CEL" Relationship="Self.FK_ENCARGADO_CEL_CIUDAD" FromRole="CIUDAD" ToRole="ENCARGADO_CEL" />
+          <NavigationProperty Name="ENCARGADO_CEM" Relationship="Self.FK_ENCARGADO_CEM_CIUDAD" FromRole="CIUDAD" ToRole="ENCARGADO_CEM" />
+          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="Self.FK_FAMILIASANFITRIONA_CIUDAD" FromRole="CIUDAD" ToRole="FAMILIASANFITRIONA" />
+          <NavigationProperty Name="INSTITUCION" Relationship="ModelCEM.FK_INSTITUCION_CIUDAD" FromRole="CIUDAD" ToRole="INSTITUCION" />
+        </EntityType>
+        <EntityType Name="ENCARGADO_CEL">
+          <Key>
+            <PropertyRef Name="ID_ENCARGADO_CEL" />
+          </Key>
+          <Property Name="ID_ENCARGADO_CEL" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CIUDAD" Relationship="Self.FK_ENCARGADO_CEL_CIUDAD" FromRole="ENCARGADO_CEL" ToRole="CIUDAD" />
+          <NavigationProperty Name="PAIS" Relationship="Self.FK_ENCARGADO_CEL_PAIS" FromRole="ENCARGADO_CEL" ToRole="PAIS" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ENCARGADO_CEL" FromRole="ENCARGADO_CEL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="ENCARGADO_CEM">
+          <Key>
+            <PropertyRef Name="ID_ENCARGADO_CEM" />
+          </Key>
+          <Property Name="ID_ENCARGADO_CEM" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CIUDAD" Relationship="Self.FK_ENCARGADO_CEM_CIUDAD" FromRole="ENCARGADO_CEM" ToRole="CIUDAD" />
+          <NavigationProperty Name="PAIS" Relationship="Self.FK_ENCARGADO_CEM_PAIS" FromRole="ENCARGADO_CEM" ToRole="PAIS" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_ENCARGADO_CEM" FromRole="ENCARGADO_CEM" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="FAMILIASANFITRIONA">
+          <Key>
+            <PropertyRef Name="ID_FAMILIA" />
+          </Key>
+          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
+          <Property Name="RUTA_ARCHIVO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="Int32" />
+          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIUDAD" Relationship="Self.FK_FAMILIASANFITRIONA_CIUDAD" FromRole="FAMILIASANFITRIONA" ToRole="CIUDAD" />
+          <NavigationProperty Name="INTERCAMBIO" Relationship="Self.FK_INTERCAMBIO_FAMILIA" FromRole="FAMILIASANFITRIONA" ToRole="INTERCAMBIO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_FAMILIASANFITRIONA" FromRole="FAMILIASANFITRIONA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="INSTITUCION">
+          <Key>
+            <PropertyRef Name="ID_INSTITUCION" />
+          </Key>
+          <Property Name="ID_INSTITUCION" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="Int64" />
+          <Property Name="PAGINA_WEB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CIUDAD" Type="Int32" />
+          <Property Name="ID_PAIS" Type="Int32" />
+          <NavigationProperty Name="PROGRAMAS" Relationship="Self.FK_PROGRAMAS_INSTITUCION" FromRole="INSTITUCION" ToRole="PROGRAMAS" />
+          <NavigationProperty Name="CIUDAD" Relationship="ModelCEM.FK_INSTITUCION_CIUDAD" FromRole="INSTITUCION" ToRole="CIUDAD" />
+          <NavigationProperty Name="PAIS" Relationship="ModelCEM.FK_INSTITUCION_PAIS" FromRole="INSTITUCION" ToRole="PAIS" />
+        </EntityType>
+        <EntityType Name="INTERCAMBIO">
+          <Key>
+            <PropertyRef Name="ID_INTERCAMBIO" />
+          </Key>
+          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ADMINISTRATIVO" Type="Int32" />
+          <Property Name="ID_FAMILIA" Type="Int32" />
+          <Property Name="ID_ALUMNO" Type="Int32" />
+          <Property Name="ID_PROGRAMA" Type="Int32" />
+          <NavigationProperty Name="ADMINISTRATIVO" Relationship="Self.FK_INTERCAMBIO_ADMINISTRATIVO" FromRole="INTERCAMBIO" ToRole="ADMINISTRATIVO" />
+          <NavigationProperty Name="ALUMNOS" Relationship="Self.FK_INTERCAMBIO_ALUMNOS" FromRole="INTERCAMBIO" ToRole="ALUMNOS" />
+          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="Self.FK_INTERCAMBIO_FAMILIA" FromRole="INTERCAMBIO" ToRole="FAMILIASANFITRIONA" />
+        </EntityType>
+        <EntityType Name="NOTAS">
+          <Key>
+            <PropertyRef Name="ID_NOTA" />
+          </Key>
+          <Property Name="ID_NOTA" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
+          <Property Name="NOTA" Type="Decimal" Precision="2" Scale="1" />
+          <NavigationProperty Name="ALUMNOS" Relationship="Self.FK_NOTAS_ALUMNOS" FromRole="NOTAS" ToRole="ALUMNOS" />
+        </EntityType>
+        <EntityType Name="PAIS">
+          <Key>
+            <PropertyRef Name="ID_PAIS" />
+          </Key>
+          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
+          <Property Name="NOM_PAIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SIGLA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CIUDAD" Relationship="Self.FK_CIUDAD_PAIS" FromRole="PAIS" ToRole="CIUDAD" />
+          <NavigationProperty Name="ENCARGADO_CEL" Relationship="Self.FK_ENCARGADO_CEL_PAIS" FromRole="PAIS" ToRole="ENCARGADO_CEL" />
+          <NavigationProperty Name="ENCARGADO_CEM" Relationship="Self.FK_ENCARGADO_CEM_PAIS" FromRole="PAIS" ToRole="ENCARGADO_CEM" />
+          <NavigationProperty Name="INSTITUCION" Relationship="ModelCEM.FK_INSTITUCION_PAIS" FromRole="PAIS" ToRole="INSTITUCION" />
+        </EntityType>
+        <EntityType Name="PROGRAMA_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
+          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_PROGRAMAACTIVIDAD_ACTIVIDAD" FromRole="PROGRAMA_ACTIVIDAD" ToRole="ACTIVIDAD" />
+        </EntityType>
+        <EntityType Name="PROGRAMAS">
+          <Key>
+            <PropertyRef Name="ID_PROGRAMA" />
+          </Key>
+          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_PROGRAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUPOS" Type="Int32" />
+          <Property Name="ID_INSTITUCION" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
+          <Property Name="TIPO_CURSO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_PROGRAMAS_INSTITUCION" FromRole="PROGRAMAS" ToRole="INSTITUCION" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ALUMNO" Type="Int32" />
+          <Property Name="ID_ADMINISTRATIVO" Type="Int32" />
+          <Property Name="ID_FAMILIA" Type="Int32" />
+          <Property Name="ID_ENCARGADO_CEL" Type="Int32" />
+          <Property Name="ID_ENCARGADO_CEM" Type="Int32" />
+          <Property Name="ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADMINISTRATIVO" Relationship="Self.FK_USUARIO_ADMINISTRATIVO" FromRole="USUARIO" ToRole="ADMINISTRATIVO" />
+          <NavigationProperty Name="ALUMNOS" Relationship="Self.FK_USUARIO_ALUMNOS" FromRole="USUARIO" ToRole="ALUMNOS" />
+          <NavigationProperty Name="ENCARGADO_CEL" Relationship="Self.FK_USUARIO_ENCARGADO_CEL" FromRole="USUARIO" ToRole="ENCARGADO_CEL" />
+          <NavigationProperty Name="ENCARGADO_CEM" Relationship="Self.FK_USUARIO_ENCARGADO_CEM" FromRole="USUARIO" ToRole="ENCARGADO_CEM" />
+          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="Self.FK_USUARIO_FAMILIASANFITRIONA" FromRole="USUARIO" ToRole="FAMILIASANFITRIONA" />
+        </EntityType>
+        <EntityType Name="V_FAMILIA_ANFITRIONA">
+          <Key>
+            <PropertyRef Name="IDENTIFICACION" />
+            <PropertyRef Name="TELEFONO_CONTACTO" />
+            <PropertyRef Name="CORREO" />
+            <PropertyRef Name="NOM_PAIS" />
+            <PropertyRef Name="NOM_CIUDAD" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_PAIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_CIUDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_NOTAS_ALUMNO">
+          <Key>
+            <PropertyRef Name="NOMBRE_PROGRAMA" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_PROGRAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOTA" Type="Decimal" Precision="2" Scale="1" />
+        </EntityType>
+        <EntityType Name="VISTA_ALUMNOS_POSTULANTES">
+          <Key>
+            <PropertyRef Name="NOMBRE_PROGRAMA" />
+            <PropertyRef Name="FECHA_INICIO" />
+            <PropertyRef Name="ESTADO" />
+            <PropertyRef Name="ID_ALUMNO" />
+          </Key>
+          <Property Name="NOMBRE" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_PROGRAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUPOS" Type="Int32" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
+          <Property Name="JEFE_FAMILIA_ANFITRIONA" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VISTA_DETALLE_POSTULACION">
+          <Key>
+            <PropertyRef Name="ID_ALUMNO" />
+            <PropertyRef Name="CORREO_POSTULANTE" />
+            <PropertyRef Name="TELEFONO_POSTULANTE" />
+            <PropertyRef Name="ID_FAMILIA" />
+            <PropertyRef Name="DIRECCION_FAMILIA" />
+            <PropertyRef Name="CORREO_FAMILIA" />
+            <PropertyRef Name="TELEFONO_FAMILIA" />
+            <PropertyRef Name="ID_PROGRAMA" />
+            <PropertyRef Name="NOMBRE_PROGRAMA" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="FECHA_INICIO" />
+            <PropertyRef Name="FECHA_TERMINO" />
+            <PropertyRef Name="TIPO_CURSO" />
+            <PropertyRef Name="CIUDAD_FAMILIA" />
+            <PropertyRef Name="NOMBRE_PAIS" />
+            <PropertyRef Name="NOMBRE_INSTITUCION" />
+            <PropertyRef Name="ID_INTERCAMBIO" />
+          </Key>
+          <Property Name="NOMBRE_POSTULANTE" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
+          <Property Name="CORREO_POSTULANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_POSTULANTE" Type="Int64" Nullable="false" />
+          <Property Name="ESTADO_MORA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_FAMILIA_ANFITRIONA" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION_FAMILIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO_FAMILIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_FAMILIA" Type="Int64" Nullable="false" />
+          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_PROGRAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUPOS" Type="Int32" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
+          <Property Name="TIPO_CURSO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD_FAMILIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_PAIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_INSTITUCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PROGRAMAACTIVIDAD_ACTIVIDAD">
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="1" />
+          <End Role="PROGRAMA_ACTIVIDAD" Type="Self.PROGRAMA_ACTIVIDAD" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="PROGRAMA_ACTIVIDAD">
+              <PropertyRef Name="ID_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADMINISTRATIVO_CARGO">
+          <End Role="CARGO" Type="Self.CARGO" Multiplicity="0..1" />
+          <End Role="ADMINISTRATIVO" Type="Self.ADMINISTRATIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGO">
+              <PropertyRef Name="ID_CARGO" />
+            </Principal>
+            <Dependent Role="ADMINISTRATIVO">
+              <PropertyRef Name="ID_CARGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INTERCAMBIO_ADMINISTRATIVO">
+          <End Role="ADMINISTRATIVO" Type="Self.ADMINISTRATIVO" Multiplicity="0..1" />
+          <End Role="INTERCAMBIO" Type="Self.INTERCAMBIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMINISTRATIVO">
+              <PropertyRef Name="ID_ADMINISTRATIVO" />
+            </Principal>
+            <Dependent Role="INTERCAMBIO">
+              <PropertyRef Name="ID_ADMINISTRATIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ADMINISTRATIVO">
+          <End Role="ADMINISTRATIVO" Type="Self.ADMINISTRATIVO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMINISTRATIVO">
+              <PropertyRef Name="ID_ADMINISTRATIVO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ADMINISTRATIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INTERCAMBIO_ALUMNOS">
+          <End Role="ALUMNOS" Type="Self.ALUMNOS" Multiplicity="0..1" />
+          <End Role="INTERCAMBIO" Type="Self.INTERCAMBIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNOS">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Principal>
+            <Dependent Role="INTERCAMBIO">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTAS_ALUMNOS">
+          <End Role="ALUMNOS" Type="Self.ALUMNOS" Multiplicity="1" />
+          <End Role="NOTAS" Type="Self.NOTAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNOS">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Principal>
+            <Dependent Role="NOTAS">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ALUMNOS">
+          <End Role="ALUMNOS" Type="Self.ALUMNOS" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALUMNOS">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ALUMNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIUDAD_PAIS">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="0..1" />
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="CIUDAD">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENCARGADO_CEL_CIUDAD">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+          <End Role="ENCARGADO_CEL" Type="Self.ENCARGADO_CEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="ENCARGADO_CEL">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENCARGADO_CEM_CIUDAD">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="ENCARGADO_CEM">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAMILIASANFITRIONA_CIUDAD">
+          <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="0..1" />
+          <End Role="FAMILIASANFITRIONA" Type="Self.FAMILIASANFITRIONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="FAMILIASANFITRIONA">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENCARGADO_CEL_PAIS">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+          <End Role="ENCARGADO_CEL" Type="Self.ENCARGADO_CEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="ENCARGADO_CEL">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ENCARGADO_CEL">
+          <End Role="ENCARGADO_CEL" Type="Self.ENCARGADO_CEL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENCARGADO_CEL">
+              <PropertyRef Name="ID_ENCARGADO_CEL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ENCARGADO_CEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ENCARGADO_CEM_PAIS">
+          <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAIS">
+              <PropertyRef Name="ID_PAIS" />
+            </Principal>
+            <Dependent Role="ENCARGADO_CEM">
+              <PropertyRef Name="ID_PAIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ENCARGADO_CEM">
+          <End Role="ENCARGADO_CEM" Type="Self.ENCARGADO_CEM" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENCARGADO_CEM">
+              <PropertyRef Name="ID_ENCARGADO_CEM" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ENCARGADO_CEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INTERCAMBIO_FAMILIA">
+          <End Role="FAMILIASANFITRIONA" Type="Self.FAMILIASANFITRIONA" Multiplicity="0..1" />
+          <End Role="INTERCAMBIO" Type="Self.INTERCAMBIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILIASANFITRIONA">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Principal>
+            <Dependent Role="INTERCAMBIO">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_FAMILIASANFITRIONA">
+          <End Role="FAMILIASANFITRIONA" Type="Self.FAMILIASANFITRIONA" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILIASANFITRIONA">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROGRAMAS_INSTITUCION">
+          <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTITUCION">
+              <PropertyRef Name="ID_INSTITUCION" />
+            </Principal>
+            <Dependent Role="PROGRAMAS">
+              <PropertyRef Name="ID_INSTITUCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EntitiesCEM" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ACTIVIDAD" EntityType="ModelCEM.ACTIVIDAD" />
-          <EntitySet Name="ADMINISTRATIVO" EntityType="ModelCEM.ADMINISTRATIVO" />
-          <EntitySet Name="ALUMNOS" EntityType="ModelCEM.ALUMNOS" />
-          <EntitySet Name="CARGO" EntityType="ModelCEM.CARGO" />
-          <EntitySet Name="CIUDAD" EntityType="ModelCEM.CIUDAD" />
-          <EntitySet Name="ENCARGADO_CEL" EntityType="ModelCEM.ENCARGADO_CEL" />
-          <EntitySet Name="ENCARGADO_CEM" EntityType="ModelCEM.ENCARGADO_CEM" />
-          <EntitySet Name="FAMILIASANFITRIONA" EntityType="ModelCEM.FAMILIASANFITRIONA" />
-          <EntitySet Name="INSTITUCION" EntityType="ModelCEM.INSTITUCION" />
-          <EntitySet Name="INTERCAMBIO" EntityType="ModelCEM.INTERCAMBIO" />
-          <EntitySet Name="NOTAS" EntityType="ModelCEM.NOTAS" />
-          <EntitySet Name="PAIS" EntityType="ModelCEM.PAIS" />
-          <EntitySet Name="PROGRAMAS" EntityType="ModelCEM.PROGRAMAS" />
-          <EntitySet Name="USUARIO" EntityType="ModelCEM.USUARIO" />
-          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" />
-          <EntitySet Name="V_NOTAS_ALUMNO" EntityType="ModelCEM.V_NOTAS_ALUMNO" />
-          <EntitySet Name="VISTA_ALUMNOS_POSTULANTES" EntityType="ModelCEM.VISTA_ALUMNOS_POSTULANTES" />
-          <EntitySet Name="VISTA_DETALLE_POSTULACION" EntityType="ModelCEM.VISTA_DETALLE_POSTULACION" />
-          <AssociationSet Name="FK_ADMINISTRATIVO_CARGO" Association="ModelCEM.FK_ADMINISTRATIVO_CARGO">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="ADMINISTRATIVO" EntityType="Self.ADMINISTRATIVO" />
+          <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" />
+          <EntitySet Name="CARGO" EntityType="Self.CARGO" />
+          <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
+          <EntitySet Name="ENCARGADO_CEL" EntityType="Self.ENCARGADO_CEL" />
+          <EntitySet Name="ENCARGADO_CEM" EntityType="Self.ENCARGADO_CEM" />
+          <EntitySet Name="FAMILIASANFITRIONA" EntityType="Self.FAMILIASANFITRIONA" />
+          <EntitySet Name="INSTITUCION" EntityType="Self.INSTITUCION" />
+          <EntitySet Name="INTERCAMBIO" EntityType="Self.INTERCAMBIO" />
+          <EntitySet Name="NOTAS" EntityType="Self.NOTAS" />
+          <EntitySet Name="PAIS" EntityType="Self.PAIS" />
+          <EntitySet Name="PROGRAMA_ACTIVIDAD" EntityType="Self.PROGRAMA_ACTIVIDAD" />
+          <EntitySet Name="PROGRAMAS" EntityType="Self.PROGRAMAS" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="Self.V_FAMILIA_ANFITRIONA" />
+          <EntitySet Name="V_NOTAS_ALUMNO" EntityType="Self.V_NOTAS_ALUMNO" />
+          <EntitySet Name="VISTA_ALUMNOS_POSTULANTES" EntityType="Self.VISTA_ALUMNOS_POSTULANTES" />
+          <EntitySet Name="VISTA_DETALLE_POSTULACION" EntityType="Self.VISTA_DETALLE_POSTULACION" />
+          <AssociationSet Name="FK_PROGRAMAACTIVIDAD_ACTIVIDAD" Association="Self.FK_PROGRAMAACTIVIDAD_ACTIVIDAD">
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+            <End Role="PROGRAMA_ACTIVIDAD" EntitySet="PROGRAMA_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADMINISTRATIVO_CARGO" Association="Self.FK_ADMINISTRATIVO_CARGO">
             <End Role="CARGO" EntitySet="CARGO" />
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
           </AssociationSet>
-          <AssociationSet Name="FK_INTERCAMBIO_ADMINISTRATIVO" Association="ModelCEM.FK_INTERCAMBIO_ADMINISTRATIVO">
+          <AssociationSet Name="FK_INTERCAMBIO_ADMINISTRATIVO" Association="Self.FK_INTERCAMBIO_ADMINISTRATIVO">
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_ADMINISTRATIVO" Association="ModelCEM.FK_USUARIO_ADMINISTRATIVO">
+          <AssociationSet Name="FK_USUARIO_ADMINISTRATIVO" Association="Self.FK_USUARIO_ADMINISTRATIVO">
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_INTERCAMBIO_ALUMNOS" Association="ModelCEM.FK_INTERCAMBIO_ALUMNOS">
+          <AssociationSet Name="FK_INTERCAMBIO_ALUMNOS" Association="Self.FK_INTERCAMBIO_ALUMNOS">
             <End Role="ALUMNOS" EntitySet="ALUMNOS" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_NOTAS_ALUMNOS" Association="ModelCEM.FK_NOTAS_ALUMNOS">
+          <AssociationSet Name="FK_NOTAS_ALUMNOS" Association="Self.FK_NOTAS_ALUMNOS">
             <End Role="ALUMNOS" EntitySet="ALUMNOS" />
             <End Role="NOTAS" EntitySet="NOTAS" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_ALUMNOS" Association="ModelCEM.FK_USUARIO_ALUMNOS">
+          <AssociationSet Name="FK_USUARIO_ALUMNOS" Association="Self.FK_USUARIO_ALUMNOS">
             <End Role="ALUMNOS" EntitySet="ALUMNOS" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_CIUDAD_PAIS" Association="ModelCEM.FK_CIUDAD_PAIS">
+          <AssociationSet Name="FK_CIUDAD_PAIS" Association="Self.FK_CIUDAD_PAIS">
             <End Role="PAIS" EntitySet="PAIS" />
             <End Role="CIUDAD" EntitySet="CIUDAD" />
           </AssociationSet>
-          <AssociationSet Name="FK_ENCARGADO_CEL_CIUDAD" Association="ModelCEM.FK_ENCARGADO_CEL_CIUDAD">
+          <AssociationSet Name="FK_ENCARGADO_CEL_CIUDAD" Association="Self.FK_ENCARGADO_CEL_CIUDAD">
             <End Role="CIUDAD" EntitySet="CIUDAD" />
             <End Role="ENCARGADO_CEL" EntitySet="ENCARGADO_CEL" />
           </AssociationSet>
-          <AssociationSet Name="FK_ENCARGADO_CEM_CIUDAD" Association="ModelCEM.FK_ENCARGADO_CEM_CIUDAD">
+          <AssociationSet Name="FK_ENCARGADO_CEM_CIUDAD" Association="Self.FK_ENCARGADO_CEM_CIUDAD">
             <End Role="CIUDAD" EntitySet="CIUDAD" />
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
           </AssociationSet>
-          <AssociationSet Name="FK_FAMILIASANFITRIONA_CIUDAD" Association="ModelCEM.FK_FAMILIASANFITRIONA_CIUDAD">
+          <AssociationSet Name="FK_FAMILIASANFITRIONA_CIUDAD" Association="Self.FK_FAMILIASANFITRIONA_CIUDAD">
             <End Role="CIUDAD" EntitySet="CIUDAD" />
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
           </AssociationSet>
-          <AssociationSet Name="FK_ENCARGADO_CEL_PAIS" Association="ModelCEM.FK_ENCARGADO_CEL_PAIS">
+          <AssociationSet Name="FK_ENCARGADO_CEL_PAIS" Association="Self.FK_ENCARGADO_CEL_PAIS">
             <End Role="PAIS" EntitySet="PAIS" />
             <End Role="ENCARGADO_CEL" EntitySet="ENCARGADO_CEL" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_ENCARGADO_CEL" Association="ModelCEM.FK_USUARIO_ENCARGADO_CEL">
+          <AssociationSet Name="FK_USUARIO_ENCARGADO_CEL" Association="Self.FK_USUARIO_ENCARGADO_CEL">
             <End Role="ENCARGADO_CEL" EntitySet="ENCARGADO_CEL" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_ENCARGADO_CEM_PAIS" Association="ModelCEM.FK_ENCARGADO_CEM_PAIS">
+          <AssociationSet Name="FK_ENCARGADO_CEM_PAIS" Association="Self.FK_ENCARGADO_CEM_PAIS">
             <End Role="PAIS" EntitySet="PAIS" />
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_ENCARGADO_CEM" Association="ModelCEM.FK_USUARIO_ENCARGADO_CEM">
+          <AssociationSet Name="FK_USUARIO_ENCARGADO_CEM" Association="Self.FK_USUARIO_ENCARGADO_CEM">
             <End Role="ENCARGADO_CEM" EntitySet="ENCARGADO_CEM" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_INTERCAMBIO_FAMILIA" Association="ModelCEM.FK_INTERCAMBIO_FAMILIA">
+          <AssociationSet Name="FK_INTERCAMBIO_FAMILIA" Association="Self.FK_INTERCAMBIO_FAMILIA">
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_FAMILIASANFITRIONA" Association="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA">
+          <AssociationSet Name="FK_USUARIO_FAMILIASANFITRIONA" Association="Self.FK_USUARIO_FAMILIASANFITRIONA">
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_INTERCAMBIO_PROGRAMAS" Association="ModelCEM.FK_INTERCAMBIO_PROGRAMAS">
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-            <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NOTAS_PROGRAMAS" Association="ModelCEM.FK_NOTAS_PROGRAMAS">
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-            <End Role="NOTAS" EntitySet="NOTAS" />
-          </AssociationSet>
-          <AssociationSet Name="PROGRAMA_ACTIVIDAD" Association="ModelCEM.PROGRAMA_ACTIVIDAD">
-            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          <AssociationSet Name="FK_PROGRAMAS_INSTITUCION" Association="Self.FK_PROGRAMAS_INSTITUCION">
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
           </AssociationSet>
           <FunctionImport Name="DEL_ACTIVIDAD">
@@ -1181,6 +1685,16 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
             <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="INS_PROGRAMAS">
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="INS_USUARIO">
             <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
             <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
@@ -1296,6 +1810,7 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
             <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
             <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
             <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
             <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
             <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
@@ -1313,515 +1828,40 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
             <Parameter Name="P_ROL" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="INS_PROGRAMAS">
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-          </FunctionImport>
+          <AssociationSet Name="FK_INSTITUCION_CIUDAD" Association="ModelCEM.FK_INSTITUCION_CIUDAD">
+            <End Role="CIUDAD" EntitySet="CIUDAD" />
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSTITUCION_PAIS" Association="ModelCEM.FK_INSTITUCION_PAIS">
+            <End Role="PAIS" EntitySet="PAIS" />
+            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ACTIVIDAD">
-          <Key>
-            <PropertyRef Name="ID_ACTIVIDAD" />
-          </Key>
-          <Property Name="ID_ACTIVIDAD" Type="Int32" Nullable="false" />
-          <Property Name="NOMBREACTIVIDAD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PROGRAMAS" Relationship="ModelCEM.PROGRAMA_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="PROGRAMAS" />
-        </EntityType>
-        <EntityType Name="ADMINISTRATIVO">
-          <Key>
-            <PropertyRef Name="ID_ADMINISTRATIVO" />
-          </Key>
-          <Property Name="ID_ADMINISTRATIVO" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_CARGO" Type="Int32" />
-          <NavigationProperty Name="CARGO" Relationship="ModelCEM.FK_ADMINISTRATIVO_CARGO" FromRole="ADMINISTRATIVO" ToRole="CARGO" />
-          <NavigationProperty Name="INTERCAMBIO" Relationship="ModelCEM.FK_INTERCAMBIO_ADMINISTRATIVO" FromRole="ADMINISTRATIVO" ToRole="INTERCAMBIO" />
-          <NavigationProperty Name="USUARIO" Relationship="ModelCEM.FK_USUARIO_ADMINISTRATIVO" FromRole="ADMINISTRATIVO" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="ALUMNOS">
-          <Key>
-            <PropertyRef Name="ID_ALUMNO" />
-          </Key>
-          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
-          <Property Name="DV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="RESERVA" Type="Int32" />
-          <Property Name="TELEFONO" Type="Int64" Nullable="false" />
-          <Property Name="ESTADO_MORA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="INTERCAMBIO" Relationship="ModelCEM.FK_INTERCAMBIO_ALUMNOS" FromRole="ALUMNOS" ToRole="INTERCAMBIO" />
-          <NavigationProperty Name="NOTAS" Relationship="ModelCEM.FK_NOTAS_ALUMNOS" FromRole="ALUMNOS" ToRole="NOTAS" />
-          <NavigationProperty Name="USUARIO" Relationship="ModelCEM.FK_USUARIO_ALUMNOS" FromRole="ALUMNOS" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="CARGO">
-          <Key>
-            <PropertyRef Name="ID_CARGO" />
-          </Key>
-          <Property Name="ID_CARGO" Type="Int32" Nullable="false" />
-          <Property Name="NOM_CARGO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ADMINISTRATIVO" Relationship="ModelCEM.FK_ADMINISTRATIVO_CARGO" FromRole="CARGO" ToRole="ADMINISTRATIVO" />
-        </EntityType>
-        <EntityType Name="CIUDAD">
-          <Key>
-            <PropertyRef Name="ID_CIUDAD" />
-          </Key>
-          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
-          <Property Name="NOM_CIUDAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_PAIS" Type="Int32" />
-          <NavigationProperty Name="PAIS" Relationship="ModelCEM.FK_CIUDAD_PAIS" FromRole="CIUDAD" ToRole="PAIS" />
-          <NavigationProperty Name="ENCARGADO_CEL" Relationship="ModelCEM.FK_ENCARGADO_CEL_CIUDAD" FromRole="CIUDAD" ToRole="ENCARGADO_CEL" />
-          <NavigationProperty Name="ENCARGADO_CEM" Relationship="ModelCEM.FK_ENCARGADO_CEM_CIUDAD" FromRole="CIUDAD" ToRole="ENCARGADO_CEM" />
-          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="ModelCEM.FK_FAMILIASANFITRIONA_CIUDAD" FromRole="CIUDAD" ToRole="FAMILIASANFITRIONA" />
-        </EntityType>
-        <EntityType Name="ENCARGADO_CEL">
-          <Key>
-            <PropertyRef Name="ID_ENCARGADO_CEL" />
-          </Key>
-          <Property Name="ID_ENCARGADO_CEL" Type="Int32" Nullable="false" />
-          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
-          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CIUDAD" Relationship="ModelCEM.FK_ENCARGADO_CEL_CIUDAD" FromRole="ENCARGADO_CEL" ToRole="CIUDAD" />
-          <NavigationProperty Name="PAIS" Relationship="ModelCEM.FK_ENCARGADO_CEL_PAIS" FromRole="ENCARGADO_CEL" ToRole="PAIS" />
-          <NavigationProperty Name="USUARIO" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEL" FromRole="ENCARGADO_CEL" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="ENCARGADO_CEM">
-          <Key>
-            <PropertyRef Name="ID_ENCARGADO_CEM" />
-          </Key>
-          <Property Name="ID_ENCARGADO_CEM" Type="Int32" Nullable="false" />
-          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
-          <Property Name="ID_CIUDAD" Type="Int32" Nullable="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CIUDAD" Relationship="ModelCEM.FK_ENCARGADO_CEM_CIUDAD" FromRole="ENCARGADO_CEM" ToRole="CIUDAD" />
-          <NavigationProperty Name="PAIS" Relationship="ModelCEM.FK_ENCARGADO_CEM_PAIS" FromRole="ENCARGADO_CEM" ToRole="PAIS" />
-          <NavigationProperty Name="USUARIO" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEM" FromRole="ENCARGADO_CEM" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="FAMILIASANFITRIONA">
-          <Key>
-            <PropertyRef Name="ID_FAMILIA" />
-          </Key>
-          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_PATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APELL_MATERNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
-          <Property Name="RUTA_ARCHIVO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
-          <Property Name="ID_CIUDAD" Type="Int32" />
-          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CIUDAD" Relationship="ModelCEM.FK_FAMILIASANFITRIONA_CIUDAD" FromRole="FAMILIASANFITRIONA" ToRole="CIUDAD" />
-          <NavigationProperty Name="INTERCAMBIO" Relationship="ModelCEM.FK_INTERCAMBIO_FAMILIA" FromRole="FAMILIASANFITRIONA" ToRole="INTERCAMBIO" />
-          <NavigationProperty Name="USUARIO" Relationship="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA" FromRole="FAMILIASANFITRIONA" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="INSTITUCION">
-          <Key>
-            <PropertyRef Name="ID_INSTITUCION" />
-          </Key>
-          <Property Name="ID_INSTITUCION" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO" Type="Int64" />
-          <Property Name="PAGINA_WEB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_CIUDAD" Type="Int32" />
-          <Property Name="ID_PAIS" Type="Int32" />
-        </EntityType>
-        <EntityType Name="INTERCAMBIO">
-          <Key>
-            <PropertyRef Name="ID_INTERCAMBIO" />
-          </Key>
-          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" />
-          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_ADMINISTRATIVO" Type="Int32" />
-          <Property Name="ID_FAMILIA" Type="Int32" />
-          <Property Name="ID_ALUMNO" Type="Int32" />
-          <Property Name="ID_PROGRAMA" Type="Int32" />
-          <NavigationProperty Name="ADMINISTRATIVO" Relationship="ModelCEM.FK_INTERCAMBIO_ADMINISTRATIVO" FromRole="INTERCAMBIO" ToRole="ADMINISTRATIVO" />
-          <NavigationProperty Name="ALUMNOS" Relationship="ModelCEM.FK_INTERCAMBIO_ALUMNOS" FromRole="INTERCAMBIO" ToRole="ALUMNOS" />
-          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="ModelCEM.FK_INTERCAMBIO_FAMILIA" FromRole="INTERCAMBIO" ToRole="FAMILIASANFITRIONA" />
-          <NavigationProperty Name="PROGRAMAS" Relationship="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" FromRole="INTERCAMBIO" ToRole="PROGRAMAS" />
-        </EntityType>
-        <EntityType Name="NOTAS">
-          <Key>
-            <PropertyRef Name="ID_NOTA" />
-          </Key>
-          <Property Name="ID_NOTA" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
-          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
-          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
-          <Property Name="NOTA" Type="Decimal" Precision="2" Scale="1" />
-          <NavigationProperty Name="ALUMNOS" Relationship="ModelCEM.FK_NOTAS_ALUMNOS" FromRole="NOTAS" ToRole="ALUMNOS" />
-          <NavigationProperty Name="PROGRAMAS" Relationship="ModelCEM.FK_NOTAS_PROGRAMAS" FromRole="NOTAS" ToRole="PROGRAMAS" />
-        </EntityType>
-        <EntityType Name="PAIS">
-          <Key>
-            <PropertyRef Name="ID_PAIS" />
-          </Key>
-          <Property Name="ID_PAIS" Type="Int32" Nullable="false" />
-          <Property Name="NOM_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SIGLA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CIUDAD" Relationship="ModelCEM.FK_CIUDAD_PAIS" FromRole="PAIS" ToRole="CIUDAD" />
-          <NavigationProperty Name="ENCARGADO_CEL" Relationship="ModelCEM.FK_ENCARGADO_CEL_PAIS" FromRole="PAIS" ToRole="ENCARGADO_CEL" />
-          <NavigationProperty Name="ENCARGADO_CEM" Relationship="ModelCEM.FK_ENCARGADO_CEM_PAIS" FromRole="PAIS" ToRole="ENCARGADO_CEM" />
-        </EntityType>
-        <EntityType Name="PROGRAMAS">
-          <Key>
-            <PropertyRef Name="ID_PROGRAMA" />
-          </Key>
-          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CUPOS" Type="Int32" />
-          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
-          <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
-          <Property Name="TIPO_CURSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="INTERCAMBIO" Relationship="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" FromRole="PROGRAMAS" ToRole="INTERCAMBIO" />
-          <NavigationProperty Name="NOTAS" Relationship="ModelCEM.FK_NOTAS_PROGRAMAS" FromRole="PROGRAMAS" ToRole="NOTAS" />
-          <NavigationProperty Name="ACTIVIDAD" Relationship="ModelCEM.PROGRAMA_ACTIVIDAD" FromRole="PROGRAMAS" ToRole="ACTIVIDAD" />
-        </EntityType>
-        <EntityType Name="USUARIO">
-          <Key>
-            <PropertyRef Name="ID_USUARIO" />
-          </Key>
-          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE_USUARIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_ALUMNO" Type="Int32" />
-          <Property Name="ID_ADMINISTRATIVO" Type="Int32" />
-          <Property Name="ID_FAMILIA" Type="Int32" />
-          <Property Name="ID_ENCARGADO_CEL" Type="Int32" />
-          <Property Name="ID_ENCARGADO_CEM" Type="Int32" />
-          <Property Name="ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ADMINISTRATIVO" Relationship="ModelCEM.FK_USUARIO_ADMINISTRATIVO" FromRole="USUARIO" ToRole="ADMINISTRATIVO" />
-          <NavigationProperty Name="ALUMNOS" Relationship="ModelCEM.FK_USUARIO_ALUMNOS" FromRole="USUARIO" ToRole="ALUMNOS" />
-          <NavigationProperty Name="ENCARGADO_CEL" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEL" FromRole="USUARIO" ToRole="ENCARGADO_CEL" />
-          <NavigationProperty Name="ENCARGADO_CEM" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEM" FromRole="USUARIO" ToRole="ENCARGADO_CEM" />
-          <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA" FromRole="USUARIO" ToRole="FAMILIASANFITRIONA" />
-        </EntityType>
-        <EntityType Name="V_FAMILIA_ANFITRIONA">
-          <Key>
-            <PropertyRef Name="IDENTIFICACION" />
-            <PropertyRef Name="TELEFONO_CONTACTO" />
-            <PropertyRef Name="CORREO" />
-            <PropertyRef Name="NOM_PAIS" />
-            <PropertyRef Name="NOM_CIUDAD" />
-          </Key>
-          <Property Name="Nombre" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOM_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOM_CIUDAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="V_NOTAS_ALUMNO">
-          <Key>
-            <PropertyRef Name="NOMBRE_PROGRAMA" />
-          </Key>
-          <Property Name="Nombre" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOTA" Type="Decimal" Precision="2" Scale="1" />
-        </EntityType>
-        <EntityType Name="VISTA_ALUMNOS_POSTULANTES">
-          <Key>
-            <PropertyRef Name="NOMBRE_PROGRAMA" />
-            <PropertyRef Name="FECHA_INICIO" />
-            <PropertyRef Name="ESTADO" />
-            <PropertyRef Name="ID_ALUMNO" />
-          </Key>
-          <Property Name="NOMBRE" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CUPOS" Type="Int32" />
-          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
-          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
-          <Property Name="JEFE_FAMILIA_ANFITRIONA" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="VISTA_DETALLE_POSTULACION">
-          <Key>
-            <PropertyRef Name="ID_ALUMNO" />
-            <PropertyRef Name="CORREO_POSTULANTE" />
-            <PropertyRef Name="TELEFONO_POSTULANTE" />
-            <PropertyRef Name="ID_FAMILIA" />
-            <PropertyRef Name="DIRECCION_FAMILIA" />
-            <PropertyRef Name="CORREO_FAMILIA" />
-            <PropertyRef Name="TELEFONO_FAMILIA" />
-            <PropertyRef Name="ID_PROGRAMA" />
-            <PropertyRef Name="NOMBRE_PROGRAMA" />
-            <PropertyRef Name="DESCRIPCION" />
-            <PropertyRef Name="FECHA_INICIO" />
-            <PropertyRef Name="FECHA_TERMINO" />
-            <PropertyRef Name="TIPO_CURSO" />
-            <PropertyRef Name="CIUDAD_FAMILIA" />
-            <PropertyRef Name="NOMBRE_PAIS" />
-            <PropertyRef Name="NOMBRE_INSTITUCION" />
-            <PropertyRef Name="ID_INTERCAMBIO" />
-          </Key>
-          <Property Name="NOMBRE_POSTULANTE" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="ID_ALUMNO" Type="Int32" Nullable="false" />
-          <Property Name="CORREO_POSTULANTE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO_POSTULANTE" Type="Int64" Nullable="false" />
-          <Property Name="ESTADO_MORA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_FAMILIA_ANFITRIONA" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" />
-          <Property Name="DIRECCION_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO_FAMILIA" Type="Int64" Nullable="false" />
-          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CUPOS" Type="Int32" />
-          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
-          <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
-          <Property Name="TIPO_CURSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CIUDAD_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_INSTITUCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_ADMINISTRATIVO_CARGO">
-          <End Type="ModelCEM.CARGO" Role="CARGO" Multiplicity="0..1" />
-          <End Type="ModelCEM.ADMINISTRATIVO" Role="ADMINISTRATIVO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CARGO">
-              <PropertyRef Name="ID_CARGO" />
-            </Principal>
-            <Dependent Role="ADMINISTRATIVO">
-              <PropertyRef Name="ID_CARGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INTERCAMBIO_ADMINISTRATIVO">
-          <End Type="ModelCEM.ADMINISTRATIVO" Role="ADMINISTRATIVO" Multiplicity="0..1" />
-          <End Type="ModelCEM.INTERCAMBIO" Role="INTERCAMBIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ADMINISTRATIVO">
-              <PropertyRef Name="ID_ADMINISTRATIVO" />
-            </Principal>
-            <Dependent Role="INTERCAMBIO">
-              <PropertyRef Name="ID_ADMINISTRATIVO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIO_ADMINISTRATIVO">
-          <End Type="ModelCEM.ADMINISTRATIVO" Role="ADMINISTRATIVO" Multiplicity="0..1" />
-          <End Type="ModelCEM.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ADMINISTRATIVO">
-              <PropertyRef Name="ID_ADMINISTRATIVO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_ADMINISTRATIVO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INTERCAMBIO_ALUMNOS">
-          <End Type="ModelCEM.ALUMNOS" Role="ALUMNOS" Multiplicity="0..1" />
-          <End Type="ModelCEM.INTERCAMBIO" Role="INTERCAMBIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ALUMNOS">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Principal>
-            <Dependent Role="INTERCAMBIO">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NOTAS_ALUMNOS">
-          <End Type="ModelCEM.ALUMNOS" Role="ALUMNOS" Multiplicity="1" />
-          <End Type="ModelCEM.NOTAS" Role="NOTAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ALUMNOS">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Principal>
-            <Dependent Role="NOTAS">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIO_ALUMNOS">
-          <End Type="ModelCEM.ALUMNOS" Role="ALUMNOS" Multiplicity="0..1" />
-          <End Type="ModelCEM.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ALUMNOS">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_ALUMNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CIUDAD_PAIS">
-          <End Type="ModelCEM.PAIS" Role="PAIS" Multiplicity="0..1" />
-          <End Type="ModelCEM.CIUDAD" Role="CIUDAD" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAIS">
-              <PropertyRef Name="ID_PAIS" />
-            </Principal>
-            <Dependent Role="CIUDAD">
-              <PropertyRef Name="ID_PAIS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ENCARGADO_CEL_CIUDAD">
-          <End Type="ModelCEM.CIUDAD" Role="CIUDAD" Multiplicity="1" />
-          <End Type="ModelCEM.ENCARGADO_CEL" Role="ENCARGADO_CEL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDAD">
-              <PropertyRef Name="ID_CIUDAD" />
-            </Principal>
-            <Dependent Role="ENCARGADO_CEL">
-              <PropertyRef Name="ID_CIUDAD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ENCARGADO_CEM_CIUDAD">
-          <End Type="ModelCEM.CIUDAD" Role="CIUDAD" Multiplicity="1" />
-          <End Type="ModelCEM.ENCARGADO_CEM" Role="ENCARGADO_CEM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDAD">
-              <PropertyRef Name="ID_CIUDAD" />
-            </Principal>
-            <Dependent Role="ENCARGADO_CEM">
-              <PropertyRef Name="ID_CIUDAD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FAMILIASANFITRIONA_CIUDAD">
+        <Association Name="FK_INSTITUCION_CIUDAD">
           <End Type="ModelCEM.CIUDAD" Role="CIUDAD" Multiplicity="0..1" />
-          <End Type="ModelCEM.FAMILIASANFITRIONA" Role="FAMILIASANFITRIONA" Multiplicity="*" />
+          <End Type="ModelCEM.INSTITUCION" Role="INSTITUCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CIUDAD">
               <PropertyRef Name="ID_CIUDAD" />
             </Principal>
-            <Dependent Role="FAMILIASANFITRIONA">
+            <Dependent Role="INSTITUCION">
               <PropertyRef Name="ID_CIUDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ENCARGADO_CEL_PAIS">
-          <End Type="ModelCEM.PAIS" Role="PAIS" Multiplicity="1" />
-          <End Type="ModelCEM.ENCARGADO_CEL" Role="ENCARGADO_CEL" Multiplicity="*" />
+        <Association Name="FK_INSTITUCION_PAIS">
+          <End Type="ModelCEM.PAIS" Role="PAIS" Multiplicity="0..1" />
+          <End Type="ModelCEM.INSTITUCION" Role="INSTITUCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PAIS">
               <PropertyRef Name="ID_PAIS" />
             </Principal>
-            <Dependent Role="ENCARGADO_CEL">
+            <Dependent Role="INSTITUCION">
               <PropertyRef Name="ID_PAIS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_USUARIO_ENCARGADO_CEL">
-          <End Type="ModelCEM.ENCARGADO_CEL" Role="ENCARGADO_CEL" Multiplicity="0..1" />
-          <End Type="ModelCEM.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ENCARGADO_CEL">
-              <PropertyRef Name="ID_ENCARGADO_CEL" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_ENCARGADO_CEL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ENCARGADO_CEM_PAIS">
-          <End Type="ModelCEM.PAIS" Role="PAIS" Multiplicity="1" />
-          <End Type="ModelCEM.ENCARGADO_CEM" Role="ENCARGADO_CEM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAIS">
-              <PropertyRef Name="ID_PAIS" />
-            </Principal>
-            <Dependent Role="ENCARGADO_CEM">
-              <PropertyRef Name="ID_PAIS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIO_ENCARGADO_CEM">
-          <End Type="ModelCEM.ENCARGADO_CEM" Role="ENCARGADO_CEM" Multiplicity="0..1" />
-          <End Type="ModelCEM.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ENCARGADO_CEM">
-              <PropertyRef Name="ID_ENCARGADO_CEM" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_ENCARGADO_CEM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INTERCAMBIO_FAMILIA">
-          <End Type="ModelCEM.FAMILIASANFITRIONA" Role="FAMILIASANFITRIONA" Multiplicity="0..1" />
-          <End Type="ModelCEM.INTERCAMBIO" Role="INTERCAMBIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FAMILIASANFITRIONA">
-              <PropertyRef Name="ID_FAMILIA" />
-            </Principal>
-            <Dependent Role="INTERCAMBIO">
-              <PropertyRef Name="ID_FAMILIA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIO_FAMILIASANFITRIONA">
-          <End Type="ModelCEM.FAMILIASANFITRIONA" Role="FAMILIASANFITRIONA" Multiplicity="0..1" />
-          <End Type="ModelCEM.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FAMILIASANFITRIONA">
-              <PropertyRef Name="ID_FAMILIA" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_FAMILIA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INTERCAMBIO_PROGRAMAS">
-          <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="0..1" />
-          <End Type="ModelCEM.INTERCAMBIO" Role="INTERCAMBIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMAS">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Principal>
-            <Dependent Role="INTERCAMBIO">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NOTAS_PROGRAMAS">
-          <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="1" />
-          <End Type="ModelCEM.NOTAS" Role="NOTAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMAS">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Principal>
-            <Dependent Role="NOTAS">
-              <PropertyRef Name="ID_PROGRAMA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PROGRAMA_ACTIVIDAD">
-          <End Type="ModelCEM.ACTIVIDAD" Role="ACTIVIDAD" Multiplicity="*" />
-          <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="0..1" />
-        </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1830,273 +1870,247 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <EntitySetMapping Name="ACTIVIDAD">
             <EntityTypeMapping TypeName="ModelCEM.ACTIVIDAD">
               <MappingFragment StoreEntitySet="ACTIVIDAD">
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="NOMBREACTIVIDAD" ColumnName="NOMBREACTIVIDAD" />
                 <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="NOMBREACTIVIDAD" ColumnName="NOMBREACTIVIDAD" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ADMINISTRATIVO">
             <EntityTypeMapping TypeName="ModelCEM.ADMINISTRATIVO">
               <MappingFragment StoreEntitySet="ADMINISTRATIVO">
-                <ScalarProperty Name="ID_CARGO" ColumnName="ID_CARGO" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
-                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="ID_ADMINISTRATIVO" ColumnName="ID_ADMINISTRATIVO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
+                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="ID_CARGO" ColumnName="ID_CARGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ALUMNOS">
             <EntityTypeMapping TypeName="ModelCEM.ALUMNOS">
               <MappingFragment StoreEntitySet="ALUMNOS">
-                <ScalarProperty Name="ESTADO_MORA" ColumnName="ESTADO_MORA" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="RESERVA" ColumnName="RESERVA" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
-                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="DV" ColumnName="DV" />
                 <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="DV" ColumnName="DV" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
+                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="RESERVA" ColumnName="RESERVA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="ESTADO_MORA" ColumnName="ESTADO_MORA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CARGO">
             <EntityTypeMapping TypeName="ModelCEM.CARGO">
               <MappingFragment StoreEntitySet="CARGO">
-                <ScalarProperty Name="NOM_CARGO" ColumnName="NOM_CARGO" />
                 <ScalarProperty Name="ID_CARGO" ColumnName="ID_CARGO" />
+                <ScalarProperty Name="NOM_CARGO" ColumnName="NOM_CARGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CIUDAD">
             <EntityTypeMapping TypeName="ModelCEM.CIUDAD">
               <MappingFragment StoreEntitySet="CIUDAD">
-                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
-                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
                 <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ENCARGADO_CEL">
             <EntityTypeMapping TypeName="ModelCEM.ENCARGADO_CEL">
               <MappingFragment StoreEntitySet="ENCARGADO_CEL">
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
-                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
-                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
-                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
                 <ScalarProperty Name="ID_ENCARGADO_CEL" ColumnName="ID_ENCARGADO_CEL" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
+                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ENCARGADO_CEM">
             <EntityTypeMapping TypeName="ModelCEM.ENCARGADO_CEM">
               <MappingFragment StoreEntitySet="ENCARGADO_CEM">
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
-                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
-                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
-                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
                 <ScalarProperty Name="ID_ENCARGADO_CEM" ColumnName="ID_ENCARGADO_CEM" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
+                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FAMILIASANFITRIONA">
             <EntityTypeMapping TypeName="ModelCEM.FAMILIASANFITRIONA">
               <MappingFragment StoreEntitySet="FAMILIASANFITRIONA">
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
-                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="RUTA_ARCHIVO" ColumnName="RUTA_ARCHIVO" />
-                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
-                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
-                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELL_PATERNO" ColumnName="APELL_PATERNO" />
+                <ScalarProperty Name="APELL_MATERNO" ColumnName="APELL_MATERNO" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
+                <ScalarProperty Name="RUTA_ARCHIVO" ColumnName="RUTA_ARCHIVO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INSTITUCION">
             <EntityTypeMapping TypeName="ModelCEM.INSTITUCION">
               <MappingFragment StoreEntitySet="INSTITUCION">
-                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
-                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="PAGINA_WEB" ColumnName="PAGINA_WEB" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="ID_INSTITUCION" ColumnName="ID_INSTITUCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="PAGINA_WEB" ColumnName="PAGINA_WEB" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INTERCAMBIO">
             <EntityTypeMapping TypeName="ModelCEM.INTERCAMBIO">
               <MappingFragment StoreEntitySet="INTERCAMBIO">
-                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
-                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
-                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
-                <ScalarProperty Name="ID_ADMINISTRATIVO" ColumnName="ID_ADMINISTRATIVO" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ID_INTERCAMBIO" ColumnName="ID_INTERCAMBIO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_ADMINISTRATIVO" ColumnName="ID_ADMINISTRATIVO" />
+                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NOTAS">
             <EntityTypeMapping TypeName="ModelCEM.NOTAS">
               <MappingFragment StoreEntitySet="NOTAS">
-                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
-                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
-                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
                 <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
+                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAIS">
             <EntityTypeMapping TypeName="ModelCEM.PAIS">
               <MappingFragment StoreEntitySet="PAIS">
-                <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
-                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
                 <ScalarProperty Name="ID_PAIS" ColumnName="ID_PAIS" />
+                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
+                <ScalarProperty Name="SIGLA" ColumnName="SIGLA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROGRAMA_ACTIVIDAD">
+            <EntityTypeMapping TypeName="ModelCEM.PROGRAMA_ACTIVIDAD">
+              <MappingFragment StoreEntitySet="PROGRAMA_ACTIVIDAD">
+                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROGRAMAS">
             <EntityTypeMapping TypeName="ModelCEM.PROGRAMAS">
               <MappingFragment StoreEntitySet="PROGRAMAS">
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
-                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
-                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
-                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
                 <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
+                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
+                <ScalarProperty Name="ID_INSTITUCION" ColumnName="ID_INSTITUCION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+                <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
-            </EntityTypeMapping>
-            <EntityTypeMapping TypeName="ModelCEM.PROGRAMAS">
-              <ModificationFunctionMapping>
-                <InsertFunction FunctionName="ModelCEM.Store.INS_PROGRAMAS" >
-                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" />
-                  <ScalarProperty Name="TIPO_CURSO" ParameterName="P_TIPO_CURSO" />
-                  <ScalarProperty Name="FECHA_TERMINO" ParameterName="P_FECHA_TERMINO" />
-                  <ScalarProperty Name="FECHA_INICIO" ParameterName="P_FECHA_INICIO" />
-                  <ScalarProperty Name="CUPOS" ParameterName="P_CUPOS" />
-                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" />
-                  <ScalarProperty Name="NOMBRE_PROGRAMA" ParameterName="P_NOMBRE_PROGRAMA" />
-                </InsertFunction>
-                <UpdateFunction FunctionName="ModelCEM.Store.UPD_PROGRAMAS" >
-                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" Version="Current" />
-                  <ScalarProperty Name="NOMBRE_PROGRAMA" ParameterName="P_NOMBRE_PROGRAMA" Version="Current" />
-                  <ScalarProperty Name="FECHA_INICIO" ParameterName="P_FECHA_INICIO" Version="Current" />
-                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" Version="Current" />
-                  <ScalarProperty Name="TIPO_CURSO" ParameterName="P_TIPO_CURSO" Version="Current" />
-                  <ScalarProperty Name="CUPOS" ParameterName="P_CUPOS" Version="Current" />
-                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" Version="Current" />
-                  <ScalarProperty Name="FECHA_TERMINO" ParameterName="P_FECHA_TERMINO" Version="Current" />
-                </UpdateFunction>
-                <DeleteFunction FunctionName="ModelCEM.Store.DEL_PROGRAMAS" >
-                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" />
-                </DeleteFunction>
-              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="ModelCEM.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
-                <ScalarProperty Name="ROL" ColumnName="ROL" />
-                <ScalarProperty Name="ID_ENCARGADO_CEM" ColumnName="ID_ENCARGADO_CEM" />
-                <ScalarProperty Name="ID_ENCARGADO_CEL" ColumnName="ID_ENCARGADO_CEL" />
-                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
-                <ScalarProperty Name="ID_ADMINISTRATIVO" ColumnName="ID_ADMINISTRATIVO" />
-                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="ID_ADMINISTRATIVO" ColumnName="ID_ADMINISTRATIVO" />
+                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
+                <ScalarProperty Name="ID_ENCARGADO_CEL" ColumnName="ID_ENCARGADO_CEL" />
+                <ScalarProperty Name="ID_ENCARGADO_CEM" ColumnName="ID_ENCARGADO_CEM" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="V_FAMILIA_ANFITRIONA">
             <EntityTypeMapping TypeName="ModelCEM.V_FAMILIA_ANFITRIONA">
               <MappingFragment StoreEntitySet="V_FAMILIA_ANFITRIONA">
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
-                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
-                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
+                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="V_NOTAS_ALUMNO">
             <EntityTypeMapping TypeName="ModelCEM.V_NOTAS_ALUMNO">
               <MappingFragment StoreEntitySet="V_NOTAS_ALUMNO">
-                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
-                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VISTA_ALUMNOS_POSTULANTES">
             <EntityTypeMapping TypeName="ModelCEM.VISTA_ALUMNOS_POSTULANTES">
               <MappingFragment StoreEntitySet="VISTA_ALUMNOS_POSTULANTES">
-                <ScalarProperty Name="JEFE_FAMILIA_ANFITRIONA" ColumnName="JEFE_FAMILIA_ANFITRIONA" />
-                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
-                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
-                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
+                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="JEFE_FAMILIA_ANFITRIONA" ColumnName="JEFE_FAMILIA_ANFITRIONA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VISTA_DETALLE_POSTULACION">
             <EntityTypeMapping TypeName="ModelCEM.VISTA_DETALLE_POSTULACION">
               <MappingFragment StoreEntitySet="VISTA_DETALLE_POSTULACION">
-                <ScalarProperty Name="ID_INTERCAMBIO" ColumnName="ID_INTERCAMBIO" />
-                <ScalarProperty Name="NOMBRE_INSTITUCION" ColumnName="NOMBRE_INSTITUCION" />
-                <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
-                <ScalarProperty Name="CIUDAD_FAMILIA" ColumnName="CIUDAD_FAMILIA" />
-                <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
-                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
-                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
-                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
-                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
-                <ScalarProperty Name="TELEFONO_FAMILIA" ColumnName="TELEFONO_FAMILIA" />
-                <ScalarProperty Name="CORREO_FAMILIA" ColumnName="CORREO_FAMILIA" />
-                <ScalarProperty Name="DIRECCION_FAMILIA" ColumnName="DIRECCION_FAMILIA" />
-                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
-                <ScalarProperty Name="NOMBRE_FAMILIA_ANFITRIONA" ColumnName="NOMBRE_FAMILIA_ANFITRIONA" />
-                <ScalarProperty Name="ESTADO_MORA" ColumnName="ESTADO_MORA" />
-                <ScalarProperty Name="TELEFONO_POSTULANTE" ColumnName="TELEFONO_POSTULANTE" />
-                <ScalarProperty Name="CORREO_POSTULANTE" ColumnName="CORREO_POSTULANTE" />
-                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
                 <ScalarProperty Name="NOMBRE_POSTULANTE" ColumnName="NOMBRE_POSTULANTE" />
+                <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+                <ScalarProperty Name="CORREO_POSTULANTE" ColumnName="CORREO_POSTULANTE" />
+                <ScalarProperty Name="TELEFONO_POSTULANTE" ColumnName="TELEFONO_POSTULANTE" />
+                <ScalarProperty Name="ESTADO_MORA" ColumnName="ESTADO_MORA" />
+                <ScalarProperty Name="NOMBRE_FAMILIA_ANFITRIONA" ColumnName="NOMBRE_FAMILIA_ANFITRIONA" />
+                <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
+                <ScalarProperty Name="DIRECCION_FAMILIA" ColumnName="DIRECCION_FAMILIA" />
+                <ScalarProperty Name="CORREO_FAMILIA" ColumnName="CORREO_FAMILIA" />
+                <ScalarProperty Name="TELEFONO_FAMILIA" ColumnName="TELEFONO_FAMILIA" />
+                <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
+                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+                <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
+                <ScalarProperty Name="CIUDAD_FAMILIA" ColumnName="CIUDAD_FAMILIA" />
+                <ScalarProperty Name="NOMBRE_PAIS" ColumnName="NOMBRE_PAIS" />
+                <ScalarProperty Name="NOMBRE_INSTITUCION" ColumnName="NOMBRE_INSTITUCION" />
+                <ScalarProperty Name="ID_INTERCAMBIO" ColumnName="ID_INTERCAMBIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PROGRAMA_ACTIVIDAD" TypeName="ModelCEM.PROGRAMA_ACTIVIDAD" StoreEntitySet="PROGRAMA_ACTIVIDAD">
-            <EndProperty Name="PROGRAMAS">
-              <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
-            </EndProperty>
-            <EndProperty Name="ACTIVIDAD">
-              <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
-            </EndProperty>
-            <Condition ColumnName="ID_PROGRAMA" IsNull="false" />
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="DEL_ACTIVIDAD" FunctionName="ModelCEM.Store.DEL_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="DEL_ADMINISTRATIVO" FunctionName="ModelCEM.Store.DEL_ADMINISTRATIVO" />
           <FunctionImportMapping FunctionImportName="DEL_ALUMNOS" FunctionName="ModelCEM.Store.DEL_ALUMNOS" />
@@ -2125,6 +2139,7 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <FunctionImportMapping FunctionImportName="INS_NOTAS" FunctionName="ModelCEM.Store.INS_NOTAS" />
           <FunctionImportMapping FunctionImportName="INS_PAIS" FunctionName="ModelCEM.Store.INS_PAIS" />
           <FunctionImportMapping FunctionImportName="INS_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.INS_PROGRAMA_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
           <FunctionImportMapping FunctionImportName="INS_USUARIO" FunctionName="ModelCEM.Store.INS_USUARIO" />
           <FunctionImportMapping FunctionImportName="UPD_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="UPD_ADMINISTRATIVO" FunctionName="ModelCEM.Store.UPD_ADMINISTRATIVO" />
@@ -2141,7 +2156,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <FunctionImportMapping FunctionImportName="UPD_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_PROGRAMA_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="UPD_PROGRAMAS" FunctionName="ModelCEM.Store.UPD_PROGRAMAS" />
           <FunctionImportMapping FunctionImportName="UPD_USUARIO" FunctionName="ModelCEM.Store.UPD_USUARIO" />
-          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

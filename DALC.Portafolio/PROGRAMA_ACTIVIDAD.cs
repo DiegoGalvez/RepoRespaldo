@@ -12,13 +12,11 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class NOTAS
+    public partial class PROGRAMA_ACTIVIDAD
     {
-        public decimal ID_NOTA { get; set; }
         public int ID_PROGRAMA { get; set; }
-        public int ID_ALUMNO { get; set; }
-        public Nullable<decimal> NOTA { get; set; }
+        public int ID_ACTIVIDAD { get; set; }
     
-        public virtual ALUMNOS ALUMNOS { get; set; }
+        public virtual ACTIVIDAD ACTIVIDAD { get; set; }
     }
 }

@@ -24,6 +24,5 @@ namespace DALC.Portafolio
         public virtual ADMINISTRATIVO ADMINISTRATIVO { get; set; }
         public virtual ALUMNOS ALUMNOS { get; set; }
         public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
-        public virtual PROGRAMAS PROGRAMAS { get; set; }
     }
 }

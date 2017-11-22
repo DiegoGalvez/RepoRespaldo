@@ -113,6 +113,9 @@
     <Compile Include="PROGRAMAS.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="PROGRAMA_ACTIVIDAD.cs">
+      <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="USUARIO.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>

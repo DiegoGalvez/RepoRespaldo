@@ -14,28 +14,16 @@ namespace DALC.Portafolio
     
     public partial class PROGRAMAS
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PROGRAMAS()
-        {
-            this.INTERCAMBIO = new HashSet<INTERCAMBIO>();
-            this.NOTAS = new HashSet<NOTAS>();
-            this.ACTIVIDAD = new HashSet<ACTIVIDAD>();
-        }
-    
         public int ID_PROGRAMA { get; set; }
         public string NOMBRE_PROGRAMA { get; set; }
         public string DESCRIPCION { get; set; }
         public Nullable<int> CUPOS { get; set; }
+        public int ID_INSTITUCION { get; set; }
         public System.DateTime FECHA_INICIO { get; set; }
         public System.DateTime FECHA_TERMINO { get; set; }
         public string TIPO_CURSO { get; set; }
         public string ESTADO { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INTERCAMBIO> INTERCAMBIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NOTAS> NOTAS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACTIVIDAD> ACTIVIDAD { get; set; }
+        public virtual INSTITUCION INSTITUCION { get; set; }
     }
 }

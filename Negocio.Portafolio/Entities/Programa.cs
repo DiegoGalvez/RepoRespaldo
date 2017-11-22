@@ -58,6 +58,7 @@ namespace Negocio.Portafolio
                 this.fechaTermino = _pais.FECHA_TERMINO;
                 this.tipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos),_pais.TIPO_CURSO);
                 this.estado = _pais.ESTADO;
+                this.idInstitucion = _pais.ID_INSTITUCION;
 
                 ctx = null;
 
@@ -100,7 +101,7 @@ namespace Negocio.Portafolio
                 if (ctx.PROGRAMAS.Any(p => p.ID_PROGRAMA == IdPrograma))
                 {
                     //Llama al procedimiento UPDATE en la tabla PROGRAMAS
-                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma, estado);
+                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, idInstitucion, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma, estado);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -120,7 +121,7 @@ namespace Negocio.Portafolio
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla PROGRAMAS
                 //FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma);
-                ctx.INS_PROGRAMAS(NombrePrograma, Descripcion, Cupos, fechaInicio, fechaTermino, tipoCurso.ToString(), estado);
+                ctx.INS_PROGRAMAS(NombrePrograma, Descripcion, Cupos, idInstitucion, fechaInicio, fechaTermino, tipoCurso.ToString(), estado);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

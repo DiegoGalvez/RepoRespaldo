@@ -14,6 +14,12 @@ namespace DALC.Portafolio
     
     public partial class INSTITUCION
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public INSTITUCION()
+        {
+            this.PROGRAMAS = new HashSet<PROGRAMAS>();
+        }
+    
         public int ID_INSTITUCION { get; set; }
         public string NOMBRE { get; set; }
         public string CORREO { get; set; }
@@ -22,5 +28,10 @@ namespace DALC.Portafolio
         public string DIRECCION { get; set; }
         public Nullable<int> ID_CIUDAD { get; set; }
         public Nullable<int> ID_PAIS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PROGRAMAS> PROGRAMAS { get; set; }
+        public virtual CIUDAD CIUDAD { get; set; }
+        public virtual PAIS PAIS { get; set; }
     }
 }
