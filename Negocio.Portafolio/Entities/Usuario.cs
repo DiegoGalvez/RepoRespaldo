@@ -29,7 +29,7 @@ namespace Negocio.Portafolio
         {
             try
             {
-                EntitiesCEM ctx = new DALC.Portafolio.EntitiesCEM();
+                EntitiesCEM ctx = new EntitiesCEM();
                 //Busca si existe el Usuario segun su id y asigna los valores a un obj USUARIO ENTITY
                 USUARIO _usuario = ctx.USUARIO.First(u => u.NOMBRE_USUARIO == NomUsuario);
                 //Asigna los valores de obj del USUARIO Entity al obj Usuario de la Clase
