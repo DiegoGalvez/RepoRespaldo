@@ -68,7 +68,7 @@ namespace Negocio.Portafolio
                 if (ctx.CIUDAD.Any(c => c.ID_CIUDAD == IdCiudad))
                 {
                     //Llama al procedimiento UPDATE en la tabla CIUDAD
-                    ctx.UPD_CUIDAD(NombreCiudad, IdCiudad, IdPais);
+                    ctx.UPD_CIUDAD(NombreCiudad, IdCiudad, IdPais);
                     ctx.SaveChanges();
                     ctx = null;
 

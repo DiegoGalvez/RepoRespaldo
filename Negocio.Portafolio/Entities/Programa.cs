@@ -79,7 +79,7 @@ namespace Negocio.Portafolio
                 if (ctx.PROGRAMAS.Any(p => p.ID_PROGRAMA == IdPrograma))
                 {
                     //Llama al procedimiento UPDATE en la tabla PROGRAMAS
-                    ctx.UPD_PROGRAMAS1(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
+                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -98,7 +98,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla PROGRAMAS
-                ctx.INS_PROGRAMAS1(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
+                ctx.INS_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

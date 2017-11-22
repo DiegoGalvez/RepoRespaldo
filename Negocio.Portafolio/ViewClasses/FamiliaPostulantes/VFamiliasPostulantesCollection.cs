@@ -40,7 +40,7 @@ namespace Negocio.Portafolio.ViewClasses.FamiliaPostulantes
             {
                 VFamiliasPostulantes familiaPostulante = new VFamiliasPostulantes();
 
-                familiaPostulante.Nombre = item.NOMBRE;
+                familiaPostulante.Nombre = item.Nombre;
                 familiaPostulante.Identificacion = item.IDENTIFICACION;
                 familiaPostulante.Telefono = item.TELEFONO_CONTACTO;
                 familiaPostulante.Correo = item.CORREO;
@@ -77,7 +77,7 @@ namespace Negocio.Portafolio.ViewClasses.FamiliaPostulantes
             }
             else
             {
-                return GenerarListado(listaDalc.Where(familia => familia.NOMBRE.ToUpper().Contains(frase)).ToList());
+                return GenerarListado(listaDalc.Where(familia => familia.Nombre.ToUpper().Contains(frase)).ToList());
             }
 
         }

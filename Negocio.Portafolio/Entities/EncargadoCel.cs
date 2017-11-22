@@ -79,7 +79,7 @@ namespace Negocio.Portafolio
                 if (ctx.ENCARGADO_CEL.Any(c => c.ID_ENCARGADO_CEL == IdEncargadoCel))
                 {
                     //Llama al procedimiento UPDATE en la tabla ENCARGADO_CEL
-                    ctx.UPD_ENCARGADO_CEL1(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
+                    ctx.UPD_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -98,7 +98,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ENCARGADO_CEL
-                ctx.INS_ENCARGADO_CEL1(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
+                ctx.INS_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

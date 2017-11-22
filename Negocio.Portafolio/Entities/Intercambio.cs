@@ -74,7 +74,7 @@ namespace Negocio.Portafolio
                 if (ctx.INTERCAMBIO.Any(i => i.ID_INTERCAMBIO == IdIntercambio))
                 {
                     //Llama al procedimiento UPDATE en la tabla INTERCAMBIO
-                    ctx.UPD_INTERCAMBIO1(IdIntercambio, Estado, IdFamilia, IdAdministrativo, IdPrograma, IdAlumno);
+                    ctx.UPD_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdAdministrativo, IdPrograma, IdAlumno);
                     ctx.SaveChanges();
                     ctx = null;
 

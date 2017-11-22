@@ -12,14 +12,10 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class V_FAMILIA_ANFITRIONA
+    public partial class V_NOTAS_ALUMNO
     {
         public string Nombre { get; set; }
-        public string IDENTIFICACION { get; set; }
-        public long TELEFONO_CONTACTO { get; set; }
-        public string CORREO { get; set; }
-        public string NOM_PAIS { get; set; }
-        public string NOM_CIUDAD { get; set; }
-        public string ESTADO { get; set; }
+        public string NOMBRE_PROGRAMA { get; set; }
+        public Nullable<decimal> NOTA { get; set; }
     }
 }

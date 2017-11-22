@@ -169,10 +169,10 @@
           <Property Name="ID_FAMILIA" Type="number" Precision="10" Scale="0" />
           <Property Name="ID_ENCARGADO_CEL" Type="number" Precision="10" Scale="0" />
           <Property Name="ID_ENCARGADO_CEM" Type="number" Precision="10" Scale="0" />
-          <Property Name="ROL" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ROL" Type="varchar2" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CEM_ADMIN.V_FAMILIA_ANFITRIONA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'C##CEM_ADMIN.V_FAMILIA_ANFITRIONA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="V_FAMILIA_ANFITRIONA">
           <Key>
             <PropertyRef Name="IDENTIFICACION" />
@@ -181,7 +181,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.V_FAMILIA_ANFITRIONA' no tiene def
             <PropertyRef Name="NOM_PAIS" />
             <PropertyRef Name="NOM_CIUDAD" />
           </Key>
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="152" />
+          <Property Name="Nombre" Type="varchar2" MaxLength="152" />
           <Property Name="IDENTIFICACION" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="TELEFONO_CONTACTO" Type="number" Precision="12" Scale="0" Nullable="false" />
           <Property Name="CORREO" Type="varchar2" MaxLength="50" Nullable="false" />
@@ -190,7 +190,17 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.V_FAMILIA_ANFITRIONA' no tiene def
           <Property Name="ESTADO" Type="varchar2" MaxLength="70" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_ALUMNOS_POSTULANTES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'C##CEM_ADMIN.V_NOTAS_ALUMNO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="V_NOTAS_ALUMNO">
+          <Key>
+            <PropertyRef Name="NOMBRE_PROGRAMA" />
+          </Key>
+          <Property Name="Nombre" Type="varchar2" MaxLength="101" />
+          <Property Name="NOMBRE_PROGRAMA" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOTA" Type="number" Precision="2" Scale="1" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_ALUMNOS_POSTULANTES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VISTA_ALUMNOS_POSTULANTES">
           <Key>
             <PropertyRef Name="NOMBRE_PROGRAMA" />
@@ -207,7 +217,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_ALUMNOS_POSTULANTES' no tien
           <Property Name="JEFE_FAMILIA_ANFITRIONA" Type="varchar2" MaxLength="152" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VISTA_DETALLE_POSTULACION">
           <Key>
             <PropertyRef Name="ID_ALUMNO" />
@@ -234,11 +244,11 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Property Name="TELEFONO_POSTULANTE" Type="number" Precision="12" Scale="0" Nullable="false" />
           <Property Name="ESTADO_MORA" Type="varchar2" MaxLength="50" />
           <Property Name="NOMBRE_FAMILIA_ANFITRIONA" Type="varchar2" MaxLength="152" />
-          <Property Name="ID_FAMILIA" Type="number" Precision="10" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FAMILIA" Type="number" Precision="10" Scale="0" Nullable="false" />
           <Property Name="DIRECCION_FAMILIA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="CORREO_FAMILIA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="TELEFONO_FAMILIA" Type="number" Precision="12" Scale="0" Nullable="false" />
-          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROGRAMA" Type="number" Precision="10" Scale="0" Nullable="false" />
           <Property Name="NOMBRE_PROGRAMA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="CUPOS" Type="number" Precision="10" Scale="0" />
@@ -248,7 +258,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Property Name="CIUDAD_FAMILIA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="NOMBRE_PAIS" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="NOMBRE_INSTITUCION" Type="varchar2" MaxLength="50" Nullable="false" />
-          <Property Name="ID_INTERCAMBIO" Type="number" Precision="10" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_INTERCAMBIO" Type="number" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="FK_ADMINISTRATIVO_CARGO">
           <End Role="CARGO" Type="Self.CARGO" Multiplicity="0..1" />
@@ -502,54 +512,57 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="DEL_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_CARGO" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ENCARGADO_CEL" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ENCARGADO_CEM" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_FAMILIASANFITRIONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_FAMILIASANFITRIONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_INTERCAMBIO" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_NOTA" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
         </Function>
-        <Function Name="DEL_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
         </Function>
-        <Function Name="INS_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="DEL_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
           <Parameter Name="P_NOMBREACTIVIDAD" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="INS_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_CARGO" Type="number" Mode="In" />
@@ -557,7 +570,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="INS_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ESTADO_MORA" Type="varchar2" Mode="In" />
@@ -568,16 +581,16 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="INS_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_CARGO" Type="number" Mode="In" />
           <Parameter Name="P_NOM_CARGO" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="INS_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_NOM_CIUDAD" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="INS_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
@@ -587,7 +600,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="INS_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
@@ -597,61 +610,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="INS_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
-          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_PAGINA_WEB" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
-          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
-          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
-          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
-        </Function>
-        <Function Name="INS_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_ID_INTERCAMBIO" Type="number" Mode="In" />
-          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
-          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
-        </Function>
-        <Function Name="INS_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
-          <Parameter Name="P_NOTA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_NOTA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
-        </Function>
-        <Function Name="INS_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_NOM_PAIS" Type="varchar2" Mode="In" />
-          <Parameter Name="P_SIGLA" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
-        </Function>
-        <Function Name="INS_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
-        </Function>
-        <Function Name="INS_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
-          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
-          <Parameter Name="P_CUPOS" Type="number" Mode="In" />
-          <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
-          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
-          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
-          <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
-        </Function>
-        <Function Name="INS_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
-          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
-          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ENCARGADO_CEL" Type="number" Mode="In" />
-          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_ENCARGADO_CEM" Type="number" Mode="In" />
-          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
-          <Parameter Name="P_ROL" Type="varchar2" Mode="In" />
-        </Function>
-        <Function Name="UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_FAMILIASANFITRIONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
@@ -665,12 +624,66 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_RUTA_ARCHIVO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="INS_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PAGINA_WEB" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_TELEFONO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_ID_INTERCAMBIO" Type="number" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_NOTA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_NOTA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_NOM_PAIS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_SIGLA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
+        </Function>
+        <Function Name="INS_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
+          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
+          <Parameter Name="P_CUPOS" Type="number" Mode="In" />
+          <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
+          <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INS_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ENCARGADO_CEL" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_ENCARGADO_CEM" Type="number" Mode="In" />
+          <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
+          <Parameter Name="P_ROL" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="UPD_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
           <Parameter Name="P_NOMBREACTIVIDAD" Type="varchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="UPD_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_ADMINISTRATIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_CARGO" Type="number" Mode="In" />
@@ -678,7 +691,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ID_ADMINISTRATIVO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="UPD_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_ALUMNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ESTADO_MORA" Type="varchar2" Mode="In" />
@@ -689,16 +702,16 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="UPD_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_CARGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_CARGO" Type="number" Mode="In" />
           <Parameter Name="P_NOM_CARGO" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="UPD_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_CIUDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_NOM_CIUDAD" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_ENCARGADO_CEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
@@ -708,7 +721,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_ENCARGADO_CEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
@@ -718,7 +731,21 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_FAMILIASANFITRIONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
+          <Parameter Name="P_APELL_PATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APELL_MATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
+          <Parameter Name="P_IDENTIFICACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TELEFONO_CONTACTO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_CIUDAD" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RUTA_ARCHIVO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPD_INSTITUCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_CORREO" Type="varchar2" Mode="In" />
           <Parameter Name="P_PAGINA_WEB" Type="varchar2" Mode="In" />
@@ -728,7 +755,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_INTERCAMBIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_INTERCAMBIO" Type="number" Mode="In" />
           <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
@@ -736,22 +763,22 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_NOTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_NOTA" Type="number" Mode="In" />
           <Parameter Name="P_ID_NOTA" Type="number" Mode="In" />
           <Parameter Name="P_ID_ALUMNO" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_PAIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_NOM_PAIS" Type="varchar2" Mode="In" />
           <Parameter Name="P_SIGLA" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_PAIS" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_PROGRAMA_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
         </Function>
-        <Function Name="UPD_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_CUPOS" Type="number" Mode="In" />
@@ -761,7 +788,7 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="UPD_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CEM_ADMIN">
+        <Function Name="UPD_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
           <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
           <Parameter Name="P_ID_FAMILIA" Type="number" Mode="In" />
@@ -773,33 +800,40 @@ advertencia 6002: La tabla o vista 'CEM_ADMIN.VISTA_DETALLE_POSTULACION' no tien
           <Parameter Name="P_ROL" Type="varchar2" Mode="In" />
         </Function>
         <EntityContainer Name="ModelCEMStoreContainer">
-          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="ADMINISTRATIVO" EntityType="Self.ADMINISTRATIVO" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="CARGO" EntityType="Self.CARGO" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="ENCARGADO_CEL" EntityType="Self.ENCARGADO_CEL" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="ENCARGADO_CEM" EntityType="Self.ENCARGADO_CEM" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="FAMILIASANFITRIONA" EntityType="Self.FAMILIASANFITRIONA" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="INSTITUCION" EntityType="Self.INSTITUCION" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="INTERCAMBIO" EntityType="Self.INTERCAMBIO" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="NOTAS" EntityType="Self.NOTAS" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="PROGRAMA_ACTIVIDAD" EntityType="Self.PROGRAMA_ACTIVIDAD" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="PROGRAMAS" EntityType="Self.PROGRAMAS" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="CEM_ADMIN" store:Type="Tables" />
-          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="Self.V_FAMILIA_ANFITRIONA" store:Type="Views" store:Schema="CEM_ADMIN">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="ADMINISTRATIVO" EntityType="Self.ADMINISTRATIVO" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="CARGO" EntityType="Self.CARGO" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="ENCARGADO_CEL" EntityType="Self.ENCARGADO_CEL" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="ENCARGADO_CEM" EntityType="Self.ENCARGADO_CEM" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="FAMILIASANFITRIONA" EntityType="Self.FAMILIASANFITRIONA" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="INSTITUCION" EntityType="Self.INSTITUCION" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="INTERCAMBIO" EntityType="Self.INTERCAMBIO" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="NOTAS" EntityType="Self.NOTAS" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="PROGRAMA_ACTIVIDAD" EntityType="Self.PROGRAMA_ACTIVIDAD" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="PROGRAMAS" EntityType="Self.PROGRAMAS" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="C##CEM_ADMIN" store:Type="Tables" />
+          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="Self.V_FAMILIA_ANFITRIONA" store:Type="Views" store:Schema="C##CEM_ADMIN">
             <DefiningQuery>SELECT 
-"V_FAMILIA_ANFITRIONA"."NOMBRE" AS "NOMBRE", 
+"V_FAMILIA_ANFITRIONA"."Nombre" AS "Nombre", 
 "V_FAMILIA_ANFITRIONA"."IDENTIFICACION" AS "IDENTIFICACION", 
 "V_FAMILIA_ANFITRIONA"."TELEFONO_CONTACTO" AS "TELEFONO_CONTACTO", 
 "V_FAMILIA_ANFITRIONA"."CORREO" AS "CORREO", 
 "V_FAMILIA_ANFITRIONA"."NOM_PAIS" AS "NOM_PAIS", 
 "V_FAMILIA_ANFITRIONA"."NOM_CIUDAD" AS "NOM_CIUDAD", 
 "V_FAMILIA_ANFITRIONA"."ESTADO" AS "ESTADO"
-FROM "CEM_ADMIN"."V_FAMILIA_ANFITRIONA" "V_FAMILIA_ANFITRIONA"</DefiningQuery>
+FROM "C##CEM_ADMIN"."V_FAMILIA_ANFITRIONA" "V_FAMILIA_ANFITRIONA"</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VISTA_ALUMNOS_POSTULANTES" EntityType="Self.VISTA_ALUMNOS_POSTULANTES" store:Type="Views" store:Schema="CEM_ADMIN">
+          <EntitySet Name="V_NOTAS_ALUMNO" EntityType="Self.V_NOTAS_ALUMNO" store:Type="Views" store:Schema="C##CEM_ADMIN">
+            <DefiningQuery>SELECT 
+"V_NOTAS_ALUMNO"."Nombre" AS "Nombre", 
+"V_NOTAS_ALUMNO"."NOMBRE_PROGRAMA" AS "NOMBRE_PROGRAMA", 
+"V_NOTAS_ALUMNO"."NOTA" AS "NOTA"
+FROM "C##CEM_ADMIN"."V_NOTAS_ALUMNO" "V_NOTAS_ALUMNO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VISTA_ALUMNOS_POSTULANTES" EntityType="Self.VISTA_ALUMNOS_POSTULANTES" store:Type="Views" store:Schema="C##CEM_ADMIN">
             <DefiningQuery>SELECT 
 "VISTA_ALUMNOS_POSTULANTES"."NOMBRE" AS "NOMBRE", 
 "VISTA_ALUMNOS_POSTULANTES"."NOMBRE_PROGRAMA" AS "NOMBRE_PROGRAMA", 
@@ -808,9 +842,9 @@ FROM "CEM_ADMIN"."V_FAMILIA_ANFITRIONA" "V_FAMILIA_ANFITRIONA"</DefiningQuery>
 "VISTA_ALUMNOS_POSTULANTES"."ESTADO" AS "ESTADO", 
 "VISTA_ALUMNOS_POSTULANTES"."ID_ALUMNO" AS "ID_ALUMNO", 
 "VISTA_ALUMNOS_POSTULANTES"."JEFE_FAMILIA_ANFITRIONA" AS "JEFE_FAMILIA_ANFITRIONA"
-FROM "CEM_ADMIN"."VISTA_ALUMNOS_POSTULANTES" "VISTA_ALUMNOS_POSTULANTES"</DefiningQuery>
+FROM "C##CEM_ADMIN"."VISTA_ALUMNOS_POSTULANTES" "VISTA_ALUMNOS_POSTULANTES"</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VISTA_DETALLE_POSTULACION" EntityType="Self.VISTA_DETALLE_POSTULACION" store:Type="Views" store:Schema="CEM_ADMIN">
+          <EntitySet Name="VISTA_DETALLE_POSTULACION" EntityType="Self.VISTA_DETALLE_POSTULACION" store:Type="Views" store:Schema="C##CEM_ADMIN">
             <DefiningQuery>SELECT 
 "VISTA_DETALLE_POSTULACION"."NOMBRE_POSTULANTE" AS "NOMBRE_POSTULANTE", 
 "VISTA_DETALLE_POSTULACION"."ID_ALUMNO" AS "ID_ALUMNO", 
@@ -833,7 +867,7 @@ FROM "CEM_ADMIN"."VISTA_ALUMNOS_POSTULANTES" "VISTA_ALUMNOS_POSTULANTES"</Defini
 "VISTA_DETALLE_POSTULACION"."NOMBRE_PAIS" AS "NOMBRE_PAIS", 
 "VISTA_DETALLE_POSTULACION"."NOMBRE_INSTITUCION" AS "NOMBRE_INSTITUCION", 
 "VISTA_DETALLE_POSTULACION"."ID_INTERCAMBIO" AS "ID_INTERCAMBIO"
-FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</DefiningQuery>
+FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_ADMINISTRATIVO_CARGO" Association="Self.FK_ADMINISTRATIVO_CARGO">
             <End Role="CARGO" EntitySet="CARGO" />
@@ -925,551 +959,6 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
     <edmx:ConceptualModels>
       <Schema Namespace="ModelCEM" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EntitiesCEM" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="DEL_ACTIVIDAD">
-          <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ADMINISTRATIVO">
-          <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ALUMNOS">
-          <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_CARGO">
-          <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_CIUDAD">
-          <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ENCARGADO_CEL">
-          <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_FAMILIAANFITRIONA">
-          <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_INSTITUCION">
-          <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_INTERCAMBIO">
-          <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_NOTAS">
-          <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_PAIS">
-          <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_PROGRAMAS">
-          <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ROL">
-          <Parameter Name="P_ID_ROL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_USUARIO">
-          <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ACTIVIDAD">
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ADMINISTRATIVO">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ALUMNOS">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
-            <Parameter Name="P_DV" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_CARGO">
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_CIUDAD">
-            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ENCARGADO_CEL">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_FAMILIAANFITRIONA">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_INSTITUCION">
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_INTERCAMBIO">
-            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_NOTAS">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PAIS">
-            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
-            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PROGRAMAS">
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ROL">
-            <Parameter Name="P_NOM_ROL" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ROL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_USUARIO">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ROL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ACTIVIDAD">
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ADMINISTRATIVO">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ALUMNOS">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
-            <Parameter Name="P_DV" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_CARGO">
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_CUIDAD">
-            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ENCARGADO_CEL">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_FAMILIAANFITRIONA">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_INSTITUCION">
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_INTERCAMBIO">
-            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_NOTAS">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_PAIS">
-            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
-            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_PROGRAMAS">
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ROL">
-            <Parameter Name="P_NOM_ROL" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ROL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_USUARIO">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ROL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ACTIVIDAD1">
-          <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ADMINISTRATIVO1">
-          <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ALUMNOS1">
-          <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_CARGO1">
-          <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_CIUDAD1">
-          <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ENCARGADO_CEL1">
-          <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_ENCARGADO_CEM">
-          <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_FAMILIASANFITRIONA">
-          <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_INSTITUCION1">
-          <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_INTERCAMBIO1">
-          <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_NOTAS1">
-          <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_PAIS1">
-          <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_PROGRAMA_ACTIVIDAD">
-          <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_PROGRAMAS1">
-          <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="DEL_USUARIO1">
-          <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ACTIVIDAD1">
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ADMINISTRATIVO1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ALUMNOS1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
-            <Parameter Name="P_DV" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_CARGO1">
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_CIUDAD1">
-            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ENCARGADO_CEL1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_ENCARGADO_CEM">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_INSTITUCION1">
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_INTERCAMBIO1">
-            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_NOTAS1">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PAIS1">
-            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
-            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PROGRAMA_ACTIVIDAD">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PROGRAMAS1">
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="INS_USUARIO1">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ROL" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ACTIVIDAD1">
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ADMINISTRATIVO1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ALUMNOS1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
-            <Parameter Name="P_DV" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_CARGO1">
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_CIUDAD">
-            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ENCARGADO_CEL1">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_ENCARGADO_CEM">
-            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_INSTITUCION1">
-            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
-            <Parameter Name="P_CORREO" Mode="In" Type="String" />
-            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_INTERCAMBIO1">
-            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_NOTAS1">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_PAIS1">
-            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
-            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_PROGRAMA_ACTIVIDAD">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_PROGRAMAS1">
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="UPD_USUARIO1">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
-            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
-            <Parameter Name="P_ROL" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="ACTIVIDAD" EntityType="ModelCEM.ACTIVIDAD" />
           <EntitySet Name="ADMINISTRATIVO" EntityType="ModelCEM.ADMINISTRATIVO" />
           <EntitySet Name="ALUMNOS" EntityType="ModelCEM.ALUMNOS" />
@@ -1484,6 +973,8 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
           <EntitySet Name="PAIS" EntityType="ModelCEM.PAIS" />
           <EntitySet Name="PROGRAMAS" EntityType="ModelCEM.PROGRAMAS" />
           <EntitySet Name="USUARIO" EntityType="ModelCEM.USUARIO" />
+          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" />
+          <EntitySet Name="V_NOTAS_ALUMNO" EntityType="ModelCEM.V_NOTAS_ALUMNO" />
           <EntitySet Name="VISTA_ALUMNOS_POSTULANTES" EntityType="ModelCEM.VISTA_ALUMNOS_POSTULANTES" />
           <EntitySet Name="VISTA_DETALLE_POSTULACION" EntityType="ModelCEM.VISTA_DETALLE_POSTULACION" />
           <AssociationSet Name="FK_ADMINISTRATIVO_CARGO" Association="ModelCEM.FK_ADMINISTRATIVO_CARGO">
@@ -1566,8 +1057,294 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
             <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
           </AssociationSet>
-          <EntitySet Name="V_FAMILIA_ANFITRIONA" EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" />
-          </EntityContainer>
+          <FunctionImport Name="DEL_ACTIVIDAD">
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_ADMINISTRATIVO">
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_ALUMNOS">
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_CARGO">
+            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_CIUDAD">
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_ENCARGADO_CEL">
+            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_ENCARGADO_CEM">
+            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_FAMILIASANFITRIONA">
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_INSTITUCION">
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_INTERCAMBIO">
+            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_NOTAS">
+            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_PAIS">
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_PROGRAMA_ACTIVIDAD">
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_PROGRAMAS">
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="DEL_USUARIO">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_ACTIVIDAD">
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_ADMINISTRATIVO">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_ALUMNOS">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
+            <Parameter Name="P_DV" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_CARGO">
+            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_CIUDAD">
+            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_ENCARGADO_CEL">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_ENCARGADO_CEM">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_FAMILIASANFITRIONA">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_INSTITUCION">
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_INTERCAMBIO">
+            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_NOTAS">
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_PAIS">
+            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
+            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_PROGRAMA_ACTIVIDAD">
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="INS_PROGRAMAS">
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_USUARIO">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ROL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_ACTIVIDAD">
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBREACTIVIDAD" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_ADMINISTRATIVO">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_ALUMNOS">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO_MORA" Mode="In" Type="String" />
+            <Parameter Name="P_DV" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_RESERVA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_CARGO">
+            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOM_CARGO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_CIUDAD">
+            <Parameter Name="P_NOM_CIUDAD" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_ENCARGADO_CEL">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_ENCARGADO_CEM">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_FAMILIASANFITRIONA">
+            <Parameter Name="P_APELL_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APELL_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_IDENTIFICACION" Mode="In" Type="String" />
+            <Parameter Name="P_TELEFONO_CONTACTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_RUTA_ARCHIVO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_INSTITUCION">
+            <Parameter Name="P_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_CORREO" Mode="In" Type="String" />
+            <Parameter Name="P_PAGINA_WEB" Mode="In" Type="String" />
+            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TELEFONO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_INTERCAMBIO">
+            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_NOTAS">
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_PAIS">
+            <Parameter Name="P_NOM_PAIS" Mode="In" Type="String" />
+            <Parameter Name="P_SIGLA" Mode="In" Type="String" />
+            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_PROGRAMA_ACTIVIDAD">
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_PROGRAMAS">
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPD_USUARIO">
+            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ROL" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="ID_ACTIVIDAD" />
@@ -1760,12 +1537,36 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
           <Property Name="ID_FAMILIA" Type="Int32" />
           <Property Name="ID_ENCARGADO_CEL" Type="Int32" />
           <Property Name="ID_ENCARGADO_CEM" Type="Int32" />
+          <Property Name="ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ADMINISTRATIVO" Relationship="ModelCEM.FK_USUARIO_ADMINISTRATIVO" FromRole="USUARIO" ToRole="ADMINISTRATIVO" />
           <NavigationProperty Name="ALUMNOS" Relationship="ModelCEM.FK_USUARIO_ALUMNOS" FromRole="USUARIO" ToRole="ALUMNOS" />
           <NavigationProperty Name="ENCARGADO_CEL" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEL" FromRole="USUARIO" ToRole="ENCARGADO_CEL" />
           <NavigationProperty Name="ENCARGADO_CEM" Relationship="ModelCEM.FK_USUARIO_ENCARGADO_CEM" FromRole="USUARIO" ToRole="ENCARGADO_CEM" />
           <NavigationProperty Name="FAMILIASANFITRIONA" Relationship="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA" FromRole="USUARIO" ToRole="FAMILIASANFITRIONA" />
-          <Property Name="ROL" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_FAMILIA_ANFITRIONA">
+          <Key>
+            <PropertyRef Name="IDENTIFICACION" />
+            <PropertyRef Name="TELEFONO_CONTACTO" />
+            <PropertyRef Name="CORREO" />
+            <PropertyRef Name="NOM_PAIS" />
+            <PropertyRef Name="NOM_CIUDAD" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
+          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_CIUDAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_NOTAS_ALUMNO">
+          <Key>
+            <PropertyRef Name="NOMBRE_PROGRAMA" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOTA" Type="Decimal" Precision="2" Scale="1" />
         </EntityType>
         <EntityType Name="VISTA_ALUMNOS_POSTULANTES">
           <Key>
@@ -1808,11 +1609,11 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
           <Property Name="TELEFONO_POSTULANTE" Type="Int64" Nullable="false" />
           <Property Name="ESTADO_MORA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NOMBRE_FAMILIA_ANFITRIONA" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FAMILIA" Type="Int32" Nullable="false" />
           <Property Name="DIRECCION_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CORREO_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO_FAMILIA" Type="Int64" Nullable="false" />
-          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROGRAMA" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="CUPOS" Type="Int32" />
@@ -1822,7 +1623,7 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
           <Property Name="CIUDAD_FAMILIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NOMBRE_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NOMBRE_INSTITUCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_INTERCAMBIO" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_ADMINISTRATIVO_CARGO">
           <End Type="ModelCEM.CARGO" Role="CARGO" Multiplicity="0..1" />
@@ -2056,71 +1857,12 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
           <End Type="ModelCEM.ACTIVIDAD" Role="ACTIVIDAD" Multiplicity="*" />
           <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="0..1" />
         </Association>
-        <EntityType Name="V_FAMILIA_ANFITRIONA">
-          <Key>
-            <PropertyRef Name="IDENTIFICACION" />
-            <PropertyRef Name="TELEFONO_CONTACTO" />
-            <PropertyRef Name="CORREO" />
-            <PropertyRef Name="NOM_PAIS" />
-            <PropertyRef Name="NOM_CIUDAD" />
-          </Key>
-          <Property Name="NOMBRE" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
-          <Property Name="IDENTIFICACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TELEFONO_CONTACTO" Type="Int64" Nullable="false" />
-          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOM_PAIS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOM_CIUDAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelCEMStoreContainer" CdmEntityContainer="EntitiesCEM">
-          <FunctionImportMapping FunctionImportName="DEL_ACTIVIDAD1" FunctionName="ModelCEM.Store.DEL_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="DEL_ADMINISTRATIVO1" FunctionName="ModelCEM.Store.DEL_ADMINISTRATIVO" />
-          <FunctionImportMapping FunctionImportName="DEL_ALUMNOS1" FunctionName="ModelCEM.Store.DEL_ALUMNOS" />
-          <FunctionImportMapping FunctionImportName="DEL_CARGO1" FunctionName="ModelCEM.Store.DEL_CARGO" />
-          <FunctionImportMapping FunctionImportName="DEL_CIUDAD1" FunctionName="ModelCEM.Store.DEL_CIUDAD" />
-          <FunctionImportMapping FunctionImportName="DEL_ENCARGADO_CEL1" FunctionName="ModelCEM.Store.DEL_ENCARGADO_CEL" />
-          <FunctionImportMapping FunctionImportName="DEL_ENCARGADO_CEM" FunctionName="ModelCEM.Store.DEL_ENCARGADO_CEM" />
-          <FunctionImportMapping FunctionImportName="DEL_FAMILIASANFITRIONA" FunctionName="ModelCEM.Store.DEL_FAMILIASANFITRIONA" />
-          <FunctionImportMapping FunctionImportName="DEL_INSTITUCION1" FunctionName="ModelCEM.Store.DEL_INSTITUCION" />
-          <FunctionImportMapping FunctionImportName="DEL_INTERCAMBIO1" FunctionName="ModelCEM.Store.DEL_INTERCAMBIO" />
-          <FunctionImportMapping FunctionImportName="DEL_NOTAS1" FunctionName="ModelCEM.Store.DEL_NOTAS" />
-          <FunctionImportMapping FunctionImportName="DEL_PAIS1" FunctionName="ModelCEM.Store.DEL_PAIS" />
-          <FunctionImportMapping FunctionImportName="DEL_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.DEL_PROGRAMA_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="DEL_PROGRAMAS1" FunctionName="ModelCEM.Store.DEL_PROGRAMAS" />
-          <FunctionImportMapping FunctionImportName="INS_ACTIVIDAD1" FunctionName="ModelCEM.Store.INS_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="INS_ADMINISTRATIVO1" FunctionName="ModelCEM.Store.INS_ADMINISTRATIVO" />
-          <FunctionImportMapping FunctionImportName="INS_ALUMNOS1" FunctionName="ModelCEM.Store.INS_ALUMNOS" />
-          <FunctionImportMapping FunctionImportName="INS_CARGO1" FunctionName="ModelCEM.Store.INS_CARGO" />
-          <FunctionImportMapping FunctionImportName="INS_CIUDAD1" FunctionName="ModelCEM.Store.INS_CIUDAD" />
-          <FunctionImportMapping FunctionImportName="INS_ENCARGADO_CEL1" FunctionName="ModelCEM.Store.INS_ENCARGADO_CEL" />
-          <FunctionImportMapping FunctionImportName="INS_ENCARGADO_CEM" FunctionName="ModelCEM.Store.INS_ENCARGADO_CEM" />
-          <FunctionImportMapping FunctionImportName="INS_INSTITUCION1" FunctionName="ModelCEM.Store.INS_INSTITUCION" />
-          <FunctionImportMapping FunctionImportName="INS_INTERCAMBIO1" FunctionName="ModelCEM.Store.INS_INTERCAMBIO" />
-          <FunctionImportMapping FunctionImportName="INS_NOTAS1" FunctionName="ModelCEM.Store.INS_NOTAS" />
-          <FunctionImportMapping FunctionImportName="INS_PAIS1" FunctionName="ModelCEM.Store.INS_PAIS" />
-          <FunctionImportMapping FunctionImportName="INS_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.INS_PROGRAMA_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS1" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
-          <FunctionImportMapping FunctionImportName="INS_USUARIO1" FunctionName="ModelCEM.Store.INS_USUARIO" />
-          <FunctionImportMapping FunctionImportName="UPD" FunctionName="ModelCEM.Store.UPD" />
-          <FunctionImportMapping FunctionImportName="UPD_ACTIVIDAD1" FunctionName="ModelCEM.Store.UPD_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="UPD_ADMINISTRATIVO1" FunctionName="ModelCEM.Store.UPD_ADMINISTRATIVO" />
-          <FunctionImportMapping FunctionImportName="UPD_ALUMNOS1" FunctionName="ModelCEM.Store.UPD_ALUMNOS" />
-          <FunctionImportMapping FunctionImportName="UPD_CARGO1" FunctionName="ModelCEM.Store.UPD_CARGO" />
-          <FunctionImportMapping FunctionImportName="UPD_CIUDAD" FunctionName="ModelCEM.Store.UPD_CIUDAD" />
-          <FunctionImportMapping FunctionImportName="UPD_ENCARGADO_CEL1" FunctionName="ModelCEM.Store.UPD_ENCARGADO_CEL" />
-          <FunctionImportMapping FunctionImportName="UPD_ENCARGADO_CEM" FunctionName="ModelCEM.Store.UPD_ENCARGADO_CEM" />
-          <FunctionImportMapping FunctionImportName="UPD_INSTITUCION1" FunctionName="ModelCEM.Store.UPD_INSTITUCION" />
-          <FunctionImportMapping FunctionImportName="UPD_INTERCAMBIO1" FunctionName="ModelCEM.Store.UPD_INTERCAMBIO" />
-          <FunctionImportMapping FunctionImportName="UPD_NOTAS1" FunctionName="ModelCEM.Store.UPD_NOTAS" />
-          <FunctionImportMapping FunctionImportName="UPD_PAIS1" FunctionName="ModelCEM.Store.UPD_PAIS" />
-          <FunctionImportMapping FunctionImportName="UPD_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_PROGRAMA_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="UPD_PROGRAMAS1" FunctionName="ModelCEM.Store.UPD_PROGRAMAS" />
-          <FunctionImportMapping FunctionImportName="UPD_USUARIO1" FunctionName="ModelCEM.Store.UPD_USUARIO" />
           <EntitySetMapping Name="ACTIVIDAD">
             <EntityTypeMapping TypeName="ModelCEM.ACTIVIDAD">
               <MappingFragment StoreEntitySet="ACTIVIDAD">
@@ -2219,6 +1961,24 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
                 <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ModelCEM.FAMILIASANFITRIONA">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ModelCEM.Store.INS_FAMILIASANFITRIONA" >
+                  <ScalarProperty Name="ID_PAIS" ParameterName="P_ID_PAIS" />
+                  <ScalarProperty Name="RUTA_ARCHIVO" ParameterName="P_RUTA_ARCHIVO" />
+                  <ScalarProperty Name="NOMBRE" ParameterName="P_NOMBRE" />
+                  <ScalarProperty Name="ID_CIUDAD" ParameterName="P_ID_CIUDAD" />
+                  <ScalarProperty Name="TELEFONO_CONTACTO" ParameterName="P_TELEFONO_CONTACTO" />
+                  <ScalarProperty Name="IDENTIFICACION" ParameterName="P_IDENTIFICACION" />
+                  <ScalarProperty Name="ID_FAMILIA" ParameterName="P_ID_FAMILIA" />
+                  <ScalarProperty Name="CORREO" ParameterName="P_CORREO" />
+                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" />
+                  <ScalarProperty Name="DIRECCION" ParameterName="P_DIRECCION" />
+                  <ScalarProperty Name="APELL_MATERNO" ParameterName="P_APELL_MATERNO" />
+                  <ScalarProperty Name="APELL_PATERNO" ParameterName="P_APELL_PATERNO" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INSTITUCION">
             <EntityTypeMapping TypeName="ModelCEM.INSTITUCION">
@@ -2244,29 +2004,6 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ID_INTERCAMBIO" ColumnName="ID_INTERCAMBIO" />
               </MappingFragment>
-            </EntityTypeMapping>
-            <EntityTypeMapping TypeName="ModelCEM.INTERCAMBIO">
-              <ModificationFunctionMapping>
-                <InsertFunction FunctionName="ModelCEM.Store.INS_INTERCAMBIO" >
-                  <ScalarProperty Name="ID_ALUMNO" ParameterName="P_ID_ALUMNO" />
-                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" />
-                  <ScalarProperty Name="ID_ADMINISTRATIVO" ParameterName="P_ID_ADMINISTRATIVO" />
-                  <ScalarProperty Name="ID_FAMILIA" ParameterName="P_ID_FAMILIA" />
-                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" />
-                  <ScalarProperty Name="ID_INTERCAMBIO" ParameterName="P_ID_INTERCAMBIO" />
-                </InsertFunction>
-                <UpdateFunction FunctionName="ModelCEM.Store.UPD_INTERCAMBIO" >
-                  <ScalarProperty Name="ID_ALUMNO" ParameterName="P_ID_ALUMNO" Version="Current" />
-                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" Version="Current" />
-                  <ScalarProperty Name="ID_ADMINISTRATIVO" ParameterName="P_ID_ADMINISTRATIVO" Version="Current" />
-                  <ScalarProperty Name="ID_FAMILIA" ParameterName="P_ID_FAMILIA" Version="Current" />
-                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" Version="Current" />
-                  <ScalarProperty Name="ID_INTERCAMBIO" ParameterName="P_ID_INTERCAMBIO" Version="Current" />
-                </UpdateFunction>
-                <DeleteFunction FunctionName="ModelCEM.Store.DEL_INTERCAMBIO" >
-                  <ScalarProperty Name="ID_INTERCAMBIO" ParameterName="P_ID_INTERCAMBIO" />
-                </DeleteFunction>
-              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NOTAS">
@@ -2314,6 +2051,28 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
                 <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_FAMILIA_ANFITRIONA">
+            <EntityTypeMapping TypeName="ModelCEM.V_FAMILIA_ANFITRIONA">
+              <MappingFragment StoreEntitySet="V_FAMILIA_ANFITRIONA">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
+                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_NOTAS_ALUMNO">
+            <EntityTypeMapping TypeName="ModelCEM.V_NOTAS_ALUMNO">
+              <MappingFragment StoreEntitySet="V_NOTAS_ALUMNO">
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
+                <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2366,20 +2125,52 @@ FROM "CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Defini
             </EndProperty>
             <Condition ColumnName="ID_PROGRAMA" IsNull="false" />
           </AssociationSetMapping>
-          <EntitySetMapping Name="V_FAMILIA_ANFITRIONA">
-            <EntityTypeMapping TypeName="ModelCEM.V_FAMILIA_ANFITRIONA">
-              <MappingFragment StoreEntitySet="V_FAMILIA_ANFITRIONA">
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="NOM_CIUDAD" ColumnName="NOM_CIUDAD" />
-                <ScalarProperty Name="NOM_PAIS" ColumnName="NOM_PAIS" />
-                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-                <ScalarProperty Name="TELEFONO_CONTACTO" ColumnName="TELEFONO_CONTACTO" />
-                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="DEL_ACTIVIDAD" FunctionName="ModelCEM.Store.DEL_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="DEL_ADMINISTRATIVO" FunctionName="ModelCEM.Store.DEL_ADMINISTRATIVO" />
+          <FunctionImportMapping FunctionImportName="DEL_ALUMNOS" FunctionName="ModelCEM.Store.DEL_ALUMNOS" />
+          <FunctionImportMapping FunctionImportName="DEL_CARGO" FunctionName="ModelCEM.Store.DEL_CARGO" />
+          <FunctionImportMapping FunctionImportName="DEL_CIUDAD" FunctionName="ModelCEM.Store.DEL_CIUDAD" />
+          <FunctionImportMapping FunctionImportName="DEL_ENCARGADO_CEL" FunctionName="ModelCEM.Store.DEL_ENCARGADO_CEL" />
+          <FunctionImportMapping FunctionImportName="DEL_ENCARGADO_CEM" FunctionName="ModelCEM.Store.DEL_ENCARGADO_CEM" />
+          <FunctionImportMapping FunctionImportName="DEL_FAMILIASANFITRIONA" FunctionName="ModelCEM.Store.DEL_FAMILIASANFITRIONA" />
+          <FunctionImportMapping FunctionImportName="DEL_INSTITUCION" FunctionName="ModelCEM.Store.DEL_INSTITUCION" />
+          <FunctionImportMapping FunctionImportName="DEL_INTERCAMBIO" FunctionName="ModelCEM.Store.DEL_INTERCAMBIO" />
+          <FunctionImportMapping FunctionImportName="DEL_NOTAS" FunctionName="ModelCEM.Store.DEL_NOTAS" />
+          <FunctionImportMapping FunctionImportName="DEL_PAIS" FunctionName="ModelCEM.Store.DEL_PAIS" />
+          <FunctionImportMapping FunctionImportName="DEL_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.DEL_PROGRAMA_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="DEL_PROGRAMAS" FunctionName="ModelCEM.Store.DEL_PROGRAMAS" />
+          <FunctionImportMapping FunctionImportName="DEL_USUARIO" FunctionName="ModelCEM.Store.DEL_USUARIO" />
+          <FunctionImportMapping FunctionImportName="INS_ACTIVIDAD" FunctionName="ModelCEM.Store.INS_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="INS_ADMINISTRATIVO" FunctionName="ModelCEM.Store.INS_ADMINISTRATIVO" />
+          <FunctionImportMapping FunctionImportName="INS_ALUMNOS" FunctionName="ModelCEM.Store.INS_ALUMNOS" />
+          <FunctionImportMapping FunctionImportName="INS_CARGO" FunctionName="ModelCEM.Store.INS_CARGO" />
+          <FunctionImportMapping FunctionImportName="INS_CIUDAD" FunctionName="ModelCEM.Store.INS_CIUDAD" />
+          <FunctionImportMapping FunctionImportName="INS_ENCARGADO_CEL" FunctionName="ModelCEM.Store.INS_ENCARGADO_CEL" />
+          <FunctionImportMapping FunctionImportName="INS_ENCARGADO_CEM" FunctionName="ModelCEM.Store.INS_ENCARGADO_CEM" />
+          <FunctionImportMapping FunctionImportName="INS_FAMILIASANFITRIONA" FunctionName="ModelCEM.Store.INS_FAMILIASANFITRIONA" />
+          <FunctionImportMapping FunctionImportName="INS_INSTITUCION" FunctionName="ModelCEM.Store.INS_INSTITUCION" />
+          <FunctionImportMapping FunctionImportName="INS_INTERCAMBIO" FunctionName="ModelCEM.Store.INS_INTERCAMBIO" />
+          <FunctionImportMapping FunctionImportName="INS_NOTAS" FunctionName="ModelCEM.Store.INS_NOTAS" />
+          <FunctionImportMapping FunctionImportName="INS_PAIS" FunctionName="ModelCEM.Store.INS_PAIS" />
+          <FunctionImportMapping FunctionImportName="INS_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.INS_PROGRAMA_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
+          <FunctionImportMapping FunctionImportName="INS_USUARIO" FunctionName="ModelCEM.Store.INS_USUARIO" />
+          <FunctionImportMapping FunctionImportName="UPD_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="UPD_ADMINISTRATIVO" FunctionName="ModelCEM.Store.UPD_ADMINISTRATIVO" />
+          <FunctionImportMapping FunctionImportName="UPD_ALUMNOS" FunctionName="ModelCEM.Store.UPD_ALUMNOS" />
+          <FunctionImportMapping FunctionImportName="UPD_CARGO" FunctionName="ModelCEM.Store.UPD_CARGO" />
+          <FunctionImportMapping FunctionImportName="UPD_CIUDAD" FunctionName="ModelCEM.Store.UPD_CIUDAD" />
+          <FunctionImportMapping FunctionImportName="UPD_ENCARGADO_CEL" FunctionName="ModelCEM.Store.UPD_ENCARGADO_CEL" />
+          <FunctionImportMapping FunctionImportName="UPD_ENCARGADO_CEM" FunctionName="ModelCEM.Store.UPD_ENCARGADO_CEM" />
+          <FunctionImportMapping FunctionImportName="UPD_FAMILIASANFITRIONA" FunctionName="ModelCEM.Store.UPD_FAMILIASANFITRIONA" />
+          <FunctionImportMapping FunctionImportName="UPD_INSTITUCION" FunctionName="ModelCEM.Store.UPD_INSTITUCION" />
+          <FunctionImportMapping FunctionImportName="UPD_INTERCAMBIO" FunctionName="ModelCEM.Store.UPD_INTERCAMBIO" />
+          <FunctionImportMapping FunctionImportName="UPD_NOTAS" FunctionName="ModelCEM.Store.UPD_NOTAS" />
+          <FunctionImportMapping FunctionImportName="UPD_PAIS" FunctionName="ModelCEM.Store.UPD_PAIS" />
+          <FunctionImportMapping FunctionImportName="UPD_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_PROGRAMA_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="UPD_PROGRAMAS" FunctionName="ModelCEM.Store.UPD_PROGRAMAS" />
+          <FunctionImportMapping FunctionImportName="UPD_USUARIO" FunctionName="ModelCEM.Store.UPD_USUARIO" />
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

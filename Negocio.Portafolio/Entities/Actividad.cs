@@ -67,7 +67,7 @@ namespace Negocio.Portafolio
                 if (ctx.ACTIVIDAD.Any(a => a.ID_ACTIVIDAD == IdActividad))
                 {
                     //Llama al procedimiento UPDATE en la tabla ACTIVIDAD
-                    ctx.UPD_ACTIVIDAD1(IdActividad, NombreActividad,Descripcion);
+                    ctx.UPD_ACTIVIDAD(IdActividad, NombreActividad,Descripcion);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -86,7 +86,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ACTIVIDAD
-                ctx.INS_ACTIVIDAD1(IdActividad, NombreActividad, Descripcion);
+                ctx.INS_ACTIVIDAD(IdActividad, NombreActividad, Descripcion);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

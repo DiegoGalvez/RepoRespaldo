@@ -126,6 +126,9 @@
     <Compile Include="V_FAMILIA_ANFITRIONA.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_NOTAS_ALUMNO.cs">
+      <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

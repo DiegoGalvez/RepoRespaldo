@@ -97,7 +97,7 @@ namespace Negocio.Portafolio
                 if (ctx.FAMILIASANFITRIONA.Any(f => f.ID_FAMILIA == IdFamilia))
                 {
                     //Llama al procedimiento DELETE en la tabla FAMILIASANFITRIONA
-                    ctx.DEL_FAMILIAANFITRIONA(IdFamilia);
+                    ctx.DEL_FAMILIASANFITRIONA(IdFamilia);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -119,7 +119,7 @@ namespace Negocio.Portafolio
                 if (ctx.FAMILIASANFITRIONA.Any(f => f.ID_FAMILIA == IdFamilia))
                 {
                     //Llama al procedimiento UPDATE en la tabla FAMILIASANFITRIONA
-                    ctx.UPD_FAMILIAANFITRIONA(ApePaterno, ApeMaterno, Direccion, Correo, IdFamilia, Identificador, Telefono, IdCiudad, Nombres, RutaArchivo, IdPais);
+                    ctx.UPD_FAMILIASANFITRIONA(ApePaterno, ApeMaterno, Direccion, Estado, Correo, IdFamilia, Identificador, Telefono, IdCiudad, Nombres, RutaArchivo, IdPais);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -138,7 +138,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla FAMILIAANFITRIONA
-                ctx.INS_FAMILIAANFITRIONA(ApePaterno, ApeMaterno, Direccion, Correo, IdFamilia, Identificador, Telefono, IdCiudad, Nombres, RutaArchivo, IdPais);
+                ctx.INS_FAMILIASANFITRIONA(ApePaterno, ApeMaterno, Direccion, Estado, Correo, IdFamilia, Identificador, Telefono, IdCiudad, Nombres, RutaArchivo, IdPais);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
