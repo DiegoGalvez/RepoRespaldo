@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio.ViewClasses.AlumnosPostulantes
 {
     public class VDetallePostulacion
@@ -35,12 +37,12 @@ namespace Negocio.Portafolio.ViewClasses.AlumnosPostulantes
 
         public VDetallePostulacion() { }
 
-        public VDetallePostulacion(string xml)
+        public VDetallePostulacion(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(VDetallePostulacion));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(VDetallePostulacion));
+            //StringReader reader = new StringReader(xml);
 
-            VDetallePostulacion detallexml = (VDetallePostulacion)serializiador.Deserialize(reader);
+            VDetallePostulacion detallexml = JsonConvert.DeserializeObject<VDetallePostulacion>(json);
 
             this.IdPostulante = detallexml.IdPostulante;
             this.NombrePostulante = detallexml.NombrePostulante;
@@ -98,13 +100,14 @@ namespace Negocio.Portafolio.ViewClasses.AlumnosPostulantes
 
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(VDetallePostulacion));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(VDetallePostulacion));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
     }
 

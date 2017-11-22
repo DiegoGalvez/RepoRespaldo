@@ -7,17 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio.ViewClasses.FamiliaPostulantes
 {
     public class VFamiliasPostulantesCollection : List<VFamiliasPostulantes>
     {
         public VFamiliasPostulantesCollection() { }
-        public VFamiliasPostulantesCollection(string xml)
+        public VFamiliasPostulantesCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(VFamiliasPostulantesCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(VFamiliasPostulantesCollection));
+            //StringReader reader = new StringReader(xml);
 
-            VFamiliasPostulantesCollection list = (VFamiliasPostulantesCollection)serializador.Deserialize(reader);
+            VFamiliasPostulantesCollection list = JsonConvert.DeserializeObject<VFamiliasPostulantesCollection>(json);
 
             this.AddRange(list);
         }
@@ -56,13 +58,14 @@ namespace Negocio.Portafolio.ViewClasses.FamiliaPostulantes
         //metodo que serializa la coleccion de Notas de Programa 
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(VFamiliasPostulantesCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(VFamiliasPostulantesCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
         public VFamiliasPostulantesCollection BuscarFamiliaNombreApellido(string frase)

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Ciudad : IPersistente
@@ -101,20 +103,21 @@ namespace Negocio.Portafolio
         
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Ciudad));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Ciudad));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
-        public Ciudad(string xml)
+        public Ciudad(string json)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Ciudad));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Ciudad));
+            //StringReader reader = new StringReader(xml);
 
-            Ciudad ciudad = (Ciudad)serializer.Deserialize(reader);
+            Ciudad ciudad = JsonConvert.DeserializeObject<Ciudad>(json);
 
             this.IdCiudad = ciudad.IdCiudad;
             this.NombreCiudad = ciudad.NombreCiudad;

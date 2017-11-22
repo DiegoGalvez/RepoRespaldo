@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Alumno : IPersistente
@@ -117,21 +119,23 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Alumno));
-            StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Alumno));
+            //StringWriter writer = new StringWriter();
 
-            return writer.ToString();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
+
+            //return writer.ToString();
         }
-        public Alumno(string xml)
+        public Alumno(string json)
         {
             /* Aplica serializiación para obtener las propiedades*/
-            XmlSerializer serializer = new XmlSerializer(typeof(Alumno));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Alumno));
+            //StringReader reader = new StringReader(xml);
 
-            Alumno _alumno = (Alumno)serializer.Deserialize(reader);
+            Alumno _alumno = JsonConvert.DeserializeObject<Alumno>(json);
 
             this.IdAlumno = _alumno.IdAlumno;
             this.Dv = _alumno.Dv;

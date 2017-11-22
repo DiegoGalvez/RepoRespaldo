@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Programa : IPersistente
@@ -128,12 +130,12 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
-        public Programa(string xml)
+        public Programa(string json)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Programa));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Programa));
+            //StringReader reader = new StringReader(xml);
 
-            Programa programa = (Programa)serializer.Deserialize(reader);
+            Programa programa = JsonConvert.DeserializeObject<Programa>(json);
 
             this.IdPrograma = programa.IdPrograma;
             this.NombrePrograma = programa.NombrePrograma;
@@ -146,13 +148,14 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Programa));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Programa));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
         public Programa()
         {

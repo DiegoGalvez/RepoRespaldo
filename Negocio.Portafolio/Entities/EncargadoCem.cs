@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 
 namespace Negocio.Portafolio
 {
@@ -124,12 +126,12 @@ namespace Negocio.Portafolio
             this.IdPais = 0;
             this.IdCiudad = 0;
         }
-        public EncargadoCem(string xml)
+        public EncargadoCem(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(EncargadoCem));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(EncargadoCem));
+            //StringReader reader = new StringReader(xml);
 
-            EncargadoCem encargadoCel = (EncargadoCem)serializiador.Deserialize(reader);
+            EncargadoCem encargadoCel = JsonConvert.DeserializeObject<EncargadoCem>(json);
 
             this.IdEncargadoCem = encargadoCel.IdEncargadoCem;
             this.Identificacion = encargadoCel.Identificacion;
@@ -142,13 +144,14 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(EncargadoCem));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(EncargadoCem));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
         
         public int IdEncargadoCem

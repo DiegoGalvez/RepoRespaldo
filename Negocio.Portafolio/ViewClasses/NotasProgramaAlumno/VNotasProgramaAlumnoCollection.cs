@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio.ViewEntities
 {
     public class VNotasProgramaAlumnoCollection : List<VNotasProgramaAlumno>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio.ViewEntities
         {
         }
 
-        public VNotasProgramaAlumnoCollection(string xml)
+        public VNotasProgramaAlumnoCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(VNotasProgramaAlumnoCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(VNotasProgramaAlumnoCollection));
+            //StringReader reader = new StringReader(xml);
 
-            VNotasProgramaAlumnoCollection list = (VNotasProgramaAlumnoCollection)serializador.Deserialize(reader);
+            VNotasProgramaAlumnoCollection list = JsonConvert.DeserializeObject<VNotasProgramaAlumnoCollection>(json);
 
             this.AddRange(list);
         }
@@ -63,13 +65,14 @@ namespace Negocio.Portafolio.ViewEntities
         //metodo que serializa la coleccion de Notas de Programas
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(VNotasProgramaAlumnoCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(VNotasProgramaAlumnoCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
     }
 }

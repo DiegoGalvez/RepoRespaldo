@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class ProgramaCollection : List<Programa>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public ProgramaCollection(string xml)
+        public ProgramaCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(ProgramaCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(ProgramaCollection));
+            //StringReader reader = new StringReader(xml);
 
-            ProgramaCollection list = (ProgramaCollection)serializador.Deserialize(reader);
+            ProgramaCollection list = JsonConvert.DeserializeObject<ProgramaCollection>(json);
 
             this.AddRange(list);
         }
@@ -59,13 +61,14 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de Programas
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(ProgramaCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(ProgramaCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
     }
