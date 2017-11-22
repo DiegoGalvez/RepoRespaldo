@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Institucion : IPersistente
@@ -109,20 +111,21 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Institucion));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Institucion));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
-        public Institucion(string xml)
+        public Institucion(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(Institucion));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(Institucion));
+            //StringReader reader = new StringReader(xml);
 
-            Institucion institucion = (Institucion)serializiador.Deserialize(reader);
+            Institucion institucion = JsonConvert.DeserializeObject<Institucion>(json);
 
             this.IdInstitucion = institucion.IdInstitucion;
             this.Nombres = institucion.Nombres;

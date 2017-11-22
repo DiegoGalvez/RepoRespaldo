@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Intercambio : IPersistente
@@ -103,12 +105,12 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
-        public Intercambio(string xml)
+        public Intercambio(string json)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Intercambio));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Intercambio));
+            //StringReader reader = new StringReader(xml);
 
-            Intercambio intercambio = (Intercambio)serializer.Deserialize(reader);
+            Intercambio intercambio = JsonConvert.DeserializeObject<Intercambio>(json);
 
             this.IdIntercambio = intercambio.IdIntercambio;
             this.Estado = intercambio.Estado;
@@ -119,13 +121,14 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Intercambio));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Intercambio));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
         public Intercambio()
         {

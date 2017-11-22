@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 //using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Administrativo : IPersistente
@@ -106,21 +108,23 @@ namespace Negocio.Portafolio
 
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Administrativo));
-            StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Administrativo));
+            //StringWriter writer = new StringWriter();
 
-            return writer.ToString();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
+
+            //return writer.ToString();
         }
-        public Administrativo(string xml)
+        public Administrativo(string json)
         {
             /* Aplica serializiación para obtener las propiedades*/
-            XmlSerializer serializiador = new XmlSerializer(typeof(Administrativo));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(Administrativo));
+            //StringReader reader = new StringReader(xml);
 
-            Administrativo administrativo = (Administrativo)serializiador.Deserialize(reader);
+            Administrativo administrativo = JsonConvert.DeserializeObject<Administrativo>(json);
 
             this.IdAdministrativo = administrativo.IdAdministrativo;
             this.Nombres = administrativo.Nombres;

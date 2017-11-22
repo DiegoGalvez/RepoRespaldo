@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Actividad : IPersistente
@@ -138,20 +140,22 @@ namespace Negocio.Portafolio
         
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Actividad));
-            StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Actividad));
+            //StringWriter writer = new StringWriter();
 
-            return writer.ToString();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
+
+            //return writer.ToString();
         }
-        public Actividad(string xml)
+        public Actividad(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(Actividad));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(Actividad));
+            //StringReader reader = new StringReader(xml);
 
-            Actividad actividad = (Actividad)serializiador.Deserialize(reader);
+            Actividad actividad = JsonConvert.DeserializeObject<Actividad>(json);
 
             this.IdActividad = actividad.IdActividad;
             this.NombreActividad = actividad.NombreActividad;

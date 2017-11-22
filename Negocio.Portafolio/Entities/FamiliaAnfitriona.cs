@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class FamiliaAnfitriona : IPersistente
@@ -150,20 +152,21 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(FamiliaAnfitriona));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(FamiliaAnfitriona));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
-        public FamiliaAnfitriona(string xml)
+        public FamiliaAnfitriona(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(FamiliaAnfitriona));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(FamiliaAnfitriona));
+            //StringReader reader = new StringReader(xml);
 
-            FamiliaAnfitriona familiaAnfitriona = (FamiliaAnfitriona)serializiador.Deserialize(reader);
+            FamiliaAnfitriona familiaAnfitriona = JsonConvert.DeserializeObject<FamiliaAnfitriona>(json);
 
             this.IdFamilia = familiaAnfitriona.IdFamilia;
             this.Nombres = familiaAnfitriona.Nombres;

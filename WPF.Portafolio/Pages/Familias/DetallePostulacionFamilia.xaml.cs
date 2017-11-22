@@ -40,7 +40,7 @@ namespace WPF.Portafolio.Pages.Familias
             txtCiudad.Text = familia.IdCiudad.ToString();
             txtPais.Text = familia.IdPais.ToString();
 
-            carImagenes.ItemsSource = new ObservableCollection<string>() { "Item1", "Item2", "Item3", "Item4" };
+            //carImagenes.ItemsSource = new ObservableCollection<string>() { "Item1", "Item2", "Item3", "Item4" };
 
         }
     }

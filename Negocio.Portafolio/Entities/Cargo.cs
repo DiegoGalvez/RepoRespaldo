@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Cargo : IPersistente
@@ -98,21 +100,23 @@ namespace Negocio.Portafolio
 
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Cargo));
-            StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Cargo));
+            //StringWriter writer = new StringWriter();
 
-            return writer.ToString();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
+
+            //return writer.ToString();
         }
 
-        public Cargo(string xml)
+        public Cargo(string json)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Cargo));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Cargo));
+            //StringReader reader = new StringReader(xml);
 
-            Cargo car = (Cargo)serializer.Deserialize(reader);
+            Cargo car = JsonConvert.DeserializeObject<Cargo>(json);
 
             this.IdCargo = car.IdCargo;
             this.NombreCargo = car.NombreCargo;

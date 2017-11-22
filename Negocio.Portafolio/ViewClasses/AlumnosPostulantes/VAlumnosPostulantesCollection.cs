@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio.ViewClasses.NotasProgramaAlumno
 {
     public class VAlumnosPostulantesCollection : List<VAlumnosPostulantes>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio.ViewClasses.NotasProgramaAlumno
         {
         }
 
-        public VAlumnosPostulantesCollection(string xml)
+        public VAlumnosPostulantesCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(VAlumnosPostulantesCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(VAlumnosPostulantesCollection));
+            //StringReader reader = new StringReader(xml);
 
-            VAlumnosPostulantesCollection list = (VAlumnosPostulantesCollection)serializador.Deserialize(reader);
+            VAlumnosPostulantesCollection list = JsonConvert.DeserializeObject<VAlumnosPostulantesCollection>(json);
 
             this.AddRange(list);
         }
@@ -59,13 +61,14 @@ namespace Negocio.Portafolio.ViewClasses.NotasProgramaAlumno
         //metodo que serializa la coleccion de Notas de Programa 
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(VAlumnosPostulantesCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(VAlumnosPostulantesCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
         public VAlumnosPostulantesCollection BuscarPorNombreApellido (string frase)

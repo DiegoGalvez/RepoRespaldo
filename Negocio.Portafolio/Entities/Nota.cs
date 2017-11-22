@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Nota : IPersistente
@@ -99,12 +101,12 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
-        public Nota(string xml)
+        public Nota(string json)
         {
-            XmlSerializer serializiador = new XmlSerializer(typeof(Nota));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(Nota));
+            //StringReader reader = new StringReader(xml);
 
-            Nota nota = (Nota)serializiador.Deserialize(reader);
+            Nota nota = JsonConvert.DeserializeObject<Nota>(json);
             this.IdNota = nota.IdNota;
             this.Evaluacion = nota.Evaluacion;
             this.IdPrograma = nota.IdPrograma;
@@ -112,13 +114,15 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Nota));
-            StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Nota));
+            //StringWriter writer = new StringWriter();
 
-            return writer.ToString();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
+
+            //return writer.ToString();
         }
         public Nota()
         {

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class CiudadCollection : List<Ciudad>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public CiudadCollection(string xml)
+        public CiudadCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(CiudadCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(CiudadCollection));
+            //StringReader reader = new StringReader(xml);
 
-            CiudadCollection list = (CiudadCollection)serializador.Deserialize(reader);
+            CiudadCollection list = JsonConvert.DeserializeObject<CiudadCollection>(json);
 
             this.AddRange(list);
         }
@@ -62,13 +64,15 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de Ciudades
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(CiudadCollection));
-            StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(CiudadCollection));
+            //StringWriter writer = new StringWriter();
 
-            writer.Close();
-            return writer.ToString();
+            //serializar.Serialize(writer, this);
+
+            //writer.Close();
+            //return writer.ToString();
         }
 
     }

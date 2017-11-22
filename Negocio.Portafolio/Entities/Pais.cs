@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class Pais : IPersistente
@@ -97,12 +99,12 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
-        public Pais(string xml)
+        public Pais(string json)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Pais));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Pais));
+            //StringReader reader = new StringReader(xml);
 
-            Pais pais = (Pais)serializer.Deserialize(reader);
+            Pais pais = JsonConvert.DeserializeObject<Pais>(json);
 
             this.IdPais = pais.IdPais;
             this.NombrePais = pais.NombrePais;
@@ -110,13 +112,14 @@ namespace Negocio.Portafolio
         }
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Pais));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Pais));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
         public Pais()
         {

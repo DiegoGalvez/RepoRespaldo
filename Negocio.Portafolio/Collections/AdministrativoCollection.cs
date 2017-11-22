@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 
 namespace Negocio.Portafolio
 {
@@ -16,12 +18,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public AdministrativoCollection(string xml)
+        public AdministrativoCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(AdministrativoCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(AdministrativoCollection));
+            //StringReader reader = new StringReader(xml);
 
-            AdministrativoCollection list = (AdministrativoCollection)serializador.Deserialize(reader);
+            AdministrativoCollection list = JsonConvert.DeserializeObject<AdministrativoCollection>(json);
 
             this.AddRange(list);
         }
@@ -59,13 +61,14 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de administrativos 
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(AdministrativoCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(AdministrativoCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
     }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class FamiliaAnfitrionaCollection : List<FamiliaAnfitriona>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public FamiliaAnfitrionaCollection(string xml)
+        public FamiliaAnfitrionaCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(FamiliaAnfitrionaCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(FamiliaAnfitrionaCollection));
+            //StringReader reader = new StringReader(xml);
 
-            FamiliaAnfitrionaCollection list = (FamiliaAnfitrionaCollection)serializador.Deserialize(reader);
+            FamiliaAnfitrionaCollection list = JsonConvert.DeserializeObject<FamiliaAnfitrionaCollection>(json);
 
             this.AddRange(list);
         }
@@ -64,13 +66,14 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de FamiliaAnfitrionas
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(FamiliaAnfitrionaCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(FamiliaAnfitrionaCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
         public FamiliaAnfitrionaCollection BuscarALumnosPorNombreCompleto(string nombreApellido)

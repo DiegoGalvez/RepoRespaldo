@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class EncargadoCelCollection : List<EncargadoCel>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public EncargadoCelCollection(string xml)
+        public EncargadoCelCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(EncargadoCelCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(EncargadoCelCollection));
+            //StringReader reader = new StringReader(xml);
 
-            EncargadoCelCollection list = (EncargadoCelCollection)serializador.Deserialize(reader);
+            EncargadoCelCollection list = JsonConvert.DeserializeObject<EncargadoCelCollection>(json);
 
             this.AddRange(list);
         }
@@ -60,13 +62,14 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de encargados CEL 
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(EncargadoCelCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(EncargadoCelCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
     }

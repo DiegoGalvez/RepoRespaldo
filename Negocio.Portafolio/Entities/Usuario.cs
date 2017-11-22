@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 
 namespace Negocio.Portafolio
 {
@@ -128,22 +130,23 @@ namespace Negocio.Portafolio
         //Metodo para seralizar un usuario
         public string Serializar()
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(Usuario));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializador = new XmlSerializer(typeof(Usuario));
+            //StringWriter writer = new StringWriter();
 
-            serializador.Serialize(writer, this);
-            writer.Close();
+            //serializador.Serialize(writer, this);
+            //writer.Close();
 
-            return writer.ToString();
+            //return writer.ToString();
         }
         //Metodo que permiet serializar un usuario
-        public Usuario(string xml)
+        public Usuario(string json)
         {
             /* Aplica serializiación para obtener las propiedades*/
-            XmlSerializer serializiador = new XmlSerializer(typeof(Usuario));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializiador = new XmlSerializer(typeof(Usuario));
+            //StringReader reader = new StringReader(xml);
 
-            Usuario usuario = (Usuario)serializiador.Deserialize(reader);
+            Usuario usuario = JsonConvert.DeserializeObject<Usuario>(json);
 
             this.IdUsuario = usuario.IdUsuario;
             this.NomUsuario = usuario.NomUsuario;

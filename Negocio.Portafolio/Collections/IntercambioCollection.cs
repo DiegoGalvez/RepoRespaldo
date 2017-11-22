@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DALC.Portafolio;
 
+using Newtonsoft.Json;
+
 namespace Negocio.Portafolio
 {
     public class IntercambioCollection : List<Intercambio>
@@ -15,12 +17,12 @@ namespace Negocio.Portafolio
         {
         }
 
-        public IntercambioCollection(string xml)
+        public IntercambioCollection(string json)
         {
-            XmlSerializer serializador = new XmlSerializer(typeof(IntercambioCollection));
-            StringReader reader = new StringReader(xml);
+            //XmlSerializer serializador = new XmlSerializer(typeof(IntercambioCollection));
+            //StringReader reader = new StringReader(xml);
 
-            IntercambioCollection list = (IntercambioCollection)serializador.Deserialize(reader);
+            IntercambioCollection list = JsonConvert.DeserializeObject<IntercambioCollection>(json);
 
             this.AddRange(list);
         }
@@ -58,13 +60,14 @@ namespace Negocio.Portafolio
         //metodo que serializa la coleccion de Intercambios 
         public string Serializar()
         {
-            XmlSerializer serializar = new XmlSerializer(typeof(IntercambioCollection));
-            StringWriter writer = new StringWriter();
+            return JsonConvert.SerializeObject(this);
+            //XmlSerializer serializar = new XmlSerializer(typeof(IntercambioCollection));
+            //StringWriter writer = new StringWriter();
 
-            serializar.Serialize(writer, this);
+            //serializar.Serialize(writer, this);
 
-            writer.Close();
-            return writer.ToString();
+            //writer.Close();
+            //return writer.ToString();
         }
 
     }
