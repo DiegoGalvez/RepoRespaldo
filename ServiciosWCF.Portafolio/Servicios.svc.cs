@@ -62,11 +62,11 @@ namespace ServiciosWCF.Portafolio
             return false;
         }
 
-        public bool EnlazarPrograma(int idPrograma)
+        public bool EnlazarPrograma(int idPrograma, int idActividad)
         {
             Actividad actividad = new Actividad();
 
-            if (actividad.LinkPrograma(idPrograma))
+            if (actividad.LinkPrograma(idPrograma, idActividad))
             {
                 return true;
             }
@@ -89,6 +89,13 @@ namespace ServiciosWCF.Portafolio
             ActividadCollection actividadCollection = new ActividadCollection();
 
             return actividadCollection.ReadAll().Serializar();
+        }
+
+        public int IdActualEntidadActividad()
+        {
+            Actividad actividad = new Actividad();
+
+            return actividad.CurrentActividadEntityID();
         }
 
         //Administrativo
@@ -808,6 +815,13 @@ namespace ServiciosWCF.Portafolio
             {
                 return null;
             }
+        }
+
+        public int IdActualEntidadPrograma()
+        {
+            Programa programa = new Programa();
+
+            return programa.CurrentProgramaEntityID();
         }
     }
 }

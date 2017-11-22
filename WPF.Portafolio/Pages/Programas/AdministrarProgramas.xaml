@@ -6,18 +6,15 @@
       xmlns:local="clr-namespace:WPF.Portafolio.Pages.Programas"
       mc:Ignorable="d" 
       Title="Administrar Programas"
-      Background="White" Height="620" Width="1080">
+      Background="White" Height="550" Width="810">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="164,38,192,10">
-            <Label x:Name="lblTitulo" Content="Administrador de programas" FontSize="30" VerticalAlignment="Top" Margin="166,15,166,0" />
-        </Border>
+        <Label x:Name="lblTitulo" Content="Administrador de programas" FontSize="30" VerticalAlignment="Top" Margin="208,10,208,0" />
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="164,112,0,0" VerticalAlignment="Top" Width="75" />
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="288,112,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="418,112,0,0" VerticalAlignment="Top" Width="75" />
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="549,112,0,0" VerticalAlignment="Top" Width="75" />
 
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="310,110,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="434,110,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="564,110,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="695,110,0,0" VerticalAlignment="Top" Width="75" />
-
-        <DataGrid x:Name="dgUsuario" Width="auto" Margin="310,163,310,0" VerticalAlignment="Top" Height="200" MaxHeight="200" IsReadOnly="True" />
+        <DataGrid x:Name="dgUsuario" Width="auto" Margin="164,163,186,0" VerticalAlignment="Top" Height="200" MaxHeight="200" IsReadOnly="True" />
 
 
 

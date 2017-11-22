@@ -80,6 +80,8 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
+        
+
         public bool Create()
         {
             try
@@ -96,13 +98,33 @@ namespace Negocio.Portafolio
                 return false;
             }
         }
-        public bool LinkPrograma(int idPrograma)
+
+        public int CurrentActividadEntityID()
+        {
+            int id;
+            try
+            {
+                EntitiesCEM ctx = new EntitiesCEM();
+
+                id = ctx.Database.SqlQuery<int>("SELECT ACTIVIDAD_ID_ACTIVIDAD_SEQ.CURRVAL FROM dual").FirstOrDefault();
+
+                ctx = null;
+                return id;
+            }
+            catch (Exception)
+            {
+                throw new Exception("No se pudo obtener id actual");
+            }
+        }
+
+        public bool LinkPrograma(int idPrograma, int idActividad)
         {
             try
             {
                 EntitiesCEM ctx = new EntitiesCEM();
-                //Llama al procedimiento INSERT en la tabla PROGRAMAACTIVIDAD
-                ctx.INS_PROGRAMA_ACTIVIDAD(idPrograma, IdActividad);
+
+                //Llama al procedimiento INSERT en la tabla PROGRAMA_ACTIVIDAD
+                ctx.INS_PROGRAMA_ACTIVIDAD(idPrograma, idActividad);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

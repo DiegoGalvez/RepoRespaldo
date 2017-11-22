@@ -12,6 +12,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="IdActualEntidadPrograma">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IdActualEntidadProgramaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdActualEntidadProgramaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CrearPrograma">
     <xs:complexType>
       <xs:sequence>
@@ -173,6 +185,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ReadAllVNotasProgramaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarPorNombreApellido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="frase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarPorNombreApellidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarPorNombreApellidoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFamiliaNombreApellido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="frase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarFamiliaNombreApellidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarFamiliaNombreApellidoResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -553,6 +593,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="LeerTodasCiudadesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerCiudades">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pais" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerCiudadesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LeerCiudadesResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -17,6 +17,7 @@
                 <Frame Source="/WPF.Portafolio;component/Pages/Instituciones/ListaInstituciones.xaml" Height="500"></Frame>
             </TabItem>
             <TabItem Header="Programa">
+                <Frame Source="/WPF.Portafolio;component/Pages/Programas/CrearPrograma.xaml" Height="500"></Frame>
             </TabItem>
             <TabItem Header="Familia Anfitriona">
             </TabItem>

@@ -152,10 +152,10 @@
           <Property Name="NOMBRE_PROGRAMA" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="CUPOS" Type="number" Precision="10" Scale="0" />
-          <Property Name="ID_INSTITUCION" Type="number" Precision="10" Scale="0" />
           <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
           <Property Name="FECHA_TERMINO" Type="date" Nullable="false" />
           <Property Name="TIPO_CURSO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -440,18 +440,6 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PROGRAMAS_INSTITUCION">
-          <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="0..1" />
-          <End Role="PROGRAMAS" Type="Self.PROGRAMAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INSTITUCION">
-              <PropertyRef Name="ID_INSTITUCION" />
-            </Principal>
-            <Dependent Role="PROGRAMAS">
-              <PropertyRef Name="ID_INSTITUCION" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_USUARIO_ADMINISTRATIVO">
           <End Role="ADMINISTRATIVO" Type="Self.ADMINISTRATIVO" Multiplicity="0..1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
@@ -658,14 +646,13 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
           <Parameter Name="P_ID_ACTIVIDAD" Type="number" Mode="In" />
         </Function>
         <Function Name="INS_PROGRAMAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
-          <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
-          <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
-          <Parameter Name="P_CUPOS" Type="number" Mode="In" />
-          <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
-          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
-          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CUPOS" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
+          <Parameter Name="P_FECHA_TERMINO" Type="date" Mode="In" />
+          <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="INS_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
@@ -783,10 +770,10 @@ advertencia 6002: La tabla o vista 'C##CEM_ADMIN.VISTA_DETALLE_POSTULACION' no t
           <Parameter Name="P_ID_PROGRAMA" Type="number" Mode="In" />
           <Parameter Name="P_CUPOS" Type="number" Mode="In" />
           <Parameter Name="P_TIPO_CURSO" Type="varchar2" Mode="In" />
-          <Parameter Name="P_ID_INSTITUCION" Type="number" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
           <Parameter Name="P_FECHA_INICIO" Type="date" Mode="In" />
           <Parameter Name="P_NOMBRE_PROGRAMA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="UPD_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="C##CEM_ADMIN">
           <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
@@ -929,10 +916,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
             <End Role="PROGRAMA_ACTIVIDAD" EntitySet="PROGRAMA_ACTIVIDAD" />
           </AssociationSet>
-          <AssociationSet Name="FK_PROGRAMAS_INSTITUCION" Association="Self.FK_PROGRAMAS_INSTITUCION">
-            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-          </AssociationSet>
           <AssociationSet Name="FK_USUARIO_ADMINISTRATIVO" Association="Self.FK_USUARIO_ADMINISTRATIVO">
             <End Role="ADMINISTRATIVO" EntitySet="ADMINISTRATIVO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -1041,10 +1024,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <End Role="FAMILIASANFITRIONA" EntitySet="FAMILIASANFITRIONA" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_PROGRAMAS_INSTITUCION" Association="ModelCEM.FK_PROGRAMAS_INSTITUCION">
-            <End Role="INSTITUCION" EntitySet="INSTITUCION" />
-            <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
-          </AssociationSet>
           <AssociationSet Name="FK_INTERCAMBIO_PROGRAMAS" Association="ModelCEM.FK_INTERCAMBIO_PROGRAMAS">
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
             <End Role="INTERCAMBIO" EntitySet="INTERCAMBIO" />
@@ -1058,49 +1037,49 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <End Role="PROGRAMAS" EntitySet="PROGRAMAS" />
           </AssociationSet>
           <FunctionImport Name="DEL_ACTIVIDAD">
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_ADMINISTRATIVO">
-            <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ADMINISTRATIVO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_ALUMNOS">
-            <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_CARGO">
-            <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_CARGO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_CIUDAD">
-            <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_CIUDAD" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_ENCARGADO_CEL">
-            <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ENCARGADO_CEL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_ENCARGADO_CEM">
-            <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_FAMILIASANFITRIONA">
-            <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_FAMILIA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_INSTITUCION">
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_INTERCAMBIO">
-            <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_INTERCAMBIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_NOTAS">
-            <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_NOTA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_PAIS">
-            <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_PAIS" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_PROGRAMA_ACTIVIDAD">
-            <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_PROGRAMAS">
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="DEL_USUARIO">
-            <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
+          <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="INS_ACTIVIDAD">
             <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
@@ -1201,16 +1180,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <FunctionImport Name="INS_PROGRAMA_ACTIVIDAD">
             <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
             <Parameter Name="P_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="INS_PROGRAMAS">
-            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
-            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
-            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
-            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
-            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="INS_USUARIO">
             <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
@@ -1328,10 +1297,10 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <Parameter Name="P_ID_PROGRAMA" Mode="In" Type="Decimal" />
             <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
             <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="P_ID_INSTITUCION" Mode="In" Type="Decimal" />
             <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
             <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
             <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UPD_USUARIO">
             <Parameter Name="P_ID_USUARIO" Mode="In" Type="Decimal" />
@@ -1343,6 +1312,15 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             <Parameter Name="P_ID_ENCARGADO_CEM" Mode="In" Type="Decimal" />
             <Parameter Name="P_ID_ALUMNO" Mode="In" Type="Decimal" />
             <Parameter Name="P_ROL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INS_PROGRAMAS">
+            <Parameter Name="P_NOMBRE_PROGRAMA" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_CUPOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_FECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TIPO_CURSO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ACTIVIDAD">
@@ -1469,7 +1447,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ID_CIUDAD" Type="Int32" />
           <Property Name="ID_PAIS" Type="Int32" />
-          <NavigationProperty Name="PROGRAMAS" Relationship="ModelCEM.FK_PROGRAMAS_INSTITUCION" FromRole="INSTITUCION" ToRole="PROGRAMAS" />
         </EntityType>
         <EntityType Name="INTERCAMBIO">
           <Key>
@@ -1516,11 +1493,10 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <Property Name="NOMBRE_PROGRAMA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="CUPOS" Type="Int32" />
-          <Property Name="ID_INSTITUCION" Type="Int32" />
           <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
           <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
           <Property Name="TIPO_CURSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="INSTITUCION" Relationship="ModelCEM.FK_PROGRAMAS_INSTITUCION" FromRole="PROGRAMAS" ToRole="INSTITUCION" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="INTERCAMBIO" Relationship="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" FromRole="PROGRAMAS" ToRole="INTERCAMBIO" />
           <NavigationProperty Name="NOTAS" Relationship="ModelCEM.FK_NOTAS_PROGRAMAS" FromRole="PROGRAMAS" ToRole="NOTAS" />
           <NavigationProperty Name="ACTIVIDAD" Relationship="ModelCEM.PROGRAMA_ACTIVIDAD" FromRole="PROGRAMAS" ToRole="ACTIVIDAD" />
@@ -1817,18 +1793,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PROGRAMAS_INSTITUCION">
-          <End Type="ModelCEM.INSTITUCION" Role="INSTITUCION" Multiplicity="0..1" />
-          <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INSTITUCION">
-              <PropertyRef Name="ID_INSTITUCION" />
-            </Principal>
-            <Dependent Role="PROGRAMAS">
-              <PropertyRef Name="ID_INSTITUCION" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_INTERCAMBIO_PROGRAMAS">
           <End Type="ModelCEM.PROGRAMAS" Role="PROGRAMAS" Multiplicity="0..1" />
           <End Type="ModelCEM.INTERCAMBIO" Role="INTERCAMBIO" Multiplicity="*" />
@@ -1961,24 +1925,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
                 <ScalarProperty Name="ID_FAMILIA" ColumnName="ID_FAMILIA" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="ModelCEM.FAMILIASANFITRIONA">
-              <ModificationFunctionMapping>
-                <InsertFunction FunctionName="ModelCEM.Store.INS_FAMILIASANFITRIONA" >
-                  <ScalarProperty Name="ID_PAIS" ParameterName="P_ID_PAIS" />
-                  <ScalarProperty Name="RUTA_ARCHIVO" ParameterName="P_RUTA_ARCHIVO" />
-                  <ScalarProperty Name="NOMBRE" ParameterName="P_NOMBRE" />
-                  <ScalarProperty Name="ID_CIUDAD" ParameterName="P_ID_CIUDAD" />
-                  <ScalarProperty Name="TELEFONO_CONTACTO" ParameterName="P_TELEFONO_CONTACTO" />
-                  <ScalarProperty Name="IDENTIFICACION" ParameterName="P_IDENTIFICACION" />
-                  <ScalarProperty Name="ID_FAMILIA" ParameterName="P_ID_FAMILIA" />
-                  <ScalarProperty Name="CORREO" ParameterName="P_CORREO" />
-                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" />
-                  <ScalarProperty Name="DIRECCION" ParameterName="P_DIRECCION" />
-                  <ScalarProperty Name="APELL_MATERNO" ParameterName="P_APELL_MATERNO" />
-                  <ScalarProperty Name="APELL_PATERNO" ParameterName="P_APELL_PATERNO" />
-                </InsertFunction>
-              </ModificationFunctionMapping>
-            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INSTITUCION">
             <EntityTypeMapping TypeName="ModelCEM.INSTITUCION">
@@ -2028,15 +1974,41 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <EntitySetMapping Name="PROGRAMAS">
             <EntityTypeMapping TypeName="ModelCEM.PROGRAMAS">
               <MappingFragment StoreEntitySet="PROGRAMAS">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
                 <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
-                <ScalarProperty Name="ID_INSTITUCION" ColumnName="ID_INSTITUCION" />
                 <ScalarProperty Name="CUPOS" ColumnName="CUPOS" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="NOMBRE_PROGRAMA" ColumnName="NOMBRE_PROGRAMA" />
                 <ScalarProperty Name="ID_PROGRAMA" ColumnName="ID_PROGRAMA" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ModelCEM.PROGRAMAS">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ModelCEM.Store.INS_PROGRAMAS" >
+                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" />
+                  <ScalarProperty Name="TIPO_CURSO" ParameterName="P_TIPO_CURSO" />
+                  <ScalarProperty Name="FECHA_TERMINO" ParameterName="P_FECHA_TERMINO" />
+                  <ScalarProperty Name="FECHA_INICIO" ParameterName="P_FECHA_INICIO" />
+                  <ScalarProperty Name="CUPOS" ParameterName="P_CUPOS" />
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" />
+                  <ScalarProperty Name="NOMBRE_PROGRAMA" ParameterName="P_NOMBRE_PROGRAMA" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ModelCEM.Store.UPD_PROGRAMAS" >
+                  <ScalarProperty Name="ESTADO" ParameterName="P_ESTADO" Version="Current" />
+                  <ScalarProperty Name="NOMBRE_PROGRAMA" ParameterName="P_NOMBRE_PROGRAMA" Version="Current" />
+                  <ScalarProperty Name="FECHA_INICIO" ParameterName="P_FECHA_INICIO" Version="Current" />
+                  <ScalarProperty Name="DESCRIPCION" ParameterName="P_DESCRIPCION" Version="Current" />
+                  <ScalarProperty Name="TIPO_CURSO" ParameterName="P_TIPO_CURSO" Version="Current" />
+                  <ScalarProperty Name="CUPOS" ParameterName="P_CUPOS" Version="Current" />
+                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" Version="Current" />
+                  <ScalarProperty Name="FECHA_TERMINO" ParameterName="P_FECHA_TERMINO" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ModelCEM.Store.DEL_PROGRAMAS" >
+                  <ScalarProperty Name="ID_PROGRAMA" ParameterName="P_ID_PROGRAMA" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
@@ -2153,7 +2125,6 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <FunctionImportMapping FunctionImportName="INS_NOTAS" FunctionName="ModelCEM.Store.INS_NOTAS" />
           <FunctionImportMapping FunctionImportName="INS_PAIS" FunctionName="ModelCEM.Store.INS_PAIS" />
           <FunctionImportMapping FunctionImportName="INS_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.INS_PROGRAMA_ACTIVIDAD" />
-          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
           <FunctionImportMapping FunctionImportName="INS_USUARIO" FunctionName="ModelCEM.Store.INS_USUARIO" />
           <FunctionImportMapping FunctionImportName="UPD_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="UPD_ADMINISTRATIVO" FunctionName="ModelCEM.Store.UPD_ADMINISTRATIVO" />
@@ -2170,6 +2141,7 @@ FROM "C##CEM_ADMIN"."VISTA_DETALLE_POSTULACION" "VISTA_DETALLE_POSTULACION"</Def
           <FunctionImportMapping FunctionImportName="UPD_PROGRAMA_ACTIVIDAD" FunctionName="ModelCEM.Store.UPD_PROGRAMA_ACTIVIDAD" />
           <FunctionImportMapping FunctionImportName="UPD_PROGRAMAS" FunctionName="ModelCEM.Store.UPD_PROGRAMAS" />
           <FunctionImportMapping FunctionImportName="UPD_USUARIO" FunctionName="ModelCEM.Store.UPD_USUARIO" />
+          <FunctionImportMapping FunctionImportName="INS_PROGRAMAS" FunctionName="ModelCEM.Store.INS_PROGRAMAS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

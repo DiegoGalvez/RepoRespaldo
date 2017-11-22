@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="526baa400de042c9bc70084f5d90f8ae" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="ModelCEM.ACTIVIDAD" Width="1.5" PointX="3" PointY="22.125" />
-        <EntityTypeShape EntityType="ModelCEM.ADMINISTRATIVO" Width="1.5" PointX="8.25" PointY="2.25" />
-        <EntityTypeShape EntityType="ModelCEM.ALUMNOS" Width="1.5" PointX="8.25" PointY="17.75" />
-        <EntityTypeShape EntityType="ModelCEM.CARGO" Width="1.5" PointX="6" PointY="2.75" />
+      <Diagram DiagramId="526baa400de042c9bc70084f5d90f8ae" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="ModelCEM.ACTIVIDAD" Width="1.5" PointX="3" PointY="22.375" />
+        <EntityTypeShape EntityType="ModelCEM.ADMINISTRATIVO" Width="1.5" PointX="8.25" PointY="18.25" />
+        <EntityTypeShape EntityType="ModelCEM.ALUMNOS" Width="1.5" PointX="8.25" PointY="1.25" />
+        <EntityTypeShape EntityType="ModelCEM.CARGO" Width="1.5" PointX="6" PointY="18.875" />
         <EntityTypeShape EntityType="ModelCEM.CIUDAD" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEL" Width="1.5" PointX="5.25" PointY="6" />
         <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEM" Width="1.5" PointX="8.25" PointY="6" />
         <EntityTypeShape EntityType="ModelCEM.FAMILIASANFITRIONA" Width="1.5" PointX="5.25" PointY="13.375" />
-        <EntityTypeShape EntityType="ModelCEM.INSTITUCION" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="ModelCEM.INSTITUCION" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="ModelCEM.INTERCAMBIO" Width="1.5" PointX="7.5" PointY="13.875" />
-        <EntityTypeShape EntityType="ModelCEM.NOTAS" Width="1.5" PointX="10.5" PointY="19.25" />
+        <EntityTypeShape EntityType="ModelCEM.NOTAS" Width="1.5" PointX="10.5" PointY="15" />
         <EntityTypeShape EntityType="ModelCEM.PAIS" Width="1.5" PointX="0.75" PointY="6.5" />
-        <EntityTypeShape EntityType="ModelCEM.PROGRAMAS" Width="1.5" PointX="5.25" PointY="19.625" />
+        <EntityTypeShape EntityType="ModelCEM.PROGRAMAS" Width="1.5" PointX="5.25" PointY="21.75" />
         <EntityTypeShape EntityType="ModelCEM.USUARIO" Width="1.5" PointX="10.5" PointY="9.75" />
-        <EntityTypeShape EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelCEM.V_NOTAS_ALUMNO" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ModelCEM.V_NOTAS_ALUMNO" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="ModelCEM.VISTA_ALUMNOS_POSTULANTES" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="ModelCEM.VISTA_DETALLE_POSTULACION" Width="1.5" PointX="10.75" PointY="0.75" />
         <AssociationConnector Association="ModelCEM.FK_ADMINISTRATIVO_CARGO" />
@@ -39,7 +39,6 @@
         <AssociationConnector Association="ModelCEM.FK_USUARIO_ENCARGADO_CEM" />
         <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_FAMILIA" />
         <AssociationConnector Association="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA" />
-        <AssociationConnector Association="ModelCEM.FK_PROGRAMAS_INSTITUCION" />
         <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" />
         <AssociationConnector Association="ModelCEM.FK_NOTAS_PROGRAMAS" />
         <AssociationConnector Association="ModelCEM.PROGRAMA_ACTIVIDAD" />

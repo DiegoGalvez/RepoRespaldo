@@ -101,6 +101,7 @@
     <Compile Include="ViewClasses\FamiliaPostulantes\VFamiliasPostulantesCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumnoCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumno.cs" />
+    <Compile Include="ViewClasses\VActividad.cs" />
     <Compile Include="ViewClasses\VInstitucion.cs" />
   </ItemGroup>
   <ItemGroup>

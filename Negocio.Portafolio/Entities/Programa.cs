@@ -19,7 +19,26 @@ namespace Negocio.Portafolio
         private DateTime fechaInicio;
         private DateTime fechaTermino;
         private TipoCursos tipoCurso;
+        private string estado;
         //private DateTime fechaCreacionCurso;
+
+        public int CurrentProgramaEntityID()
+        {
+            int id;
+            try
+            {
+                EntitiesCEM ctx = new EntitiesCEM();
+
+                id = ctx.Database.SqlQuery<int>("SELECT PROGRAMAS_ID_PROGRAMA_SEQ.CURRVAL FROM dual").FirstOrDefault();
+
+                ctx = null;
+                return id;
+            }
+            catch (Exception)
+            {
+                throw new Exception("No se pudo obtener id actual");
+            }
+        }
 
         public bool Read()
         {
@@ -33,10 +52,10 @@ namespace Negocio.Portafolio
                 this.NombrePrograma = _pais.NOMBRE_PROGRAMA;
                 this.Descripcion= _pais.DESCRIPCION;
                 this.Cupos = _pais.CUPOS;
-                this.idInstitucion = _pais.ID_INSTITUCION;
                 this.fechaInicio = _pais.FECHA_INICIO;
                 this.fechaTermino = _pais.FECHA_TERMINO;
-                this.   tipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos),_pais.TIPO_CURSO);
+                this.tipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos),_pais.TIPO_CURSO);
+                this.estado = _pais.ESTADO;
 
                 ctx = null;
 
@@ -79,7 +98,7 @@ namespace Negocio.Portafolio
                 if (ctx.PROGRAMAS.Any(p => p.ID_PROGRAMA == IdPrograma))
                 {
                     //Llama al procedimiento UPDATE en la tabla PROGRAMAS
-                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
+                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma, estado);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -98,7 +117,8 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla PROGRAMAS
-                ctx.INS_PROGRAMAS(FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), IdInstitucion, Descripcion, FechaInicio, NombrePrograma);
+                //FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma);
+                ctx.INS_PROGRAMAS(NombrePrograma, Descripcion, Cupos, fechaInicio, fechaTermino, tipoCurso.ToString(), estado);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -119,10 +139,10 @@ namespace Negocio.Portafolio
             this.NombrePrograma = programa.NombrePrograma;
             this.Descripcion = programa.Descripcion;
             this.Cupos = programa.Cupos;
-            this.IdInstitucion = programa.IdInstitucion;
             this.FechaInicio = programa.FechaInicio;
             this.FechaTermino = programa.FechaTermino;
             this.TipoCurso = programa.TipoCurso;
+            this.estado = programa.estado;
         }
         public string Serializar()
         {
@@ -147,7 +167,7 @@ namespace Negocio.Portafolio
             this.fechaInicio = DateTime.Now;
             this.FechaTermino = DateTime.Now;
             this.tipoCurso = TipoCursos.Normal;
-
+            this.estado = string.Empty;
         }
 
         public int IdPrograma
@@ -191,6 +211,12 @@ namespace Negocio.Portafolio
         {
             get { return _descripcion; }
             set { _descripcion = value; }
+        }
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
         }
     }
 }

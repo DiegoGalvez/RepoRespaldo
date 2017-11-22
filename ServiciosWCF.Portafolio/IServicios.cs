@@ -25,9 +25,11 @@ namespace ServiciosWCF.Portafolio
         [OperationContract]
         string LeerTodasActividades();
         [OperationContract]
-        bool EnlazarPrograma(int idPrograma);
+        bool EnlazarPrograma(int idPrograma, int idActividad);
         [OperationContract]
         bool DesenlazarPrograma();
+        [OperationContract]
+        int IdActualEntidadActividad();
 
         //Administrativo
         [OperationContract]
@@ -164,6 +166,8 @@ namespace ServiciosWCF.Portafolio
         bool EliminarPais(string xml);
         [OperationContract]
         string LeerTodosPaises();
+        [OperationContract]
+        int IdActualEntidadPrograma();
 
         //Programa
         [OperationContract]

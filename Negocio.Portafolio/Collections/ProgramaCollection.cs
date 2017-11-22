@@ -47,7 +47,6 @@ namespace Negocio.Portafolio
                 programa.NombrePrograma = item.NOMBRE_PROGRAMA;
                 programa.Descripcion = item.DESCRIPCION;
                 programa.Cupos= item.CUPOS;
-                programa.IdInstitucion= item.ID_INSTITUCION;
                 programa.FechaInicio= item.FECHA_INICIO;
                 programa.FechaTermino= item.FECHA_TERMINO;
                 programa.TipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos), item.TIPO_CURSO);
