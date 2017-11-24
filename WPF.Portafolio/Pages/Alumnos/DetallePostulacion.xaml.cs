@@ -68,7 +68,6 @@ namespace WPF.Portafolio.Pages.Alumnos
             intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
             intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
             intercambio.Estado = "Aceptada";
-            intercambio.IdAdministrativo = null;
             if (svc.ActualizarIntercambio(intercambio.Serializar()))
             {
                 Correo mail = new Correo();
@@ -94,7 +93,6 @@ namespace WPF.Portafolio.Pages.Alumnos
             intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
             intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
             intercambio.Estado = "Rechazada";
-            intercambio.IdAdministrativo = null;
             if (svc.ActualizarIntercambio(intercambio.Serializar()))
             {
                 Correo mail = new Correo();

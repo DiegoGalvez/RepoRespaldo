@@ -84,7 +84,7 @@ namespace Negocio.Portafolio
                 if (ctx.USUARIO.Any(u => u.ID_USUARIO == IdUsuario))
                 {
                     //Llama al procedimiento UPDATE en la tabla USUARIO
-                    ctx.UPD_USUARIO(IdUsuario, Password, IdFamilia, IdAdministrativo, IdEncargadoCel, NomUsuario, IdEncargadoCem, IdAlumno, Rol);
+                    //ctx.UPD_USUARIO(IdUsuario, NomUsuario, Password, Rol, IdFamilia, IdAdministrativo, IdEncargadoCel, IdEncargadoCem, IdAlumno);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -103,7 +103,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla USUARIO
-                ctx.INS_USUARIO(IdUsuario, Password, IdFamilia, IdAdministrativo, IdEncargadoCel, NomUsuario, IdEncargadoCem, IdAlumno, Rol);
+                //ctx.INS_USUARIO(NomUsuario, Password, Rol, IdFamilia, IdAdministrativo, IdEncargadoCel, IdEncargadoCem, IdAlumno);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

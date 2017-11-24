@@ -52,7 +52,6 @@ namespace Negocio.Portafolio
                 familiaAnfitriona.Identificador = item.IDENTIFICACION;
                 familiaAnfitriona.Correo= item.CORREO;
                 familiaAnfitriona.Telefono = (int)item.TELEFONO_CONTACTO;
-                familiaAnfitriona.RutaArchivo = item.RUTA_ARCHIVO;
                 familiaAnfitriona.Direccion = item.DIRECCION;
                 familiaAnfitriona.IdCiudad = (int)item.ID_CIUDAD;
                 familiaAnfitriona.IdPais = item.ID_PAIS;

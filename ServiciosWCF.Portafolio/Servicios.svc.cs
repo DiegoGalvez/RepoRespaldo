@@ -201,50 +201,6 @@ namespace ServiciosWCF.Portafolio
             return alumnoCollection.BuscarALumnosPorNombreCompleto(frase).Serializar();
         }
         
-        //Cargo
-        public bool CrearCargo(string xml)
-        {
-            Cargo cargo = new Cargo(xml);
-
-            if (cargo.Create())
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public string LeerCargo(string xml)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ActualizarCargo(string xml)
-        {
-            Cargo cargo = new Cargo();
-
-            if (cargo.Update())
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool EliminarCargo(string xml)
-        {
-            Cargo cargo = new Cargo();
-
-            if (cargo.Delete())
-            {
-                return true;
-            }
-            return false;
-        }
-        public string LeerTodosCargos()
-        {
-            CargoCollection cargoCollection = new CargoCollection();
-
-            return cargoCollection.ReadAll().Serializar();
-        }
 
         //Ciudad
         public bool CrearCiudad(string xml)

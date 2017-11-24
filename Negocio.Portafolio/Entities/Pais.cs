@@ -70,7 +70,7 @@ namespace Negocio.Portafolio
                 if (ctx.PAIS.Any(p => p.ID_PAIS == IdPais))
                 {
                     //Llama al procedimiento UPDATE en la tabla PAIS
-                    ctx.UPD_PAIS(NombrePais, Sigla, IdPais);
+                    ctx.UPD_PAIS(IdPais, NombrePais, Sigla);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -89,7 +89,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla PAIS
-                ctx.INS_PAIS(NombrePais, Sigla, IdPais);
+                ctx.INS_PAIS(NombrePais, Sigla);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

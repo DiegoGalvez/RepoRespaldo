@@ -47,7 +47,6 @@ namespace Negocio.Portafolio
 
                 intercambio.IdIntercambio = item.ID_INTERCAMBIO;
                 intercambio.Estado= item.ESTADO;
-                intercambio.IdAdministrativo = item.ID_ADMINISTRATIVO.GetValueOrDefault();
                 intercambio.IdFamilia = item.ID_FAMILIA.GetValueOrDefault();
                 intercambio.IdAlumno= item.ID_ALUMNO.GetValueOrDefault();
                 intercambio.IdPrograma = item.ID_PROGRAMA.GetValueOrDefault();

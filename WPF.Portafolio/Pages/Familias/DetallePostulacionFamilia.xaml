@@ -23,7 +23,7 @@
         <TextBox x:Name="txtCiudad" Margin="145,305,498,130" />
         <Label x:Name="lblPais" Content="País:" FontSize="18" Margin="50,360,649,75"   />
         <TextBox x:Name="txtPais" Margin="145,360,498,75" />
-        <!--<syncfusion:Carousel x:Name="carImagenes" HorizontalAlignment="Center" Height="311" ItemsPerPage="4" Margin="494,85,90,75" RadiusY="-50" RadiusX="100" SelectedIndex="0" VerticalAlignment="Center" Width="310"/>-->
+        <syncfusion:Carousel x:Name="carImagenes" HorizontalAlignment="Center" Height="311" ItemsPerPage="4" Margin="494,85,90,75" RadiusY="-50" RadiusX="100" SelectedIndex="0" VerticalAlignment="Center" Width="310"/>
     </Grid>
 
 </Controls:MetroWindow>

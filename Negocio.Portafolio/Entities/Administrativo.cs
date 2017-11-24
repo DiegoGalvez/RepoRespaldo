@@ -34,7 +34,6 @@ namespace Negocio.Portafolio
                 this.ApePaterno = _administrativo.APELL_PATERNO;
                 this.ApeMaterno = _administrativo.APELL_MATERNO;
                 this.Correo = _administrativo.CORREO;
-                this.IdCargo = _administrativo.ID_CARGO.GetValueOrDefault();
                 ctx = null;
 
                 return true;
@@ -76,7 +75,7 @@ namespace Negocio.Portafolio
                 if (ctx.ADMINISTRATIVO.Any(a => a.ID_ADMINISTRATIVO == IdAdministrativo))
                 {
                     //Llama al procedimiento UPDATE en la tabla ACTIVIDAD
-                    ctx.UPD_ADMINISTRATIVO(ApePaterno, ApeMaterno, IdCargo, Correo, IdAdministrativo, Nombres);
+                    ctx.UPD_ADMINISTRATIVO(IdAdministrativo, Nombres, ApePaterno, ApeMaterno, Correo);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -95,7 +94,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ACTIVIDAD
-                ctx.INS_ADMINISTRATIVO(ApePaterno, ApeMaterno, IdCargo, Correo, IdAdministrativo, Nombres);
+                ctx.INS_ADMINISTRATIVO(Nombres, ApePaterno, ApeMaterno, Correo);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

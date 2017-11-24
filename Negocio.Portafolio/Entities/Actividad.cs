@@ -90,7 +90,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ACTIVIDAD
-                ctx.INS_ACTIVIDAD(IdActividad, NombreActividad, Descripcion);
+                ctx.INS_ACTIVIDAD(NombreActividad, Descripcion);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

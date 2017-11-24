@@ -101,7 +101,7 @@ namespace Negocio.Portafolio
                 if (ctx.PROGRAMAS.Any(p => p.ID_PROGRAMA == IdPrograma))
                 {
                     //Llama al procedimiento UPDATE en la tabla PROGRAMAS
-                    ctx.UPD_PROGRAMAS(FechaTermino, IdPrograma, Cupos, idInstitucion, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma, estado);
+                    ctx.UPD_PROGRAMAS(IdPrograma, NombrePrograma, Descripcion, Cupos, idInstitucion, FechaInicio, FechaTermino, TipoCurso.ToString(), estado);
                     ctx.SaveChanges();
                     ctx = null;
 

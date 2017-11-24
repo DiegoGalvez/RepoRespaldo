@@ -80,7 +80,7 @@ namespace Negocio.Portafolio
                 if (ctx.INSTITUCION.Any(i => i.ID_INSTITUCION == IdInstitucion))
                 {
                     //Llama al procedimiento UPDATE en la tabla INSTITUCION
-                    ctx.UPD_INSTITUCION(Direcion, Correo, PaginaWeb, IdCiudad, Telefono, IdInstitucion, Nombres, IdPais);
+                    ctx.UPD_INSTITUCION(IdInstitucion, Nombres, Correo, Telefono, PaginaWeb, Direcion, IdCiudad,  IdPais);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -99,7 +99,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla INSTITUCION
-                ctx.INS_INSTITUCION(Direcion, Correo, PaginaWeb, IdCiudad, Telefono, IdInstitucion, Nombres, IdPais);
+                ctx.INS_INSTITUCION(Nombres, Correo, Telefono, PaginaWeb, Direcion, IdCiudad, IdPais);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

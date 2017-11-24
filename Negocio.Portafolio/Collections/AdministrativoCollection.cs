@@ -51,7 +51,6 @@ namespace Negocio.Portafolio
                 administrativo.ApePaterno = item.APELL_PATERNO;
                 administrativo.ApeMaterno = item.APELL_MATERNO;
                 administrativo.Correo = item.CORREO;
-                administrativo.IdCargo = (int)item.ID_CARGO;
                 
                 listaBC.Add(administrativo);
             }

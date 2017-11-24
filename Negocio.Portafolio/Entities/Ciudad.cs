@@ -70,7 +70,7 @@ namespace Negocio.Portafolio
                 if (ctx.CIUDAD.Any(c => c.ID_CIUDAD == IdCiudad))
                 {
                     //Llama al procedimiento UPDATE en la tabla CIUDAD
-                    ctx.UPD_CIUDAD(NombreCiudad, IdCiudad, IdPais);
+                    ctx.UPD_CIUDAD(IdCiudad, NombreCiudad, IdPais);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -89,7 +89,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla CIUDAD
-                ctx.INS_CIUDAD(NombreCiudad, IdCiudad, IdPais);
+                ctx.INS_CIUDAD(NombreCiudad, IdPais);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

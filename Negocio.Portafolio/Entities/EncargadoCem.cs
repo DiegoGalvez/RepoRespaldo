@@ -20,8 +20,7 @@ namespace Negocio.Portafolio
         private string _apePaterno;
         private string _apeMaterno;
         private string _correo;
-        private int _idPais;
-        private int _idCiudad;
+        private int _idInstitucion;
 
         public bool Read()
         {
@@ -37,8 +36,6 @@ namespace Negocio.Portafolio
                 this.ApePaterno = _encargado.APELL_PATERNO;
                 this.ApeMaterno = _encargado.APELL_MATERNO;
                 this.Correo = _encargado.CORREO;
-                this.IdPais = _encargado.ID_PAIS;
-                this.IdCiudad = _encargado.ID_CIUDAD;
 
                 ctx = null;
 
@@ -81,7 +78,7 @@ namespace Negocio.Portafolio
                 if (ctx.ENCARGADO_CEM.Any(c => c.ID_ENCARGADO_CEM == IdEncargadoCem))
                 {
                     //Llama al procedimiento UPDATE en la tabla ENCARGADO_CEM
-                    ctx.UPD_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCem, Identificacion, IdCiudad, Nombre, IdPais);
+                    ctx.UPD_ENCARGADO_CEM(IdEncargadoCem, Identificacion, Nombre, ApePaterno, ApeMaterno, Correo);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -100,7 +97,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ENCARGADO_CEM
-                ctx.INS_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCem, Identificacion, IdCiudad, Nombre, IdPais);
+                ctx.INS_ENCARGADO_CEM(Identificacion, Nombre, ApePaterno, ApeMaterno, Correo);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -123,24 +120,20 @@ namespace Negocio.Portafolio
             this.ApePaterno = string.Empty;
             this.ApeMaterno = string.Empty;
             this.Correo = string.Empty;
-            this.IdPais = 0;
-            this.IdCiudad = 0;
         }
         public EncargadoCem(string json)
         {
             //XmlSerializer serializiador = new XmlSerializer(typeof(EncargadoCem));
             //StringReader reader = new StringReader(xml);
 
-            EncargadoCem encargadoCel = JsonConvert.DeserializeObject<EncargadoCem>(json);
+            EncargadoCem encargadoCem = JsonConvert.DeserializeObject<EncargadoCem>(json);
 
-            this.IdEncargadoCem = encargadoCel.IdEncargadoCem;
-            this.Identificacion = encargadoCel.Identificacion;
-            this.Nombre = encargadoCel.Nombre;
-            this.ApePaterno = encargadoCel.ApePaterno;
-            this.ApeMaterno = encargadoCel.ApeMaterno;
-            this.Correo = encargadoCel.Correo;
-            this.IdPais = encargadoCel.IdPais;
-            this.IdCiudad = encargadoCel.IdCiudad;
+            this.IdEncargadoCem = encargadoCem.IdEncargadoCem;
+            this.Identificacion = encargadoCem.Identificacion;
+            this.Nombre = encargadoCem.Nombre;
+            this.ApePaterno = encargadoCem.ApePaterno;
+            this.ApeMaterno = encargadoCem.ApeMaterno;
+            this.Correo = encargadoCem.Correo;
         }
         public string Serializar()
         {
@@ -179,21 +172,24 @@ namespace Negocio.Portafolio
             get { return _correo; } 
             set { _correo = value; }
         }
-        public int IdPais
-        {
-            get { return _idPais; } 
-            set { _idPais = value; }
-        }
-        public int IdCiudad
-        {
-            get { return _idCiudad; } 
-            set { _idCiudad = value; }
-        }
-
+       
         public string Identificacion
         {
             get { return _identificacion; }
             set { _identificacion = value; }
+        }
+
+        public int IdInstitucion
+        {
+            get
+            {
+                return _idInstitucion;
+            }
+
+            set
+            {
+                _idInstitucion = value;
+            }
         }
     }
 }

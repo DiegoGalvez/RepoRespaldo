@@ -114,7 +114,8 @@ namespace WPF.Portafolio.Pages
                         FechaInicio = DateTime.Parse(dtInicio.Text),
                         FechaTermino = DateTime.Parse(dtTermino.Text),
                         TipoCurso = (TipoCursos)Enum.Parse(typeof(TipoCursos), cbTipoPrograma.Text),
-                        Estado = "Postulado"
+                        Estado = "Postulado",
+                        IdInstitucion = null
                     };
 
                     if (svc.CrearPrograma(programa.Serializar()))

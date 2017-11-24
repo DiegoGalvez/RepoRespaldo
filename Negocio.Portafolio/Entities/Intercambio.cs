@@ -15,7 +15,6 @@ namespace Negocio.Portafolio
     {
         private int _idIntercambio;
         private string _estado;
-        private int? _idAdministrativo;
         private int _idFamilia;
         private int _idAlumno;
         private int _idPrograma;
@@ -30,7 +29,6 @@ namespace Negocio.Portafolio
                 //Asigna los valores de obj del INTERCAMBIO Entity al obj Intercambio de la Clase
                 this.IdIntercambio = _intercambio.ID_INTERCAMBIO;
                 this.Estado = _intercambio.ESTADO;
-                this.IdAdministrativo = _intercambio.ID_ADMINISTRATIVO.GetValueOrDefault();
                 this.IdFamilia = _intercambio.ID_FAMILIA.GetValueOrDefault();
                 this.IdAlumno = _intercambio.ID_ALUMNO.GetValueOrDefault();
                 this.IdPrograma = _intercambio.ID_PROGRAMA.GetValueOrDefault();
@@ -76,7 +74,7 @@ namespace Negocio.Portafolio
                 if (ctx.INTERCAMBIO.Any(i => i.ID_INTERCAMBIO == IdIntercambio))
                 {
                     //Llama al procedimiento UPDATE en la tabla INTERCAMBIO
-                    ctx.UPD_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdAdministrativo, IdPrograma, IdAlumno);
+                    ctx.UPD_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdPrograma, IdAlumno);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -95,7 +93,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla INS_INTERCAMBIO
-                ctx.INS_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdAdministrativo, IdPrograma, IdAlumno);
+                ctx.INS_INTERCAMBIO(Estado, IdFamilia, IdPrograma, IdAlumno);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -114,7 +112,6 @@ namespace Negocio.Portafolio
 
             this.IdIntercambio = intercambio.IdIntercambio;
             this.Estado = intercambio.Estado;
-            this.IdAdministrativo = intercambio.IdAdministrativo;
             this.IdFamilia= intercambio.IdFamilia;
             this.IdAlumno = intercambio.IdAlumno;
             this.IdPrograma = intercambio.IdPrograma;
@@ -138,7 +135,6 @@ namespace Negocio.Portafolio
         {
             this.IdIntercambio = 0;
             this.Estado = string.Empty;
-            this.IdAdministrativo = 0;
             this.IdFamilia = 0;
             this.IdAlumno = 0;
             this.IdPrograma = 0;
@@ -153,11 +149,6 @@ namespace Negocio.Portafolio
         {
             get { return _estado; }
             set { _estado = value; }
-        } 
-        public int? IdAdministrativo
-        {
-            get { return _idAdministrativo; }
-            set { _idAdministrativo = value; }
         } 
         public int IdFamilia
         {

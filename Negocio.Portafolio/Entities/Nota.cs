@@ -90,7 +90,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla INS_INTERCAMBIO
-                ctx.INS_NOTAS(Evaluacion, IdAlumno, IdNota, IdPrograma);
+                ctx.INS_NOTAS(IdPrograma, IdAlumno, Evaluacion);
                 ctx.SaveChanges();
                 ctx = null;
                 

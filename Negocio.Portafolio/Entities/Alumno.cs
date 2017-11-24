@@ -81,7 +81,7 @@ namespace Negocio.Portafolio
                 if (ctx.ALUMNOS.Any(a => a.ID_ALUMNO == IdAlumno))
                 {
                     //Llama al procedimiento UPDATE de la tabla ALUMNOS
-                    ctx.UPD_ALUMNOS(ApePaterno, ApeMaterno, EstadoMora, Dv, Correo, Reserva, Telefono, IdAlumno, Nombre);
+                    ctx.UPD_ALUMNOS(IdAlumno, Dv, Nombre, ApePaterno, ApeMaterno, Correo, Reserva, Telefono, EstadoMora);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -106,7 +106,7 @@ namespace Negocio.Portafolio
                 else
                 {
                     //Llama al procedimiento CREATE de la tabla ALUMNOS
-                    ctx.INS_ALUMNOS(ApePaterno, ApeMaterno, EstadoMora, Dv, Correo, Reserva, Telefono, IdAlumno, Nombre);
+                    ctx.INS_ALUMNOS(Dv, Nombre, ApePaterno, ApeMaterno, Correo, Reserva, Telefono, EstadoMora);
                     ctx.SaveChanges();
                     ctx = null;
                     return true;

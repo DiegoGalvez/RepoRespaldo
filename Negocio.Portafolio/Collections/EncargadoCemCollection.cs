@@ -51,8 +51,6 @@ namespace Negocio.Portafolio
                 encargadoCem.ApePaterno = item.APELL_PATERNO;
                 encargadoCem.ApeMaterno = item.APELL_MATERNO;
                 encargadoCem.Correo = item.CORREO;
-                encargadoCem.IdPais = item.ID_PAIS;
-                encargadoCem.IdCiudad = item.ID_CIUDAD;
 
                 listaBC.Add(encargadoCem);
             }

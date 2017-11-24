@@ -57,18 +57,6 @@ namespace ServiciosWCF.Portafolio
         [OperationContract]
         string BuscarALumnosPorNombreCompleto(string frase);
         
-        //Cargo
-        [OperationContract]
-        bool CrearCargo(string xml);
-        [OperationContract]
-        string LeerCargo(string xml);
-        [OperationContract]
-        bool ActualizarCargo(string xml);
-        [OperationContract]
-        bool EliminarCargo(string xml);
-        [OperationContract]
-        string LeerTodosCargos();
-
         //Ciudad
         [OperationContract]
         bool CrearCiudad(string xml);

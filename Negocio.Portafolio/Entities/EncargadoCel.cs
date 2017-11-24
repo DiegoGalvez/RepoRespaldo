@@ -22,6 +22,7 @@ namespace Negocio.Portafolio
         private string _correo;
         private int _idPais;
         private int _idCiudad;
+        private int _idInstitucion;
 
         public bool Read()
         {
@@ -39,6 +40,7 @@ namespace Negocio.Portafolio
                 this.Correo = _encargado.CORREO;
                 this.IdPais = _encargado.ID_PAIS;
                 this.IdCiudad = _encargado.ID_CIUDAD;
+                this.IdInstitucion = _encargado.ID_INSTITUCION;
 
                 ctx = null;
 
@@ -81,7 +83,7 @@ namespace Negocio.Portafolio
                 if (ctx.ENCARGADO_CEL.Any(c => c.ID_ENCARGADO_CEL == IdEncargadoCel))
                 {
                     //Llama al procedimiento UPDATE en la tabla ENCARGADO_CEL
-                    ctx.UPD_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
+                    ctx.UPD_ENCARGADO_CEL(IdEncargadoCel, Identificacion, Nombre, ApePaterno, ApeMaterno, Correo, IdCiudad, IdPais, IdInstitucion);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -100,7 +102,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla ENCARGADO_CEL
-                ctx.INS_ENCARGADO_CEL(ApePaterno, ApeMaterno, Correo, IdEncargadoCel, Identificacion, IdCiudad, Nombre, IdPais);
+                ctx.INS_ENCARGADO_CEL(Identificacion, Nombre, ApePaterno, ApeMaterno, Correo, IdCiudad, IdPais, IdInstitucion);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -194,6 +196,19 @@ namespace Negocio.Portafolio
         {
             get { return _identificacion; }
             set { _identificacion = value; }
+        }
+
+        public int IdInstitucion
+        {
+            get
+            {
+                return _idInstitucion;
+            }
+
+            set
+            {
+                _idInstitucion = value;
+            }
         }
     }
 }

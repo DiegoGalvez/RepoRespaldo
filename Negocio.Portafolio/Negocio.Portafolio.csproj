@@ -67,7 +67,6 @@
     <Compile Include="Collections\NotaCollection.cs" />
     <Compile Include="Collections\InstitucionCollection.cs" />
     <Compile Include="Collections\FamiliaAnfitrionaCollection.cs" />
-    <Compile Include="Collections\CargoCollection.cs" />
     <Compile Include="Collections\ActividadCollection.cs" />
     <Compile Include="Collections\PaisColletion.cs" />
     <Compile Include="Collections\ProgramaCollection.cs" />
@@ -77,7 +76,6 @@
     <Compile Include="Collections\AdministrativoCollection.cs" />
     <Compile Include="Entities\Alumno.cs" />
     <Compile Include="Collections\AlumnoCollection.cs" />
-    <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Ciudad.cs" />
     <Compile Include="Entities\EncargadoCem.cs" />
     <Compile Include="Entities\EncargadoCel.cs" />
