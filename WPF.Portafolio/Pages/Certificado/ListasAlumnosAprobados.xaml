@@ -25,7 +25,7 @@
                       AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Red">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Alumno" Binding="{Binding IdAlumno }"/>
-                    <DataGridTextColumn Header="Nombre Alumno" Binding="{Binding Nombre}"/>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
                     <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding ApePaterno}"/>
                     <DataGridTextColumn Header="Apellido Materno" Binding="{Binding ApeMaterno}"/>
                     <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"/>

@@ -29,13 +29,13 @@ namespace Negocio.Portafolio
 
 
         //metodo que lee todos los alumnos
-        public AlumnoCollection AlumnosProgramaFinalizado(int nombrePrograma)
+        public AlumnoCollection AlumnosProgramaFinalizado(int idPrograma)
         {
             EntitiesCEM ctx = new EntitiesCEM();
             var listaDalc = from a in ctx.ALUMNOS
                             join i in ctx.INTERCAMBIO on a.ID_ALUMNO equals i.ID_ALUMNO
                             join p in ctx.PROGRAMAS on i.ID_PROGRAMA equals p.ID_PROGRAMA
-                            where p.ESTADO == "Finalizado"
+                            where p.ESTADO == "Finalizado" && p.ID_PROGRAMA == idPrograma
                             select a ;
                              
 
