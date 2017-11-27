@@ -99,6 +99,8 @@
     <Compile Include="ViewClasses\FamiliaPostulantes\VFamiliasPostulantesCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumnoCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumno.cs" />
+    <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasFinalizados.cs" />
+    <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasFinalizadosCollection.cs" />
     <Compile Include="ViewClasses\VActividad.cs" />
     <Compile Include="ViewClasses\VInstitucion.cs" />
   </ItemGroup>
@@ -113,6 +115,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Certificado.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
