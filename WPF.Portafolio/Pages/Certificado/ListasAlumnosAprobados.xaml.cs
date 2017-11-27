@@ -38,9 +38,9 @@ namespace WPF.Portafolio.Pages.Certificado
 
         private void cargardgAlumnos()
         {
-            AlumnoCollection lista = new AlumnoCollection().AlumnosProgramaFinalizado(programaActual.IdPrograma);
-
-            dgAlumnos.ItemsSource = lista;
+            AlumnoCollection listaAlumnos = new AlumnoCollection().AlumnosProgramaFinalizado(programaActual.IdPrograma);
+            
+            dgAlumnos.ItemsSource = listaAlumnos;
         }
 
         private void descargar_Click(object sender, RoutedEventArgs e)
