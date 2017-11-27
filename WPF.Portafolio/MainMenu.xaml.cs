@@ -21,6 +21,7 @@ using System.Windows.Media.Effects;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Media.Animation;
 using WPF.Portafolio.Pages.Mantenedores;
+using WPF.Portafolio.Pages.Certificado;
 
 namespace WPF.Portafolio
 {
@@ -188,7 +189,7 @@ namespace WPF.Portafolio
 
         private void btnCertificado_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            Main.Content = new ProgramasFinalizados();
         }
 
         private void btnPostularAPrograma_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
