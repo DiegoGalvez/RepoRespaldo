@@ -1,0 +1,45 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.Certificado.ListasAlumnosAprobados"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:local="clr-namespace:WPF.Portafolio.Pages.Certificado"
+      mc:Ignorable="d" 
+      Height="660" Width="1080"
+      Title="ListasAlumnosAprobados">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1010"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Height="660" Width="810" Grid.Column="1" Background="White" Margin="100,0">
+
+            <Label Name="lblTitulo" Content="Alumnos del programa" FontSize="30" Canvas.Left="256" Canvas.Top="20"/>
+            <Label Name="lblNombrePrograma" Content="Nombre programa" FontSize="18" HorizontalContentAlignment="Center" Canvas.Left="152" Canvas.Top="75" Width="535"/>
+            <Label Name="lblFiltros" Content="Filtros:"  Canvas.Left="73" Canvas.Top="115"/>
+            <TextBox x:Name="txtNombreAlumno" Height="23" Controls:TextBoxHelper.Watermark="Nombre del alumno" Canvas.Left="73" Canvas.Top="146" Width="170" BorderBrush="Red" />
+            <Label x:Name="lblProgramas" Content="Lista de alumnos que finalizadon y aprobaron el programa " Canvas.Left="73" Canvas.Top="201"/>
+            <DataGrid x:Name="dgAlumnos" Canvas.Left="73" Canvas.Top="232" Height="239" Width="668" IsReadOnly="True"
+                      AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Red">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Alumno" Binding="{Binding IdAlumno }"/>
+                    <DataGridTextColumn Header="Nombre Alumno" Binding="{Binding Nombre}"/>
+                    <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding ApePaterno}"/>
+                    <DataGridTextColumn Header="Apellido Materno" Binding="{Binding ApeMaterno}"/>
+                    <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"/>
+                    <DataGridTemplateColumn Header="Descargar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="descargar" BorderThickness="0" Background="{x:Null}" Width="40" BorderBrush="{x:Null}" Click="descargar_Click">
+                                    <Image  Source="/WPF.Portafolio;component/Img/icons8-certificate.png" Width="30" Height="30"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Canvas>
+    </Grid>
+</Page>
