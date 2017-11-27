@@ -10,6 +10,7 @@ using Negocio.Portafolio.ViewEntities;
 using Negocio.Portafolio.ViewClasses.NotasProgramaAlumno;
 using Negocio.Portafolio.ViewClasses.AlumnosPostulantes;
 using Negocio.Portafolio.ViewClasses.FamiliaPostulantes;
+using Negocio.Portafolio.ViewClasses.ProgramasFinalizados;
 
 namespace ServiciosWCF.Portafolio
 {
@@ -39,6 +40,7 @@ namespace ServiciosWCF.Portafolio
             }
             return null;
         }
+
 
         public bool ActualizarActividad(string xml)
         {
@@ -634,6 +636,28 @@ namespace ServiciosWCF.Portafolio
             return programaCollection.ReadAll().Serializar();
         }
 
+        public int IdActualEntidadPrograma()
+        {
+            Programa programa = new Programa();
+
+            return programa.CurrentProgramaEntityID();
+        }
+
+        public string BuscarProgramasFinalizados()
+        {
+            VProgramasFinalizadosCollection programaCollection = new VProgramasFinalizadosCollection().LeerProgramasFinalizados();
+            
+            return programaCollection.Serializar();
+        }
+
+
+        public string BuscarProgramasFinalizadosCEL(int idCEL)
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+
+            return programaCollection.BuscarProgramasFinalizadosCEL(idCEL).Serializar();
+        }
+
         //Usuario
         public bool validarUsuario(string userPass)
         {
@@ -773,11 +797,8 @@ namespace ServiciosWCF.Portafolio
             }
         }
 
-        public int IdActualEntidadPrograma()
-        {
-            Programa programa = new Programa();
+        
 
-            return programa.CurrentProgramaEntityID();
-        }
+        
     }
 }

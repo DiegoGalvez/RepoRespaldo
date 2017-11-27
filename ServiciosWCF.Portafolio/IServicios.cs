@@ -168,7 +168,11 @@ namespace ServiciosWCF.Portafolio
         bool EliminarPrograma(string xml);
         [OperationContract]
         string LeerTodosProgramas();
-        
+        [OperationContract]
+        string BuscarProgramasFinalizados();
+        [OperationContract]
+        string BuscarProgramasFinalizadosCEL(int idCEL);
+
         //Usuario
         [OperationContract]
         bool validarUsuario(string userPass);
@@ -191,5 +195,6 @@ namespace ServiciosWCF.Portafolio
         //Vista familia postulantes
         [OperationContract]
         string BuscarFamiliaNombreApellido(string frase);
+        
     }
 }
