@@ -27,6 +27,21 @@ namespace Negocio.Portafolio
             this.AddRange(list);
         }
 
+        //Metodo que busca los programas correspondientes al CEL que esta asociado el Usuario
+        public ProgramaCollection BuscarProgramasFinalizadosCEL(int idCEL)
+        {
+            EntitiesCEM ctx = new EntitiesCEM();
+            var listaDalc = from p in ctx.PROGRAMAS where p.ID_INSTITUCION == idCEL select p;
+            return GenerarListado(listaDalc.ToList());
+        }
+
+        //Metodo que busca todos los programas finalizados
+        public ProgramaCollection BuscarProgramasFinalizados()
+        {
+            EntitiesCEM ctx = new EntitiesCEM();
+            var listaDalc = from p in ctx.PROGRAMAS where p.ESTADO.Equals("Finalizado") select  p ;
+            return GenerarListado(listaDalc.ToList());
+        }
 
         //metodo que lee todos los Programas
         public ProgramaCollection ReadAll()
@@ -48,6 +63,7 @@ namespace Negocio.Portafolio
                 programa.IdPrograma= item.ID_PROGRAMA;
                 programa.NombrePrograma = item.NOMBRE_PROGRAMA;
                 programa.Descripcion = item.DESCRIPCION;
+                programa.IdInstitucion = item.ID_INSTITUCION;
                 programa.Cupos= item.CUPOS;
                 programa.FechaInicio= item.FECHA_INICIO;
                 programa.FechaTermino= item.FECHA_TERMINO;
@@ -71,5 +87,6 @@ namespace Negocio.Portafolio
             //return writer.ToString();
         }
 
+        
     }
 }
