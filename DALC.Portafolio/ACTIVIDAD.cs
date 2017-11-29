@@ -18,6 +18,6 @@ namespace DALC.Portafolio
         public string NOMBREACTIVIDAD { get; set; }
         public string DESCRIPCION { get; set; }
     
-        public virtual PROGRAMA_ACTIVIDAD PROGRAMA_ACTIVIDAD { get; set; }
+        public virtual PROGRAMAS PROGRAMAS { get; set; }
     }
 }

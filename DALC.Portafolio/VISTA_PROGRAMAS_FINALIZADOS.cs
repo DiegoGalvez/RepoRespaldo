@@ -12,10 +12,15 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class V_NOTAS_ALUMNO
+    public partial class VISTA_PROGRAMAS_FINALIZADOS
     {
-        public string Nombre { get; set; }
+        public int ID_PROGRAMA { get; set; }
         public string NOMBRE_PROGRAMA { get; set; }
-        public Nullable<decimal> NOTA { get; set; }
+        public string NOMBRE_CEL { get; set; }
+        public string NOMBRE_ENCARGADO_CEL { get; set; }
+        public string NOM_CIUDAD { get; set; }
+        public string NOM_PAIS { get; set; }
+        public System.DateTime FECHA_INICIO { get; set; }
+        public System.DateTime FECHA_TERMINO { get; set; }
     }
 }

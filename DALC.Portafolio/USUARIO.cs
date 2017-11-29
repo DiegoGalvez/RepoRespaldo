@@ -17,17 +17,17 @@ namespace DALC.Portafolio
         public int ID_USUARIO { get; set; }
         public string NOMBRE_USUARIO { get; set; }
         public string PASSWORD { get; set; }
+        public string ROL { get; set; }
         public Nullable<int> ID_ALUMNO { get; set; }
         public Nullable<int> ID_ADMINISTRATIVO { get; set; }
         public Nullable<int> ID_FAMILIA { get; set; }
         public Nullable<int> ID_ENCARGADO_CEL { get; set; }
         public Nullable<int> ID_ENCARGADO_CEM { get; set; }
-        public string ROL { get; set; }
     
         public virtual ADMINISTRATIVO ADMINISTRATIVO { get; set; }
         public virtual ALUMNOS ALUMNOS { get; set; }
+        public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
         public virtual ENCARGADO_CEL ENCARGADO_CEL { get; set; }
         public virtual ENCARGADO_CEM ENCARGADO_CEM { get; set; }
-        public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
     }
 }

@@ -16,13 +16,12 @@ namespace DALC.Portafolio
     {
         public int ID_INTERCAMBIO { get; set; }
         public string ESTADO { get; set; }
-        public Nullable<int> ID_ADMINISTRATIVO { get; set; }
         public Nullable<int> ID_FAMILIA { get; set; }
         public Nullable<int> ID_ALUMNO { get; set; }
         public Nullable<int> ID_PROGRAMA { get; set; }
     
-        public virtual ADMINISTRATIVO ADMINISTRATIVO { get; set; }
         public virtual ALUMNOS ALUMNOS { get; set; }
         public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
+        public virtual PROGRAMAS PROGRAMAS { get; set; }
     }
 }

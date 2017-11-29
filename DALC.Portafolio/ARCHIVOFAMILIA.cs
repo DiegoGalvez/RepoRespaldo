@@ -12,11 +12,13 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class PROGRAMA_ACTIVIDAD
+    public partial class ARCHIVOFAMILIA
     {
-        public int ID_PROGRAMA { get; set; }
-        public int ID_ACTIVIDAD { get; set; }
+        public int ID_ARCHIVO_FAMILIA { get; set; }
+        public string DIRECCION_ENLACE { get; set; }
+        public string TIPO_ARCHIVO { get; set; }
+        public int ID_FAMILIA { get; set; }
     
-        public virtual ACTIVIDAD ACTIVIDAD { get; set; }
+        public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
     }
 }

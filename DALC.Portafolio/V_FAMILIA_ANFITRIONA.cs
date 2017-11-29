@@ -14,7 +14,7 @@ namespace DALC.Portafolio
     
     public partial class V_FAMILIA_ANFITRIONA
     {
-        public string Nombre { get; set; }
+        public string NOMBRE { get; set; }
         public string IDENTIFICACION { get; set; }
         public long TELEFONO_CONTACTO { get; set; }
         public string CORREO { get; set; }

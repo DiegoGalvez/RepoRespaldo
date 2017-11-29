@@ -28,8 +28,10 @@ namespace DALC.Portafolio
         public int ID_PAIS { get; set; }
         public int ID_CIUDAD { get; set; }
         public string CORREO { get; set; }
+        public int ID_INSTITUCION { get; set; }
     
         public virtual CIUDAD CIUDAD { get; set; }
+        public virtual INSTITUCION INSTITUCION { get; set; }
         public virtual PAIS PAIS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }

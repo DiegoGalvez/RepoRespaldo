@@ -17,6 +17,7 @@ namespace DALC.Portafolio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FAMILIASANFITRIONA()
         {
+            this.ARCHIVOFAMILIA = new HashSet<ARCHIVOFAMILIA>();
             this.INTERCAMBIO = new HashSet<INTERCAMBIO>();
             this.USUARIO = new HashSet<USUARIO>();
         }
@@ -28,13 +29,15 @@ namespace DALC.Portafolio
         public string IDENTIFICACION { get; set; }
         public string CORREO { get; set; }
         public long TELEFONO_CONTACTO { get; set; }
-        public string RUTA_ARCHIVO { get; set; }
         public string DIRECCION { get; set; }
         public int ID_PAIS { get; set; }
-        public Nullable<int> ID_CIUDAD { get; set; }
+        public int ID_CIUDAD { get; set; }
         public string ESTADO { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ARCHIVOFAMILIA> ARCHIVOFAMILIA { get; set; }
         public virtual CIUDAD CIUDAD { get; set; }
+        public virtual PAIS PAIS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INTERCAMBIO> INTERCAMBIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

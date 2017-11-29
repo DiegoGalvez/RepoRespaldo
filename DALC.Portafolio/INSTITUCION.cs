@@ -17,6 +17,7 @@ namespace DALC.Portafolio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INSTITUCION()
         {
+            this.ENCARGADO_CEL = new HashSet<ENCARGADO_CEL>();
             this.PROGRAMAS = new HashSet<PROGRAMAS>();
         }
     
@@ -26,12 +27,14 @@ namespace DALC.Portafolio
         public Nullable<long> TELEFONO { get; set; }
         public string PAGINA_WEB { get; set; }
         public string DIRECCION { get; set; }
-        public Nullable<int> ID_CIUDAD { get; set; }
-        public Nullable<int> ID_PAIS { get; set; }
+        public int ID_CIUDAD { get; set; }
+        public int ID_PAIS { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PROGRAMAS> PROGRAMAS { get; set; }
         public virtual CIUDAD CIUDAD { get; set; }
         public virtual PAIS PAIS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PROGRAMAS> PROGRAMAS { get; set; }
     }
 }

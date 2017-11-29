@@ -17,7 +17,6 @@ namespace DALC.Portafolio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ADMINISTRATIVO()
         {
-            this.INTERCAMBIO = new HashSet<INTERCAMBIO>();
             this.USUARIO = new HashSet<USUARIO>();
         }
     
@@ -26,11 +25,7 @@ namespace DALC.Portafolio
         public string APELL_PATERNO { get; set; }
         public string APELL_MATERNO { get; set; }
         public string CORREO { get; set; }
-        public Nullable<int> ID_CARGO { get; set; }
     
-        public virtual CARGO CARGO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INTERCAMBIO> INTERCAMBIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }
     }

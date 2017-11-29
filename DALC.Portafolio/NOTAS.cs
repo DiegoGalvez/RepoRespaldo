@@ -20,5 +20,6 @@ namespace DALC.Portafolio
         public Nullable<decimal> NOTA { get; set; }
     
         public virtual ALUMNOS ALUMNOS { get; set; }
+        public virtual PROGRAMAS PROGRAMAS { get; set; }
     }
 }
