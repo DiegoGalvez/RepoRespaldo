@@ -100,6 +100,13 @@ namespace ServiciosWCF.Portafolio
             return actividad.CurrentActividadEntityID();
         }
 
+        public string LeerActividadesPrograma(int idPrograma)
+        {
+            ActividadCollection listaActividades = new ActividadCollection().LeerActividadesPrograma(idPrograma);
+
+            return listaActividades.Serializar();
+        }
+
         //Administrativo
         public bool CrearAdministrativo(string xml)
         {
@@ -796,8 +803,6 @@ namespace ServiciosWCF.Portafolio
                 return null;
             }
         }
-
-        
 
         
     }

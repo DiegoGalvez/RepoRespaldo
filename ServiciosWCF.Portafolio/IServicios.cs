@@ -30,6 +30,9 @@ namespace ServiciosWCF.Portafolio
         bool DesenlazarPrograma();
         [OperationContract]
         int IdActualEntidadActividad();
+        [OperationContract]
+        string LeerActividadesPrograma(int idPrograma);
+
 
         //Administrativo
         [OperationContract]

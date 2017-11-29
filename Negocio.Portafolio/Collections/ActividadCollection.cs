@@ -28,6 +28,13 @@ namespace Negocio.Portafolio
             this.AddRange(list);
         }
 
+        //metodo que lee todas las actividades
+        public ActividadCollection LeerActividadesPrograma(int IdPrograma)
+        {
+            EntitiesCEM listaDalc = new EntitiesCEM();
+            var list = listaDalc.Database.SqlQuery<ACTIVIDAD>(string.Format("SELECT a.DESCRIPCION, a.ID_ACTIVIDAD, a.NOMBREACTIVIDAD FROM PROGRAMA_ACTIVIDAD p, ACTIVIDAD a WHERE a.ID_ACTIVIDAD = p.ID_ACTIVIDAD AND p.ID_PROGRAMA = {0}",IdPrograma));
+            return GenerarListado(list.ToList());
+        }
 
         //metodo que lee todas las actividades
         public ActividadCollection ReadAll()
