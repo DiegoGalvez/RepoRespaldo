@@ -22,6 +22,7 @@ using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Media.Animation;
 using WPF.Portafolio.Pages.Mantenedores;
 using WPF.Portafolio.Pages.Certificado;
+using WPF.Portafolio.Pages.Programas;
 
 namespace WPF.Portafolio
 {
@@ -52,8 +53,15 @@ namespace WPF.Portafolio
 
             switch (UsuarioActual.Rol)
             {
-                case "Adminstrador":
+                case "Administrador":
                     //Menu para Administrador (Todas las opciones disponibles)
+                    filaPostulacionesA.Height = new GridLength(0);
+                    btnPostulacionesAlumnos.Visibility = Visibility.Collapsed;
+                    imgPostulacionesAlumnos.Visibility = Visibility.Collapsed;
+
+                    filaPostularaPrograma.Height = new GridLength(0);
+                    btnPostularAPrograma.Visibility = Visibility.Collapsed;
+                    imgListaProgramas.Visibility = Visibility.Collapsed;
                     break;
                 case "Alumno":
                     //Menu para alumno
@@ -67,10 +75,11 @@ namespace WPF.Portafolio
                     break;
                 case "EncargadoCEM":
                     //Menu para Encargado CEM
-                    filaUnirAPrograma.Height = new GridLength(0);
-                    btnPostulacionesAlumnos.Visibility = Visibility.Collapsed;
-                    imgPostulacionesAlumnos.Visibility = Visibility.Collapsed;
+                    filaPostularaPrograma.Height = new GridLength(0);
+                    btnPostularAPrograma.Visibility = Visibility.Collapsed;
+                    imgListaProgramas.Visibility = Visibility.Collapsed;
                     break;
+
                 case "EncargadoCEL":
                     //Menu para Encargado CEL
                     filaPostulacionesA.Height = new GridLength(0);
@@ -81,9 +90,13 @@ namespace WPF.Portafolio
                     btnReporte.Visibility = Visibility.Collapsed;
                     imgReporte.Visibility = Visibility.Collapsed;
 
-                    filaCertficado.Height = new GridLength(0);
+                    filaCertificado.Height = new GridLength(0);
                     btnCertificado.Visibility = Visibility.Collapsed;
                     imgCertificado.Visibility = Visibility.Collapsed;
+
+                    filaValidarPrograma.Height = new GridLength(0);
+                    btnValidarPrograma.Visibility = Visibility.Collapsed;
+                    imgValidarProgramas.Visibility = Visibility.Collapsed;
                     break;
             }
         }
@@ -164,21 +177,30 @@ namespace WPF.Portafolio
 
         private void btnPostulacionesAlumnos_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CleanBackgroundbtn();
+            btnPostulacionesAlumnos.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new PostulacionAlumno();
         }
-        
+
+       
         private void btnNotas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CleanBackgroundbtn();
+            btnNotas.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new ListaNotas();
         }
 
         private void btnPostulacionesFamilias_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CleanBackgroundbtn();
+            btnPostulacionesFamilias.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new ListasFamiliasPostulantes();
         }
         
         private void btnMantendor_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CleanBackgroundbtn();
+            btnMantendor.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new TabsMantenedor();
         }
 
@@ -189,17 +211,41 @@ namespace WPF.Portafolio
 
         private void btnCertificado_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            CleanBackgroundbtn();
+            btnCertificado.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new ProgramasFinalizados();
         }
 
         private void btnPostularAPrograma_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+            CleanBackgroundbtn();
+            btnPostularAPrograma.Background = new SolidColorBrush(Colors.DarkRed);
+            Main.Content = new UnirAPrograma();
         }
+
+        private void btnValidarPrograma_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            CleanBackgroundbtn();
+            btnValidarPrograma.Background = new SolidColorBrush(Colors.DarkRed);
+            Main.Content = new AceptarPrograma();
+        }
+        
 
         private void btnCerrarSesion_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void CleanBackgroundbtn()
+        {
+            btnCertificado.Background = null;
+            btnMantendor.Background = null;
+            btnNotas.Background = null;
+            btnPostulacionesAlumnos.Background = null;
+            btnPostulacionesFamilias.Background = null;
+            btnPostularAPrograma.Background = null;
+            btnReporte.Background = null;
+            btnValidarPrograma.Background = null;
         }
 
         

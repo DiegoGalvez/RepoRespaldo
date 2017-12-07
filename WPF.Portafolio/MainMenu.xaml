@@ -34,8 +34,9 @@
                         <RowDefinition Height="60" x:Name="filaPostatulacionesF"/>
                         <RowDefinition Height="60" x:Name="filaMantenedor"/>
                         <RowDefinition Height="60" x:Name="filaReporte"/>
-                        <RowDefinition Height="60" x:Name="filaCertficado"/>
-                        <RowDefinition Height="60" x:Name="filaUnirAPrograma"/>
+                        <RowDefinition Height="60" x:Name="filaCertificado"/>
+                        <RowDefinition Height="60" x:Name="filaPostularaPrograma"/>
+                        <RowDefinition Height="60" x:Name="filaValidarPrograma"/>
                         <RowDefinition Height="*" x:Name="filaEspacionFin"/>
                         <RowDefinition Height="60" x:Name="filaCerrarS" />
                     </Grid.RowDefinitions>
@@ -46,7 +47,7 @@
                                HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="18" FontWeight="Bold"/>
                         <Image Source="Img/icons8-menu.png" x:Name="imgMenu" Height="40" Width="40"  Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                     </DockPanel>
-                    <DockPanel x:Name="btnPostulacionesAlumnos" MouseLeftButtonUp="btnPostulacionesAlumnos_MouseLeftButtonUp" Grid.Row="2" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
+                    <DockPanel x:Name="btnPostulacionesAlumnos" MouseLeftButtonUp="btnPostulacionesAlumnos_MouseLeftButtonUp" Grid.Row="2" Background="{x:Null}" HorizontalAlignment="Right" Width="300" Focusable="True" >
                         <Label Name="lblPostulacionesAlumnos" Content="Postulaciones de Alumnos" Margin="10,0,0,0" Width="217"
                                HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-analyze.png"  x:Name="imgPostulacionesAlumnos" Height="40" Width="40" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0" />
@@ -81,7 +82,12 @@
                                HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-school.png" x:Name="imgListaProgramas" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
-                    <DockPanel x:Name="btnCerrarSesion" Grid.Row="10" MouseLeftButtonUp="btnCerrarSesion_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
+                    <DockPanel x:Name="btnValidarPrograma" Grid.Row="9" Background="{x:Null}" HorizontalAlignment="Right" Width="300" MouseLeftButtonUp="btnValidarPrograma_MouseLeftButtonUp" >
+                        <Label Name="lblValidarPrograma" Content="Validar Programa" Margin="10,0,0,0" Width="217"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Image Source="Img/icons8-ValidarPrograma.png" x:Name="imgValidarProgramas" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
+                    </DockPanel>
+                    <DockPanel x:Name="btnCerrarSesion" Grid.Row="11" MouseLeftButtonUp="btnCerrarSesion_MouseLeftButtonUp" HorizontalAlignment="Right" Width="300" >
                         <Label Name="lblCerrarSesion" Content="Cerrar Sesion" Margin="10,0,0,0" Width="217"
                                HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-exit.png" x:Name="imgCerrarSesion" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
