@@ -15,7 +15,7 @@
         <Label x:Name="lblRol" Content="Id Persona:" HorizontalAlignment="Left" Margin="305,232,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTipoRol" Content="Tipo Rol:" HorizontalAlignment="Left" Margin="308,201,0,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtIdUsuario" Height="23" Margin="387,108,303,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtIdUsuario" Height="23" Margin="387,108,303,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsReadOnly="True"/>
         <TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="23" Margin="387,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="387,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbTipoRol" HorizontalAlignment="Left" Margin="387,201,0,0" VerticalAlignment="Top" Width="120"/>

@@ -59,7 +59,15 @@ namespace ServiciosWCF.Portafolio
         string LeerTodosAlumnos();
         [OperationContract]
         string BuscarALumnosPorNombreCompleto(string frase);
-        
+        [OperationContract]
+        bool ValidarMora(string xml);
+        [OperationContract]
+        string AlumnosPorInstitucion(int idInstitucion);
+        [OperationContract]
+        string AlumnosDePrograma(int idPrograma);
+        [OperationContract]
+        string AlumnosDeProgramaPorInstitucion(int idPrograma, int idInstitucion);
+
         //Ciudad
         [OperationContract]
         bool CrearCiudad(string xml);
@@ -145,6 +153,9 @@ namespace ServiciosWCF.Portafolio
         string LeerTodasNotas();
         [OperationContract]
         string NotasAlumno(string xml);
+        [OperationContract]
+        string NotasPorAlumno(int idAlumno);
+
 
         //Pais
         [OperationContract]
@@ -175,6 +186,14 @@ namespace ServiciosWCF.Portafolio
         string BuscarProgramasFinalizados();
         [OperationContract]
         string BuscarProgramasFinalizadosCEL(int idCEL);
+        [OperationContract]
+        string ProgramasPublicados();
+        [OperationContract]
+        string ProgramasPublicadosPorInstitucion(int idInstitucion);
+        [OperationContract]
+        string BuscarProgramasPublicadosPorNombre(string frase);
+        [OperationContract]
+        string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase);
 
         //Usuario
         [OperationContract]
@@ -191,6 +210,8 @@ namespace ServiciosWCF.Portafolio
         string LeerTodosUsuarios();
         [OperationContract]
         string ReadAllVNotasPrograma(int idALumno);
+        [OperationContract]
+        string ObtenerNotasModificable(int idALumno);
 
         //Vista alumnos postulantes
         [OperationContract]

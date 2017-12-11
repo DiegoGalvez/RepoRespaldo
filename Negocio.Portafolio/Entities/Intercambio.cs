@@ -74,7 +74,7 @@ namespace Negocio.Portafolio
                 if (ctx.INTERCAMBIO.Any(i => i.ID_INTERCAMBIO == IdIntercambio))
                 {
                     //Llama al procedimiento UPDATE en la tabla INTERCAMBIO
-                    ctx.UPD_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdPrograma, IdAlumno);
+                    ctx.UPD_INTERCAMBIO(IdIntercambio, Estado, IdFamilia, IdAlumno, IdPrograma);
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -93,7 +93,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla INS_INTERCAMBIO
-                ctx.INS_INTERCAMBIO(Estado, IdFamilia, IdPrograma, IdAlumno);
+                ctx.INS_INTERCAMBIO(Estado, IdFamilia, IdAlumno, IdPrograma);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

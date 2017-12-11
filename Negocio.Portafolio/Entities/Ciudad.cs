@@ -27,7 +27,7 @@ namespace Negocio.Portafolio
                 //Asigna los valores de obj del CIUDAD Entity al obj Ciudad de la Clase
                 this.IdCiudad = _ciudad.ID_CIUDAD;
                 this.NombreCiudad = _ciudad.NOM_CIUDAD;
-                this.IdPais = _ciudad.ID_PAIS.GetValueOrDefault();
+                this.IdPais = _ciudad.ID_PAIS;
 
                 ctx = null;
 

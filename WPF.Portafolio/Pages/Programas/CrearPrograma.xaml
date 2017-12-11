@@ -22,14 +22,14 @@
             <DatePicker x:Name="dtTermino" Canvas.Left="577" Canvas.Top="109"/>
             <ComboBox x:Name="cbTipoPrograma" Canvas.Left="577" Canvas.Top="140" Width="145"/>
             <TextBox x:Name="txtCupos" Height="23" Canvas.Left="577" TextWrapping="Wrap" Canvas.Top="171" Width="145"/>
-            <Button x:Name="btnAgregar" Content="Agregar" Canvas.Left="475" Canvas.Top="247" Width="74" Click="btnAgregar_Click"/>
-            <Button x:Name="btnModificar" Content="Modificar" Canvas.Left="581" Canvas.Top="247" Width="74" IsEnabled="False" Click="btnModificar_Click"/>
-            <Button x:Name="btnBorrar" Content="Borrar" Canvas.Left="687" Canvas.Top="247" Width="76" RenderTransformOrigin="0.697,0.519" IsEnabled="False" Click="btnBorrar_Click"/>
-            <DataGrid x:Name="dgActividades" IsReadOnly="True" Canvas.Left="45" Canvas.Top="279" Height="186" Width="720" SelectionChanged="dgActividades_SelectionChanged"/>
-            <Label x:Name="lblActividad" FontSize="18" Content="Actividades" Canvas.Left="45" Canvas.Top="240"/>
+            <Button x:Name="btnAgregar" Content="Agregar" Canvas.Left="475" Canvas.Top="226" Width="74" Click="btnAgregar_Click"/>
+            <Button x:Name="btnModificar" Content="Modificar" Canvas.Left="581" Canvas.Top="226" Width="74" IsEnabled="False" Click="btnModificar_Click"/>
+            <Button x:Name="btnBorrar" Content="Borrar" Canvas.Left="687" Canvas.Top="226" Width="76" RenderTransformOrigin="0.697,0.519" IsEnabled="False" Click="btnBorrar_Click"/>
+            <DataGrid x:Name="dgActividades" IsReadOnly="True" Canvas.Left="45" Canvas.Top="258" Height="157" Width="720" SelectionChanged="dgActividades_SelectionChanged"/>
+            <Label x:Name="lblActividad" FontSize="18" Content="Actividades" Canvas.Left="45" Canvas.Top="219"/>
             <Label x:Name="lblTitulo" Content="Administrar un programa" FontSize="24" VerticalAlignment="Top" Margin="268,20,0,0" Width="285"/>
-            <Button x:Name="btnAceptar" Content="Confirmar" Canvas.Left="268" Canvas.Top="479" Width="75" Click="btnAceptar_Click"/>
-            <Button x:Name="btnLimpiar" Content="LIMPIAR" Canvas.Left="478" Canvas.Top="479" Width="75" Click="btnLimpiar_Click"/>
+            <Button x:Name="btnAceptar" Content="Confirmar" Canvas.Left="268" Canvas.Top="438" Width="75" Click="btnAceptar_Click"/>
+            <Button x:Name="btnLimpiar" Content="LIMPIAR" Canvas.Left="477" Canvas.Top="438" Width="75" Click="btnLimpiar_Click"/>
         </Canvas>
 
     </Grid>

@@ -209,7 +209,27 @@ namespace ServiciosWCF.Portafolio
 
             return alumnoCollection.BuscarALumnosPorNombreCompleto(frase).Serializar();
         }
-        
+
+        public string AlumnosPorInstitucion(int idInstitucion)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            return alumnoCollection.AlumnosPorInstitucion(idInstitucion).Serializar();
+        }
+
+        public string AlumnosDePrograma(int idPrograma)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            return alumnoCollection.AlumnosDePrograma(idPrograma).Serializar();
+        }
+
+        public string AlumnosDeProgramaPorInstitucion(int idPrograma, int idInstitucion)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            return alumnoCollection.AlumnosDeProgramaPorInstitucion(idPrograma, idInstitucion).Serializar();
+        }
 
         //Ciudad
         public bool CrearCiudad(string xml)
@@ -225,7 +245,13 @@ namespace ServiciosWCF.Portafolio
 
         public string LeerCiudad(string xml)
         {
-            throw new NotImplementedException();
+            Ciudad ciudad = new Ciudad(xml);
+
+            if (ciudad.Read())
+            {
+                return ciudad.Serializar();
+            }
+            return null;
         }
 
         public bool ActualizarCiudad(string xml)
@@ -277,7 +303,13 @@ namespace ServiciosWCF.Portafolio
 
         public string LeerEncargadoCel(string xml)
         {
-            throw new NotImplementedException();
+            EncargadoCel encargadoCel = new EncargadoCel(xml);
+
+            if (encargadoCel.Read())
+            {
+                return encargadoCel.Serializar(); 
+            }
+            return encargadoCel.Serializar();
         }
 
         public bool ActualizarEncargadoCel(string xml)
@@ -506,12 +538,18 @@ namespace ServiciosWCF.Portafolio
 
         public string LeerNota(string xml)
         {
-            throw new NotImplementedException();
+            Nota nota = new Nota(xml);
+
+            if (nota.Read())
+            {
+                return nota.Serializar();
+            }
+            return null;
         }
 
         public bool ActualizarNota(string xml)
         {
-            Nota nota = new Nota();
+            Nota nota = new Nota(xml);
 
             if (nota.Update())
             {
@@ -590,6 +628,13 @@ namespace ServiciosWCF.Portafolio
             return paisCollection.ReadAll().Serializar();
         }
 
+        public string NotasPorAlumno(int idAlumno)
+        {
+            NotaCollection notaCollection = new NotaCollection();
+
+            return notaCollection.NotasPorAlumno(idAlumno).Serializar();
+        }
+
         //Programa
         public bool CrearPrograma(string xml)
         {
@@ -616,7 +661,7 @@ namespace ServiciosWCF.Portafolio
 
         public bool ActualizarPrograma(string xml)
         {
-            Programa programa = new Programa();
+            Programa programa = new Programa(xml);
 
             if (programa.Update())
             {
@@ -656,14 +701,38 @@ namespace ServiciosWCF.Portafolio
             
             return programaCollection.Serializar();
         }
-
-
+        
         public string BuscarProgramasFinalizadosCEL(int idCEL)
         {
             ProgramaCollection programaCollection = new ProgramaCollection();
 
             return programaCollection.BuscarProgramasFinalizadosCEL(idCEL).Serializar();
         }
+
+        public string ProgramasPublicados()
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+            return programaCollection.ProgramasPublicados().Serializar();
+        }
+
+        public string ProgramasPublicadosPorInstitucion(int idInstitucion)
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+            return programaCollection.ProgramasPublicadosPorInstitucion(idInstitucion).Serializar();
+        }
+
+        public string BuscarProgramasPublicadosPorNombre(string frase)
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+            return programaCollection.BuscarProgramasPublicadosPorNombre(frase).Serializar();
+        }
+
+        public string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase)
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+            return programaCollection.BuscarProgramasPublicadosPorInstitucionYNombre(idInstitucion, frase).Serializar();
+        }
+
 
         //Usuario
         public bool validarUsuario(string userPass)
@@ -804,6 +873,40 @@ namespace ServiciosWCF.Portafolio
             }
         }
 
-        
+        public bool ValidarMora(string xml)
+        {
+            try
+            {
+                Alumno alumno = new Alumno();
+                alumno.IdAlumno = int.Parse(xml);
+                if (alumno.Read())
+                {
+                    if (alumno.EstadoMora.ToUpper().Equals("NO"))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public string ObtenerNotasModificable(int idALumno)
+        {
+            try
+            {
+                VNotasModificableCollection lista = new VNotasModificableCollection();
+
+                return lista.ObtenerNotasModificable(idALumno).Serializar();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

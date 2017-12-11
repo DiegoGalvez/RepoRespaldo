@@ -119,6 +119,9 @@
     <Compile Include="Pages\AdministrarAlumnos.xaml.cs">
       <DependentUpon>AdministrarAlumnos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdministrarFamilias.xaml.cs">
+      <DependentUpon>AdministrarFamilias.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdministrarUsuarios.xaml.cs">
       <DependentUpon>AdministrarUsuarios.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,9 @@
     <Compile Include="Pages\Mantenedores\TabsMantenedor.xaml.cs">
       <DependentUpon>TabsMantenedor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Programas\AceptarPrograma.xaml.cs">
+      <DependentUpon>AceptarPrograma.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Programas\AdministrarProgramas.xaml.cs">
       <DependentUpon>AdministrarProgramas.xaml</DependentUpon>
     </Compile>
@@ -185,8 +191,11 @@
     <Compile Include="Pages\Familias\RegistroFamilia.xaml.cs">
       <DependentUpon>RegistroFamilia.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ListaNotasProgramaAlumnos\ListaAlumnos.xaml.cs">
-      <DependentUpon>ListaAlumnos.xaml</DependentUpon>
+    <Compile Include="Pages\ListaNotasProgramaAlumnos\ListaProgramasNotas.xaml.cs">
+      <DependentUpon>ListaProgramasNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Programas\UnirAPrograma.xaml.cs">
+      <DependentUpon>UnirAPrograma.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SolicitudesAlumno.xaml.cs">
       <DependentUpon>SolicitudesAlumno.xaml</DependentUpon>
@@ -289,6 +298,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\AdministrarFamilias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\AdministrarUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -357,6 +370,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Programas\AceptarPrograma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Programas\AdministrarProgramas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -377,9 +394,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ListaNotasProgramaAlumnos\ListaAlumnos.xaml">
+    <Page Include="Pages\ListaNotasProgramaAlumnos\ListaProgramasNotas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Programas\UnirAPrograma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SolicitudesAlumno.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -438,7 +459,21 @@
   <ItemGroup>
     <Resource Include="Img\logosf.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Img\icons8-ValidarPrograma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Botones\addition-sign.png" />
+    <Resource Include="Img\Botones\cancel.png" />
+    <Resource Include="Img\Botones\checked.png" />
+    <Resource Include="Img\Botones\create-new-pencil-button.png" />
+    <Resource Include="Img\Botones\funnel.png" />
+    <Resource Include="Img\Botones\Modificar.png" />
+    <Resource Include="Img\Botones\save-icon-silhouette.png" />
+    <Resource Include="Img\Botones\search.png" />
+    <Resource Include="Img\Botones\short-shovel-to-sweep.png" />
+    <Resource Include="Img\Botones\waste-bin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

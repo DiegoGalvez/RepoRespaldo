@@ -143,6 +143,7 @@ namespace Negocio.Portafolio
             this.Correo = encargadoCel.Correo;
             this.IdPais = encargadoCel.IdPais;
             this.IdCiudad = encargadoCel.IdCiudad;
+            this.IdInstitucion = encargadoCel.IdInstitucion;
         }
         public string Serializar()
         {

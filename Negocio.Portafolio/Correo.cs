@@ -16,7 +16,7 @@ public class Correo
                  <meta content=""text/html; charset=utf-8"" http-equiv=""Content-Type"">
                 <head><title></title></head>
                 <body>
-                <img src = ""http://mail.vtr.net/~jo.inostroza/Logo.png""/><br/><br/>
+                <img src = ""http://mail.vtr.net/~jo.inostroza/Logo.jpeg"" /><br/><br/>
                 <h2> {0} <h2/><br/>
                  <div style = ""border-top:3px solid red""></ div >
                     <span style =""font-family:Arial;font-size:10pt"">
@@ -30,24 +30,6 @@ public class Correo
                 </html>";
         return body = string.Format(template, var0,var1,var2);
         
-        /*
-         return body = @"<html lang=""en"">
-                 <meta content=""text/html; charset=utf-8"" http-equiv=""Content-Type"">
-                <head><title></title></head>
-                <body>
-                <img src = ""http://mail.vtr.net/~jo.inostroza/Logo.png""/><br/><br/>
-                 <div style = ""border-top:3px solid red""></ div >
-                    <span style =""font-family:Arial;font-size:10pt"">
-                     Hello<b> </b>,<br/><br/>
-                          A new article has been published on ASPSnippets.<br/><br/>        
-                {Description}
-                <br/><br/>
-                Thanks <br/>
-                ASPSnippets
-                </span>
-                </body>
-                </html>";
-         */
     }
 
     public void SendHtmlFormattedEmail(string recepientEmail, string subject, string body)

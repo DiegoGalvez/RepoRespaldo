@@ -54,7 +54,7 @@ namespace Negocio.Portafolio
 
                 ciudad.IdCiudad = item.ID_CIUDAD;
                 ciudad.NombreCiudad = item.NOM_CIUDAD;
-                ciudad.IdPais = item.ID_PAIS.GetValueOrDefault();
+                ciudad.IdPais = item.ID_PAIS;
 
                 listaBC.Add(ciudad);
             }

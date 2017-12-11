@@ -23,6 +23,27 @@ namespace WPF.Portafolio.Pages.Mantenedores
         public TabsMantenedor()
         {
             InitializeComponent();
+
+            CargarTabs();
+        }
+
+        private void CargarTabs()
+        {
+            switch (MainMenu.UsuarioActual.Rol)
+            {
+                case "Administrador":
+                    
+                    break;
+                case "EncargadoCEM":
+                    tabAlumnos.Visibility = Visibility.Collapsed;
+                    tabFamilia.Visibility = Visibility.Collapsed;
+                    tabUsuarios.Visibility = Visibility.Collapsed;
+                    break;
+                case "EncargadoCEL":
+                    tabPrograma.Visibility = Visibility.Collapsed;
+                    tabCEL.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
     }
 }

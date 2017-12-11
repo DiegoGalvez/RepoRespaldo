@@ -1,0 +1,51 @@
+﻿<Page x:Class="WPF.Portafolio.Pages.Programas.AceptarPrograma"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:WPF.Portafolio.Pages.Programas"
+        mc:Ignorable="d"
+        Title="AceptarPrograma" Height="660" Width="1080">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1010"/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas Width="810" Grid.Column="1" Background="White" Margin="100,10">
+            <Label Name="lblTitulo" Content="Postulaciones de CEL a un programa" FontSize="30" Canvas.Left="174" Canvas.Top="20"/>
+            <Label x:Name="lblFiltros" Content="Filtros:"  Canvas.Left="73" Canvas.Top="94"/>
+            <TextBox x:Name="txtNombrePrograma" Height="23" Controls:TextBoxHelper.Watermark="Nombre del programa" Canvas.Left="73" Canvas.Top="125" Width="170" BorderBrush="Red" TextChanged="txtNombrePrograma_TextChanged" />
+            <Label x:Name="lblProgramas" Content="Seleccionar programa a postular" Canvas.Left="73" Canvas.Top="164"/>
+            <DataGrid x:Name="dgPrograma" Canvas.Left="73" Canvas.Top="194" Height="192" Width="668" IsReadOnly="True"
+            	AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Red" SelectionChanged="dgPrograma_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Programa" Binding="{Binding IdPrograma}"/>
+                    <DataGridTextColumn Header="Nombre Programa" Binding="{Binding NombrePrograma}"/>
+                    <DataGridTextColumn Header="Fecha de inicio" Binding="{Binding FechaInicio, StringFormat='dd/MM/yyyy'}"/>
+                    <DataGridTextColumn Header="Encargado Cel" Binding="{Binding NombreEncargado}"/>
+                    <DataGridTextColumn Header="Institucion" Binding="{Binding Institucion}"/>
+                    <DataGridTextColumn Header="Ciudad" Binding="{Binding NombreCiudad}"/>
+                    <DataGridTextColumn Header="Pais" Binding="{Binding NombrePais}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label x:Name="lblActividades" Content="Actividades del programa seleccionado" Canvas.Left="73" Canvas.Top="406"/>
+            <DataGrid x:Name="dgActvidades" Canvas.Left="73" Canvas.Top="437" Height="160" Width="668" IsReadOnly="True"
+            	AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Red">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding NombreActividad}"/>
+                    <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnPostular" Content="Aprobar" Canvas.Left="532" Canvas.Top="162" Width="89" Click="btnPostular_Click"/>
+            <Button x:Name="btnRechazar" Content="Rechazar" Canvas.Left="652" Canvas.Top="162" Width="89" Click="btnRechazar_Click"/>
+
+
+        </Canvas>
+
+    </Grid>
+</Page>

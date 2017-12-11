@@ -13,18 +13,19 @@
             <ColumnDefinition Width="1010"/>
         </Grid.ColumnDefinitions>
         <TabControl x:Name="tabControl" Grid.Column="1" HorizontalAlignment="Left" Height="540" Margin="100,20,100,0" VerticalAlignment="Top" Width="810" FlowDirection="RightToLeft" >
-            <TabItem Header="CEL">
+            <TabItem Header="CEL" Name="tabCEL">
                 <Frame Source="/WPF.Portafolio;component/Pages/Instituciones/ListaInstituciones.xaml" Height="500"></Frame>
             </TabItem>
-            <TabItem Header="Programa">
+            <TabItem Header="Programa" Name="tabPrograma">
                 <Frame Source="/WPF.Portafolio;component/Pages/Programas/CrearPrograma.xaml" Height="500"></Frame>
             </TabItem>
-            <TabItem Header="Familia Anfitriona">
+            <TabItem Header="Familia Anfitriona" Name="tabFamilia">
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarFamilias.xaml" Height="500"></Frame>
             </TabItem>
-            <TabItem Header="Alumnos">
+            <TabItem Header="Alumnos" Name="tabAlumnos">
                 <Frame Source="/WPF.Portafolio;component/Pages/AdministrarAlumnos.xaml" Height="500"></Frame>
             </TabItem>
-            <TabItem Header="Usuarios">
+            <TabItem Header="Usuarios" Name="tabUsuarios">
                 <Frame Source="/WPF.Portafolio;component/Pages/AdministrarUsuarios.xaml" Height="500"></Frame>
             </TabItem>
         </TabControl>

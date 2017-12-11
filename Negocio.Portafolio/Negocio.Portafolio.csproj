@@ -97,12 +97,17 @@
     <Compile Include="ViewClasses\AlumnosPostulantes\VDetallePostulacionCollections.cs" />
     <Compile Include="ViewClasses\FamiliaPostulantes\VFamiliasPostulantes.cs" />
     <Compile Include="ViewClasses\FamiliaPostulantes\VFamiliasPostulantesCollection.cs" />
+    <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasModificable.cs" />
+    <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasModificableCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumnoCollection.cs" />
     <Compile Include="ViewClasses\NotasProgramaAlumno\VNotasProgramaAlumno.cs" />
     <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasFinalizados.cs" />
     <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasFinalizadosCollection.cs" />
+    <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasPostulados.cs" />
+    <Compile Include="ViewClasses\ProgramasFinalizados\VProgramasPostuladosCollection.cs" />
     <Compile Include="ViewClasses\VActividad.cs" />
     <Compile Include="ViewClasses\VInstitucion.cs" />
+    <Compile Include="ViewClasses\VPrograma.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALC.Portafolio\DALC.Portafolio.csproj">

@@ -6,12 +6,6 @@
       <xsd:import schemaLocation="http://localhost:6627/Servicios.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IServicios_LeerTodosPaises_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeerTodosPaises" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_LeerTodosPaises_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeerTodosPaisesResponse" />
-  </wsdl:message>
   <wsdl:message name="IServicios_IdActualEntidadPrograma_InputMessage">
     <wsdl:part name="parameters" element="tns:IdActualEntidadPrograma" />
   </wsdl:message>
@@ -47,6 +41,42 @@
   </wsdl:message>
   <wsdl:message name="IServicios_LeerTodosProgramas_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeerTodosProgramasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasFinalizados_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasFinalizados" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasFinalizados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasFinalizadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasFinalizadosCEL_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasFinalizadosCEL" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasFinalizadosCEL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasFinalizadosCELResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ProgramasPublicados_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProgramasPublicados" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ProgramasPublicados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProgramasPublicadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ProgramasPublicadosPorInstitucion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProgramasPublicadosPorInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ProgramasPublicadosPorInstitucion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProgramasPublicadosPorInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasPublicadosPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasPublicadosPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasPublicadosPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasPublicadosPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasPublicadosPorInstitucionYNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasPublicadosPorInstitucionYNombre" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_BuscarProgramasPublicadosPorInstitucionYNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProgramasPublicadosPorInstitucionYNombreResponse" />
   </wsdl:message>
   <wsdl:message name="IServicios_validarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:validarUsuario" />
@@ -89,6 +119,12 @@
   </wsdl:message>
   <wsdl:message name="IServicios_ReadAllVNotasPrograma_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllVNotasProgramaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ObtenerNotasModificable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerNotasModificable" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_ObtenerNotasModificable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerNotasModificableResponse" />
   </wsdl:message>
   <wsdl:message name="IServicios_BuscarPorNombreApellido_InputMessage">
     <wsdl:part name="parameters" element="tns:BuscarPorNombreApellido" />
@@ -143,6 +179,18 @@
   </wsdl:message>
   <wsdl:message name="IServicios_DesenlazarPrograma_OutputMessage">
     <wsdl:part name="parameters" element="tns:DesenlazarProgramaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_IdActualEntidadActividad_InputMessage">
+    <wsdl:part name="parameters" element="tns:IdActualEntidadActividad" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_IdActualEntidadActividad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IdActualEntidadActividadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_LeerActividadesPrograma_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeerActividadesPrograma" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_LeerActividadesPrograma_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeerActividadesProgramaResponse" />
   </wsdl:message>
   <wsdl:message name="IServicios_CrearAdministrativo_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearAdministrativo" />
@@ -210,35 +258,17 @@
   <wsdl:message name="IServicios_BuscarALumnosPorNombreCompleto_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarALumnosPorNombreCompletoResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicios_CrearCargo_InputMessage">
-    <wsdl:part name="parameters" element="tns:CrearCargo" />
+  <wsdl:message name="IServicios_ValidarMora_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarMora" />
   </wsdl:message>
-  <wsdl:message name="IServicios_CrearCargo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CrearCargoResponse" />
+  <wsdl:message name="IServicios_ValidarMora_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarMoraResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicios_LeerCargo_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeerCargo" />
+  <wsdl:message name="IServicios_AlumnosPorInstitucion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlumnosPorInstitucion" />
   </wsdl:message>
-  <wsdl:message name="IServicios_LeerCargo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeerCargoResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_ActualizarCargo_InputMessage">
-    <wsdl:part name="parameters" element="tns:ActualizarCargo" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_ActualizarCargo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ActualizarCargoResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_EliminarCargo_InputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarCargo" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_EliminarCargo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EliminarCargoResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_LeerTodosCargos_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeerTodosCargos" />
-  </wsdl:message>
-  <wsdl:message name="IServicios_LeerTodosCargos_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeerTodosCargosResponse" />
+  <wsdl:message name="IServicios_AlumnosPorInstitucion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlumnosPorInstitucionResponse" />
   </wsdl:message>
   <wsdl:message name="IServicios_CrearCiudad_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearCiudad" />
@@ -486,11 +516,13 @@
   <wsdl:message name="IServicios_EliminarPais_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarPaisResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicios_LeerTodosPaises_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeerTodosPaises" />
+  </wsdl:message>
+  <wsdl:message name="IServicios_LeerTodosPaises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeerTodosPaisesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicios">
-    <wsdl:operation name="LeerTodosPaises">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerTodosPaises" message="tns:IServicios_LeerTodosPaises_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerTodosPaisesResponse" message="tns:IServicios_LeerTodosPaises_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="IdActualEntidadPrograma">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/IdActualEntidadPrograma" message="tns:IServicios_IdActualEntidadPrograma_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/IdActualEntidadProgramaResponse" message="tns:IServicios_IdActualEntidadPrograma_OutputMessage" />
@@ -514,6 +546,30 @@
     <wsdl:operation name="LeerTodosProgramas">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerTodosProgramas" message="tns:IServicios_LeerTodosProgramas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerTodosProgramasResponse" message="tns:IServicios_LeerTodosProgramas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasFinalizados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasFinalizados" message="tns:IServicios_BuscarProgramasFinalizados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasFinalizadosResponse" message="tns:IServicios_BuscarProgramasFinalizados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasFinalizadosCEL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCEL" message="tns:IServicios_BuscarProgramasFinalizadosCEL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCELResponse" message="tns:IServicios_BuscarProgramasFinalizadosCEL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProgramasPublicados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ProgramasPublicados" message="tns:IServicios_ProgramasPublicados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ProgramasPublicadosResponse" message="tns:IServicios_ProgramasPublicados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProgramasPublicadosPorInstitucion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucion" message="tns:IServicios_ProgramasPublicadosPorInstitucion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucionResponse" message="tns:IServicios_ProgramasPublicadosPorInstitucion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasPublicadosPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombre" message="tns:IServicios_BuscarProgramasPublicadosPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombreResponse" message="tns:IServicios_BuscarProgramasPublicadosPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasPublicadosPorInstitucionYNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombre" message="tns:IServicios_BuscarProgramasPublicadosPorInstitucionYNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombreResponse" message="tns:IServicios_BuscarProgramasPublicadosPorInstitucionYNombre_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="validarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/validarUsuario" message="tns:IServicios_validarUsuario_InputMessage" />
@@ -542,6 +598,10 @@
     <wsdl:operation name="ReadAllVNotasPrograma">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ReadAllVNotasPrograma" message="tns:IServicios_ReadAllVNotasPrograma_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ReadAllVNotasProgramaResponse" message="tns:IServicios_ReadAllVNotasPrograma_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerNotasModificable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ObtenerNotasModificable" message="tns:IServicios_ObtenerNotasModificable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ObtenerNotasModificableResponse" message="tns:IServicios_ObtenerNotasModificable_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BuscarPorNombreApellido">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarPorNombreApellido" message="tns:IServicios_BuscarPorNombreApellido_InputMessage" />
@@ -578,6 +638,14 @@
     <wsdl:operation name="DesenlazarPrograma">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/DesenlazarPrograma" message="tns:IServicios_DesenlazarPrograma_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/DesenlazarProgramaResponse" message="tns:IServicios_DesenlazarPrograma_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IdActualEntidadActividad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/IdActualEntidadActividad" message="tns:IServicios_IdActualEntidadActividad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/IdActualEntidadActividadResponse" message="tns:IServicios_IdActualEntidadActividad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeerActividadesPrograma">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerActividadesPrograma" message="tns:IServicios_LeerActividadesPrograma_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerActividadesProgramaResponse" message="tns:IServicios_LeerActividadesPrograma_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearAdministrativo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/CrearAdministrativo" message="tns:IServicios_CrearAdministrativo_InputMessage" />
@@ -623,25 +691,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/BuscarALumnosPorNombreCompleto" message="tns:IServicios_BuscarALumnosPorNombreCompleto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/BuscarALumnosPorNombreCompletoResponse" message="tns:IServicios_BuscarALumnosPorNombreCompleto_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CrearCargo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/CrearCargo" message="tns:IServicios_CrearCargo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/CrearCargoResponse" message="tns:IServicios_CrearCargo_OutputMessage" />
+    <wsdl:operation name="ValidarMora">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ValidarMora" message="tns:IServicios_ValidarMora_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ValidarMoraResponse" message="tns:IServicios_ValidarMora_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="LeerCargo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerCargo" message="tns:IServicios_LeerCargo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerCargoResponse" message="tns:IServicios_LeerCargo_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ActualizarCargo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/ActualizarCargo" message="tns:IServicios_ActualizarCargo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/ActualizarCargoResponse" message="tns:IServicios_ActualizarCargo_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EliminarCargo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/EliminarCargo" message="tns:IServicios_EliminarCargo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/EliminarCargoResponse" message="tns:IServicios_EliminarCargo_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LeerTodosCargos">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerTodosCargos" message="tns:IServicios_LeerTodosCargos_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerTodosCargosResponse" message="tns:IServicios_LeerTodosCargos_OutputMessage" />
+    <wsdl:operation name="AlumnosPorInstitucion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/AlumnosPorInstitucion" message="tns:IServicios_AlumnosPorInstitucion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/AlumnosPorInstitucionResponse" message="tns:IServicios_AlumnosPorInstitucion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearCiudad">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/CrearCiudad" message="tns:IServicios_CrearCiudad_InputMessage" />
@@ -807,18 +863,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicios/EliminarPais" message="tns:IServicios_EliminarPais_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicios/EliminarPaisResponse" message="tns:IServicios_EliminarPais_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="LeerTodosPaises">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicios/LeerTodosPaises" message="tns:IServicios_LeerTodosPaises_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicios/LeerTodosPaisesResponse" message="tns:IServicios_LeerTodosPaises_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicios" type="tns:IServicios">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="LeerTodosPaises">
-      <soap:operation soapAction="http://tempuri.org/IServicios/LeerTodosPaises" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="IdActualEntidadPrograma">
       <soap:operation soapAction="http://tempuri.org/IServicios/IdActualEntidadPrograma" style="document" />
       <wsdl:input>
@@ -866,6 +917,60 @@
     </wsdl:operation>
     <wsdl:operation name="LeerTodosProgramas">
       <soap:operation soapAction="http://tempuri.org/IServicios/LeerTodosProgramas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasFinalizados">
+      <soap:operation soapAction="http://tempuri.org/IServicios/BuscarProgramasFinalizados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasFinalizadosCEL">
+      <soap:operation soapAction="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProgramasPublicados">
+      <soap:operation soapAction="http://tempuri.org/IServicios/ProgramasPublicados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProgramasPublicadosPorInstitucion">
+      <soap:operation soapAction="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasPublicadosPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProgramasPublicadosPorInstitucionYNombre">
+      <soap:operation soapAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombre" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -929,6 +1034,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllVNotasPrograma">
       <soap:operation soapAction="http://tempuri.org/IServicios/ReadAllVNotasPrograma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerNotasModificable">
+      <soap:operation soapAction="http://tempuri.org/IServicios/ObtenerNotasModificable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1010,6 +1124,24 @@
     </wsdl:operation>
     <wsdl:operation name="DesenlazarPrograma">
       <soap:operation soapAction="http://tempuri.org/IServicios/DesenlazarPrograma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdActualEntidadActividad">
+      <soap:operation soapAction="http://tempuri.org/IServicios/IdActualEntidadActividad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeerActividadesPrograma">
+      <soap:operation soapAction="http://tempuri.org/IServicios/LeerActividadesPrograma" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1116,8 +1248,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CrearCargo">
-      <soap:operation soapAction="http://tempuri.org/IServicios/CrearCargo" style="document" />
+    <wsdl:operation name="ValidarMora">
+      <soap:operation soapAction="http://tempuri.org/IServicios/ValidarMora" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1125,35 +1257,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LeerCargo">
-      <soap:operation soapAction="http://tempuri.org/IServicios/LeerCargo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ActualizarCargo">
-      <soap:operation soapAction="http://tempuri.org/IServicios/ActualizarCargo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EliminarCargo">
-      <soap:operation soapAction="http://tempuri.org/IServicios/EliminarCargo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LeerTodosCargos">
-      <soap:operation soapAction="http://tempuri.org/IServicios/LeerTodosCargos" style="document" />
+    <wsdl:operation name="AlumnosPorInstitucion">
+      <soap:operation soapAction="http://tempuri.org/IServicios/AlumnosPorInstitucion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1523,6 +1628,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarPais">
       <soap:operation soapAction="http://tempuri.org/IServicios/EliminarPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeerTodosPaises">
+      <soap:operation soapAction="http://tempuri.org/IServicios/LeerTodosPaises" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:WPF.Portafolio.Pages.Familias"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="WPF.Portafolio.Pages.Familias.DetallePostulacionFamilia"
+        x:Class="WPF.Portafolio.Pages.Familias.DetallePostulacionFamilia"
         mc:Ignorable="d"
         Title="Detalle Familia Anfitriona" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Grid>
-        <!-- CORREO TELEFONO_CONTACTO DIRECCION ID_PAIS ID_CIUDAD-->
+
         <Label x:Name="lblNombre" Content="Nombre"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="348,10,348,0"/>
         <Label x:Name="lblIdentificacion" Content="ID: " FontSize="18" Margin="50,85,649,350"   />
         <TextBox x:Name="txtIdentificacion" Margin="145,85,498,350" />
@@ -23,7 +23,16 @@
         <TextBox x:Name="txtCiudad" Margin="145,305,498,130" />
         <Label x:Name="lblPais" Content="País:" FontSize="18" Margin="50,360,649,75"   />
         <TextBox x:Name="txtPais" Margin="145,360,498,75" />
-        <syncfusion:Carousel x:Name="carImagenes" HorizontalAlignment="Center" Height="311" ItemsPerPage="4" Margin="494,85,90,75" RadiusY="-50" RadiusX="100" SelectedIndex="0" VerticalAlignment="Center" Width="310"/>
+        <Image x:Name="image" Height="256" VerticalAlignment="Top" Margin="500,85,50,0"/>
+        <Controls:FlipView Margin="500,85,50,75" x:Name="images" BannerText="" IsBannerEnabled="False">
+            <Controls:FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="{Binding}" Stretch="Fill" />
+                    </Grid>
+                </DataTemplate>
+            </Controls:FlipView.ItemTemplate>
+        </Controls:FlipView>
     </Grid>
 
 </Controls:MetroWindow>

@@ -49,8 +49,7 @@ namespace WPF.Portafolio.Pages
             try
             {
                 Usuario _usuario = new Usuario();
-
-                _usuario.IdUsuario = int.Parse(txtIdUsuario.Text.Trim());
+                
                 _usuario.NomUsuario = txtUsuario.Text.Trim();
                 _usuario.Password = txtPassword.Text.Trim();
                 switch (cbTipoRol.SelectedIndex)
@@ -62,6 +61,7 @@ namespace WPF.Portafolio.Pages
                         _usuario.IdAlumno = null;
                         _usuario.IdFamilia = null;
                         _usuario.IdEncargadoCel = null;
+                        _usuario.IdEncargadoCem = null;
                         break;
                     case 1:
                         _usuario.Rol = "Alumno";
@@ -69,6 +69,7 @@ namespace WPF.Portafolio.Pages
                         _usuario.IdAlumno = int.Parse(txtIDRol.Text.Trim());
                         _usuario.IdFamilia = null;
                         _usuario.IdEncargadoCel = null;
+                        _usuario.IdEncargadoCem = null;
 
                         break;
                     case 2:
@@ -77,19 +78,22 @@ namespace WPF.Portafolio.Pages
                         _usuario.IdAlumno = null;
                         _usuario.IdFamilia = int.Parse(txtIDRol.Text.Trim());
                         _usuario.IdEncargadoCel = null;
+                        _usuario.IdEncargadoCem = null;
                         break;
                     case 3:
                         _usuario.Rol = "EncargadoCEM";
                         _usuario.IdAdministrativo = null;
                         _usuario.IdAlumno = null;
                         _usuario.IdFamilia = null;
-                        _usuario.IdEncargadoCel = int.Parse(txtIDRol.Text.Trim());
+                        _usuario.IdEncargadoCel = null;
+                        _usuario.IdEncargadoCem = int.Parse(txtIDRol.Text.Trim());
                         break;
                     case 4:
                         _usuario.Rol = "EncargadoCEL";
                         _usuario.IdAdministrativo = null;
                         _usuario.IdAlumno = null;
                         _usuario.IdFamilia = null;
+                        _usuario.IdEncargadoCem = null;
                         _usuario.IdEncargadoCel = int.Parse(txtIDRol.Text.Trim());
                         break;
                 }

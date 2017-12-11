@@ -20,11 +20,10 @@ namespace Negocio.Portafolio
         private string _identificador;
         private string _correo;
         private int _telefono;
-        private string _rutaArchivo; 
         private string _direccion;
         private int _idCiudad;
         private int _idPais;
-        private string _estado;
+        private EstadoFamilia _estado;
 
 
         public bool LeerPorIdentificador()
@@ -45,7 +44,7 @@ namespace Negocio.Portafolio
                 this.Direccion = _familia.DIRECCION;
                 this.IdPais = _familia.ID_PAIS;
                 this.IdCiudad = _familia.ID_CIUDAD;
-                this.Estado = _familia.ESTADO;
+                this.Estado = (EstadoFamilia)Enum.Parse(typeof(EstadoFamilia), _familia.ESTADO);
 
                 ctx = null;
 
@@ -76,7 +75,7 @@ namespace Negocio.Portafolio
                 this.Direccion = _familia.DIRECCION;
                 this.IdPais = _familia.ID_PAIS;
                 this.IdCiudad = _familia.ID_CIUDAD;
-                this.Estado = _familia.ESTADO;
+                this.Estado = (EstadoFamilia)Enum.Parse(typeof(EstadoFamilia), _familia.ESTADO);
 
                 ctx = null;
 
@@ -119,7 +118,7 @@ namespace Negocio.Portafolio
                 if (ctx.FAMILIASANFITRIONA.Any(f => f.ID_FAMILIA == IdFamilia))
                 {
                     //Llama al procedimiento UPDATE en la tabla FAMILIASANFITRIONA
-                    ctx.UPD_FAMILIAANFITRIONA(IdFamilia, Nombres, ApePaterno, ApeMaterno, Identificador, Correo, Telefono, Direccion, IdCiudad, IdPais, Estado);
+                    ctx.UPD_FAMILIAANFITRIONA(IdFamilia, Nombres, ApePaterno, ApeMaterno, Identificador, Correo, Telefono, Direccion, IdCiudad, IdPais, Estado.ToString());
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -138,7 +137,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla FAMILIAANFITRIONA
-                ctx.INS_FAMILIAANFITRIONA(Nombres, ApePaterno, ApeMaterno, Identificador, Correo, Telefono, Direccion, IdCiudad, IdPais, Estado);
+                ctx.INS_FAMILIAANFITRIONA(Nombres, ApePaterno, ApeMaterno, Identificador, Correo, Telefono, Direccion, IdCiudad, IdPais, Estado.ToString());
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -173,7 +172,6 @@ namespace Negocio.Portafolio
             this.Identificador = familiaAnfitriona.Identificador;
             this.Correo = familiaAnfitriona.Correo;
             this.Telefono = familiaAnfitriona.Telefono;
-            this.RutaArchivo = familiaAnfitriona.RutaArchivo;
             this.Direccion = familiaAnfitriona.Direccion;
             this.IdCiudad = familiaAnfitriona.IdCiudad;
             this.IdPais = familiaAnfitriona.IdPais;
@@ -194,11 +192,10 @@ namespace Negocio.Portafolio
             this.Identificador = string.Empty;
             this.Correo = string.Empty;
             this.Telefono = 0;
-            this.RutaArchivo = string.Empty;
             this.Direccion = string.Empty;
             this.IdCiudad = 0;
             this.IdPais = 0;
-            this.Estado = string.Empty;
+            this.Estado = EstadoFamilia.Registrado;
         }
 
         public int IdFamilia
@@ -236,12 +233,6 @@ namespace Negocio.Portafolio
             get { return _telefono; }
             set { _telefono = value; }
         } 
-        
-        public string RutaArchivo
-        {
-            get { return _rutaArchivo; }
-            set { _rutaArchivo = value; }
-        } 
         public string Direccion
         {
             get { return _direccion; }
@@ -258,7 +249,7 @@ namespace Negocio.Portafolio
             set { _idPais = value; }
         }
 
-        public string Estado
+        public EstadoFamilia Estado
         {
             get { return _estado; }
             set { _estado = value; }

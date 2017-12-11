@@ -36,15 +36,15 @@ namespace WPF.Portafolio
         public MainMenu()
         {
             InitializeComponent();
+        }
+
+        public MainMenu(Usuario user)
+        {
+            InitializeComponent();
+            UsuarioActual = user;
+            LBNombreUsuario.Content = UsuarioActual.NomUsuario;
+            SideMenuRol();
             Main.Content = new AcercaDe();
-            if (!LlamarLogin())
-            {
-                Application.Current.Shutdown(-1);
-            }
-            else
-            {
-                SideMenuRol();
-            }
         }
 
         private void SideMenuRol()
@@ -100,7 +100,7 @@ namespace WPF.Portafolio
                     break;
             }
         }
-        
+
         private bool LlamarLogin()
         {
             InicioSesion login = new InicioSesion();
@@ -182,12 +182,12 @@ namespace WPF.Portafolio
             Main.Content = new PostulacionAlumno();
         }
 
-       
+
         private void btnNotas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             CleanBackgroundbtn();
             btnNotas.Background = new SolidColorBrush(Colors.DarkRed);
-            Main.Content = new ListaNotas();
+            Main.Content = new ListaProgramasNotas();
         }
 
         private void btnPostulacionesFamilias_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -196,7 +196,7 @@ namespace WPF.Portafolio
             btnPostulacionesFamilias.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new ListasFamiliasPostulantes();
         }
-        
+
         private void btnMantendor_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             CleanBackgroundbtn();
@@ -229,11 +229,13 @@ namespace WPF.Portafolio
             btnValidarPrograma.Background = new SolidColorBrush(Colors.DarkRed);
             Main.Content = new AceptarPrograma();
         }
-        
+
 
         private void btnCerrarSesion_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            InicioSesion ini = new InicioSesion();
+            ini.Show();
+            Close();
         }
 
         private void CleanBackgroundbtn()
@@ -248,7 +250,7 @@ namespace WPF.Portafolio
             btnValidarPrograma.Background = null;
         }
 
-        
+
     }
 }
 

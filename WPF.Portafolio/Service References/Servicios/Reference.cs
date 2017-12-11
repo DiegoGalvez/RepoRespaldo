@@ -15,12 +15,6 @@ namespace WPF.Portafolio.Servicios {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Servicios.IServicios")]
     public interface IServicios {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosPaises", ReplyAction="http://tempuri.org/IServicios/LeerTodosPaisesResponse")]
-        string LeerTodosPaises();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosPaises", ReplyAction="http://tempuri.org/IServicios/LeerTodosPaisesResponse")]
-        System.Threading.Tasks.Task<string> LeerTodosPaisesAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/IdActualEntidadPrograma", ReplyAction="http://tempuri.org/IServicios/IdActualEntidadProgramaResponse")]
         int IdActualEntidadPrograma();
         
@@ -56,6 +50,44 @@ namespace WPF.Portafolio.Servicios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosProgramas", ReplyAction="http://tempuri.org/IServicios/LeerTodosProgramasResponse")]
         System.Threading.Tasks.Task<string> LeerTodosProgramasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasFinalizados", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasFinalizadosResponse")]
+        string BuscarProgramasFinalizados();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasFinalizados", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasFinalizadosResponse")]
+        System.Threading.Tasks.Task<string> BuscarProgramasFinalizadosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCEL", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCELResponse")]
+        string BuscarProgramasFinalizadosCEL(int idCEL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCEL", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasFinalizadosCELResponse")]
+        System.Threading.Tasks.Task<string> BuscarProgramasFinalizadosCELAsync(int idCEL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ProgramasPublicados", ReplyAction="http://tempuri.org/IServicios/ProgramasPublicadosResponse")]
+        string ProgramasPublicados();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ProgramasPublicados", ReplyAction="http://tempuri.org/IServicios/ProgramasPublicadosResponse")]
+        System.Threading.Tasks.Task<string> ProgramasPublicadosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucion", ReplyAction="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucionResponse")]
+        string ProgramasPublicadosPorInstitucion(int idInstitucion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucion", ReplyAction="http://tempuri.org/IServicios/ProgramasPublicadosPorInstitucionResponse")]
+        System.Threading.Tasks.Task<string> ProgramasPublicadosPorInstitucionAsync(int idInstitucion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombre", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombreResponse")]
+        string BuscarProgramasPublicadosPorNombre(string frase);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombre", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorNombreResponse")]
+        System.Threading.Tasks.Task<string> BuscarProgramasPublicadosPorNombreAsync(string frase);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombre", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombreRespo" +
+            "nse")]
+        string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombre", ReplyAction="http://tempuri.org/IServicios/BuscarProgramasPublicadosPorInstitucionYNombreRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<string> BuscarProgramasPublicadosPorInstitucionYNombreAsync(int idInstitucion, string frase);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/validarUsuario", ReplyAction="http://tempuri.org/IServicios/validarUsuarioResponse")]
         bool validarUsuario(string userPass);
@@ -98,6 +130,12 @@ namespace WPF.Portafolio.Servicios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ReadAllVNotasPrograma", ReplyAction="http://tempuri.org/IServicios/ReadAllVNotasProgramaResponse")]
         System.Threading.Tasks.Task<string> ReadAllVNotasProgramaAsync(int idALumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ObtenerNotasModificable", ReplyAction="http://tempuri.org/IServicios/ObtenerNotasModificableResponse")]
+        string ObtenerNotasModificable(int idALumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ObtenerNotasModificable", ReplyAction="http://tempuri.org/IServicios/ObtenerNotasModificableResponse")]
+        System.Threading.Tasks.Task<string> ObtenerNotasModificableAsync(int idALumno);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarPorNombreApellido", ReplyAction="http://tempuri.org/IServicios/BuscarPorNombreApellidoResponse")]
         string BuscarPorNombreApellido(string frase);
@@ -142,16 +180,28 @@ namespace WPF.Portafolio.Servicios {
         System.Threading.Tasks.Task<string> LeerTodasActividadesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/EnlazarPrograma", ReplyAction="http://tempuri.org/IServicios/EnlazarProgramaResponse")]
-        bool EnlazarPrograma(int idPrograma);
+        bool EnlazarPrograma(int idPrograma, int idActividad);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/EnlazarPrograma", ReplyAction="http://tempuri.org/IServicios/EnlazarProgramaResponse")]
-        System.Threading.Tasks.Task<bool> EnlazarProgramaAsync(int idPrograma);
+        System.Threading.Tasks.Task<bool> EnlazarProgramaAsync(int idPrograma, int idActividad);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/DesenlazarPrograma", ReplyAction="http://tempuri.org/IServicios/DesenlazarProgramaResponse")]
         bool DesenlazarPrograma();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/DesenlazarPrograma", ReplyAction="http://tempuri.org/IServicios/DesenlazarProgramaResponse")]
         System.Threading.Tasks.Task<bool> DesenlazarProgramaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/IdActualEntidadActividad", ReplyAction="http://tempuri.org/IServicios/IdActualEntidadActividadResponse")]
+        int IdActualEntidadActividad();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/IdActualEntidadActividad", ReplyAction="http://tempuri.org/IServicios/IdActualEntidadActividadResponse")]
+        System.Threading.Tasks.Task<int> IdActualEntidadActividadAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerActividadesPrograma", ReplyAction="http://tempuri.org/IServicios/LeerActividadesProgramaResponse")]
+        string LeerActividadesPrograma(int idPrograma);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerActividadesPrograma", ReplyAction="http://tempuri.org/IServicios/LeerActividadesProgramaResponse")]
+        System.Threading.Tasks.Task<string> LeerActividadesProgramaAsync(int idPrograma);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/CrearAdministrativo", ReplyAction="http://tempuri.org/IServicios/CrearAdministrativoResponse")]
         bool CrearAdministrativo(string xml);
@@ -219,35 +269,17 @@ namespace WPF.Portafolio.Servicios {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/BuscarALumnosPorNombreCompleto", ReplyAction="http://tempuri.org/IServicios/BuscarALumnosPorNombreCompletoResponse")]
         System.Threading.Tasks.Task<string> BuscarALumnosPorNombreCompletoAsync(string frase);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/CrearCargo", ReplyAction="http://tempuri.org/IServicios/CrearCargoResponse")]
-        bool CrearCargo(string xml);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ValidarMora", ReplyAction="http://tempuri.org/IServicios/ValidarMoraResponse")]
+        bool ValidarMora(string xml);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/CrearCargo", ReplyAction="http://tempuri.org/IServicios/CrearCargoResponse")]
-        System.Threading.Tasks.Task<bool> CrearCargoAsync(string xml);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ValidarMora", ReplyAction="http://tempuri.org/IServicios/ValidarMoraResponse")]
+        System.Threading.Tasks.Task<bool> ValidarMoraAsync(string xml);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerCargo", ReplyAction="http://tempuri.org/IServicios/LeerCargoResponse")]
-        string LeerCargo(string xml);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/AlumnosPorInstitucion", ReplyAction="http://tempuri.org/IServicios/AlumnosPorInstitucionResponse")]
+        string AlumnosPorInstitucion(int idInstitucion);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerCargo", ReplyAction="http://tempuri.org/IServicios/LeerCargoResponse")]
-        System.Threading.Tasks.Task<string> LeerCargoAsync(string xml);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ActualizarCargo", ReplyAction="http://tempuri.org/IServicios/ActualizarCargoResponse")]
-        bool ActualizarCargo(string xml);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/ActualizarCargo", ReplyAction="http://tempuri.org/IServicios/ActualizarCargoResponse")]
-        System.Threading.Tasks.Task<bool> ActualizarCargoAsync(string xml);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/EliminarCargo", ReplyAction="http://tempuri.org/IServicios/EliminarCargoResponse")]
-        bool EliminarCargo(string xml);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/EliminarCargo", ReplyAction="http://tempuri.org/IServicios/EliminarCargoResponse")]
-        System.Threading.Tasks.Task<bool> EliminarCargoAsync(string xml);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosCargos", ReplyAction="http://tempuri.org/IServicios/LeerTodosCargosResponse")]
-        string LeerTodosCargos();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosCargos", ReplyAction="http://tempuri.org/IServicios/LeerTodosCargosResponse")]
-        System.Threading.Tasks.Task<string> LeerTodosCargosAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/AlumnosPorInstitucion", ReplyAction="http://tempuri.org/IServicios/AlumnosPorInstitucionResponse")]
+        System.Threading.Tasks.Task<string> AlumnosPorInstitucionAsync(int idInstitucion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/CrearCiudad", ReplyAction="http://tempuri.org/IServicios/CrearCiudadResponse")]
         bool CrearCiudad(string xml);
@@ -494,6 +526,12 @@ namespace WPF.Portafolio.Servicios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/EliminarPais", ReplyAction="http://tempuri.org/IServicios/EliminarPaisResponse")]
         System.Threading.Tasks.Task<bool> EliminarPaisAsync(string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosPaises", ReplyAction="http://tempuri.org/IServicios/LeerTodosPaisesResponse")]
+        string LeerTodosPaises();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicios/LeerTodosPaises", ReplyAction="http://tempuri.org/IServicios/LeerTodosPaisesResponse")]
+        System.Threading.Tasks.Task<string> LeerTodosPaisesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -521,14 +559,6 @@ namespace WPF.Portafolio.Servicios {
         
         public ServiciosClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public string LeerTodosPaises() {
-            return base.Channel.LeerTodosPaises();
-        }
-        
-        public System.Threading.Tasks.Task<string> LeerTodosPaisesAsync() {
-            return base.Channel.LeerTodosPaisesAsync();
         }
         
         public int IdActualEntidadPrograma() {
@@ -577,6 +607,54 @@ namespace WPF.Portafolio.Servicios {
         
         public System.Threading.Tasks.Task<string> LeerTodosProgramasAsync() {
             return base.Channel.LeerTodosProgramasAsync();
+        }
+        
+        public string BuscarProgramasFinalizados() {
+            return base.Channel.BuscarProgramasFinalizados();
+        }
+        
+        public System.Threading.Tasks.Task<string> BuscarProgramasFinalizadosAsync() {
+            return base.Channel.BuscarProgramasFinalizadosAsync();
+        }
+        
+        public string BuscarProgramasFinalizadosCEL(int idCEL) {
+            return base.Channel.BuscarProgramasFinalizadosCEL(idCEL);
+        }
+        
+        public System.Threading.Tasks.Task<string> BuscarProgramasFinalizadosCELAsync(int idCEL) {
+            return base.Channel.BuscarProgramasFinalizadosCELAsync(idCEL);
+        }
+        
+        public string ProgramasPublicados() {
+            return base.Channel.ProgramasPublicados();
+        }
+        
+        public System.Threading.Tasks.Task<string> ProgramasPublicadosAsync() {
+            return base.Channel.ProgramasPublicadosAsync();
+        }
+        
+        public string ProgramasPublicadosPorInstitucion(int idInstitucion) {
+            return base.Channel.ProgramasPublicadosPorInstitucion(idInstitucion);
+        }
+        
+        public System.Threading.Tasks.Task<string> ProgramasPublicadosPorInstitucionAsync(int idInstitucion) {
+            return base.Channel.ProgramasPublicadosPorInstitucionAsync(idInstitucion);
+        }
+        
+        public string BuscarProgramasPublicadosPorNombre(string frase) {
+            return base.Channel.BuscarProgramasPublicadosPorNombre(frase);
+        }
+        
+        public System.Threading.Tasks.Task<string> BuscarProgramasPublicadosPorNombreAsync(string frase) {
+            return base.Channel.BuscarProgramasPublicadosPorNombreAsync(frase);
+        }
+        
+        public string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase) {
+            return base.Channel.BuscarProgramasPublicadosPorInstitucionYNombre(idInstitucion, frase);
+        }
+        
+        public System.Threading.Tasks.Task<string> BuscarProgramasPublicadosPorInstitucionYNombreAsync(int idInstitucion, string frase) {
+            return base.Channel.BuscarProgramasPublicadosPorInstitucionYNombreAsync(idInstitucion, frase);
         }
         
         public bool validarUsuario(string userPass) {
@@ -635,6 +713,14 @@ namespace WPF.Portafolio.Servicios {
             return base.Channel.ReadAllVNotasProgramaAsync(idALumno);
         }
         
+        public string ObtenerNotasModificable(int idALumno) {
+            return base.Channel.ObtenerNotasModificable(idALumno);
+        }
+        
+        public System.Threading.Tasks.Task<string> ObtenerNotasModificableAsync(int idALumno) {
+            return base.Channel.ObtenerNotasModificableAsync(idALumno);
+        }
+        
         public string BuscarPorNombreApellido(string frase) {
             return base.Channel.BuscarPorNombreApellido(frase);
         }
@@ -691,12 +777,12 @@ namespace WPF.Portafolio.Servicios {
             return base.Channel.LeerTodasActividadesAsync();
         }
         
-        public bool EnlazarPrograma(int idPrograma) {
-            return base.Channel.EnlazarPrograma(idPrograma);
+        public bool EnlazarPrograma(int idPrograma, int idActividad) {
+            return base.Channel.EnlazarPrograma(idPrograma, idActividad);
         }
         
-        public System.Threading.Tasks.Task<bool> EnlazarProgramaAsync(int idPrograma) {
-            return base.Channel.EnlazarProgramaAsync(idPrograma);
+        public System.Threading.Tasks.Task<bool> EnlazarProgramaAsync(int idPrograma, int idActividad) {
+            return base.Channel.EnlazarProgramaAsync(idPrograma, idActividad);
         }
         
         public bool DesenlazarPrograma() {
@@ -705,6 +791,22 @@ namespace WPF.Portafolio.Servicios {
         
         public System.Threading.Tasks.Task<bool> DesenlazarProgramaAsync() {
             return base.Channel.DesenlazarProgramaAsync();
+        }
+        
+        public int IdActualEntidadActividad() {
+            return base.Channel.IdActualEntidadActividad();
+        }
+        
+        public System.Threading.Tasks.Task<int> IdActualEntidadActividadAsync() {
+            return base.Channel.IdActualEntidadActividadAsync();
+        }
+        
+        public string LeerActividadesPrograma(int idPrograma) {
+            return base.Channel.LeerActividadesPrograma(idPrograma);
+        }
+        
+        public System.Threading.Tasks.Task<string> LeerActividadesProgramaAsync(int idPrograma) {
+            return base.Channel.LeerActividadesProgramaAsync(idPrograma);
         }
         
         public bool CrearAdministrativo(string xml) {
@@ -795,44 +897,20 @@ namespace WPF.Portafolio.Servicios {
             return base.Channel.BuscarALumnosPorNombreCompletoAsync(frase);
         }
         
-        public bool CrearCargo(string xml) {
-            return base.Channel.CrearCargo(xml);
+        public bool ValidarMora(string xml) {
+            return base.Channel.ValidarMora(xml);
         }
         
-        public System.Threading.Tasks.Task<bool> CrearCargoAsync(string xml) {
-            return base.Channel.CrearCargoAsync(xml);
+        public System.Threading.Tasks.Task<bool> ValidarMoraAsync(string xml) {
+            return base.Channel.ValidarMoraAsync(xml);
         }
         
-        public string LeerCargo(string xml) {
-            return base.Channel.LeerCargo(xml);
+        public string AlumnosPorInstitucion(int idInstitucion) {
+            return base.Channel.AlumnosPorInstitucion(idInstitucion);
         }
         
-        public System.Threading.Tasks.Task<string> LeerCargoAsync(string xml) {
-            return base.Channel.LeerCargoAsync(xml);
-        }
-        
-        public bool ActualizarCargo(string xml) {
-            return base.Channel.ActualizarCargo(xml);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ActualizarCargoAsync(string xml) {
-            return base.Channel.ActualizarCargoAsync(xml);
-        }
-        
-        public bool EliminarCargo(string xml) {
-            return base.Channel.EliminarCargo(xml);
-        }
-        
-        public System.Threading.Tasks.Task<bool> EliminarCargoAsync(string xml) {
-            return base.Channel.EliminarCargoAsync(xml);
-        }
-        
-        public string LeerTodosCargos() {
-            return base.Channel.LeerTodosCargos();
-        }
-        
-        public System.Threading.Tasks.Task<string> LeerTodosCargosAsync() {
-            return base.Channel.LeerTodosCargosAsync();
+        public System.Threading.Tasks.Task<string> AlumnosPorInstitucionAsync(int idInstitucion) {
+            return base.Channel.AlumnosPorInstitucionAsync(idInstitucion);
         }
         
         public bool CrearCiudad(string xml) {
@@ -1161,6 +1239,14 @@ namespace WPF.Portafolio.Servicios {
         
         public System.Threading.Tasks.Task<bool> EliminarPaisAsync(string xml) {
             return base.Channel.EliminarPaisAsync(xml);
+        }
+        
+        public string LeerTodosPaises() {
+            return base.Channel.LeerTodosPaises();
+        }
+        
+        public System.Threading.Tasks.Task<string> LeerTodosPaisesAsync() {
+            return base.Channel.LeerTodosPaisesAsync();
         }
     }
 }

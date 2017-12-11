@@ -106,7 +106,7 @@ namespace Negocio.Portafolio
                 else
                 {
                     //Llama al procedimiento CREATE de la tabla ALUMNOS
-                    ctx.INS_ALUMNOS(Dv, Nombre, ApePaterno, ApeMaterno, Correo, Reserva, Telefono, EstadoMora);
+                    ctx.INS_ALUMNOS(IdAlumno, Dv, Nombre, ApePaterno, ApeMaterno, Correo, Reserva, Telefono, EstadoMora);
                     ctx.SaveChanges();
                     ctx = null;
                     return true;

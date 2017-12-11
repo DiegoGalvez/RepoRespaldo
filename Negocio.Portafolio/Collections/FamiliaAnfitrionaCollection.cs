@@ -55,7 +55,7 @@ namespace Negocio.Portafolio
                 familiaAnfitriona.Direccion = item.DIRECCION;
                 familiaAnfitriona.IdCiudad = (int)item.ID_CIUDAD;
                 familiaAnfitriona.IdPais = item.ID_PAIS;
-                familiaAnfitriona.Estado = item.ESTADO;
+                familiaAnfitriona.Estado = (EstadoFamilia)Enum.Parse(typeof(EstadoFamilia), item.ESTADO);
 
                 listaBC.Add(familiaAnfitriona);
             }

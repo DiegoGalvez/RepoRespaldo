@@ -34,8 +34,13 @@ namespace Negocio.Portafolio
 
             return GenerarListado(listaDalc.ToList());
         }
-        
-        
+
+        public NotaCollection NotasPorAlumno(int idAlumno)
+        {
+            var listaDalc = new EntitiesCEM().NOTAS;
+
+            return GenerarListado(listaDalc.Where(nota => nota.ID_ALUMNO == idAlumno).ToList());
+        }
 
         //metodo que lee las notas de un alumno
         public NotaCollection NotasAlumno(string xml)

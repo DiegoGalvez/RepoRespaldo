@@ -63,24 +63,47 @@ namespace WPF.Portafolio.Pages.Alumnos
         }
         private async void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
-            Intercambio intercambio = new Intercambio();
-            intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
-            intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
-            intercambio.Estado = "Aceptada";
-            if (svc.ActualizarIntercambio(intercambio.Serializar()))
+            try
             {
-                Correo mail = new Correo();
-                string _titulo = string.Format("Resultados de postulacion al programa {0}", txtNombrePrograma.Text);
-                string _descripcion = string.Format("Junto con saludar, el Centro de estudio Montreal informa que la solicitud para postular al programa {0} en {1} fue ACEPTADA, a medida que vaya acercando la fecha de comienzo del programa postuado estaremos en contacto para solicitar cierta informacion necesaria. Por el momento en caso de no tener pasaporte, te recomendamos que comiences con el trámite, ya que es necesario para el intercambio" ,txtNombrePrograma.Text, txtPaisFamilia.Text);
-                mail.body = mail.PopulateBody(txtNombrePostulante.Text, _titulo, _descripcion);
-                mail.SendHtmlFormattedEmail(txtCorreoPostulante.Text, _titulo, mail.body);
+                ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
 
-                string mensaje = string.Format("Se emitió un correo al alumnos postulante");
-                await this.ShowMessageAsync("Solicitud aceptada", mensaje);
+                if (svc.ValidarMora(txtIdAPostulante.Text))
+                {
+                    
+                    Intercambio intercambio = new Intercambio();
+                    intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
+                    intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
+                    intercambio.Estado = "Aceptada";
+                    if (svc.ActualizarIntercambio(intercambio.Serializar()))
+                    {
+                        Programa programa = new Programa();
+                        programa.IdPrograma = intercambio.IdPrograma;
+                        programa = new Programa(svc.LeerPrograma(programa.Serializar()));
+                        --programa.Cupos;
+                        svc.ActualizarPrograma(programa.Serializar());
+                        Correo mail = new Correo();
+                        string _titulo = string.Format("Resultados de postulacion al programa {0}", txtNombrePrograma.Text);
+                        string _descripcion = string.Format("Junto con saludar, el Centro de estudio Montreal informa que la solicitud para postular al programa {0} en {1} fue ACEPTADA, a medida que vaya acercando la fecha de comienzo del programa postuado estaremos en contacto para solicitar cierta informacion necesaria. Por el momento en caso de no tener pasaporte, te recomendamos que comiences con el trámite, ya que es necesario para el intercambio", txtNombrePrograma.Text, txtPaisFamilia.Text);
+                        mail.body = mail.PopulateBody(txtNombrePostulante.Text, _titulo, _descripcion);
+                        mail.SendHtmlFormattedEmail(txtCorreoPostulante.Text, _titulo, mail.body);
 
-                this.Close();
+                        string mensaje = string.Format("Se emitió un correo al alumnos postulante");
+                        await this.ShowMessageAsync("Solicitud aceptada", mensaje);
+
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El alumno se encuentra con mora","Advertencia");
+                }
+               
             }
+            catch (Exception)
+            {
+                
+            }
+            
         }
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
@@ -105,7 +128,6 @@ namespace WPF.Portafolio.Pages.Alumnos
                 await this.ShowMessageAsync("Solicitud rechazada", mensaje);
                 this.Close();
             }
-
         }
 
         private void btnImagenes_Click(object sender, RoutedEventArgs e)

@@ -103,7 +103,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla USUARIO
-                //ctx.INS_USUARIO(NomUsuario, Password, Rol, IdFamilia, IdAdministrativo, IdEncargadoCel, IdEncargadoCem, IdAlumno);
+                ctx.INS_USUARIO(NomUsuario, Password, Rol, IdAlumno, IdAdministrativo, IdFamilia, IdEncargadoCel, IdEncargadoCem);
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

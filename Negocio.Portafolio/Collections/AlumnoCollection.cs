@@ -42,6 +42,146 @@ namespace Negocio.Portafolio
             return GenerarListado(listaDalc.ToList());
         }
 
+        public AlumnoCollection AlumnosDePrograma(int idPrograma)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            EntitiesCEM ctx = new EntitiesCEM();
+
+            var alumnos = (from a in ctx.ALUMNOS
+                           join i in ctx.INTERCAMBIO
+                           on a.ID_ALUMNO equals i.ID_ALUMNO
+                           where i.ID_PROGRAMA == idPrograma && (i.ESTADO == "Cursando" || i.ESTADO == "Aprobado" || i.ESTADO == "Reprobado")
+                           orderby a.ID_ALUMNO
+                           select new
+                           {
+                               IdAlumno = a.ID_ALUMNO,
+                               Dv = a.DV,
+                               Nombre = a.NOMBRE,
+                               ApellPaterno = a.APELL_PATERNO,
+                               ApellMaterno = a.APELL_MATERNO,
+                               Correo = a.CORREO,
+                               Reserva = a.RESERVA,
+                               Telefono = a.TELEFONO,
+                               Estado_mora = a.ESTADO_MORA
+                           }).Distinct().ToList();
+
+            foreach (var item in alumnos)
+            {
+                Alumno alumno = new Alumno();
+
+                alumno.IdAlumno = item.IdAlumno;
+
+                alumno.Dv = item.Dv;
+                alumno.Nombre = item.Nombre;
+                alumno.ApePaterno = item.ApellPaterno;
+                alumno.ApeMaterno = item.ApellMaterno;
+                alumno.Correo = item.Correo;
+                alumno.Reserva = item.Reserva;
+                alumno.Telefono = (int)item.Telefono;
+                alumno.EstadoMora = item.Estado_mora;
+
+                alumnoCollection.Add(alumno);
+            }
+
+            return alumnoCollection;
+        }
+
+        public AlumnoCollection AlumnosDeProgramaPorInstitucion(int idPrograma, int idInstitucion)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            EntitiesCEM ctx = new EntitiesCEM();
+
+            var alumnos = (from a in ctx.ALUMNOS
+                           join i in ctx.INTERCAMBIO
+                           on a.ID_ALUMNO equals i.ID_ALUMNO
+                           join p in ctx.PROGRAMAS
+                           on i.ID_PROGRAMA equals p.ID_PROGRAMA
+                           where i.ID_PROGRAMA == idPrograma && p.ID_INSTITUCION == idInstitucion && i.ESTADO == "Cursando"
+                           orderby a.ID_ALUMNO
+                           select new
+                           {
+                               IdAlumno = a.ID_ALUMNO,
+                               Dv = a.DV,
+                               Nombre = a.NOMBRE,
+                               ApellPaterno = a.APELL_PATERNO,
+                               ApellMaterno = a.APELL_MATERNO,
+                               Correo = a.CORREO,
+                               Reserva = a.RESERVA,
+                               Telefono = a.TELEFONO,
+                               Estado_mora = a.ESTADO_MORA
+                           }).Distinct().ToList();
+
+            foreach (var item in alumnos)
+            {
+                Alumno alumno = new Alumno();
+
+                alumno.IdAlumno = item.IdAlumno;
+
+                alumno.Dv = item.Dv;
+                alumno.Nombre = item.Nombre;
+                alumno.ApePaterno = item.ApellPaterno;
+                alumno.ApeMaterno = item.ApellMaterno;
+                alumno.Correo = item.Correo;
+                alumno.Reserva = item.Reserva;
+                alumno.Telefono = (int)item.Telefono;
+                alumno.EstadoMora = item.Estado_mora;
+
+                alumnoCollection.Add(alumno);
+            }
+
+            return alumnoCollection;
+        }
+
+        //metodo que lee alumnos por institucion
+        public AlumnoCollection AlumnosPorInstitucion(int idInstitucion)
+        {
+            AlumnoCollection alumnoCollection = new AlumnoCollection();
+
+            EntitiesCEM ctx = new EntitiesCEM();
+
+            var alumnos = (from a in ctx.ALUMNOS
+                           join n in ctx.NOTAS
+                           on a.ID_ALUMNO equals n.ID_ALUMNO
+                           join p in ctx.PROGRAMAS
+                           on n.ID_PROGRAMA equals p.ID_PROGRAMA
+                           where p.ID_INSTITUCION == idInstitucion
+                           orderby a.ID_ALUMNO
+                           select new
+                           {
+                               IdAlumno = a.ID_ALUMNO,
+                               Dv = a.DV,
+                               Nombre = a.NOMBRE,
+                               ApellPaterno = a.APELL_PATERNO,
+                               ApellMaterno = a.APELL_MATERNO,
+                               Correo = a.CORREO,
+                               Reserva = a.RESERVA,
+                               Telefono = a.TELEFONO,
+                               Estado_mora = a.ESTADO_MORA
+                           }).Distinct().ToList();
+
+            foreach (var item in alumnos)
+            {
+                Alumno alumno = new Alumno();
+
+                alumno.IdAlumno = item.IdAlumno;
+
+                alumno.Dv = item.Dv;
+                alumno.Nombre = item.Nombre;
+                alumno.ApePaterno = item.ApellPaterno;
+                alumno.ApeMaterno = item.ApellMaterno;
+                alumno.Correo = item.Correo;
+                alumno.Reserva = item.Reserva;
+                alumno.Telefono = (int)item.Telefono;
+                alumno.EstadoMora = item.Estado_mora;
+
+                alumnoCollection.Add(alumno);
+            }
+
+            return alumnoCollection;
+        }
+
         //metodo que lee todos los alumnos
         public AlumnoCollection ReadAll()
         {

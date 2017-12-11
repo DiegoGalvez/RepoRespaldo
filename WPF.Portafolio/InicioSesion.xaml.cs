@@ -54,8 +54,9 @@ namespace WPF.Portafolio
                     {
                         _mensaje = string.Format("Bienvenido {0}", user.NomUsuario);
                         await this.ShowMessageAsync("Exito", _mensaje);
-                        isAceptado = true;
-                        this.Close();
+                        MainMenu menu = new MainMenu(user);
+                        menu.Show();
+                        Close();
                     }
                     else
                     {
@@ -68,7 +69,7 @@ namespace WPF.Portafolio
                 {
                     _mensaje = "Usuario o Contraseña incorrectos";
                     await this.ShowMessageAsync("Error", _mensaje);
-                    isAceptado = false;
+                   
                 }
                 
             }

@@ -23,7 +23,7 @@
                         <DataGridTextColumn Header="Nombre Postulante" Binding="{Binding Nombre_Alumno}"/>
                         <DataGridTextColumn Header="Programa" Binding="{Binding Nombre_Programa}"/>
                         <DataGridTextColumn Header="Cupos" Binding="{Binding Cupos}"/>
-                        <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding Fecha_Inicio, StringFormat=\{0:dd/MM/yyyy\}}"/>
+                        <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding Fecha_Inicio, StringFormat='dd/MM/yyyy'}"/>
                         <DataGridTextColumn Header="Jefe Familia Anfitriona" Binding="{Binding Nombre_Familia}"/>
                     </DataGrid.Columns>
                 </DataGrid>

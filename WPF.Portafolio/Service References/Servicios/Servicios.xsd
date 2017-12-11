@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="LeerTodosPaises">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LeerTodosPaisesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LeerTodosPaisesResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="IdActualEntidadPrograma">
     <xs:complexType>
       <xs:sequence />
@@ -89,6 +77,87 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="LeerTodosProgramasResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasFinalizados">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasFinalizadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarProgramasFinalizadosResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasFinalizadosCEL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idCEL" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasFinalizadosCELResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarProgramasFinalizadosCELResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgramasPublicados">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgramasPublicadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProgramasPublicadosResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgramasPublicadosPorInstitucion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idInstitucion" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgramasPublicadosPorInstitucionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProgramasPublicadosPorInstitucionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasPublicadosPorNombre">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="frase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasPublicadosPorNombreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarProgramasPublicadosPorNombreResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasPublicadosPorInstitucionYNombre">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idInstitucion" type="xs:int" />
+        <xs:element minOccurs="0" name="frase" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProgramasPublicadosPorInstitucionYNombreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BuscarProgramasPublicadosPorInstitucionYNombreResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -185,6 +254,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ReadAllVNotasProgramaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNotasModificable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idALumno" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerNotasModificableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ObtenerNotasModificableResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -288,6 +371,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idPrograma" type="xs:int" />
+        <xs:element minOccurs="0" name="idActividad" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -307,6 +391,32 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DesenlazarProgramaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IdActualEntidadActividad">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IdActualEntidadActividadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdActualEntidadActividadResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerActividadesPrograma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPrograma" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerActividadesProgramaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LeerActividadesProgramaResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -460,71 +570,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CrearCargo">
+  <xs:element name="ValidarMora">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CrearCargoResponse">
+  <xs:element name="ValidarMoraResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CrearCargoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ValidarMoraResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LeerCargo">
+  <xs:element name="AlumnosPorInstitucion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idInstitucion" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LeerCargoResponse">
+  <xs:element name="AlumnosPorInstitucionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LeerCargoResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarCargo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarCargoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ActualizarCargoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarCargo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarCargoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarCargoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LeerTodosCargos">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LeerTodosCargosResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LeerTodosCargosResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AlumnosPorInstitucionResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1086,6 +1156,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="EliminarPaisResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerTodosPaises">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerTodosPaisesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LeerTodosPaisesResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -27,6 +27,38 @@ namespace Negocio.Portafolio
             this.AddRange(list);
         }
 
+        public ProgramaCollection ProgramasPublicados()
+        {
+            var listaDalc = new EntitiesCEM().PROGRAMAS;
+
+            return GenerarListado(listaDalc.Where(programa => programa.ESTADO == "Publicado").ToList());
+        }
+
+        public ProgramaCollection BuscarProgramasPublicadosPorNombre(string frase)
+        {
+            frase = frase.ToUpper();
+
+            var listaDalc = new EntitiesCEM().PROGRAMAS;
+
+            return GenerarListado(listaDalc.Where(programa => programa.ESTADO == "Publicado" && programa.NOMBRE_PROGRAMA.ToUpper().Contains(frase)).ToList());
+        }
+
+        public ProgramaCollection ProgramasPublicadosPorInstitucion(int idInstitucion)
+        {
+            var listaDalc = new EntitiesCEM().PROGRAMAS;
+
+            return GenerarListado(listaDalc.Where(programa => programa.ESTADO == "Publicado" && programa.ID_INSTITUCION == idInstitucion).ToList());
+        }
+
+        public ProgramaCollection BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase)
+        {
+            frase = frase.ToUpper();
+
+            var listaDalc = new EntitiesCEM().PROGRAMAS;
+
+            return GenerarListado(listaDalc.Where(programa => programa.ESTADO == "Publicado" && programa.ID_INSTITUCION == idInstitucion && programa.NOMBRE_PROGRAMA.ToUpper().Contains(frase)).ToList());
+        }
+
         //Metodo que busca los programas correspondientes al CEL que esta asociado el Usuario
         public ProgramaCollection BuscarProgramasFinalizadosCEL(int idCEL)
         {
@@ -65,9 +97,10 @@ namespace Negocio.Portafolio
                 programa.Descripcion = item.DESCRIPCION;
                 programa.IdInstitucion = item.ID_INSTITUCION;
                 programa.Cupos= item.CUPOS;
-                programa.FechaInicio= item.FECHA_INICIO;
+                programa.FechaInicio = item.FECHA_INICIO;
                 programa.FechaTermino= item.FECHA_TERMINO;
                 programa.TipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos), item.TIPO_CURSO);
+                programa.Estado = item.ESTADO;
                 
                 listaBC.Add(programa);
             }
