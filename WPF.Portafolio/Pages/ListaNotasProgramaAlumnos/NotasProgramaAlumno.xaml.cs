@@ -1,5 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using Negocio.Portafolio;
+using Negocio.Portafolio.ViewClasses;
 using Negocio.Portafolio.ViewEntities;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,9 @@ namespace WPF.Portafolio.Pages.ListaNotasAlumnos
         public NotasProgramaAlumno(int idPrograma, bool esCEL)
         {
             InitializeComponent();
-
+            
             cel = esCEL;
-
+            
             programa = new Programa() { IdPrograma = idPrograma };
             programa.Read();
 
@@ -121,7 +122,7 @@ namespace WPF.Portafolio.Pages.ListaNotasAlumnos
 
                 lblIdNota.Content = ((Nota)dgNotasProgramas.SelectedItem).IdNota;
                 txtNota.Text = ((Nota)dgNotasProgramas.SelectedItem).Evaluacion.ToString();
-
+                
                 dgNotasProgramas.SelectedIndex = -1;
             }
         }
@@ -217,7 +218,7 @@ namespace WPF.Portafolio.Pages.ListaNotasAlumnos
                     {
                         IdNota = (decimal)lblIdNota.Content
                     };
-
+                    
                     if (svc.EliminarNota(nota.Serializar()))
                     {
                         MessageBox.Show("Nota eliminada!", "Borrado");

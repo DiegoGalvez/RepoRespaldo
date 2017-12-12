@@ -27,8 +27,6 @@ namespace Negocio.Portafolio
             this.AddRange(list);
         }
 
-
-        //metodo que lee todos los alumnos
         public AlumnoCollection AlumnosProgramaFinalizado(int idPrograma)
         {
             EntitiesCEM ctx = new EntitiesCEM();
@@ -36,8 +34,8 @@ namespace Negocio.Portafolio
                             join i in ctx.INTERCAMBIO on a.ID_ALUMNO equals i.ID_ALUMNO
                             join p in ctx.PROGRAMAS on i.ID_PROGRAMA equals p.ID_PROGRAMA
                             where p.ESTADO == "Finalizado" && p.ID_PROGRAMA == idPrograma && i.ESTADO == "Aprobado"
-                            select a ;
-                             
+                            select a;
+
 
             return GenerarListado(listaDalc.ToList());
         }

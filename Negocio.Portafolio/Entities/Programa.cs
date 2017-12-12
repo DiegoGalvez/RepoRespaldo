@@ -21,7 +21,7 @@ namespace Negocio.Portafolio
         private Nullable<DateTime> fechaInicio;
         private Nullable<DateTime> fechaTermino;
         private TipoCursos tipoCurso;
-        private string estado;
+        private EstadoPrograma estado;
         //private DateTime fechaCreacionCurso;
 
         public int CurrentProgramaEntityID()
@@ -31,7 +31,7 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
 
-                id = ctx.Database.SqlQuery<int>("SELECT MAX(ID_PROGRAMA) FROM PROGRAMAS").FirstOrDefault();
+                id = ctx.Database.SqlQuery<int>("SELECT PROGRAMAS_ID_PROGRAMA_SEQ.CURRVAL FROM dual").FirstOrDefault();
 
                 ctx = null;
                 return id;
@@ -57,7 +57,7 @@ namespace Negocio.Portafolio
                 this.fechaInicio = _pais.FECHA_INICIO;
                 this.fechaTermino = _pais.FECHA_TERMINO;
                 this.tipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos),_pais.TIPO_CURSO);
-                this.estado = _pais.ESTADO;
+                this.estado = (EstadoPrograma)Enum.Parse(typeof (EstadoPrograma), _pais.ESTADO);
                 this.idInstitucion = _pais.ID_INSTITUCION;
 
                 ctx = null;
@@ -101,7 +101,7 @@ namespace Negocio.Portafolio
                 if (ctx.PROGRAMAS.Any(p => p.ID_PROGRAMA == IdPrograma))
                 {
                     //Llama al procedimiento UPDATE en la tabla PROGRAMAS
-                    ctx.UPD_PROGRAMAS(IdPrograma, NombrePrograma, Descripcion, Cupos, idInstitucion, FechaInicio, FechaTermino, TipoCurso.ToString(), estado);
+                    ctx.UPD_PROGRAMAS(IdPrograma, NombrePrograma, Descripcion, Cupos, idInstitucion, FechaInicio, FechaTermino, TipoCurso.ToString(), estado.ToString());
                     ctx.SaveChanges();
                     ctx = null;
 
@@ -121,7 +121,7 @@ namespace Negocio.Portafolio
                 EntitiesCEM ctx = new EntitiesCEM();
                 //Llama al procedimiento INSERT en la tabla PROGRAMAS
                 //FechaTermino, IdPrograma, Cupos, TipoCurso.ToString(), Descripcion, FechaInicio, NombrePrograma);
-                ctx.INS_PROGRAMAS(NombrePrograma, Descripcion, Cupos, idInstitucion, fechaInicio, fechaTermino, tipoCurso.ToString(), estado);
+                ctx.INS_PROGRAMAS(NombrePrograma, Descripcion, Cupos, idInstitucion, fechaInicio, fechaTermino, tipoCurso.ToString(), estado.ToString());
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -172,7 +172,7 @@ namespace Negocio.Portafolio
             this.fechaInicio = DateTime.Now;
             this.FechaTermino = DateTime.Now;
             this.tipoCurso = TipoCursos.Normal;
-            this.estado = string.Empty;
+            this.estado = EstadoPrograma.Creado;
         }
 
         public int IdPrograma
@@ -218,7 +218,7 @@ namespace Negocio.Portafolio
             set { _descripcion = value; }
         }
 
-        public string Estado
+        public EstadoPrograma Estado
         {
             get { return estado; }
             set { estado = value; }

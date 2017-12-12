@@ -41,7 +41,6 @@ namespace ServiciosWCF.Portafolio
             return null;
         }
 
-
         public bool ActualizarActividad(string xml)
         {
             Actividad actividad = new Actividad();
@@ -307,7 +306,7 @@ namespace ServiciosWCF.Portafolio
 
             if (encargadoCel.Read())
             {
-                return encargadoCel.Serializar(); 
+                return encargadoCel.Serializar();
             }
             return encargadoCel.Serializar();
         }
@@ -376,7 +375,7 @@ namespace ServiciosWCF.Portafolio
 
         public bool ActualizarFamiliaAnfitriona(string xml)
         {
-            FamiliaAnfitriona familiaAnfitriona = new FamiliaAnfitriona();
+            FamiliaAnfitriona familiaAnfitriona = new FamiliaAnfitriona(xml);
 
             if (familiaAnfitriona.Update())
             {
@@ -387,7 +386,7 @@ namespace ServiciosWCF.Portafolio
 
         public bool EliminarFamiliaAnfitriona(string xml)
         {
-            FamiliaAnfitriona familiaAnfitriona = new FamiliaAnfitriona();
+            FamiliaAnfitriona familiaAnfitriona = new FamiliaAnfitriona(xml);
 
             if (familiaAnfitriona.Delete())
             {
@@ -560,7 +559,7 @@ namespace ServiciosWCF.Portafolio
 
         public bool EliminarNota(string xml)
         {
-            Nota nota = new Nota();
+            Nota nota = new Nota(xml);
 
             if (nota.Delete())
             {
@@ -574,6 +573,13 @@ namespace ServiciosWCF.Portafolio
             NotaCollection notaCollection = new NotaCollection();
 
             return notaCollection.ReadAll().Serializar();
+        }
+
+        public string NotasPorAlumno(int idAlumno)
+        {
+            NotaCollection notaCollection = new NotaCollection();
+
+            return notaCollection.NotasPorAlumno(idAlumno).Serializar();
         }
 
         //Pais
@@ -698,10 +704,10 @@ namespace ServiciosWCF.Portafolio
         public string BuscarProgramasFinalizados()
         {
             VProgramasFinalizadosCollection programaCollection = new VProgramasFinalizadosCollection().LeerProgramasFinalizados();
-            
+
             return programaCollection.Serializar();
         }
-        
+
         public string BuscarProgramasFinalizadosCEL(int idCEL)
         {
             ProgramaCollection programaCollection = new ProgramaCollection();
@@ -732,7 +738,6 @@ namespace ServiciosWCF.Portafolio
             ProgramaCollection programaCollection = new ProgramaCollection();
             return programaCollection.BuscarProgramasPublicadosPorInstitucionYNombre(idInstitucion, frase).Serializar();
         }
-
 
         //Usuario
         public bool validarUsuario(string userPass)
@@ -823,6 +828,19 @@ namespace ServiciosWCF.Portafolio
             }
         }
 
+        public string ObtenerNotasModificable(int idALumno)
+        {
+            try
+            {
+                VNotasModificableCollection lista = new VNotasModificableCollection();
+
+                return lista.ObtenerNotasModificable(idALumno).Serializar();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public string LeerTodosPostulantes()
         {
             try
@@ -894,19 +912,13 @@ namespace ServiciosWCF.Portafolio
                 return false;
             }
         }
+        
 
-        public string ObtenerNotasModificable(int idALumno)
+        public int IdActualEntidadPrograma()
         {
-            try
-            {
-                VNotasModificableCollection lista = new VNotasModificableCollection();
+            Programa programa = new Programa();
 
-                return lista.ObtenerNotasModificable(idALumno).Serializar();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return programa.CurrentProgramaEntityID();
         }
     }
 }

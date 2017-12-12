@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:WPF.Portafolio.Pages.ListaNotasAlumnos"
         mc:Ignorable="d"
-        Title="Notas de Alumno" Height="500" Width="500" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" 
+        Title="Notas de Alumno" Height="671" Width="1067" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" 
         HorizontalAlignment="Center" ResizeMode="NoResize" SizeToContent="WidthAndHeight" VerticalAlignment="Center"
         VerticalContentAlignment="Center" BorderThickness="1">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="626" Margin="692,10,2,4" Width="365">

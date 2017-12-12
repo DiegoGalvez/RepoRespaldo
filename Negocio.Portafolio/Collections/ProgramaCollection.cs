@@ -71,7 +71,7 @@ namespace Negocio.Portafolio
         public ProgramaCollection BuscarProgramasFinalizados()
         {
             EntitiesCEM ctx = new EntitiesCEM();
-            var listaDalc = from p in ctx.PROGRAMAS where p.ESTADO.Equals("Finalizado") select  p ;
+            var listaDalc = from p in ctx.PROGRAMAS where p.ESTADO.Equals("Finalizado") select p;
             return GenerarListado(listaDalc.ToList());
         }
 
@@ -95,13 +95,13 @@ namespace Negocio.Portafolio
                 programa.IdPrograma= item.ID_PROGRAMA;
                 programa.NombrePrograma = item.NOMBRE_PROGRAMA;
                 programa.Descripcion = item.DESCRIPCION;
-                programa.IdInstitucion = item.ID_INSTITUCION;
                 programa.Cupos= item.CUPOS;
-                programa.FechaInicio = item.FECHA_INICIO;
+                programa.IdInstitucion = item.ID_INSTITUCION;
+                programa.FechaInicio= item.FECHA_INICIO;
                 programa.FechaTermino= item.FECHA_TERMINO;
                 programa.TipoCurso = (TipoCursos)Enum.Parse(typeof (TipoCursos), item.TIPO_CURSO);
-                programa.Estado = item.ESTADO;
-                
+                programa.Estado = (EstadoPrograma)Enum.Parse(typeof(EstadoPrograma), item.ESTADO);
+
                 listaBC.Add(programa);
             }
             return listaBC;
@@ -120,6 +120,6 @@ namespace Negocio.Portafolio
             //return writer.ToString();
         }
 
-        
+
     }
 }

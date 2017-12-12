@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 using Negocio.Portafolio;
 using ServiciosWCF.Portafolio;
 using WPF.Portafolio.Pages.ListaNotasAlumnos;
-using WPF.Portafolio.Pages.ListaNotasProgramaAlumnos;
 using Negocio.Portafolio.ViewClasses;
+using System.Collections;
 
 namespace WPF.Portafolio.Pages
 {
     /// <summary>
-    /// Lógica de interacción para ListaNotas.xaml
+    /// Lógica de interacción para ListaProgramasNotas.xaml
     /// </summary>
     public partial class ListaProgramasNotas : Page
     {
@@ -32,7 +32,7 @@ namespace WPF.Portafolio.Pages
         {
             InitializeComponent();
 
-            if (MainMenu.UsuarioActual.Rol != "EncargadoCEL")
+            if(MainMenu.UsuarioActual.Rol != "EncargadoCEL")
             {
                 esCEL = false;
                 MostrarProgramas();
@@ -55,19 +55,18 @@ namespace WPF.Portafolio.Pages
         private void MostrarProgramasPorInstitucion(int idInstitucion)
         {
             ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
-
+            
             ProgramaCollection list = new ProgramaCollection(svc.ProgramasPublicadosPorInstitucion(idInstitucion));
 
             dgProgramasNotas.ItemsSource = GenerarVistaProgramas(list);
         }
-
 
         private void MostrarProgramas()
         {
             ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
 
             ProgramaCollection list = new ProgramaCollection(svc.ProgramasPublicados());
-
+            
             dgProgramasNotas.ItemsSource = GenerarVistaProgramas(list);
         }
 
@@ -101,10 +100,10 @@ namespace WPF.Portafolio.Pages
                     dgProgramasNotas.SelectedIndex = -1;
                     notasAlumno.ShowDialog();
                 }
-
+                
             }
         }
-
+        
         private void txtBuscarNombre_TextChanged(object sender, TextChangedEventArgs e)
         {
             ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
@@ -121,8 +120,8 @@ namespace WPF.Portafolio.Pages
 
                 dgProgramasNotas.ItemsSource = list;
             }
-
-
+            
+            
         }
     }
 }
