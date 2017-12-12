@@ -26,7 +26,11 @@
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="183,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="183,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="183,404,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Editar" FontSize="18" HorizontalAlignment="Left" Margin="358,445,0,0" VerticalAlignment="Top" Width="94" Height="35"/>
+        <Button x:Name="button" Content="" FontSize="18" HorizontalAlignment="Left" Margin="358,445,0,0" VerticalAlignment="Top" Width="94" Height="35">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="lblSituacion" Content="Situación Financiera: " FontSize="18" HorizontalAlignment="Left" Margin="67,526,0,0" VerticalAlignment="Top" Height="34" Width="177"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="234" Margin="585,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="353"/>
         <Label x:Name="label2" Content="Cambiar Contraseña" FontSize="20" HorizontalAlignment="Left" Margin="596,140,0,0" VerticalAlignment="Top"/>
@@ -36,7 +40,11 @@
         <TextBox x:Name="txtActual" HorizontalAlignment="Left" Height="23" Margin="753,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtNueva" HorizontalAlignment="Left" Height="23" Margin="753,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtRepetirNueva" HorizontalAlignment="Left" Height="23" Margin="753,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnCAmbiar" Content="Cambiar" FontSize="18" HorizontalAlignment="Left" Margin="710,344,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnCAmbiar" Content="" FontSize="18" HorizontalAlignment="Left" Margin="710,344,0,0" VerticalAlignment="Top" Width="75">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/save-icon-silhouette.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>

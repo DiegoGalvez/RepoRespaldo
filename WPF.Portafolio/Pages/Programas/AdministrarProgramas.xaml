@@ -9,10 +9,26 @@
       Background="White" Height="550" Width="810">
     <Grid>
         <Label x:Name="lblTitulo" Content="Administrador de programas" FontSize="30" VerticalAlignment="Top" Margin="208,10,208,0" />
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="164,112,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="288,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="418,112,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="549,112,0,0" VerticalAlignment="Top" Width="75" />
+        <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" Margin="164,112,0,0" VerticalAlignment="Top" Width="75" >
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnBuscar" Content="" HorizontalAlignment="Left" Margin="288,112,0,0" VerticalAlignment="Top" Width="75">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/search.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" Margin="418,112,0,0" VerticalAlignment="Top" Width="75" >
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" Margin="549,112,0,0" VerticalAlignment="Top" Width="75" >
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
+            </Button.Background>
+        </Button>
 
         <DataGrid x:Name="dgUsuario" Width="auto" Margin="164,163,186,0" VerticalAlignment="Top" Height="200" MaxHeight="200" IsReadOnly="True" />
 

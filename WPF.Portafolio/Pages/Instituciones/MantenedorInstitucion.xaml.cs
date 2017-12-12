@@ -72,9 +72,7 @@ namespace WPF.Portafolio.Pages.Instituciones
             lblIdInstitucion.Visibility = Visibility.Visible;
 
             lblIdInstitucion.Content = institucion.IdInstitucion;
-
-            btnAccion.Content = "Modificar";
-
+            
             btnEliminar.Visibility = Visibility.Visible;
         }
 

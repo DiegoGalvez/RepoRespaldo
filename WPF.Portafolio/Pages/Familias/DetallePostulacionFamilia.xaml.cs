@@ -42,7 +42,7 @@ namespace WPF.Portafolio.Pages.Familias
             string directorio = string.Format("ftp://190.46.53.32/Familias/{0}", identifiacionFamilia);
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(directorio);
             request.Method = WebRequestMethods.Ftp.ListDirectory;
-            
+
             request.Credentials = new NetworkCredential("cem", "nick6831");
 
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
@@ -52,13 +52,13 @@ namespace WPF.Portafolio.Pages.Familias
 
             List<string> paths = new List<string>();
             string line = reader.ReadLine();
-            
+
             while (!string.IsNullOrEmpty(line))
             {
                 paths.Add(line);
                 line = reader.ReadLine();
             }
-            
+
             using (WebClient ftpClient = new WebClient())
             {
                 ftpClient.Credentials = new System.Net.NetworkCredential("cem", "nick6831");
@@ -69,7 +69,7 @@ namespace WPF.Portafolio.Pages.Familias
                     {
                         string result = Path.GetTempPath();
                         string path = "ftp://190.46.53.32/Familias/" + paths[i].ToString();
-                        
+
                         string[] DirNombre = paths[i].Split('/');
                         string dir = DirNombre[0];
                         string nombreFile = DirNombre[1];
@@ -77,14 +77,14 @@ namespace WPF.Portafolio.Pages.Familias
 
                         ftpClient.DownloadFile(path, trnsfrpth);
                         images.Items.Add(trnsfrpth);
-                        
+
                     }
                 }
             }
-            
+
             reader.Close();
             response.Close();
         }
-               
+
     }
 }

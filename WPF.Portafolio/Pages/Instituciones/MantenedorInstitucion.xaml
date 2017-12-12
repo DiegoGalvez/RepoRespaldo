@@ -17,8 +17,16 @@
         <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Margin="212,183,0,0"/>
         <ComboBox x:Name="cbPais" HorizontalAlignment="Left" Margin="212,211,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbPais_SelectionChanged"/>
         <ComboBox x:Name="cbCiudad" HorizontalAlignment="Left" Margin="212,238,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAccion" Content="Agregar" HorizontalAlignment="Left" Margin="235,269,0,0" VerticalAlignment="Top" Width="76" Click="btnAccion_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="236,301,0,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Visibility="Hidden"/>
+        <Button x:Name="btnAccion" Content="" HorizontalAlignment="Left" Margin="235,269,0,0" VerticalAlignment="Top" Width="76" Click="btnAccion_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/checked.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" Margin="236,301,0,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="label" Content="Nombres:" HorizontalAlignment="Left" Margin="134,69,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Correo:" HorizontalAlignment="Left" Margin="134,96,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Telefono:" HorizontalAlignment="Left" Margin="134,127,0,0" VerticalAlignment="Top"/>

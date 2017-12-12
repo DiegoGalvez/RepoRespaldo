@@ -32,10 +32,26 @@
                 <TextBox x:Name="txtTelefono" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="269"/>
                 <TextBox x:Name="txtMora" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="332"/>
 
-                <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" Margin="180,65"/>
-                <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"  Margin="305,65"/>
-                <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnModificar_Click" Margin="430,65"/>
-                <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Margin="555,65"/>
+                <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" Margin="180,65">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnBuscar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"  Margin="305,65">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/search.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnModificar_Click" Margin="430,65">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Margin="555,65">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
+                    </Button.Background>
+                </Button>
 
                 <DataGrid x:Name="dgUsuario" Width="750" VerticalAlignment="Top" Height="141" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Canvas.Left="32" Canvas.Top="375" />
 

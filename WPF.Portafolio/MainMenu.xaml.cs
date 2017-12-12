@@ -100,7 +100,7 @@ namespace WPF.Portafolio
                     break;
             }
         }
-
+        
         private bool LlamarLogin()
         {
             InicioSesion login = new InicioSesion();

@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Windows.Controls;
 
-
 namespace WPF.Portafolio.Pages.Familias
 {
     /// <summary>

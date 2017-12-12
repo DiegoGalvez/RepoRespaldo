@@ -21,10 +21,26 @@
         <ComboBox x:Name="cbTipoRol" HorizontalAlignment="Left" Margin="387,201,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtIDRol" HorizontalAlignment="Left" Height="23" Margin="387,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="180,65,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="305,65,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="430,65,0,0" VerticalAlignment="Top" Width="75" Click="btnModificar_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="555,65,180,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click"/>
+        <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" Margin="180,65,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnBuscar" Content="" HorizontalAlignment="Left" Margin="305,65,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/search.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" Margin="430,65,0,0" VerticalAlignment="Top" Width="75" Click="btnModificar_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" Margin="555,65,180,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
+            </Button.Background>
+        </Button>
 
         <DataGrid x:Name="dgUsuario" Height="240" Margin="25,272,25,25" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
 

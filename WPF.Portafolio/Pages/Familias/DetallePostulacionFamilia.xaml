@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Detalle Familia Anfitriona" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Grid>
-
+        
         <Label x:Name="lblNombre" Content="Nombre"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="348,10,348,0"/>
         <Label x:Name="lblIdentificacion" Content="ID: " FontSize="18" Margin="50,85,649,350"   />
         <TextBox x:Name="txtIdentificacion" Margin="145,85,498,350" />

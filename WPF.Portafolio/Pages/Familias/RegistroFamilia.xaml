@@ -39,7 +39,11 @@
             <CheckBox x:Name="chkLaboral" Content="Laboral" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="559,403,0,0"/>
             <Label x:Name="label5" Content="Debe al menos subir 3 fotos de la habitacion y debe estar&#xD;&#xA; en formato .zip" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.159,0.942" Margin="559,447,0,0"/>
             <CheckBox x:Name="chkAntecedentesHogar" Content="Antecedentes" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,521,0,0"/>
-            <Button x:Name="btnGuardar" Content="Guardar" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="458,612,0,0" Height="45"/>
+            <Button x:Name="btnGuardar" Content="" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="458,612,0,0" Height="45">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/save-icon-silhouette.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
         <Label x:Name="label" Content="Registro" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="434,45,0,0" FontSize="50"/>
 

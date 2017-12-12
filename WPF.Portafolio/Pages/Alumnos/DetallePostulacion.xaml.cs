@@ -69,7 +69,7 @@ namespace WPF.Portafolio.Pages.Alumnos
 
                 if (svc.ValidarMora(txtIdAPostulante.Text))
                 {
-                    
+
                     Intercambio intercambio = new Intercambio();
                     intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
                     intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
@@ -97,13 +97,13 @@ namespace WPF.Portafolio.Pages.Alumnos
                 {
                     MessageBox.Show("El alumno se encuentra con mora","Advertencia");
                 }
-               
+
             }
             catch (Exception)
             {
-                
+
             }
-            
+
         }
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
