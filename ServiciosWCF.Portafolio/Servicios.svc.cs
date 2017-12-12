@@ -633,14 +633,7 @@ namespace ServiciosWCF.Portafolio
 
             return paisCollection.ReadAll().Serializar();
         }
-
-        public string NotasPorAlumno(int idAlumno)
-        {
-            NotaCollection notaCollection = new NotaCollection();
-
-            return notaCollection.NotasPorAlumno(idAlumno).Serializar();
-        }
-
+        
         //Programa
         public bool CrearPrograma(string xml)
         {
@@ -913,12 +906,5 @@ namespace ServiciosWCF.Portafolio
             }
         }
         
-
-        public int IdActualEntidadPrograma()
-        {
-            Programa programa = new Programa();
-
-            return programa.CurrentProgramaEntityID();
-        }
     }
 }
