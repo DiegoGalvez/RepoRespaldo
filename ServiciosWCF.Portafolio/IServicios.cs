@@ -33,7 +33,6 @@ namespace ServiciosWCF.Portafolio
         [OperationContract]
         string LeerActividadesPrograma(int idPrograma);
 
-
         //Administrativo
         [OperationContract]
         bool CrearAdministrativo(string xml);
@@ -67,7 +66,7 @@ namespace ServiciosWCF.Portafolio
         string AlumnosDePrograma(int idPrograma);
         [OperationContract]
         string AlumnosDeProgramaPorInstitucion(int idPrograma, int idInstitucion);
-
+        
         //Ciudad
         [OperationContract]
         bool CrearCiudad(string xml);
@@ -156,7 +155,6 @@ namespace ServiciosWCF.Portafolio
         [OperationContract]
         string NotasPorAlumno(int idAlumno);
 
-
         //Pais
         [OperationContract]
         bool CrearPais(string xml);
@@ -194,6 +192,8 @@ namespace ServiciosWCF.Portafolio
         string BuscarProgramasPublicadosPorNombre(string frase);
         [OperationContract]
         string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase);
+        [OperationContract]
+        string BuscarProgramasPorNombre(string frase);
 
         //Usuario
         [OperationContract]
@@ -219,6 +219,5 @@ namespace ServiciosWCF.Portafolio
         //Vista familia postulantes
         [OperationContract]
         string BuscarFamiliaNombreApellido(string frase);
-        
     }
 }

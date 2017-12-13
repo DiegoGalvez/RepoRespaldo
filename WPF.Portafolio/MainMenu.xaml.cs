@@ -89,7 +89,7 @@ namespace WPF.Portafolio
                     break;
             }
         }
-        
+
         private void CargarNombreUsuario(string nomUsario)
         {
             Usuario user = new Usuario();
@@ -100,7 +100,7 @@ namespace WPF.Portafolio
             string tx = UsuarioActual.NomUsuario;
             LBNombreUsuario.Content = tx;
         }
-        
+
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             if (stackMenuFondo.Width < 80)

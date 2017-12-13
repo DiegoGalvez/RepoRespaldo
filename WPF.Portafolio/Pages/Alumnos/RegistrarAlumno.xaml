@@ -24,7 +24,11 @@
         <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="213,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="213,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="Registro" FontSize="18" HorizontalAlignment="Left" Margin="89,74,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRegistrar" Content="Registrar" FontSize="15" HorizontalAlignment="Left" Margin="213,363,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRegistrar" Content="" FontSize="15" HorizontalAlignment="Left" Margin="213,363,0,0" VerticalAlignment="Top" Width="75">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/save-icon-silhouette.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>

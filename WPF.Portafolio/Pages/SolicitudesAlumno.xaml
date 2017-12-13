@@ -19,7 +19,11 @@
         </ComboBox>
         <Label x:Name="LBEspecialidad" Content="Especialidad" HorizontalAlignment="Left" Margin="346,137,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="422,138,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnFiltrar" Content="Filtrar" HorizontalAlignment="Left" Margin="570,137,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="btnFiltrar" Content="" HorizontalAlignment="Left" Margin="570,137,0,0" VerticalAlignment="Top" Width="76">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/funnel.png"/>
+            </Button.Background>
+        </Button>
         <DataGrid x:Name="dataGrid" Margin="100,212,100,162">
             
         </DataGrid>

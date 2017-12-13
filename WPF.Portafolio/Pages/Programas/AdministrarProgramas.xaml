@@ -9,14 +9,18 @@
       Background="White" Height="550" Width="810">
     <Grid>
         <Label x:Name="lblTitulo" Content="Administrador de programas" FontSize="30" VerticalAlignment="Top" Margin="208,10,208,0" />
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="164,112,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="288,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="418,112,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="549,112,0,0" VerticalAlignment="Top" Width="75" />
 
-        <DataGrid x:Name="dgUsuario" Width="auto" Margin="164,163,186,0" VerticalAlignment="Top" Height="200" MaxHeight="200" IsReadOnly="True" />
+        <Label x:Name="label_Copy" Content="Escriba nombre para busqueda" HorizontalAlignment="Left" Margin="221,81,0,0" VerticalAlignment="Top" Height="26" Width="240"/>
+        <TextBox x:Name="txtBuscarNombre" HorizontalAlignment="Left" Height="23" Margin="221,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" TextChanged="txtBuscarNombre_TextChanged"/>
+        
+        <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" Margin="490,107,0,0" VerticalAlignment="Top" Width="74" IsEnabled="False" Click="btnModificar_Click" >
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
+            </Button.Background>
+        </Button>
 
 
+        <DataGrid x:Name="dgProgramas" Width="auto" Margin="10,163,10,0" VerticalAlignment="Top" Height="377" MaxHeight="200" IsReadOnly="True" SelectionChanged="dgProgramas_SelectionChanged" />
 
     </Grid>
 </Page>

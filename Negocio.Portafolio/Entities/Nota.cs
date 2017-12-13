@@ -55,7 +55,7 @@ namespace Negocio.Portafolio
 
                     return true;
                 }
-                return true; //deveria ser false cuando se arregle el tema de las notas
+                return false; //deveria ser false cuando se arregle el tema de las notas
             }
             catch (Exception)
             {
@@ -71,7 +71,7 @@ namespace Negocio.Portafolio
                 if (ctx.NOTAS.Any(i => i.ID_NOTA == IdNota))
                 {
                     //Llama al procedimiento UPDATE en la tabla INTERCAMBIO
-                    ctx.UPD_NOTAS(Evaluacion,IdAlumno, IdNota, IdPrograma );
+                    ctx.UPD_NOTAS(IdNota,IdPrograma, IdAlumno, Evaluacion);
                     ctx.SaveChanges();
                     ctx = null;
 

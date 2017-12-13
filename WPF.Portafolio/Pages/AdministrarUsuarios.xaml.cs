@@ -49,7 +49,7 @@ namespace WPF.Portafolio.Pages
             try
             {
                 Usuario _usuario = new Usuario();
-                
+
                 _usuario.NomUsuario = txtUsuario.Text.Trim();
                 _usuario.Password = txtPassword.Text.Trim();
                 switch (cbTipoRol.SelectedIndex)
@@ -86,7 +86,7 @@ namespace WPF.Portafolio.Pages
                         _usuario.IdAlumno = null;
                         _usuario.IdFamilia = null;
                         _usuario.IdEncargadoCel = null;
-                        _usuario.IdEncargadoCem = int.Parse(txtIDRol.Text.Trim());
+                        _usuario.IdEncargadoCem = int.Parse(txtIDRol.Text.Trim()); 
                         break;
                     case 4:
                         _usuario.Rol = "EncargadoCEL";
