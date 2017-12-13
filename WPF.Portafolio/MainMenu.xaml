@@ -6,7 +6,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:WPF.Portafolio"
         mc:Ignorable="d"
-        Title="Centro de estudio Montreal" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Centro de estudio Montreal" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" BorderThickness="1"
+        IsMinButtonEnabled="True"
+        IsMaxRestoreButtonEnabled="True" BorderBrush="Red" >
     <Grid>
         <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7">
             <Canvas>

@@ -1,28 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Negocio.Portafolio;
-using ServiciosWCF.Portafolio;
 using WPF.Portafolio.Pages;
 using WPF.Portafolio.Pages.Familias;
-using WPF.Portafolio.Pages.Instituciones;
 using MahApps.Metro.Controls;
-using System.Windows.Media.Effects;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Media.Animation;
 using WPF.Portafolio.Pages.Mantenedores;
 using WPF.Portafolio.Pages.Certificado;
 using WPF.Portafolio.Pages.Programas;
+using WPF.Portafolio.Pages.Reporte;
 
 namespace WPF.Portafolio
 {
@@ -100,19 +89,7 @@ namespace WPF.Portafolio
                     break;
             }
         }
-
-        private bool LlamarLogin()
-        {
-            InicioSesion login = new InicioSesion();
-            login.ShowDialog();
-
-            if (login.isAceptado)
-            {
-                CargarNombreUsuario(login.txtUser.Text);
-            }
-            return login.isAceptado;
-        }
-
+        
         private void CargarNombreUsuario(string nomUsario)
         {
             Usuario user = new Usuario();
@@ -123,15 +100,7 @@ namespace WPF.Portafolio
             string tx = UsuarioActual.NomUsuario;
             LBNombreUsuario.Content = tx;
         }
-
-        private void CerrarSesion_Click(object sender, RoutedEventArgs e)
-        {
-            UsuarioActual = null;
-            MainMenu menu = new MainMenu();
-            //login.Aceptado = false;
-            menu.Show();
-        }
-
+        
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
             if (stackMenuFondo.Width < 80)
@@ -206,7 +175,9 @@ namespace WPF.Portafolio
 
         private void btnReporte_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            CleanBackgroundbtn();
+            btnReporte.Background = new SolidColorBrush(Colors.DarkRed);
+            Main.Content = new Reportes();
         }
 
         private void btnCertificado_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

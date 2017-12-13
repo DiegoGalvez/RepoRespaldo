@@ -6,7 +6,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:WPF.Portafolio"
         mc:Ignorable="d"
-        Title="Inicio Sesion" Height="220" Width="330" WindowStartupLocation="CenterScreen" Background="#FFDADADA" BorderThickness="1" >
+        IsMinButtonEnabled="True"
+        IsMaxRestoreButtonEnabled="False"
+        Title="Inicio Sesion" Height="220" Width="330" WindowStartupLocation="CenterScreen" Background="#FFDADADA" ResizeMode="CanMinimize" BorderThickness="1" BorderBrush="Red"  >
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  Width="310" Height="174" Margin="6,5,6,10">
 
         <Border HorizontalAlignment="Left" Height="154" Margin="10,10,0,0" VerticalAlignment="Top" Width="290" CornerRadius="5">

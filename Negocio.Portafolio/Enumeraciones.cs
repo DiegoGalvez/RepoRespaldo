@@ -23,6 +23,6 @@ namespace Negocio.Portafolio
 
     public enum EstadoPrograma
     {
-        Creado, PorValidar, Validado, Publicado, Rechazado
+        Creado, Postulado, Validado, Publicado, Finalizado
     }
 }
