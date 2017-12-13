@@ -43,6 +43,15 @@ namespace Negocio.Portafolio
             return GenerarListado(listaDalc.Where(programa => programa.ESTADO == "Publicado" && programa.NOMBRE_PROGRAMA.ToUpper().Contains(frase)).ToList());
         }
 
+        public ProgramaCollection BuscarProgramasPorNombre(string frase)
+        {
+            frase = frase.ToUpper();
+
+            var listaDalc = new EntitiesCEM().PROGRAMAS;
+
+            return GenerarListado(listaDalc.Where(programa => programa.NOMBRE_PROGRAMA.ToUpper().Contains(frase)).ToList());
+        }
+
         public ProgramaCollection ProgramasPublicadosPorInstitucion(int idInstitucion)
         {
             var listaDalc = new EntitiesCEM().PROGRAMAS;
@@ -119,7 +128,6 @@ namespace Negocio.Portafolio
             //writer.Close();
             //return writer.ToString();
         }
-
-
+        
     }
 }

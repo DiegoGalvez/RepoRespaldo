@@ -633,7 +633,7 @@ namespace ServiciosWCF.Portafolio
 
             return paisCollection.ReadAll().Serializar();
         }
-        
+
         //Programa
         public bool CrearPrograma(string xml)
         {
@@ -730,6 +730,12 @@ namespace ServiciosWCF.Portafolio
         {
             ProgramaCollection programaCollection = new ProgramaCollection();
             return programaCollection.BuscarProgramasPublicadosPorInstitucionYNombre(idInstitucion, frase).Serializar();
+        }
+
+        public string BuscarProgramasPorNombre(string frase)
+        {
+            ProgramaCollection programaCollection = new ProgramaCollection();
+            return programaCollection.BuscarProgramasPorNombre(frase).Serializar();
         }
 
         //Usuario

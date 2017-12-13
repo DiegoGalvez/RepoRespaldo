@@ -192,7 +192,9 @@ namespace ServiciosWCF.Portafolio
         string BuscarProgramasPublicadosPorNombre(string frase);
         [OperationContract]
         string BuscarProgramasPublicadosPorInstitucionYNombre(int idInstitucion, string frase);
-        
+        [OperationContract]
+        string BuscarProgramasPorNombre(string frase);
+
         //Usuario
         [OperationContract]
         bool validarUsuario(string userPass);
