@@ -4,47 +4,50 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="669178b963734a7aba2c0d06f823176e" Name="Diagram1" ZoomLevel="81">
+      <Diagram DiagramId="43ba61abd40b4cad80feecaa8fe4f992" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="ModelCEM.ACTIVIDAD" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.ADMINISTRATIVO" Width="1.5" PointX="8.25" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.ALUMNOS" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.ARCHIVOFAMILIA" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.CARGO" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.CIUDAD" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEL" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEM" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.FAMILIASANFITRIONA" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.INSTITUCION" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.INTERCAMBIO" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.NOTAS" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.PAIS" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.PROGRAMAS" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelCEM.USUARIO" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.V_NOTAS_ALUMNO" Width="1.5" PointX="11.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.VISTA_ALUMNOS_POSTULANTES" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.VISTA_DETALLE_POSTULACION" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelCEM.VISTA_PROGRAMAS_FINALIZADOS" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
         <AssociationConnector Association="ModelCEM.FK_USUARIO_ADMINISTRATIVO" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_ALUMNOS" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_NOTAS_ALUMNOS" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_USUARIO_ALUMNOS" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_ARCHIVOFAMILIA" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_CIUDAD_PAIS" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_CIUDAD" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_FAMILIASANFITRIONA_CIUDAD" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_INSTITUCION_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_PAIS" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_USUARIO_ENCARGADO_CEL" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEM_PAIS" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_USUARIO_ENCARGADO_CEM" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_FAMILIASANFITRIONA_PAIS" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_FAMILIASANFITRIONA" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_USUARIO_FAMILIASANFITRIONA" ManuallyRouted="false" />
         <AssociationConnector Association="ModelCEM.FK_INSTITUCION_PAIS" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ModelCEM.V_FAMILIA_ANFITRIONA" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelCEM.VISTA_ALUMNOS_POSTULANTES" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelCEM.VISTA_DETALLE_POSTULACION" Width="1.5" PointX="13.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ModelCEM.VISTA_PROGRAMAS_FINALIZADOS" Width="2.375" PointX="1.375" PointY="3.75" />
-        <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEL" Width="1.5" PointX="13.5" PointY="6.625" />
-        <EntityTypeShape EntityType="ModelCEM.ENCARGADO_CEM" Width="1.5" PointX="3" PointY="12" />
-        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_CIUDAD" />
-        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_INSTITUCION" />
-        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEL_PAIS" />
-        <AssociationConnector Association="ModelCEM.FK_USUARIO_ENCARGADO_CEL" />
-        <AssociationConnector Association="ModelCEM.FK_ENCARGADO_CEM_PAIS" />
-        <AssociationConnector Association="ModelCEM.FK_USUARIO_ENCARGADO_CEM" />
-        <EntityTypeShape EntityType="ModelCEM.PROGRAMAS" Width="1.5" PointX="7.5" PointY="2.25" />
-        <AssociationConnector Association="ModelCEM.FK_PROGRAMAS_INSTITUCION" />
-        <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" />
-        <AssociationConnector Association="ModelCEM.FK_NOTAS_PROGRAMAS" />
-        <AssociationConnector Association="ModelCEM.PROGRAMA_ACTIVIDAD" />
+        <AssociationConnector Association="ModelCEM.FK_PROGRAMAS_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_INTERCAMBIO_PROGRAMAS" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.FK_NOTAS_PROGRAMAS" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelCEM.PROGRAMA_ACTIVIDAD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ModelCEM.V_PROGRAMAS_POSTULADOS" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

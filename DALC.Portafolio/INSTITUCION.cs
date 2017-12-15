@@ -31,9 +31,9 @@ namespace DALC.Portafolio
         public int ID_PAIS { get; set; }
     
         public virtual CIUDAD CIUDAD { get; set; }
-        public virtual PAIS PAIS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
+        public virtual PAIS PAIS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROGRAMAS> PROGRAMAS { get; set; }
     }

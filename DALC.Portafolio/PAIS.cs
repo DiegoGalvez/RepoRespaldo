@@ -18,10 +18,10 @@ namespace DALC.Portafolio
         public PAIS()
         {
             this.CIUDAD = new HashSet<CIUDAD>();
-            this.FAMILIASANFITRIONA = new HashSet<FAMILIASANFITRIONA>();
-            this.INSTITUCION = new HashSet<INSTITUCION>();
             this.ENCARGADO_CEL = new HashSet<ENCARGADO_CEL>();
             this.ENCARGADO_CEM = new HashSet<ENCARGADO_CEM>();
+            this.FAMILIASANFITRIONA = new HashSet<FAMILIASANFITRIONA>();
+            this.INSTITUCION = new HashSet<INSTITUCION>();
         }
     
         public int ID_PAIS { get; set; }
@@ -31,12 +31,12 @@ namespace DALC.Portafolio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CIUDAD> CIUDAD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FAMILIASANFITRIONA> FAMILIASANFITRIONA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSTITUCION> INSTITUCION { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FAMILIASANFITRIONA> FAMILIASANFITRIONA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INSTITUCION> INSTITUCION { get; set; }
     }
 }

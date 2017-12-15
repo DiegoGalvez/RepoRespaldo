@@ -31,20 +31,23 @@ namespace DALC.Portafolio
         public virtual DbSet<ADMINISTRATIVO> ADMINISTRATIVO { get; set; }
         public virtual DbSet<ALUMNOS> ALUMNOS { get; set; }
         public virtual DbSet<ARCHIVOFAMILIA> ARCHIVOFAMILIA { get; set; }
+        public virtual DbSet<CARGO> CARGO { get; set; }
         public virtual DbSet<CIUDAD> CIUDAD { get; set; }
+        public virtual DbSet<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
+        public virtual DbSet<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
         public virtual DbSet<FAMILIASANFITRIONA> FAMILIASANFITRIONA { get; set; }
         public virtual DbSet<INSTITUCION> INSTITUCION { get; set; }
         public virtual DbSet<INTERCAMBIO> INTERCAMBIO { get; set; }
         public virtual DbSet<NOTAS> NOTAS { get; set; }
         public virtual DbSet<PAIS> PAIS { get; set; }
+        public virtual DbSet<PROGRAMAS> PROGRAMAS { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<V_FAMILIA_ANFITRIONA> V_FAMILIA_ANFITRIONA { get; set; }
+        public virtual DbSet<V_NOTAS_ALUMNO> V_NOTAS_ALUMNO { get; set; }
         public virtual DbSet<VISTA_ALUMNOS_POSTULANTES> VISTA_ALUMNOS_POSTULANTES { get; set; }
         public virtual DbSet<VISTA_DETALLE_POSTULACION> VISTA_DETALLE_POSTULACION { get; set; }
         public virtual DbSet<VISTA_PROGRAMAS_FINALIZADOS> VISTA_PROGRAMAS_FINALIZADOS { get; set; }
-        public virtual DbSet<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
-        public virtual DbSet<ENCARGADO_CEM> ENCARGADO_CEM { get; set; }
-        public virtual DbSet<PROGRAMAS> PROGRAMAS { get; set; }
+        public virtual DbSet<V_PROGRAMAS_POSTULADOS> V_PROGRAMAS_POSTULADOS { get; set; }
     
         public virtual int DEL_ACTIVIDAD(Nullable<decimal> p_ID_ACTIVIDAD)
         {
@@ -80,6 +83,15 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ID_ARCHIVO_FAMILIA", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DEL_ARCHIVOFAMILIA", p_ID_ARCHIVO_FAMILIAParameter);
+        }
+    
+        public virtual int DEL_CARGO(Nullable<decimal> p_ID_CARGO)
+        {
+            var p_ID_CARGOParameter = p_ID_CARGO.HasValue ?
+                new ObjectParameter("P_ID_CARGO", p_ID_CARGO) :
+                new ObjectParameter("P_ID_CARGO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DEL_CARGO", p_ID_CARGOParameter);
         }
     
         public virtual int DEL_CIUDAD(Nullable<decimal> p_ID_CIUDAD)
@@ -215,8 +227,12 @@ namespace DALC.Portafolio
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_ADMINISTRATIVO", p_NOMBREParameter, p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_CORREOParameter);
         }
     
-        public virtual int INS_ALUMNOS(string p_DV, string p_NOMBRE, string p_APELL_PATERNO, string p_APELL_MATERNO, string p_CORREO, Nullable<decimal> p_RESERVA, Nullable<decimal> p_TELEFONO, string p_ESTADO_MORA)
+        public virtual int INS_ALUMNOS(Nullable<decimal> p_ID_ALUMNO, string p_DV, string p_NOMBRE, string p_APELL_PATERNO, string p_APELL_MATERNO, string p_CORREO, Nullable<decimal> p_RESERVA, Nullable<decimal> p_TELEFONO, string p_ESTADO_MORA)
         {
+            var p_ID_ALUMNOParameter = p_ID_ALUMNO.HasValue ?
+                new ObjectParameter("P_ID_ALUMNO", p_ID_ALUMNO) :
+                new ObjectParameter("P_ID_ALUMNO", typeof(decimal));
+    
             var p_DVParameter = p_DV != null ?
                 new ObjectParameter("P_DV", p_DV) :
                 new ObjectParameter("P_DV", typeof(string));
@@ -249,7 +265,7 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ESTADO_MORA", p_ESTADO_MORA) :
                 new ObjectParameter("P_ESTADO_MORA", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_ALUMNOS", p_DVParameter, p_NOMBREParameter, p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_CORREOParameter, p_RESERVAParameter, p_TELEFONOParameter, p_ESTADO_MORAParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_ALUMNOS", p_ID_ALUMNOParameter, p_DVParameter, p_NOMBREParameter, p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_CORREOParameter, p_RESERVAParameter, p_TELEFONOParameter, p_ESTADO_MORAParameter);
         }
     
         public virtual int INS_ARCHIVOFAMILIA(string p_DIRECCION_ENLACE, string p_TIPO_ARCHIVO, Nullable<decimal> p_ID_FAMILIA)
@@ -267,6 +283,19 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ID_FAMILIA", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_ARCHIVOFAMILIA", p_DIRECCION_ENLACEParameter, p_TIPO_ARCHIVOParameter, p_ID_FAMILIAParameter);
+        }
+    
+        public virtual int INS_CARGO(Nullable<decimal> p_ID_CARGO, string p_NOM_CARGO)
+        {
+            var p_ID_CARGOParameter = p_ID_CARGO.HasValue ?
+                new ObjectParameter("P_ID_CARGO", p_ID_CARGO) :
+                new ObjectParameter("P_ID_CARGO", typeof(decimal));
+    
+            var p_NOM_CARGOParameter = p_NOM_CARGO != null ?
+                new ObjectParameter("P_NOM_CARGO", p_NOM_CARGO) :
+                new ObjectParameter("P_NOM_CARGO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_CARGO", p_ID_CARGOParameter, p_NOM_CARGOParameter);
         }
     
         public virtual int INS_CIUDAD(string p_NOM_CIUDAD, Nullable<decimal> p_ID_PAIS)
@@ -387,6 +416,55 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ESTADO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_FAMILIAANFITRIONA", p_NOMBREParameter, p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_IDENTIFICACIONParameter, p_CORREOParameter, p_TELEFONO_CONTACTOParameter, p_DIRECCIONParameter, p_ID_CIUDADParameter, p_ID_PAISParameter, p_ESTADOParameter);
+        }
+    
+        public virtual int INS_FAMILIASANFITRIONA(string p_APELL_PATERNO, string p_APELL_MATERNO, string p_DIRECCION, string p_ESTADO, string p_CORREO, Nullable<decimal> p_ID_FAMILIA, string p_IDENTIFICACION, Nullable<decimal> p_TELEFONO_CONTACTO, Nullable<decimal> p_ID_CIUDAD, string p_NOMBRE, Nullable<decimal> p_ID_PAIS)
+        {
+            var p_APELL_PATERNOParameter = p_APELL_PATERNO != null ?
+                new ObjectParameter("P_APELL_PATERNO", p_APELL_PATERNO) :
+                new ObjectParameter("P_APELL_PATERNO", typeof(string));
+    
+            var p_APELL_MATERNOParameter = p_APELL_MATERNO != null ?
+                new ObjectParameter("P_APELL_MATERNO", p_APELL_MATERNO) :
+                new ObjectParameter("P_APELL_MATERNO", typeof(string));
+    
+            var p_DIRECCIONParameter = p_DIRECCION != null ?
+                new ObjectParameter("P_DIRECCION", p_DIRECCION) :
+                new ObjectParameter("P_DIRECCION", typeof(string));
+    
+            var p_ESTADOParameter = p_ESTADO != null ?
+                new ObjectParameter("P_ESTADO", p_ESTADO) :
+                new ObjectParameter("P_ESTADO", typeof(string));
+    
+            var p_CORREOParameter = p_CORREO != null ?
+                new ObjectParameter("P_CORREO", p_CORREO) :
+                new ObjectParameter("P_CORREO", typeof(string));
+    
+            var p_ID_FAMILIAParameter = p_ID_FAMILIA.HasValue ?
+                new ObjectParameter("P_ID_FAMILIA", p_ID_FAMILIA) :
+                new ObjectParameter("P_ID_FAMILIA", typeof(decimal));
+    
+            var p_IDENTIFICACIONParameter = p_IDENTIFICACION != null ?
+                new ObjectParameter("P_IDENTIFICACION", p_IDENTIFICACION) :
+                new ObjectParameter("P_IDENTIFICACION", typeof(string));
+    
+            var p_TELEFONO_CONTACTOParameter = p_TELEFONO_CONTACTO.HasValue ?
+                new ObjectParameter("P_TELEFONO_CONTACTO", p_TELEFONO_CONTACTO) :
+                new ObjectParameter("P_TELEFONO_CONTACTO", typeof(decimal));
+    
+            var p_ID_CIUDADParameter = p_ID_CIUDAD.HasValue ?
+                new ObjectParameter("P_ID_CIUDAD", p_ID_CIUDAD) :
+                new ObjectParameter("P_ID_CIUDAD", typeof(decimal));
+    
+            var p_NOMBREParameter = p_NOMBRE != null ?
+                new ObjectParameter("P_NOMBRE", p_NOMBRE) :
+                new ObjectParameter("P_NOMBRE", typeof(string));
+    
+            var p_ID_PAISParameter = p_ID_PAIS.HasValue ?
+                new ObjectParameter("P_ID_PAIS", p_ID_PAIS) :
+                new ObjectParameter("P_ID_PAIS", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INS_FAMILIASANFITRIONA", p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_DIRECCIONParameter, p_ESTADOParameter, p_CORREOParameter, p_ID_FAMILIAParameter, p_IDENTIFICACIONParameter, p_TELEFONO_CONTACTOParameter, p_ID_CIUDADParameter, p_NOMBREParameter, p_ID_PAISParameter);
         }
     
         public virtual int INS_INSTITUCION(string p_NOMBRE, string p_CORREO, Nullable<decimal> p_TELEFONO, string p_PAGINA_WEB, string p_DIRECCION, Nullable<decimal> p_ID_CIUDAD, Nullable<decimal> p_ID_PAIS)
@@ -664,6 +742,19 @@ namespace DALC.Portafolio
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_ARCHIVOFAMILIA", p_ID_ARCHIVO_FAMILIAParameter, p_DIRECCION_ENLACEParameter, p_TIPO_ARCHIVOParameter, p_ID_FAMILIAParameter);
         }
     
+        public virtual int UPD_CARGO(Nullable<decimal> p_ID_CARGO, string p_NOM_CARGO)
+        {
+            var p_ID_CARGOParameter = p_ID_CARGO.HasValue ?
+                new ObjectParameter("P_ID_CARGO", p_ID_CARGO) :
+                new ObjectParameter("P_ID_CARGO", typeof(decimal));
+    
+            var p_NOM_CARGOParameter = p_NOM_CARGO != null ?
+                new ObjectParameter("P_NOM_CARGO", p_NOM_CARGO) :
+                new ObjectParameter("P_NOM_CARGO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_CARGO", p_ID_CARGOParameter, p_NOM_CARGOParameter);
+        }
+    
         public virtual int UPD_CIUDAD(Nullable<decimal> p_ID_CIUDAD, string p_NOM_CIUDAD, Nullable<decimal> p_ID_PAIS)
         {
             var p_ID_CIUDADParameter = p_ID_CIUDAD.HasValue ?
@@ -798,6 +889,55 @@ namespace DALC.Portafolio
                 new ObjectParameter("P_ESTADO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_FAMILIAANFITRIONA", p_ID_FAMILIAParameter, p_NOMBREParameter, p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_IDENTIFICACIONParameter, p_CORREOParameter, p_TELEFONO_CONTACTOParameter, p_DIRECCIONParameter, p_ID_PAISParameter, p_ID_CIUDADParameter, p_ESTADOParameter);
+        }
+    
+        public virtual int UPD_FAMILIASANFITRIONA(string p_APELL_PATERNO, string p_APELL_MATERNO, string p_DIRECCION, string p_ESTADO, string p_CORREO, Nullable<decimal> p_ID_FAMILIA, string p_IDENTIFICACION, Nullable<decimal> p_TELEFONO_CONTACTO, Nullable<decimal> p_ID_CIUDAD, string p_NOMBRE, Nullable<decimal> p_ID_PAIS)
+        {
+            var p_APELL_PATERNOParameter = p_APELL_PATERNO != null ?
+                new ObjectParameter("P_APELL_PATERNO", p_APELL_PATERNO) :
+                new ObjectParameter("P_APELL_PATERNO", typeof(string));
+    
+            var p_APELL_MATERNOParameter = p_APELL_MATERNO != null ?
+                new ObjectParameter("P_APELL_MATERNO", p_APELL_MATERNO) :
+                new ObjectParameter("P_APELL_MATERNO", typeof(string));
+    
+            var p_DIRECCIONParameter = p_DIRECCION != null ?
+                new ObjectParameter("P_DIRECCION", p_DIRECCION) :
+                new ObjectParameter("P_DIRECCION", typeof(string));
+    
+            var p_ESTADOParameter = p_ESTADO != null ?
+                new ObjectParameter("P_ESTADO", p_ESTADO) :
+                new ObjectParameter("P_ESTADO", typeof(string));
+    
+            var p_CORREOParameter = p_CORREO != null ?
+                new ObjectParameter("P_CORREO", p_CORREO) :
+                new ObjectParameter("P_CORREO", typeof(string));
+    
+            var p_ID_FAMILIAParameter = p_ID_FAMILIA.HasValue ?
+                new ObjectParameter("P_ID_FAMILIA", p_ID_FAMILIA) :
+                new ObjectParameter("P_ID_FAMILIA", typeof(decimal));
+    
+            var p_IDENTIFICACIONParameter = p_IDENTIFICACION != null ?
+                new ObjectParameter("P_IDENTIFICACION", p_IDENTIFICACION) :
+                new ObjectParameter("P_IDENTIFICACION", typeof(string));
+    
+            var p_TELEFONO_CONTACTOParameter = p_TELEFONO_CONTACTO.HasValue ?
+                new ObjectParameter("P_TELEFONO_CONTACTO", p_TELEFONO_CONTACTO) :
+                new ObjectParameter("P_TELEFONO_CONTACTO", typeof(decimal));
+    
+            var p_ID_CIUDADParameter = p_ID_CIUDAD.HasValue ?
+                new ObjectParameter("P_ID_CIUDAD", p_ID_CIUDAD) :
+                new ObjectParameter("P_ID_CIUDAD", typeof(decimal));
+    
+            var p_NOMBREParameter = p_NOMBRE != null ?
+                new ObjectParameter("P_NOMBRE", p_NOMBRE) :
+                new ObjectParameter("P_NOMBRE", typeof(string));
+    
+            var p_ID_PAISParameter = p_ID_PAIS.HasValue ?
+                new ObjectParameter("P_ID_PAIS", p_ID_PAIS) :
+                new ObjectParameter("P_ID_PAIS", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPD_FAMILIASANFITRIONA", p_APELL_PATERNOParameter, p_APELL_MATERNOParameter, p_DIRECCIONParameter, p_ESTADOParameter, p_CORREOParameter, p_ID_FAMILIAParameter, p_IDENTIFICACIONParameter, p_TELEFONO_CONTACTOParameter, p_ID_CIUDADParameter, p_NOMBREParameter, p_ID_PAISParameter);
         }
     
         public virtual int UPD_INSTITUCION(Nullable<decimal> p_ID_INSTITUCION, string p_NOMBRE, string p_CORREO, Nullable<decimal> p_TELEFONO, string p_PAGINA_WEB, string p_DIRECCION, Nullable<decimal> p_ID_CIUDAD, Nullable<decimal> p_ID_PAIS)

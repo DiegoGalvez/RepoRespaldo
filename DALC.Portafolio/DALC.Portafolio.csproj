@@ -68,11 +68,19 @@
     <Compile Include="ALUMNOS.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="ARCHIVOFAMILIA.cs">
+      <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
     <Compile Include="CARGO.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
     <Compile Include="CIUDAD.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DScem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DScem.xsd</DependentUpon>
     </Compile>
     <Compile Include="EDMCEM.Context.cs">
       <AutoGen>True</AutoGen>
@@ -113,9 +121,6 @@
     <Compile Include="PROGRAMAS.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
-    <Compile Include="PROGRAMA_ACTIVIDAD.cs">
-      <DependentUpon>EDMCEM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="USUARIO.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
@@ -126,10 +131,16 @@
     <Compile Include="VISTA_DETALLE_POSTULACION.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
+    <Compile Include="VISTA_PROGRAMAS_FINALIZADOS.cs">
+      <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_FAMILIA_ANFITRIONA.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
     <Compile Include="V_NOTAS_ALUMNO.cs">
+      <DependentUpon>EDMCEM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_PROGRAMAS_POSTULADOS.cs">
       <DependentUpon>EDMCEM.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -141,6 +152,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EDMCEM.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DScem.xsc">
+      <DependentUpon>DScem.xsd</DependentUpon>
+    </None>
+    <None Include="DScem.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DScem.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DScem.xss">
+      <DependentUpon>DScem.xsd</DependentUpon>
+    </None>
     <None Include="EDMCEM.edmx.diagram">
       <DependentUpon>EDMCEM.edmx</DependentUpon>
     </None>
@@ -160,6 +182,9 @@
       <DependentUpon>EDMCEM.edmx</DependentUpon>
       <LastGenOutput>EDMCEM.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Programas.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -218,6 +218,9 @@
     <Compile Include="Pages\ListaNotasProgramaAlumnos\ListaProgramasNotas.xaml.cs">
       <DependentUpon>ListaProgramasNotas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Programas\ModificarPrograma.xaml.cs">
+      <DependentUpon>ModificarPrograma.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Programas\UnirAPrograma.xaml.cs">
       <DependentUpon>UnirAPrograma.xaml</DependentUpon>
     </Compile>
@@ -247,7 +250,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Programa.rdlc" />
+    <EmbeddedResource Include="Programas.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -423,6 +426,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ListaNotasProgramaAlumnos\ListaProgramasNotas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Programas\ModificarPrograma.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

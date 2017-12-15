@@ -17,21 +17,21 @@ namespace DALC.Portafolio
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CIUDAD()
         {
+            this.ENCARGADO_CEL = new HashSet<ENCARGADO_CEL>();
             this.FAMILIASANFITRIONA = new HashSet<FAMILIASANFITRIONA>();
             this.INSTITUCION = new HashSet<INSTITUCION>();
-            this.ENCARGADO_CEL = new HashSet<ENCARGADO_CEL>();
         }
     
         public int ID_CIUDAD { get; set; }
         public string NOM_CIUDAD { get; set; }
-        public Nullable<int> ID_PAIS { get; set; }
+        public int ID_PAIS { get; set; }
     
         public virtual PAIS PAIS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FAMILIASANFITRIONA> FAMILIASANFITRIONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSTITUCION> INSTITUCION { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ENCARGADO_CEL> ENCARGADO_CEL { get; set; }
     }
 }

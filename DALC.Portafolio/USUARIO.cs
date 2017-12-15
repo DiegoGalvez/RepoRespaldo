@@ -26,8 +26,8 @@ namespace DALC.Portafolio
     
         public virtual ADMINISTRATIVO ADMINISTRATIVO { get; set; }
         public virtual ALUMNOS ALUMNOS { get; set; }
-        public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
         public virtual ENCARGADO_CEL ENCARGADO_CEL { get; set; }
         public virtual ENCARGADO_CEM ENCARGADO_CEM { get; set; }
+        public virtual FAMILIASANFITRIONA FAMILIASANFITRIONA { get; set; }
     }
 }

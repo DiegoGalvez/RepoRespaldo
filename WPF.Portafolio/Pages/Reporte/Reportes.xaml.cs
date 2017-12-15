@@ -45,10 +45,10 @@ namespace WPF.Portafolio.Pages.Reporte
                 this._reportViewer.LocalReport.DataSources.Add(dataSource1);
                 //this.SizeToContent = SizeToContent.WidthAndHeight;
 
-                dataSource2.Name = "DSEstado";
+                dataSource2.Name = "DSEstados";
                 dataSource2.Value = dScem.V_PROGRAMAS_ESTADO;
                 this._reportViewer.LocalReport.DataSources.Add(dataSource2);
-                this._reportViewer.LocalReport.ReportEmbeddedResource = "WPF.Portafolio.Programa.rdlc";
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "WPF.Portafolio.Programas.rdlc";
                 this._reportViewer.LocalReport.EnableExternalImages = true;
                 dScem.EndInit();
 

@@ -12,9 +12,10 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class CARGO
+    public partial class V_NOTAS_ALUMNO
     {
-        public int ID_CARGO { get; set; }
-        public string NOM_CARGO { get; set; }
+        public string Nombre { get; set; }
+        public string NOMBRE_PROGRAMA { get; set; }
+        public Nullable<decimal> NOTA { get; set; }
     }
 }

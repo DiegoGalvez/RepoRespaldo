@@ -12,9 +12,14 @@ namespace DALC.Portafolio
     using System;
     using System.Collections.Generic;
     
-    public partial class CARGO
+    public partial class V_PROGRAMAS_POSTULADOS
     {
-        public int ID_CARGO { get; set; }
-        public string NOM_CARGO { get; set; }
+        public int ID_PROGRAMA { get; set; }
+        public string NOMBRE_PROGRAMA { get; set; }
+        public System.DateTime FECHA_INICIO { get; set; }
+        public string Encargado_Cel { get; set; }
+        public string Institucion { get; set; }
+        public string NOM_PAIS { get; set; }
+        public string NOM_CIUDAD { get; set; }
     }
 }

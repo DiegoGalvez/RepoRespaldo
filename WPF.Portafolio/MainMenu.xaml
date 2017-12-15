@@ -20,8 +20,7 @@
         <StackPanel Margin="0,60,0,0" Background="#FFDADADA">
             <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"></Frame>
         </StackPanel>
-
-        <StackPanel Name="stackMenuFondo" Background="Gray" Width="300" HorizontalAlignment="Left" Margin="-240,0,0,0" >
+        <StackPanel x:Name="stackMenuFondo" Background="Gray" Width="300" HorizontalAlignment="Left" Margin="-240,0,0,0" >
             <DockPanel x:Name="stackMenu">
 
                 <Grid Height="690" Width="300">
@@ -45,53 +44,53 @@
                     <!-- Ubica las imagenes clickables en el Grid -->
 
                     <DockPanel x:Name="btnMenu" Grid.Row="0" MouseLeftButtonUp="btnMenu_MouseLeftButtonUp" Height="60" HorizontalAlignment="Right"  Background="{x:Null}" Width="300"  >
-                        <Label Name="lblMenu" Content="Menú" Margin="10,0,0,0" Width="60"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="18" FontWeight="Bold"/>
+                        <Label x:Name="lblMenu" Content="Menú" Margin="10,0,0,0" Width="60"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="18" FontWeight="Bold"/>
                         <Image Source="Img/icons8-menu.png" x:Name="imgMenu" Height="40" Width="40"  Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                     </DockPanel>
                     <DockPanel x:Name="btnPostulacionesAlumnos" MouseLeftButtonUp="btnPostulacionesAlumnos_MouseLeftButtonUp" Grid.Row="2" Background="{x:Null}" HorizontalAlignment="Right" Width="300" Focusable="True" >
-                        <Label Name="lblPostulacionesAlumnos" Content="Postulaciones de Alumnos" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblPostulacionesAlumnos" Content="Postulaciones de Alumnos" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-analyze.png"  x:Name="imgPostulacionesAlumnos" Height="40" Width="40" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0" />
                     </DockPanel>
                     <DockPanel x:Name="btnNotas" Grid.Row="3" MouseLeftButtonUp="btnNotas_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblNotas" Content="Notas de Alumnos" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblNotas" Content="Notas de Alumnos" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-exam.png"  x:Name="imgNotas" Height="40" Width="40" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0" />
                     </DockPanel>
                     <DockPanel x:Name="btnPostulacionesFamilias" MouseLeftButtonUp="btnPostulacionesFamilias_MouseLeftButtonUp" Grid.Row="4" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblPostulacionesFamilias" Content="Postulaciones de Familias" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblPostulacionesFamilias" Content="Postulaciones de Familias" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-family.png" x:Name="imgSolicitudesFamilias" Height="40" Width="40" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnMantendor" Grid.Row="5" MouseLeftButtonUp="btnMantendor_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblMantendor" Content="Mantendores" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblMantendor" Content="Mantendores" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-settings.png" x:Name="imgMantenedor" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnReporte" Grid.Row="6" MouseLeftButtonUp="btnReporte_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblReporte" Content="Reportes" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblReporte" Content="Reportes" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-pie-chart.png" x:Name="imgReporte" Height="40" Width="40" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnCertificado" Grid.Row="7" MouseLeftButtonUp="btnCertificado_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblCertificado" Content="Certificados" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblCertificado" Content="Certificados" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-certificate.png" x:Name="imgCertificado" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnPostularAPrograma" Grid.Row="8" MouseLeftButtonUp="btnPostularAPrograma_MouseLeftButtonUp" Background="{x:Null}" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblPostularAPrograma" Content="Postular a Programa" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblPostularAPrograma" Content="Postular a Programa" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-school.png" x:Name="imgListaProgramas" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnValidarPrograma" Grid.Row="9" Background="{x:Null}" HorizontalAlignment="Right" Width="300" MouseLeftButtonUp="btnValidarPrograma_MouseLeftButtonUp" >
-                        <Label Name="lblValidarPrograma" Content="Validar Programa" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblValidarPrograma" Content="Validar Programa" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-ValidarPrograma.png" x:Name="imgValidarProgramas" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                     <DockPanel x:Name="btnCerrarSesion" Grid.Row="11" MouseLeftButtonUp="btnCerrarSesion_MouseLeftButtonUp" HorizontalAlignment="Right" Width="300" >
-                        <Label Name="lblCerrarSesion" Content="Cerrar Sesion" Margin="10,0,0,0" Width="217"
-                               HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
+                        <Label x:Name="lblCerrarSesion" Content="Cerrar Sesion" Margin="10,0,0,0" Width="217"
+        					HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="LeftToRight" FontSize="16"/>
                         <Image Source="Img/icons8-exit.png" x:Name="imgCerrarSesion" Height="40" Width="40" Stretch="Fill"  HorizontalAlignment="Right" Margin="0,0,10,0"  />
                     </DockPanel>
                 </Grid>

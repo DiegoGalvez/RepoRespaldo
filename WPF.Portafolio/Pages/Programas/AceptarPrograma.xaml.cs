@@ -85,7 +85,7 @@ namespace WPF.Portafolio.Pages.Programas
                     programa.IdPrograma = vprograma.IdPrograma;
                     if (programa.Read())
                     {
-                        programa.Estado = "Publicado";
+                        programa.Estado = EstadoPrograma.Publicado;
                         if (programa.Update())
                         {
                             string mensaje = "Programa validado y publicado";
@@ -125,7 +125,7 @@ namespace WPF.Portafolio.Pages.Programas
                     programa.IdPrograma = vprograma.IdPrograma;
                     if (programa.Read())
                     {
-                        programa.Estado = "Creado";
+                        programa.Estado = EstadoPrograma.Creado;
                         programa.IdInstitucion = null;
                         if (programa.Update())
                         {
