@@ -6,10 +6,14 @@
       xmlns:local="clr-namespace:WPF.Portafolio.Pages"
       mc:Ignorable="d"
       Background="White"
-      Title="CrearPrograma" Height="540" Width="810">
+      Title="CrearPrograma" Height="720" Width="1080">
 
     <Grid>
-        <Canvas>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="463*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <Canvas Margin="0,0,-0.4,-41" Grid.RowSpan="2">
             <Label x:Name="lblNombre" Content="Nombre de Programa:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="80" Canvas.Top="78"/>
             <TextBox x:Name="txtNombrePrograma" Height="23" Canvas.Left="208" TextWrapping="Wrap" Canvas.Top="78" Width="238"/>
             <Label x:Name="lblDescripcion" Content="Descripción: " HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="109"/>

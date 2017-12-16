@@ -15,7 +15,7 @@
             <ColumnDefinition Width="1010"/>
         </Grid.ColumnDefinitions>
 
-        <Canvas Height="660" Width="810" Grid.Column="1" Background="WhiteSmoke">
+        <Canvas Width="810" Grid.Column="1" Background="White" Margin="102.6,23,97,96" >
             <Label Name="lblTitulo" Content="Programas Finalizados" FontSize="30" Margin="250,20"/>
             <Label Name="lblFiltros" Content="Filtros:"  Canvas.Left="73" Canvas.Top="115"/>
             <TextBox x:Name="txtNombrePrograma" Height="23" Controls:TextBoxHelper.Watermark="Nombre del programa" Canvas.Left="73" Canvas.Top="146" Width="170" BorderBrush="Red"/>
@@ -33,7 +33,7 @@
                     <DataGridTextColumn Header="Encargado CEL" Binding="{Binding NombreEncargadoCEL}"/>
                     <DataGridTextColumn Header="Ciudad" Binding="{Binding Pais}"/>
                     <DataGridTextColumn Header="Pais" Binding="{Binding Ciudad}"/>
-                    
+
                 </DataGrid.Columns>
             </DataGrid>
 

@@ -5,28 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF.Portafolio.Pages.Mantenedores"
       mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="1080"
+      d:DesignHeight="720" d:DesignWidth="1080"
       Title="TabsMantenedor" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="1010"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabControl" Grid.Column="1" HorizontalAlignment="Left" Height="540" Margin="100,20,100,0" VerticalAlignment="Top" Width="810" FlowDirection="RightToLeft" >
+        <TabControl x:Name="tabControl" Grid.Column="1" HorizontalAlignment="Left" Height="600" Margin="99.6,20,0,0" VerticalAlignment="Top" Width="813" FlowDirection="RightToLeft" >
             <TabItem Header="CEL" Name="tabCEL">
-                <Frame Source="/WPF.Portafolio;component/Pages/Instituciones/ListaInstituciones.xaml" Height="500"></Frame>
+                <Frame Source="/WPF.Portafolio;component/Pages/Instituciones/ListaInstituciones.xaml"/>
             </TabItem>
             <TabItem Header="Programa" Name="tabPrograma">
-                <Frame Source="/WPF.Portafolio;component/Pages/Programas/CrearPrograma.xaml" Height="500"></Frame>
+                <Frame Source="/WPF.Portafolio;component/Pages/Programas/CrearPrograma.xaml" Height="550"></Frame>
             </TabItem>
             <TabItem Header="Familia Anfitriona" Name="tabFamilia">
-                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarFamilias.xaml" Height="500"></Frame>
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarFamilias.xaml" Height="550"></Frame>
             </TabItem>
             <TabItem Header="Alumnos" Name="tabAlumnos">
-                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarAlumnos.xaml" Height="500"></Frame>
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarAlumnos.xaml" Height="550" Background="White" Margin="52,0,0,0"></Frame>
             </TabItem>
             <TabItem Header="Usuarios" Name="tabUsuarios">
-                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarUsuarios.xaml" Height="500"></Frame>
+                <Frame Source="/WPF.Portafolio;component/Pages/AdministrarUsuarios.xaml" Height="550"></Frame>
             </TabItem>
         </TabControl>
 

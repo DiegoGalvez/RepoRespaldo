@@ -6,12 +6,17 @@
       xmlns:local="clr-namespace:WPF.Portafolio.Pages"
       mc:Ignorable="d"
       Title="ListaNotas"
-      Height="550" Width="810" VerticalAlignment="Center" HorizontalAlignment="Center" ShowsNavigationUI="False">
+      Height="550" Width="810" VerticalAlignment="Center" HorizontalAlignment="Center" ShowsNavigationUI="False"
+      >
 
     <Grid HorizontalAlignment="Left" Width="810">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122*"/>
+            <RowDefinition Height="153*"/>
+        </Grid.RowDefinitions>
         <Label x:Name="Titulo" Content="Notas De Alumnos" FontSize="30" VerticalAlignment="Top" RenderTransformOrigin="1.188,1.219" Margin="247,10,247,0" Height="46"/>
         <TextBox x:Name="txtBuscarNombre" HorizontalAlignment="Left" Height="23" Margin="30,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" TextChanged="txtBuscarNombre_TextChanged"/>
-        <DataGrid x:Name="dgProgramasNotas" Margin="30,168,30,40"  IsReadOnly="True" SelectionChanged="dgProgramasNotas_SelectionChanged"/>
+        <DataGrid x:Name="dgProgramasNotas" Margin="30,168,30,40.4"  IsReadOnly="True" SelectionChanged="dgProgramasNotas_SelectionChanged" Grid.RowSpan="2"/>
         <Label x:Name="label" Content="Seleccione un programa para ver las notas" HorizontalAlignment="Left" Margin="501,142,0,0" VerticalAlignment="Top" Height="26" Width="226"/>
         <Label x:Name="label_Copy" Content="Escriba nombre para busqueda" HorizontalAlignment="Left" Margin="30,85,0,0" VerticalAlignment="Top" Height="26" Width="240"/>
     </Grid>

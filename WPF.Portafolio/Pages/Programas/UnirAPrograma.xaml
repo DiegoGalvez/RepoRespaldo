@@ -6,15 +6,15 @@
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:local="clr-namespace:WPF.Portafolio.Pages.Programas"
       mc:Ignorable="d" 
-      Height="660" Width="1080"
+      Height="720" Width="1080"
       Title="UnirAPrograma">
 
-    <Grid>
+    <Grid Margin="0,0,0,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="1010"/>
         </Grid.ColumnDefinitions>
-        <Canvas Width="810" Grid.Column="1" Background="White" Margin="100,0,100,34">
+        <Canvas Width="810" Grid.Column="1" Background="White" Margin="99.6,10,100,87">
 
             <Label Name="lblTitulo" Content="Postular a un programa" FontSize="30" Canvas.Left="256" Canvas.Top="20"/>
             <Label x:Name="lblFiltros" Content="Filtros:"  Canvas.Left="73" Canvas.Top="94"/>
