@@ -15,11 +15,11 @@
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblNombreAlumno" Content="Alumno" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Grid.ColumnSpan="2" Margin="64,0"/>
-        <DataGrid x:Name="dgNotasProgramas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,87,10,138" IsReadOnly="True" SelectionChanged="dgNotasProgramas_SelectionChanged" Height="401" Grid.ColumnSpan="2" Width="345"/>
+        <DataGrid x:Name="dgNotasProgramas" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,87,10,138" IsReadOnly="True" SelectionChanged="dgNotasProgramas_SelectionChanged" Height="401" Grid.ColumnSpan="2" Width="345"/>
         <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15" Margin="80,37,61,0" Width="224" Grid.ColumnSpan="2"/>
         <Label x:Name="lblIdNota" Content="" HorizontalAlignment="Left" Margin="52,557,0,0" VerticalAlignment="Top" Width="94"/>
-        <TextBox x:Name="txtNota" HorizontalAlignment="Left" Height="23" Margin="151,558,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" Margin="55,557,0,0" VerticalAlignment="Top" Width="76" Grid.Column="1" Click="btnModificar_Click">
+        <TextBox x:Name="txtNota" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="151,558,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnModificar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="55,557,0,0" VerticalAlignment="Top" Width="76" Grid.Column="1" Click="btnModificar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/checked.png"/>
             </Button.Background>
@@ -35,12 +35,12 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/cancel.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" Margin="143,525,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="btnAgregar_Click">
+        <Button x:Name="btnAgregar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="143,525,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="btnAgregar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" Margin="143,589,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="btnEliminar_Click" >
+        <Button x:Name="btnEliminar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="143,589,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="btnEliminar_Click" >
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
             </Button.Background>

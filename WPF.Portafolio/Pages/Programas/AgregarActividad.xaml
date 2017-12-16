@@ -9,15 +9,15 @@
         Title="Agregar Actividad" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="label" Content="Nombre Actividad" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtActividad" HorizontalAlignment="Left" Height="23" Margin="68,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtActividad" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="68,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label x:Name="label1" Content="Descripcion" HorizontalAlignment="Left" Margin="108,72,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="124" Margin="60,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="btnAceptar" Content="" HorizontalAlignment="Left" Margin="60,232,0,0" VerticalAlignment="Top" Width="76" Click="btnAceptar_Click">
+        <TextBox x:Name="txtDescripcion" BorderBrush="Red" HorizontalAlignment="Left" Height="124" Margin="60,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
+        <Button x:Name="btnAceptar" BorderBrush="Red" Content="" HorizontalAlignment="Left" Margin="60,232,0,0" VerticalAlignment="Top" Width="76" Click="btnAceptar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/checked.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCancelar" Content="" HorizontalAlignment="Left" Margin="157,232,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click">
+        <Button x:Name="btnCancelar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="157,232,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/cancel.png"/>
             </Button.Background>

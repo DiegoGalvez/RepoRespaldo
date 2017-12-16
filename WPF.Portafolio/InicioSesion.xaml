@@ -20,10 +20,10 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <Button x:Name="btnIniciar" Content="Iniciar Sesión" HorizontalAlignment="Left" Margin="164,111,0,0" VerticalAlignment="Top" Width="97" Click="btnIniciar_Click" RenderTransformOrigin="0.557,0.296" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="27"/>
+        <Button x:Name="btnIniciar" BorderBrush="Red" Content="Iniciar Sesión" HorizontalAlignment="Left" Margin="164,111,0,0" VerticalAlignment="Top" Width="97" Click="btnIniciar_Click" RenderTransformOrigin="0.557,0.296" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="27"/>
         <Label x:Name="lblUser" Content="Usuario:" HorizontalAlignment="Left" Margin="83,48,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.038,0.5" Height="26" Width="53"/>
         <Label x:Name="lblPass" Content="Contraseña:" HorizontalAlignment="Left" Margin="64,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.465,-0.012" Height="26" Width="72"/>
-        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Height="26" Margin="141,49,0,0" TextWrapping="Wrap" Text="hthomson" VerticalAlignment="Top" Width="120" KeyDown="txtUser_KeyDown"/>
-        <PasswordBox x:Name="txtPassword" Password="123456" Margin="141,80,49,68" RenderTransformOrigin="0.503,-0.825" KeyDown="txtPassword_KeyDown"/>
+        <TextBox x:Name="txtUser" BorderBrush="Red" HorizontalAlignment="Left" Height="26" Margin="141,49,0,0" TextWrapping="Wrap" Text="hthomson" VerticalAlignment="Top" Width="120" KeyDown="txtUser_KeyDown"/>
+        <PasswordBox x:Name="txtPassword" BorderBrush="Red" Password="123456" Margin="141,80,49,68" RenderTransformOrigin="0.503,-0.825" KeyDown="txtPassword_KeyDown"/>
     </Grid>
 </Controls:MetroWindow>

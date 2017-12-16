@@ -12,19 +12,19 @@
         
         <Label x:Name="lblNombre" Content="Nombre"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="348,10,348,0"/>
         <Label x:Name="lblIdentificacion" Content="ID: " FontSize="18" Margin="50,85,649,350"   />
-        <TextBox x:Name="txtIdentificacion" Margin="145,85,498,350" />
-        <Label x:Name="lblCorreo" Content="Correo: " FontSize="18" Margin="50,140,649,295"   />
-        <TextBox x:Name="txtCorreo" Margin="145,140,498,295" />
+        <TextBox x:Name="txtIdentificacion" BorderBrush="Red" Margin="145,85,498,350" />
+        <Label x:Name="lblCorreo" Content="Correo: "  FontSize="18" Margin="50,140,649,295"   />
+        <TextBox x:Name="txtCorreo" BorderBrush="Red" Margin="145,140,497.6,294.4" />
         <Label x:Name="lblTelefono" Content="Teléfono:" FontSize="18" Margin="50,195,649,240"   />
-        <TextBox x:Name="txtTelefono" Margin="145,195,498,240" />
+        <TextBox x:Name="txtTelefono" BorderBrush="Red" Margin="145,195,498,240" />
         <Label x:Name="lblDireccion" Content="Dirección:" FontSize="18" Margin="50,250,649,185"   />
-        <TextBox x:Name="txtDireccion" Margin="145,250,498,185" />
+        <TextBox x:Name="txtDireccion" BorderBrush="Red" Margin="145,250,498,185" />
         <Label x:Name="lblCiudad" Content="Ciudad:" FontSize="18" Margin="50,305,649,130"   />
-        <TextBox x:Name="txtCiudad" Margin="145,305,498,130" />
+        <TextBox x:Name="txtCiudad" BorderBrush="Red" Margin="145,305,498,130" />
         <Label x:Name="lblPais" Content="País:" FontSize="18" Margin="50,360,649,75"   />
         <TextBox x:Name="txtPais" Margin="145,360,498,75" />
         <Image x:Name="image" Height="256" VerticalAlignment="Top" Margin="500,85,50,0"/>
-        <Controls:FlipView Margin="500,85,50,75" x:Name="images" BannerText="" IsBannerEnabled="False">
+        <Controls:FlipView Margin="500,85,50,75" BorderBrush="Red" BorderThickness="1" x:Name="images" BannerText="" IsBannerEnabled="False">
             <Controls:FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

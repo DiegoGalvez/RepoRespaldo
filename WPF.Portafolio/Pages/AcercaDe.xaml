@@ -14,7 +14,7 @@
             <ColumnDefinition Width="101*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblTituloAcercaDE" Content="Acerca de..." FontSize="24" HorizontalAlignment="Left" Margin="86,142,0,0" VerticalAlignment="Top" Height="45" Width="180" Grid.Column="1"/>
-        <Border BorderBrush="Black" BorderThickness="1" Height="322" Margin="86,192,86,0" VerticalAlignment="Top" Background="#FFF0F0F0" Grid.Column="1">
+        <Border BorderBrush="Red" BorderThickness="1"  Height="322" Margin="86,192,86,0" VerticalAlignment="Top" Background="#FFF0F0F0" Grid.Column="1">
             <Image x:Name="imgLogo" Margin="623,177,9,9" Source="/WPF.Portafolio;component/Img/logosf.png" />
         </Border>
         <Label x:Name="lblTituloSoftware" Content="Software: Caso CEM" FontSize="24" HorizontalAlignment="Left" Margin="102,215,0,0" VerticalAlignment="Top" Height="45" Width="226" Grid.Column="1"/>

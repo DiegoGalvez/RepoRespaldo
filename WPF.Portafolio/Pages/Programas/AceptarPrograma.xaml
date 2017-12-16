@@ -41,8 +41,8 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnPostular" Content="Aprobar" Canvas.Left="532" Canvas.Top="162" Width="89" Click="btnPostular_Click"/>
-            <Button x:Name="btnRechazar" Content="Rechazar" Canvas.Left="652" Canvas.Top="162" Width="89" Click="btnRechazar_Click"/>
+            <Button x:Name="btnPostular" Content="Aprobar" BorderBrush="Red" Canvas.Left="532" Canvas.Top="162" Width="89" Click="btnPostular_Click"/>
+            <Button x:Name="btnRechazar" Content="Rechazar" Canvas.Left="652" BorderBrush="Red" Canvas.Top="162" Width="89" Click="btnRechazar_Click"/>
 
 
         </Canvas>

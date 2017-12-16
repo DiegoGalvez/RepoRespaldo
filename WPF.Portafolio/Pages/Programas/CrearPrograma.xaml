@@ -15,41 +15,41 @@
         </Grid.RowDefinitions>
         <Canvas Margin="0,0,-0.4,-41" Grid.RowSpan="2">
             <Label x:Name="lblNombre" Content="Nombre de Programa:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="80" Canvas.Top="78"/>
-            <TextBox x:Name="txtNombrePrograma" Height="23" Canvas.Left="208" TextWrapping="Wrap" Canvas.Top="78" Width="238"/>
+            <TextBox x:Name="txtNombrePrograma" BorderBrush="Red" Height="23" Canvas.Left="208" TextWrapping="Wrap" Canvas.Top="78" Width="238"/>
             <Label x:Name="lblDescripcion" Content="Descripción: " HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="109"/>
-            <TextBox x:Name="txtDescripcion" Height="88" Canvas.Left="208" TextWrapping="Wrap" Canvas.Top="109" Width="238"/>
+            <TextBox x:Name="txtDescripcion" Height="88" BorderBrush="Red" Canvas.Left="208" TextWrapping="Wrap" Canvas.Top="109" Width="238"/>
             <Label x:Name="lblCupos" Content="Cupos:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="520" Canvas.Top="171"/>
             <Label x:Name="lblFechaInicio" Content="Fecha Inicio:" Canvas.Left="491" Canvas.Top="78"/>
             <Label x:Name="lblFechaTermino" Content="Fecha Termino:" Canvas.Left="477" Canvas.Top="109"/>
             <Label x:Name="lblTipoPrograma" Content="Tipo Programa:" Canvas.Left="475" Canvas.Top="140"/>
-            <DatePicker x:Name="dtInicio" Canvas.Left="577" Canvas.Top="78"/>
-            <DatePicker x:Name="dtTermino" Canvas.Left="577" Canvas.Top="109"/>
-            <ComboBox x:Name="cbTipoPrograma" Canvas.Left="577" Canvas.Top="140" Width="145"/>
-            <TextBox x:Name="txtCupos" Height="23" Canvas.Left="577" TextWrapping="Wrap" Canvas.Top="171" Width="145"/>
-            <Button x:Name="btnAgregar" Content="" Canvas.Left="475" Canvas.Top="247" Width="74" Click="btnAgregar_Click">
+            <DatePicker x:Name="dtInicio" BorderBrush="Red" Canvas.Left="577" Canvas.Top="78"/>
+            <DatePicker x:Name="dtTermino" BorderBrush="Red" Canvas.Left="577" Canvas.Top="109"/>
+            <ComboBox x:Name="cbTipoPrograma" BorderBrush="Red" Canvas.Left="577" Canvas.Top="140" Width="145"/>
+            <TextBox x:Name="txtCupos" Height="23" BorderBrush="Red" Canvas.Left="577" TextWrapping="Wrap" Canvas.Top="171" Width="145"/>
+            <Button x:Name="btnAgregar" Content="" BorderBrush="Red" Canvas.Left="475" Canvas.Top="247" Width="74" Click="btnAgregar_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnModificar" Content="" Canvas.Left="581" Canvas.Top="247" Width="74" IsEnabled="False" Click="btnModificar_Click">
+            <Button x:Name="btnModificar" Content="" BorderBrush="Red" Canvas.Left="581" Canvas.Top="247" Width="74" IsEnabled="False" Click="btnModificar_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnBorrar" Content="" Canvas.Left="687" Canvas.Top="247" Width="76" RenderTransformOrigin="0.697,0.519" IsEnabled="False" Click="btnBorrar_Click">
+            <Button x:Name="btnBorrar" Content="" BorderBrush="Red" Canvas.Left="687" Canvas.Top="247" Width="76" RenderTransformOrigin="0.697,0.519" IsEnabled="False" Click="btnBorrar_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
                 </Button.Background>
             </Button>
-            <DataGrid x:Name="dgActividades" IsReadOnly="True" Canvas.Left="45" Canvas.Top="279" Height="186" Width="720" SelectionChanged="dgActividades_SelectionChanged"/>
+            <DataGrid x:Name="dgActividades" BorderBrush="Red" BorderThickness="1" IsReadOnly="True" Canvas.Left="45" Canvas.Top="279" Height="186" Width="720" SelectionChanged="dgActividades_SelectionChanged"/>
             <Label x:Name="lblActividad" FontSize="18" Content="Actividades" Canvas.Left="45" Canvas.Top="240"/>
             <Label x:Name="lblTitulo" Content="Administrar un programa" FontSize="24" VerticalAlignment="Top" Margin="268,20,0,0" Width="285"/>
-            <Button x:Name="btnAceptar" Content="" Canvas.Left="268" Canvas.Top="479" Width="75" Click="btnAceptar_Click">
+            <Button x:Name="btnAceptar" Content="" BorderBrush="Red" Canvas.Left="268" Canvas.Top="479" Width="75" Click="btnAceptar_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/create-new-pencil-button.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnLimpiar" Content="" Canvas.Left="478" Canvas.Top="479" Width="75" Click="btnLimpiar_Click">
+            <Button x:Name="btnLimpiar" Content="" BorderBrush="Red" Canvas.Left="478" Canvas.Top="479" Width="75" Click="btnLimpiar_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/short-shovel-to-sweep.png"/>
                 </Button.Background>
