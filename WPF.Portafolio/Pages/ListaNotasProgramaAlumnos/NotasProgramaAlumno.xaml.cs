@@ -246,5 +246,15 @@ namespace WPF.Portafolio.Pages.ListaNotasAlumnos
 
             }
         }
+
+        private void dgNotasProgramas_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (this.dgNotasProgramas.Columns != null)
+            {
+                this.dgNotasProgramas.Columns[1].Visibility = Visibility.Collapsed;
+                this.dgNotasProgramas.Columns[2].Visibility = Visibility.Collapsed;
+                this.dgNotasProgramas.Columns[3].Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
