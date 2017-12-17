@@ -4,17 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF.Portafolio.Pages.Instituciones"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Lista de Instituciones" ShowsNavigationUI="False">
+      mc:Ignorable="d"
+      Title="Lista de Instituciones" ShowsNavigationUI="False" Height="541.991" Width="771.068">
 
     <Grid>
-        <Label x:Name="label" Content="Lista de Instituciones" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" />
-        <Button x:Name="btnAgregarInstitucion" BorderBrush="Red" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnAgregarInstitucion_Click" Margin="0,30,0,0">
+        <Label x:Name="label" Content="Lista de Instituciones" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Width="761" HorizontalContentAlignment="Center" />
+        <Button x:Name="btnAgregarInstitucion" BorderBrush="Red" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnAgregarInstitucion_Click" Margin="0,37,0,0">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="dgInstituciones" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Left"  VerticalAlignment="Top" SelectionChanged="dgInstituciones_SelectionChanged" Margin="0,60,0,0" IsReadOnly="True"/>
+        <DataGrid x:Name="dgInstituciones" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Left"  VerticalAlignment="Top" SelectionChanged="dgInstituciones_SelectionChanged" Margin="0,69,0,0" IsReadOnly="True" Height="463" Width="761"/>
     </Grid>
 </Page>

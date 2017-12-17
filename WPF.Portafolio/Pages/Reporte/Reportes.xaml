@@ -9,16 +9,18 @@
       Height="700" Width="1080"
       Title="Reportes">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="1010"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="lblTitulo"  Grid.Column="1" Content="Reportes" HorizontalContentAlignment="Center" FontSize="30" Margin="200,20,200,626" />
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-            <WindowsFormsHost x:Name="WFHReporte" Margin="0,100" HorizontalAlignment="Left" Height="500" Width="800">
-                <rv:ReportViewer x:Name="_reportViewer" ProcessingMode="Local"/>
-            </WindowsFormsHost>
-        </StackPanel>
-    </Grid>
+    <Canvas  Margin="0,10,-0.4,-9.6">
+        <Grid Canvas.Left="10" Width="1070" Height="699" Canvas.Top="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="1010"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Background="White" Margin="79.6,0,80,127">
+                <Label x:Name="lblTitulo" Content="Reportes" HorizontalContentAlignment="Center" FontSize="40" Height="85" Width="608" />
+                <WindowsFormsHost x:Name="WFHReporte" Margin="10,10,10,10" HorizontalAlignment="Left" Height="467" Width="832">
+                    <rv:ReportViewer x:Name="_reportViewer" ProcessingMode="Local"/>
+                </WindowsFormsHost>
+            </StackPanel>
+        </Grid>
+    </Canvas>
 </Page>

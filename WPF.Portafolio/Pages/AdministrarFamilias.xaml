@@ -10,14 +10,14 @@
     <Grid>
         <Label x:Name="lblTitulo" Content="Administrador de Familias" FontSize="30" VerticalAlignment="Top" Margin="224,10,225,0" />
 
-        
-        <Label x:Name="lblIdFamilia" Content="ID Familia:" HorizontalAlignment="Left" Margin="288,111,0,0" VerticalAlignment="Top" />
 
-        <Label x:Name="lblNombres" Content="Nombres:" HorizontalAlignment="Left" Margin="158,139,0,0" VerticalAlignment="Top" />
+        <Label x:Name="lblIdentificador" Content="Identificador:" HorizontalAlignment="Left" Margin="272,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.15,0.613" />
+
+        <Label x:Name="lblNombres" Content="Nombres:" HorizontalAlignment="Left" Margin="167,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.012" />
         <Label x:Name="lblApePaterno" Content="Apellido Paterno:" HorizontalAlignment="Left" Margin="130,173,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblApeMaterno" Content="Apellido Materno:" HorizontalAlignment="Left" Margin="130,203,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblIdentificador" Content="Identificador:" HorizontalAlignment="Left" Margin="152,235,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCorreo" Content="Correo:" HorizontalAlignment="Left" Margin="154,264,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblIdFamilia" Content="ID Familia:" HorizontalAlignment="Left" Margin="167,235,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCorreo" Content="Correo:" HorizontalAlignment="Left" Margin="180,261,0,0" VerticalAlignment="Top"/>
 
         <Label x:Name="lblTelefono" Content="Telefono:" HorizontalAlignment="Left" Margin="408,139,0,0" VerticalAlignment="Top" />
         <Label x:Name="lblDireccion" Content="Direccion:" HorizontalAlignment="Left" Margin="408,169,0,0" VerticalAlignment="Top"/>
@@ -49,14 +49,14 @@
         </Button>
 
 
-        <TextBox x:Name="txtIdFamilia" BorderBrush="Red" Height="23" Margin="366,114,324,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtIdentificador" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="357,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
         <TextBox x:Name="txtNombres" BorderBrush="Red" Height="23" Margin="236,142,454,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="txtApePaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtApeMaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIdentificador" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIdFamilia" BorderBrush="Red" Height="23" Margin="237,235,452.6,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="236,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-
+        
         <TextBox x:Name="txtTelefono" Height="23" BorderBrush="Red" Margin="486,142,204,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="486,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbPais" HorizontalAlignment="Left" Margin="486,203,0,0" BorderBrush="Red" VerticalAlignment="Top" Width="120" SelectionChanged="cbPais_SelectionChanged"/>
@@ -64,7 +64,7 @@
         <ComboBox x:Name="cbEstado" HorizontalAlignment="Left" Margin="486,266,0,0" VerticalAlignment="Top" BorderBrush="Red" Width="120"/>
 
 
-        <DataGrid x:Name="dgFamilias" Margin="10,310,10,10" BorderBrush="Red" BorderThickness="1" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
+        <DataGrid x:Name="dgFamilias" Margin="10,310,9.6,55.8" BorderBrush="Red" BorderThickness="1" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
 
         
         

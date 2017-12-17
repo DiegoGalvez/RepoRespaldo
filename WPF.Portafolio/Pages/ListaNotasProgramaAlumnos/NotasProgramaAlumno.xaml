@@ -15,7 +15,7 @@
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblNombreAlumno" Content="Alumno" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Grid.ColumnSpan="2" Margin="64,0"/>
-        <DataGrid x:Name="dgNotasProgramas" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,87,10,138" IsReadOnly="True" SelectionChanged="dgNotasProgramas_SelectionChanged" Height="401" Grid.ColumnSpan="2" Width="345"/>
+        <DataGrid x:Name="dgNotasProgramas" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,128,10.6,138" IsReadOnly="True" SelectionChanged="dgNotasProgramas_SelectionChanged" Height="360" Grid.ColumnSpan="2" Width="345"/>
         <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15" Margin="80,37,61,0" Width="224" Grid.ColumnSpan="2"/>
         <Label x:Name="lblIdNota" Content="" HorizontalAlignment="Left" Margin="52,557,0,0" VerticalAlignment="Top" Width="94"/>
         <TextBox x:Name="txtNota" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="151,558,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="55" Grid.ColumnSpan="2"/>
@@ -25,10 +25,10 @@
             </Button.Background>
         </Button>
         <Grid HorizontalAlignment="Left" Height="628" Margin="-684,0,0,-2" VerticalAlignment="Top" Width="654">
-            <Label x:Name="Titulo" Content="Notas De Alumnos" FontSize="30" VerticalAlignment="Top" RenderTransformOrigin="1.188,1.219" Margin="196,10,191,0" Height="46"/>
-            <DataGrid x:Name="dgAlumnos" Margin="30,112,30,40"  IsReadOnly="True" SelectionChanged="dgAlumnos_SelectionChanged"/>
-            <Label x:Name="label" Content="Seleccione un alumno para ver sus notas" HorizontalAlignment="Left" Margin="375,81,0,0" VerticalAlignment="Top" Height="26" Width="226"/>
-            <Label x:Name="lblPrograma" Content="Programa" HorizontalAlignment="Left" Margin="93,81,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Titulo" Content="Lista De Alumnos" FontSize="30" VerticalAlignment="Top" RenderTransformOrigin="1.188,1.219" Margin="45,10,30,0" Height="46" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+            <Label x:Name="lblPrograma" Content="Programa" FontSize="20" HorizontalAlignment="Center" Margin="30,61,0,0" VerticalAlignment="Top" Width="594" HorizontalContentAlignment="Center"/>
+            <Label x:Name="label" Content="Seleccione un alumno para ver sus notas" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top" Height="26" Width="226"/>
+            <DataGrid x:Name="dgAlumnos" Margin="30,131,30,40" BorderBrush="Red" BorderThickness="1"  IsReadOnly="True" SelectionChanged="dgAlumnos_SelectionChanged"/>
         </Grid>
         <Button x:Name="btnCancelar" Content="" HorizontalAlignment="Left" Margin="143,589,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="btnCancelar_Click">
             <Button.Background>
