@@ -24,47 +24,47 @@
         <Label x:Name="lblPais" Content="Pais:" HorizontalAlignment="Left" Margin="408,203,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCiudad" Content="Ciudad:" HorizontalAlignment="Left" Margin="408,235,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEstadoFamilia" Content="Estado:" HorizontalAlignment="Left" Margin="408,264,0,0" VerticalAlignment="Top"/>
-        
-        
 
-        <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" Margin="180,65,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click">
+
+
+        <Button x:Name="btnAgregar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="180,65,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnBuscar" Content="" HorizontalAlignment="Left" Margin="305,65,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click">
+        <Button x:Name="btnBuscar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="305,65,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/search.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" Margin="430,65,0,0" VerticalAlignment="Top" Width="75" Click="btnModificar_Click">
+        <Button x:Name="btnModificar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="430,65,0,0" VerticalAlignment="Top" Width="75" Click="btnModificar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" Margin="555,65,180,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click">
+        <Button x:Name="btnEliminar" Content="" BorderBrush="Red" HorizontalAlignment="Left" Margin="555,65,180,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
             </Button.Background>
         </Button>
 
-        
-        <TextBox x:Name="txtIdFamilia" Height="23" Margin="366,114,324,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtNombres" Height="23" Margin="236,142,454,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtApePaterno" HorizontalAlignment="Left" Height="23" Margin="236,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtApeMaterno" HorizontalAlignment="Left" Height="23" Margin="236,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIdentificador" HorizontalAlignment="Left" Height="23" Margin="236,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" Margin="236,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIdFamilia" BorderBrush="Red" Height="23" Margin="366,114,324,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtTelefono" Height="23" Margin="486,142,204,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="23" Margin="486,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbPais" HorizontalAlignment="Left" Margin="486,203,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbPais_SelectionChanged"/>
-        <ComboBox x:Name="cbCiudad" HorizontalAlignment="Left" Margin="486,235,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbEstado" HorizontalAlignment="Left" Margin="486,266,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNombres" BorderBrush="Red" Height="23" Margin="236,142,454,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtApePaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtApeMaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIdentificador" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="236,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox x:Name="txtTelefono" Height="23" BorderBrush="Red" Margin="486,142,204,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="486,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbPais" HorizontalAlignment="Left" Margin="486,203,0,0" BorderBrush="Red" VerticalAlignment="Top" Width="120" SelectionChanged="cbPais_SelectionChanged"/>
+        <ComboBox x:Name="cbCiudad" HorizontalAlignment="Left" Margin="486,235,0,0" BorderBrush="Red" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbEstado" HorizontalAlignment="Left" Margin="486,266,0,0" VerticalAlignment="Top" BorderBrush="Red" Width="120"/>
 
 
-        <DataGrid x:Name="dgFamilias" Margin="10,310,10,10" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
+        <DataGrid x:Name="dgFamilias" Margin="10,310,10,10" BorderBrush="Red" BorderThickness="1" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
 
         
         

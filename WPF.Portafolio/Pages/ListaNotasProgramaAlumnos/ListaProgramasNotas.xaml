@@ -6,14 +6,26 @@
       xmlns:local="clr-namespace:WPF.Portafolio.Pages"
       mc:Ignorable="d"
       Title="ListaNotas"
-      Height="550" Width="810" VerticalAlignment="Center" HorizontalAlignment="Center" ShowsNavigationUI="False">
+      Height="720" Width="1080" VerticalAlignment="Center" HorizontalAlignment="Center" ShowsNavigationUI="False"
+      >
 
-    <Grid HorizontalAlignment="Left" Width="810">
-        <Label x:Name="Titulo" Content="Notas De Alumnos" FontSize="30" VerticalAlignment="Top" RenderTransformOrigin="1.188,1.219" Margin="247,10,247,0" Height="46"/>
-        <TextBox x:Name="txtBuscarNombre" HorizontalAlignment="Left" Height="23" Margin="30,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" TextChanged="txtBuscarNombre_TextChanged"/>
-        <DataGrid x:Name="dgProgramasNotas" Margin="30,168,30,40"  IsReadOnly="True" SelectionChanged="dgProgramasNotas_SelectionChanged"/>
-        <Label x:Name="label" Content="Seleccione un programa para ver las notas" HorizontalAlignment="Left" Margin="501,142,0,0" VerticalAlignment="Top" Height="26" Width="226"/>
-        <Label x:Name="label_Copy" Content="Escriba nombre para busqueda" HorizontalAlignment="Left" Margin="30,85,0,0" VerticalAlignment="Top" Height="26" Width="240"/>
+    <Grid HorizontalAlignment="Center" Width="863" Margin="134,30,83,157" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="362*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122*"/>
+            <RowDefinition Height="153*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Titulo" Content="Notas De Alumnos" FontSize="30" VerticalAlignment="Top" RenderTransformOrigin="1.188,1.219" Margin="247,10,104.4,0" Height="46" Grid.ColumnSpan="4"/>
+        <TextBox x:Name="txtBuscarNombre" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="30,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" TextChanged="txtBuscarNombre_TextChanged"/>
+        <DataGrid x:Name="dgProgramasNotas" BorderBrush="Red" BorderThickness="1" Margin="30,168,29.6,39.8"  IsReadOnly="True" SelectionChanged="dgProgramasNotas_SelectionChanged" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
+        <Label x:Name="label" Content="Seleccione un programa para ver las notas" HorizontalAlignment="Left" Margin="197.4,142,0,0" VerticalAlignment="Top" Height="26" Width="238" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <Label x:Name="label_Copy" Content="Escriba nombre para busqueda" HorizontalAlignment="Left" Margin="30,85,0,0" VerticalAlignment="Top" Height="26" Width="240" Grid.ColumnSpan="2"/>
     </Grid>
 
 </Page>

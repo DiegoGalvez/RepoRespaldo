@@ -13,7 +13,7 @@
             <ColumnDefinition Width="1010"/>
         </Grid.ColumnDefinitions>
 
-        <Canvas Width="810" Grid.Column="1" Background="White" Margin="100,10">
+        <Canvas Width="810" Grid.Column="1" Background="White" Margin="98.6,22,101,39">
             <Label Name="lblTitulo" Content="Postulaciones de CEL a un programa" FontSize="30" Canvas.Left="174" Canvas.Top="20"/>
             <Label x:Name="lblFiltros" Content="Filtros:"  Canvas.Left="73" Canvas.Top="94"/>
             <TextBox x:Name="txtNombrePrograma" Height="23" Controls:TextBoxHelper.Watermark="Nombre del programa" Canvas.Left="73" Canvas.Top="125" Width="170" BorderBrush="Red" TextChanged="txtNombrePrograma_TextChanged" />
@@ -41,8 +41,8 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnPostular" Content="Aprobar" Canvas.Left="532" Canvas.Top="162" Width="89" Click="btnPostular_Click"/>
-            <Button x:Name="btnRechazar" Content="Rechazar" Canvas.Left="652" Canvas.Top="162" Width="89" Click="btnRechazar_Click"/>
+            <Button x:Name="btnPostular" Content="Aprobar" BorderBrush="Red" Canvas.Left="532" Canvas.Top="162" Width="89" Click="btnPostular_Click"/>
+            <Button x:Name="btnRechazar" Content="Rechazar" Canvas.Left="652" BorderBrush="Red" Canvas.Top="162" Width="89" Click="btnRechazar_Click"/>
 
 
         </Canvas>

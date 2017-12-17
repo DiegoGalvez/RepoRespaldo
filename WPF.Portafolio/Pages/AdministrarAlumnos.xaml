@@ -22,38 +22,38 @@
                 <Label x:Name="lblTelefono" Content="Teléfono:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="255" Canvas.Top="269"/>
                 <Label x:Name="lblMora" Content="Mora:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="255" Canvas.Top="332" />
 
-                <TextBox x:Name="txtIdAlumno" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="111"/>
-                <TextBox x:Name="txtDV" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="39" Canvas.Left="500" Canvas.Top="111"/>
-                <TextBox x:Name="txtNombres" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="143"/>
-                <TextBox x:Name="txtApePaterno" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="174"/>
-                <TextBox x:Name="txtApeMaterno" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="206"/>
-                <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="238"/>
-                <TextBox x:Name="txtReserva" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="301"/>
-                <TextBox x:Name="txtTelefono" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="269"/>
-                <TextBox x:Name="txtMora" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="332"/>
+                <TextBox x:Name="txtIdAlumno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="111"/>
+                <TextBox x:Name="txtDV" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="39" Canvas.Left="500" Canvas.Top="111"/>
+                <TextBox x:Name="txtNombres" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="143"/>
+                <TextBox x:Name="txtApePaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="174"/>
+                <TextBox x:Name="txtApeMaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="206"/>
+                <TextBox x:Name="txtCorreo" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="238"/>
+                <TextBox x:Name="txtReserva" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="301"/>
+                <TextBox x:Name="txtTelefono" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="269"/>
+                <TextBox x:Name="txtMora" BorderBrush="Red" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="365" Canvas.Top="332"/>
 
-                <Button x:Name="btnAgregar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" Margin="180,65">
+                <Button x:Name="btnAgregar" BorderBrush="Red" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" Margin="180,65">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnBuscar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"  Margin="305,65">
+                <Button x:Name="btnBuscar" BorderBrush="Red" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"  Margin="305,65">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/search.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnModificar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnModificar_Click" Margin="430,65">
+                <Button x:Name="btnModificar" BorderBrush="Red" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnModificar_Click" Margin="430,65">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/Modificar.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnEliminar" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Margin="555,65">
+                <Button x:Name="btnEliminar" BorderBrush="Red" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click" Margin="555,65">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/waste-bin.png"/>
                     </Button.Background>
                 </Button>
 
-                <DataGrid x:Name="dgUsuario" Width="750" VerticalAlignment="Top" Height="141" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Canvas.Left="32" Canvas.Top="375" />
+                <DataGrid x:Name="dgUsuario" BorderBrush="Red" BorderThickness="1" Width="750" VerticalAlignment="Top" Height="141" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Canvas.Left="32" Canvas.Top="375" />
 
             </Canvas>
         </Border>

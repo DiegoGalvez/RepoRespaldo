@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="lblTitulo"  Grid.Column="1" Content="Reportes" HorizontalContentAlignment="Center" FontSize="30" Margin="200,20,200,626" />
         <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-            <WindowsFormsHost x:Name="WFHReporte" Margin="0,100" HorizontalAlignment="Left" Height="550" Width="800">
-                <rv:ReportViewer x:Name="_reportViewer"/>
+            <WindowsFormsHost x:Name="WFHReporte" Margin="0,100" HorizontalAlignment="Left" Height="500" Width="800">
+                <rv:ReportViewer x:Name="_reportViewer" ProcessingMode="Local"/>
             </WindowsFormsHost>
         </StackPanel>
     </Grid>

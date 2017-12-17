@@ -10,11 +10,11 @@
 
     <Grid>
         <Label x:Name="label" Content="Lista de Instituciones" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" />
-        <Button x:Name="btnAgregarInstitucion" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnAgregarInstitucion_Click" Margin="0,30,0,0">
+        <Button x:Name="btnAgregarInstitucion" BorderBrush="Red" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnAgregarInstitucion_Click" Margin="0,30,0,0">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/addition-sign.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="dgInstituciones" HorizontalAlignment="Left"  VerticalAlignment="Top" SelectionChanged="dgInstituciones_SelectionChanged" Margin="0,60,0,0" IsReadOnly="True"/>
+        <DataGrid x:Name="dgInstituciones" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Left"  VerticalAlignment="Top" SelectionChanged="dgInstituciones_SelectionChanged" Margin="0,60,0,0" IsReadOnly="True"/>
     </Grid>
 </Page>

@@ -131,6 +131,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AyudaOnline.xaml.cs">
+      <DependentUpon>AyudaOnline.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="HelpPage\HelpWeb.chm" />
+    <None Include="HelpPage\HelpWeb.docx" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -313,6 +318,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AyudaOnline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InicioSesion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

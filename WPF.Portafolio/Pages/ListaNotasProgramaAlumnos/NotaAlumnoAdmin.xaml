@@ -11,13 +11,13 @@
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Margin="50,50,50,50" Width="300">
         <Label x:Name="lblNombreAlumno" Content="Alumno" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Margin="110,6,110,0"/>
         <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15" Margin="0,40,0,0"/>
-        <DataGrid x:Name="dgNotasProgramas" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55,75,41,104" Height="121" Width="204" />
-        <Button x:Name="btnGuardar" Content="" Width="75" Height="30" Margin="55,210,170,60" Click="btnGuardar_Click">
+        <DataGrid x:Name="dgNotasProgramas" BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55,75,41,104" Height="121" Width="204" />
+        <Button x:Name="btnGuardar" Content="" BorderBrush="Red" Width="75" Height="30" Margin="55,210,170,60" Click="btnGuardar_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/save-icon-silhouette.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCancelar" Content="" Width="75" Height="30" Margin="184,210,41,60">
+        <Button x:Name="btnCancelar" Content="" BorderBrush="Red" Width="75" Height="30" Margin="184,210,41,60">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/WPF.Portafolio;component/Img/Botones/cancel.png"/>
             </Button.Background>

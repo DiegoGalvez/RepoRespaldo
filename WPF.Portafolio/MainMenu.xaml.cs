@@ -12,6 +12,7 @@ using WPF.Portafolio.Pages.Mantenedores;
 using WPF.Portafolio.Pages.Certificado;
 using WPF.Portafolio.Pages.Programas;
 using WPF.Portafolio.Pages.Reporte;
+using System.Windows.Forms;
 
 namespace WPF.Portafolio
 {
@@ -34,7 +35,12 @@ namespace WPF.Portafolio
             LBNombreUsuario.Content = UsuarioActual.NomUsuario;
             SideMenuRol();
             Main.Content = new AcercaDe();
+
         }
+
+
+        
+
 
         private void SideMenuRol()
         {
@@ -220,6 +226,7 @@ namespace WPF.Portafolio
             btnReporte.Background = null;
             btnValidarPrograma.Background = null;
         }
+
 
 
     }
