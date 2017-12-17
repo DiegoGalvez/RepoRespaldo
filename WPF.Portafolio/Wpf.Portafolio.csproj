@@ -528,6 +528,9 @@
   <ItemGroup>
     <Resource Include="Img\icons8-Foto-50.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Botones\icons8-Ayuda-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

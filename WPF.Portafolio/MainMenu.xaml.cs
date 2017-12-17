@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using Negocio.Portafolio;
@@ -12,7 +13,7 @@ using WPF.Portafolio.Pages.Mantenedores;
 using WPF.Portafolio.Pages.Certificado;
 using WPF.Portafolio.Pages.Programas;
 using WPF.Portafolio.Pages.Reporte;
-using System.Windows.Forms;
+
 
 namespace WPF.Portafolio
 {
@@ -227,8 +228,19 @@ namespace WPF.Portafolio
             btnValidarPrograma.Background = null;
         }
 
+        
+        private void MetroWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.F1)
+            {
+                Help.ShowHelp(null, "..\\..\\HelpPage\\HelpWeb.chm");
+            }
+        }
 
-
+        private void btnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            Help.ShowHelp(null, "..\\..\\HelpPage\\HelpWeb.chm");
+        }
     }
 }
 

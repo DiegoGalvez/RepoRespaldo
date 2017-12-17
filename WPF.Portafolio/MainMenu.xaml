@@ -8,16 +8,23 @@
         mc:Ignorable="d"
         Title="Centro de estudio Montreal" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" BorderThickness="1"
         IsMinButtonEnabled="True"
-        IsMaxRestoreButtonEnabled="True" BorderBrush="Red" >
+                      
+        IsMaxRestoreButtonEnabled="True" BorderBrush="Red" KeyDown="MetroWindow_KeyDown" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="91*"/>
-            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="733*"/>
+            <ColumnDefinition Width="337*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7" Grid.ColumnSpan="2">
             <Canvas>
-                <Label x:Name="LBbienvenido" Content="Bienvenido:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="857" Canvas.Top="12" FontSize="16"/>
-                <Label x:Name="LBNombreUsuario" Content="Usuario" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="949" Canvas.Top="12" FontSize="16"/>
+                <Label x:Name="LBbienvenido" Content="Bienvenido:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="830" Canvas.Top="12" FontSize="16"/>
+                <Label x:Name="LBNombreUsuario" Content="Usuario" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="922" Canvas.Top="12" FontSize="16"/>
+                <Button x:Name="btnAyuda" BorderThickness="1" Canvas.Left="1027" Canvas.Top="13" Width="30" Click="btnAyuda_Click" Height="30" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/WPF.Portafolio;component/Img/Botones/icons8-Ayuda-64.png" />
+                    </Button.Background>
+
+                </Button>
             </Canvas>
         </StackPanel>
 
