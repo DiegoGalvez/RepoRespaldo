@@ -10,14 +10,18 @@
         IsMinButtonEnabled="True"
         IsMaxRestoreButtonEnabled="True" BorderBrush="Red" >
     <Grid>
-        <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="43*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7" Grid.ColumnSpan="2">
             <Canvas>
                 <Label x:Name="LBbienvenido" Content="Bienvenido:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="857" Canvas.Top="12" FontSize="16"/>
                 <Label x:Name="LBNombreUsuario" Content="Usuario" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="949" Canvas.Top="12" FontSize="16"/>
             </Canvas>
         </StackPanel>
 
-        <StackPanel Margin="0,60,0,0" Background="#FFDADADA">
+        <StackPanel Margin="0,60,0,0" Background="#FFDADADA" Grid.ColumnSpan="2">
             <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"></Frame>
         </StackPanel>
         <StackPanel x:Name="stackMenuFondo" Background="Gray" Width="300" HorizontalAlignment="Left" Margin="-240,0,0,0" >
