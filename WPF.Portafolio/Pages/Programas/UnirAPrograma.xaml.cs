@@ -22,14 +22,19 @@ namespace WPF.Portafolio.Pages.Programas
         {
             try
             {
-                dgPrograma.ItemsSource = null;
-
                 ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
 
                 ProgramaCollection ProgramasPostulados = new ProgramaCollection(svc.LeerTodosProgramas());
+                
+                foreach (var item in ProgramasPostulados)
+                {
 
-                dgPrograma.ItemsSource = ProgramasPostulados.Where(p=>p.Estado.Equals("Creado"));
-
+                    if (item.Estado.Equals(EstadoPrograma.Creado))
+                    {
+                        dgPrograma.Items.Add(item);
+                    }
+                    
+                }
                 dgActvidades.ItemsSource = null;
                 
             }

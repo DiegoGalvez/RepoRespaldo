@@ -522,7 +522,12 @@
     <Resource Include="Img\Botones\short-shovel-to-sweep.png" />
     <Resource Include="Img\Botones\waste-bin.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Img\CEM.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icons8-Foto-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
