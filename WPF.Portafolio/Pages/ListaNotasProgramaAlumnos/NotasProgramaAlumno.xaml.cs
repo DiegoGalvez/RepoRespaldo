@@ -111,7 +111,7 @@ namespace WPF.Portafolio.Pages.ListaNotasAlumnos
 
         private void dgNotasProgramas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgNotasProgramas.SelectedIndex != -1 && cel)
+            if (dgNotasProgramas.SelectedIndex != -1 && cel) 
             {
                 lblIdNota.Visibility = Visibility.Visible;
                 txtNota.Visibility = Visibility.Visible;
