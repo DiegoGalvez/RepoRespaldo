@@ -11,10 +11,11 @@
         IsMaxRestoreButtonEnabled="False" BorderBrush="Red" KeyDown="MetroWindow_KeyDown" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="733*"/>
-            <ColumnDefinition Width="337*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="631*"/>
+            <ColumnDefinition Width="338*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7" Grid.ColumnSpan="2">
+        <StackPanel Height="60" VerticalAlignment="Top"  Background="#FFF5F6F7" Grid.ColumnSpan="3" Margin="-10,0,0,0">
             <Canvas>
                 <Label x:Name="LBbienvenido" Content="Bienvenido:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="830" Canvas.Top="12" FontSize="16"/>
                 <Label x:Name="LBNombreUsuario" Content="Usuario" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="922" Canvas.Top="12" FontSize="16"/>
@@ -27,7 +28,7 @@
             </Canvas>
         </StackPanel>
 
-        <StackPanel Margin="0,60,0,0" Background="#FFDADADA" Grid.ColumnSpan="2">
+        <StackPanel Margin="0,60,0,0" Background="#FFDADADA" Grid.ColumnSpan="3">
             <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"></Frame>
         </StackPanel>
         <StackPanel x:Name="stackMenuFondo" Background="Gray" Width="300" HorizontalAlignment="Left" Margin="-240,0,0,0" >

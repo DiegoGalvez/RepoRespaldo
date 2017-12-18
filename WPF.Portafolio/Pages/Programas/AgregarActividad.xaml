@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:WPF.Portafolio.Pages.Programas"
         mc:Ignorable="d"
-        Title="Agregar Actividad" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+        Title="Agregar Actividad" Height="300" Width="300" WindowStartupLocation="CenterScreen" BorderThickness="1" BorderBrush="Red">
     <Grid>
         <Label x:Name="label" Content="Nombre Actividad" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtActividad" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="68,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>

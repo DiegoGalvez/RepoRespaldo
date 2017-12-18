@@ -17,7 +17,7 @@
             <Canvas Background="White">
                 <Label x:Name="lblTitulo" Content="Postulaciones de Alumnos" FontSize="30" VerticalAlignment="Top" Margin="230,20,200,0"/>
                 <Label x:Name="lblInfo1" Content="Haga click en el nombre para saber mas detalles del alumno" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="125" Canvas.Top="174"/>
-                <DataGrid x:Name="dgPostulantes" AutoGenerateColumns="False" Height="305" Width="660" IsReadOnly="True" SelectionChanged="dgPostulantes_SelectionChanged"  Canvas.Top="211"  Canvas.Left="76"  BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
+                <DataGrid x:Name="dgPostulantes" BorderBrush="Red" BorderThickness="1" AutoGenerateColumns="False" Height="305" Width="660" IsReadOnly="True" SelectionChanged="dgPostulantes_SelectionChanged"  Canvas.Top="211"  Canvas.Left="76">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID Alumno" Binding="{Binding Id_Alumnos}"/>
                         <DataGridTextColumn Header="Nombre Postulante" Binding="{Binding Nombre_Alumno}"/>
@@ -27,7 +27,7 @@
                         <DataGridTextColumn Header="Jefe Familia Anfitriona" Binding="{Binding Nombre_Familia}"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <TextBox x:Name="txtNombreApellido" Controls:TextBoxHelper.Watermark="Buscar por Nombre o Apellido" Height="33" Text="" VerticalAlignment="Top" Width="180" Canvas.Left="136" Canvas.Top="123" TextChanged="txtIdAlumno_TextChanged"/>
+                <TextBox x:Name="txtNombreApellido" BorderBrush="Red" Controls:TextBoxHelper.Watermark="Buscar por Nombre o Apellido" Height="26" Text="" VerticalAlignment="Top" Width="180" Canvas.Left="136" Canvas.Top="123" TextChanged="txtIdAlumno_TextChanged"/>
                 <Label x:Name="lblIdAlumno" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="125" Canvas.Top="98"></Label>
                 <Label x:Name="lblFiltros" Content="Filtros:" FontSize="18" HorizontalAlignment="Left" Width="61" Canvas.Left="136" Canvas.Top="84"/>
             </Canvas>

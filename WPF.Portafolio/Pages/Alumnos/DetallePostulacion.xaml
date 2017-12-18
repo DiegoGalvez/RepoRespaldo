@@ -16,20 +16,20 @@
         <Label x:Name="lblTitulo" Content="Detalle de postulacion" FontSize="30" Margin="386,20,389,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
         <Label x:Name="lblDatosPostulante" Content="Datos de Postulante" FontSize="20" HorizontalAlignment="Left" Margin="80,80,0,0" VerticalAlignment="Top"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="333" Margin="80,117,0,0" Stroke="Black" VerticalAlignment="Top" Width="430"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="333" Margin="80,117,0,0" Stroke="#FFFF0202" VerticalAlignment="Top" Width="430"/>
         <Label x:Name="lblIdPostulante" Content="ID:" FontSize="16" HorizontalAlignment="Left" Margin="108,131,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblNombrePostulante" Content="Nombre:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,166,0,0" Height="34"/>
         <Label x:Name="lblCorreoPostulante" Content="Correo:" FontSize="16" HorizontalAlignment="Left" Margin="108,201,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTelefonoPostulante" Content="Teléfono:" FontSize="16" HorizontalAlignment="Left" Margin="108,236,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMoraPostulante" Content="Mora:" FontSize="16" HorizontalAlignment="Left" Margin="108,271,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtIdAPostulante" Text="" IsReadOnly="True"  HorizontalAlignment="Left" Margin="240,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtNombrePostulante" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="240,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtCorreoPostulante" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="240,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtTelefonoPostulante" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="240,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtMoraPostulante" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="240,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtIdAPostulante" BorderBrush="Red" Text="" IsReadOnly="True"  HorizontalAlignment="Left" Margin="240,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtNombrePostulante" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="240,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtCorreoPostulante" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="240,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtTelefonoPostulante" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="240,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtMoraPostulante" Text="" BorderBrush="Red"  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="240,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
 
         <Label x:Name="lblTituloFamiliaAnfitriona" Content="Datos de Familia Anfitriona" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="568,80,0,0" Grid.ColumnSpan="2"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="333" Margin="568,117,0,0" Stroke="Black" VerticalAlignment="Top" Width="430" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="333" Margin="568,117,0,0" Stroke="Red" VerticalAlignment="Top" Width="430" Grid.ColumnSpan="2"/>
         <Label x:Name="lblIdFamilia" Content="ID:" FontSize="16" HorizontalAlignment="Left" Margin="17,131,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblNombreJefeDeHogar" Content="Jefe de Hogar: " FontSize="16" HorizontalAlignment="Left" Margin="17,166,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,-0.07" Grid.Column="1"/>
         <Label x:Name="lblDireccion" Content="Dirección: " FontSize="16" HorizontalAlignment="Left" Margin="17,201,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -37,14 +37,14 @@
         <Label x:Name="lblPais" Content="País: " FontSize="16" HorizontalAlignment="Left" Margin="17,271,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblCorreoFamilia" Content="Correo:" FontSize="16" HorizontalAlignment="Left" Margin="17,306,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblTelefonoFamilia" Content="Telefono:" FontSize="16" HorizontalAlignment="Left" Margin="17,341,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="txtIdFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtNombreFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtDireccionFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtCiudadFamilia" Text="" FontSize="18" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtPaisFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtCorreoFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <TextBox x:Name="txtTelefonoFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <Button x:Name="btnDocs" Click="btnImagenes_Click" Margin="157,377,249,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
+        <TextBox x:Name="txtIdFamilia" Text="" BorderBrush="Red" IsReadOnly="True"  HorizontalAlignment="Left"  Margin="157,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtNombreFamilia" Text=""  BorderBrush="Red" IsReadOnly="True"  HorizontalAlignment="Left"  Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtDireccionFamilia" Text=""  IsReadOnly="True"  BorderBrush="Red" HorizontalAlignment="Left"  Margin="157,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtCiudadFamilia" Text="" IsReadOnly="True" BorderBrush="Red"  HorizontalAlignment="Left"  Margin="157,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtPaisFamilia" Text=""  IsReadOnly="True" BorderBrush="Red"  HorizontalAlignment="Left"  Margin="157,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtCorreoFamilia" Text=""  IsReadOnly="True" BorderBrush="Red" HorizontalAlignment="Left"  Margin="157,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <TextBox x:Name="txtTelefonoFamilia" Text="" IsReadOnly="True" BorderBrush="Red" HorizontalAlignment="Left"  Margin="157,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
+        <Button x:Name="btnDocs" Click="btnImagenes_Click" Margin="157,377,249,0" VerticalAlignment="Top" BorderBrush="Red" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
             <Button.Content>
                 <StackPanel Width="75">
                     <Image HorizontalAlignment="Center" Source="/WPF.Portafolio;component/Img/icons8-Foto-50.png" Height="30" Width="30"></Image>
@@ -52,7 +52,7 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button x:Name="btnImagenes" Click="btnImagenes_Click" Margin="294,377,112,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
+        <Button x:Name="btnImagenes" Click="btnImagenes_Click" BorderBrush="Red" Margin="294,377,112,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
             <Button.Content>
                 <StackPanel Width="75">
                     <Image HorizontalAlignment="Center" Source="/WPF.Portafolio;component/Img/icons8-overview.png" Height="30" Width="30"></Image>
@@ -61,26 +61,26 @@
             </Button.Content>
         </Button>
         <Label x:Name="lblTituloPrograma" Content="Datos de Programa" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,458,0,0"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="112" Margin="80,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="918" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="112" Margin="80,495,0,0" Stroke="Red" VerticalAlignment="Top" Width="918" Grid.ColumnSpan="2"/>
         <Label x:Name="lblIdPrograma" Content="Código:" FontSize="16" HorizontalAlignment="Left" Margin="94,506,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtIdPrograma" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="197,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="txtIdPrograma" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="197,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label x:Name="lblNombrePrograma" Content="Programa:" FontSize="16" HorizontalAlignment="Left" Margin="94,535,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNombrePrograma" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="197,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="txtNombrePrograma" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="197,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label x:Name="lblCEL" Content="CEL:" FontSize="16" HorizontalAlignment="Left" Margin="94,564,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCEL" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="197,569,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="txtCEL" BorderBrush="Red" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left"  Margin="197,569,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label x:Name="lblCupos" Content="Cupos:" FontSize="16" HorizontalAlignment="Left" Margin="415,506,0,0" VerticalAlignment="Top" Width="66"/>
-        <TextBox x:Name="txtCupos" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtCupos" Text="" BorderBrush="Red"  IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
         <Label x:Name="lblInicio" Content="Inicio:" FontSize="16" HorizontalAlignment="Left" Margin="415,535,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox x:Name="txtInicio" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtInicio" BorderBrush="Red" Text=""  IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
         <Label x:Name="lblTermino" Content="Término:" FontSize="16" HorizontalAlignment="Left" Margin="415,564,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox x:Name="txtTermino" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,569,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtTermino" Text=""  IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="510,569,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
         <Label x:Name="lblTipoPrograma" Content="Tipo Programa:" FontSize="16" HorizontalAlignment="Left" Margin="94,506,0,0" VerticalAlignment="Top" Width="134" Grid.Column="1"/>
-        <TextBox x:Name="txtTipoPrograma" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="228,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Grid.Column="1"/>
+        <TextBox x:Name="txtTipoPrograma" Text=""  IsReadOnly="True"  HorizontalAlignment="Left"  Margin="228,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Grid.Column="1"/>
         <Label x:Name="lblDescripcion" Content="Descripción:" FontSize="16" HorizontalAlignment="Left" Margin="94,535,0,0" VerticalAlignment="Top" Width="107" Grid.Column="1"/>
         <TextBlock x:Name="tbDescripcion" Text="" HorizontalAlignment="Left" Margin="228,546,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="52" Width="168" Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1"/>
-        <Button x:Name="btnAceptar" Content="Aceptar Solicitud" Click="btnAceptar_Click" HorizontalAlignment="Left" Margin="304,628,0,0" VerticalAlignment="Top" Width="108" Height="34"/>
-        <Button x:Name="btnCancelar" Content="Cancelar Operacion" Click="btnCancelar_Click" HorizontalAlignment="Left" Margin="480,628,0,0" VerticalAlignment="Top" Width="110" Height="34" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnRechazar" Content="Rechazar Solicitud" Click="btnRechazar_Click" HorizontalAlignment="Left" Margin="77,628,0,0" VerticalAlignment="Top" Width="110" Height="34" Grid.Column="1"/>
+        <Button x:Name="btnAceptar" Content="Aceptar Solicitud" Click="btnAceptar_Click" HorizontalAlignment="Left" Margin="304,628,0,0" VerticalAlignment="Top" Width="125" Height="34"/>
+        <Button x:Name="btnCancelar" Content="Cancelar Operacion" Click="btnCancelar_Click" HorizontalAlignment="Left" Margin="480,628,0,0" VerticalAlignment="Top" Width="133" Height="34" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnRechazar" Content="Rechazar Solicitud" Click="btnRechazar_Click" HorizontalAlignment="Left" Margin="77.4,628,0,0" VerticalAlignment="Top" Width="124" Height="34" Grid.Column="1"/>
         <Label x:Name="lblIdIntercambio" Content="" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Margin="94,569,0,0" VerticalAlignment="Top"/>
 
     </Grid>

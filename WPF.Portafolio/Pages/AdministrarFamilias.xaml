@@ -49,12 +49,12 @@
         </Button>
 
 
-        <TextBox x:Name="txtIdentificador" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="357,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIdentificador" BorderBrush="Red" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="357,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
         <TextBox x:Name="txtNombres" BorderBrush="Red" Height="23" Margin="236,142,454,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="txtApePaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtApeMaterno" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="236,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIdFamilia" BorderBrush="Red" Height="23" Margin="237,235,452.6,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtIdFamilia" BorderBrush="Red" Height="23" Margin="237,235,453.6,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCorreo" HorizontalAlignment="Left" BorderBrush="Red" Height="23" Margin="236,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         
         <TextBox x:Name="txtTelefono" Height="23" BorderBrush="Red" Margin="486,142,204,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>

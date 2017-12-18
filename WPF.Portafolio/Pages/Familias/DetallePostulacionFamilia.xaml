@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WPF.Portafolio.Pages.Familias"
         x:Class="WPF.Portafolio.Pages.Familias.DetallePostulacionFamilia"
         mc:Ignorable="d"
-        Title="Detalle Familia Anfitriona" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+        Title="Detalle Familia Anfitriona" Height="500" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" BorderBrush="Red" BorderThickness="1"  >
     <Grid>
 
         <Label x:Name="lblNombre" Content="Nombre"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="81,10,95.6,0" Width="717" HorizontalContentAlignment="Center"/>
