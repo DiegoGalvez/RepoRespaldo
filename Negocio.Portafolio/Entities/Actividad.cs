@@ -108,7 +108,9 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
 
-                id = ctx.Database.SqlQuery<int>("SELECT MAX(ID_ACTIVIDAD) FROM ACTIVIDAD").FirstOrDefault();
+                id = ctx.ACTIVIDAD.Max(x => x.ID_ACTIVIDAD);
+                // ESTO NO SE HACEEE!! a peticion del profesor
+                //id = ctx.Database.SqlQuery<int>("SELECT MAX(ID_ACTIVIDAD) FROM ACTIVIDAD").FirstOrDefault();
 
                 ctx = null;
                 return id;

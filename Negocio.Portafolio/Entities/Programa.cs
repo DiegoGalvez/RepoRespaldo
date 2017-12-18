@@ -31,7 +31,9 @@ namespace Negocio.Portafolio
             {
                 EntitiesCEM ctx = new EntitiesCEM();
 
-                id = ctx.Database.SqlQuery<int>("SELECT PROGRAMAS_ID_PROGRAMA_SEQ.CURRVAL FROM dual").FirstOrDefault();
+                id = ctx.PROGRAMAS.Max(x => x.ID_PROGRAMA); 
+                // ESTO NO SE HACEEE!! a peticion del profesor
+                //id = ctx.Database.SqlQuery<int>("SELECT PROGRAMAS_ID_PROGRAMA_SEQ.CURRVAL FROM dual").FirstOrDefault();
 
                 ctx = null;
                 return id;
