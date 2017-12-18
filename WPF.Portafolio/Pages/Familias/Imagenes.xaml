@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow
+        x:Class="WPF.Portafolio.Pages.Familias.Imagenes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:WPF.Portafolio.Pages.Familias"
+        mc:Ignorable="d"
+        IsMaxRestoreButtonEnabled="False"
+        Title="Imagenes" Height="300" Width="300" BorderThickness="1" BorderBrush="Red" >
+    <Grid>
+        <Controls:FlipView x:Name="images" IsBannerEnabled="False">
+            <Controls:FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="{Binding}" Stretch="Fill" />
+                    </Grid>
+                </DataTemplate>
+            </Controls:FlipView.ItemTemplate>
+        </Controls:FlipView>
+    </Grid>
+</Controls:MetroWindow>

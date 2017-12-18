@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Notas de Alumno" Height="671" Width="1067" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" 
         HorizontalAlignment="Center" ResizeMode="NoResize" SizeToContent="WidthAndHeight" VerticalAlignment="Center"
-        VerticalContentAlignment="Center" BorderThickness="1">
+        VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Red">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="626" Margin="817,10,2.2,4" Width="240">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

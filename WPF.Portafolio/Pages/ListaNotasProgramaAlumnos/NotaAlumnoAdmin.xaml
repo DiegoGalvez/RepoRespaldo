@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Portafolio.Pages.ListaNotasProgramaAlumnos"
         mc:Ignorable="d"
-        Title="Modificar notas alumno" Height="400" Width="400" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" 
+        Title="Modificar notas alumno" Height="400" Width="400" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" BorderBrush="Red" BorderThickness="1" 
         HorizontalAlignment="Center" ResizeMode="NoResize" SizeToContent="WidthAndHeight" VerticalAlignment="Center"
-        VerticalContentAlignment="Center" BorderThickness="1">
+        VerticalContentAlignment="Center" >
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Margin="50,50,50,50" Width="300">
         <Label x:Name="lblNombreAlumno" Content="Alumno" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="20" Margin="110,6,110,0"/>
         <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="15" Margin="0,40,0,0"/>
