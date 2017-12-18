@@ -44,7 +44,7 @@
         <TextBox x:Name="txtPaisFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
         <TextBox x:Name="txtCorreoFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
         <TextBox x:Name="txtTelefonoFamilia" Text="" FontSize="16" IsReadOnly="True"  HorizontalAlignment="Left" Height="24" Margin="157,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Grid.Column="1"/>
-        <Button x:Name="btnDocs" Click="btnImagenes_Click" Margin="157,377,249,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
+        <Button x:Name="btnImagenes" Click="btnImagenes_Click" Margin="157,377,249,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
             <Button.Content>
                 <StackPanel Width="75">
                     <Image HorizontalAlignment="Center" Source="/WPF.Portafolio;component/Img/icons8-Foto-50.png" Height="30" Width="30"></Image>
@@ -52,10 +52,10 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-        <Button x:Name="btnImagenes" Click="btnImagenes_Click" Margin="294,377,112,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
+        <Button x:Name="btnDocs" Click="btnDocs_Click" Margin="294,377,112,0" VerticalAlignment="Top" Grid.Column="1" Height="67" RenderTransformOrigin="0.494,0.463">
             <Button.Content>
                 <StackPanel Width="75">
-                    <Image HorizontalAlignment="Center" Source="/WPF.Portafolio;component/Img/icons8-overview.png" Height="30" Width="30"></Image>
+                    <Image HorizontalAlignment="Left" Source="/WPF.Portafolio;component/Img/icons8-overview.png" Height="30" Width="30" Margin="22,0,0,0"></Image>
                     <Label HorizontalAlignment="Center" x:Name="lblImagenes" Content="Documentos" VerticalContentAlignment="Top" Height="21" Margin="3,0"/>
                 </StackPanel>
             </Button.Content>

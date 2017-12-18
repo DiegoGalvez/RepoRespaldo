@@ -5,7 +5,9 @@ using Negocio.Portafolio.ViewClasses.AlumnosPostulantes;
 using Negocio.Portafolio.ViewClasses.NotasProgramaAlumno;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF.Portafolio.Pages.Familias;
 
 namespace WPF.Portafolio.Pages.Alumnos
 {
@@ -73,7 +76,7 @@ namespace WPF.Portafolio.Pages.Alumnos
                     Intercambio intercambio = new Intercambio();
                     intercambio.IdIntercambio = int.Parse(lblIdIntercambio.Content.ToString());
                     intercambio = new Intercambio(svc.LeerIntercambio(intercambio.Serializar()));
-                    intercambio.Estado = "Aceptada";
+                    intercambio.Estado = "Cursando";
                     if (svc.ActualizarIntercambio(intercambio.Serializar()))
                     {
                         Programa programa = new Programa();
@@ -82,8 +85,8 @@ namespace WPF.Portafolio.Pages.Alumnos
                         --programa.Cupos;
                         svc.ActualizarPrograma(programa.Serializar());
                         Correo mail = new Correo();
-                        string _titulo = string.Format("Resultados de postulacion al programa {0}", txtNombrePrograma.Text);
-                        string _descripcion = string.Format("Junto con saludar, el Centro de estudio Montreal informa que la solicitud para postular al programa {0} en {1} fue ACEPTADA, a medida que vaya acercando la fecha de comienzo del programa postuado estaremos en contacto para solicitar cierta informacion necesaria. Por el momento en caso de no tener pasaporte, te recomendamos que comiences con el trámite, ya que es necesario para el intercambio", txtNombrePrograma.Text, txtPaisFamilia.Text);
+                        string _titulo = string.Format("Resultados de postulación al programa {0}", txtNombrePrograma.Text);
+                        string _descripcion = string.Format("Junto con saludar, el Centro de estudio Montreal informa que la solicitud para postular al programa {0} en {1} fue ACEPTADA, a medida que vaya acercando la fecha de comienzo del programa postulado estaremos en contacto para solicitar cierta informacin necesaria. Por el momento en caso de no tener pasaporte, te recomendamos que comiences con el trámite, ya que es necesario para el intercambio", txtNombrePrograma.Text, txtPaisFamilia.Text);
                         mail.body = mail.PopulateBody(txtNombrePostulante.Text, _titulo, _descripcion);
                         mail.SendHtmlFormattedEmail(txtCorreoPostulante.Text, _titulo, mail.body);
 
@@ -95,7 +98,7 @@ namespace WPF.Portafolio.Pages.Alumnos
                 }
                 else
                 {
-                    MessageBox.Show("El alumno se encuentra con mora","Advertencia");
+                    MessageBox.Show("El alumno se encuentra con mora", "Advertencia");
                 }
 
             }
@@ -132,7 +135,80 @@ namespace WPF.Portafolio.Pages.Alumnos
 
         private void btnImagenes_Click(object sender, RoutedEventArgs e)
         {
-            // Debe abrir la pagina con las imagenes de la familia 
+            ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
+            FamiliaAnfitriona familia = new FamiliaAnfitriona();
+            familia.IdFamilia = int.Parse(txtIdFamilia.Text);
+            familia = new FamiliaAnfitriona(svc.LeerFamiliaAnfitriona(familia.Serializar()));
+            Imagenes imgs = new Imagenes(familia);
+            imgs.Show();
+
+        }
+
+        private void btnDocs_Click(object sender, RoutedEventArgs e)
+        {
+            ServiciosWCF.Portafolio.Servicios svc = new ServiciosWCF.Portafolio.Servicios();
+            FamiliaAnfitriona familia = new FamiliaAnfitriona();
+            familia.IdFamilia = int.Parse(txtIdFamilia.Text);
+            familia = new FamiliaAnfitriona(svc.LeerFamiliaAnfitriona(familia.Serializar()));
+
+            string directorio = string.Format("ftp://190.46.53.32/Familias/{0}", familia.Identificador);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(directorio);
+            request.Method = WebRequestMethods.Ftp.ListDirectory;
+
+            request.Credentials = new NetworkCredential("cem", "nick6831");
+
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+            Stream responseStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(responseStream);
+
+            List<string> paths = new List<string>();
+            string line = reader.ReadLine();
+
+            while (!string.IsNullOrEmpty(line))
+            {
+                paths.Add(line);
+                line = reader.ReadLine();
+            }
+
+            using (WebClient ftpClient = new WebClient())
+            {
+                ftpClient.Credentials = new System.Net.NetworkCredential("cem", "nick6831");
+
+                for (int i = 0; i <= paths.Count - 1; i++)
+                {
+                    if (paths[i].Contains(".pdf") || paths[i].Contains(".PDF"))
+                    {
+                        string result = System.IO.Path.GetTempPath();
+                        string path = "ftp://190.46.53.32/Familias/" + paths[i].ToString();
+                        string[] DirNombre = paths[i].Split('/');
+                        string dir = DirNombre[0];
+                        string nombreFile = DirNombre[1];
+                        string trnsfrpth = result + nombreFile;
+
+                        if (File.Exists(trnsfrpth))
+                        {
+                            System.Diagnostics.Process process = new System.Diagnostics.Process();
+                            process.StartInfo.FileName = @trnsfrpth;
+                            process.Start();
+                            process.WaitForExit();
+                        }
+                        else
+                        {
+                            ftpClient.DownloadFile(path, trnsfrpth);
+                            System.Diagnostics.Process process = new System.Diagnostics.Process();
+                            process.StartInfo.FileName = @trnsfrpth;
+                            process.Start();
+                            process.WaitForExit();
+                        }
+
+                    }
+                }
+            }
+
+            reader.Close();
+            response.Close();
+            
         }
     }
 }

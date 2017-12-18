@@ -179,6 +179,12 @@
     <Compile Include="Pages\Familias\DetallePostulacionFamilia.xaml.cs">
       <DependentUpon>DetallePostulacionFamilia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Familias\Documentos.xaml.cs">
+      <DependentUpon>Documentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Familias\Imagenes.xaml.cs">
+      <DependentUpon>Imagenes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Familias\ListasFamiliasPostulantes.xaml.cs">
       <DependentUpon>ListasFamiliasPostulantes.xaml</DependentUpon>
     </Compile>
@@ -376,6 +382,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Familias\DetallePostulacionFamilia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Familias\Documentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Familias\Imagenes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
