@@ -8,8 +8,7 @@
         mc:Ignorable="d"
         Title="Centro de estudio Montreal" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" BorderThickness="1"
         IsMinButtonEnabled="True"
-                      
-        IsMaxRestoreButtonEnabled="True" BorderBrush="Red" KeyDown="MetroWindow_KeyDown" >
+        IsMaxRestoreButtonEnabled="False" BorderBrush="Red" KeyDown="MetroWindow_KeyDown" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="733*"/>
