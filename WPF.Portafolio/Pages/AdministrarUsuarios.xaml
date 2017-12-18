@@ -17,7 +17,7 @@
 
         <TextBox x:Name="txtIdUsuario" BorderBrush="Red" Height="23" Margin="387,108,303,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsReadOnly="True"/>
         <TextBox x:Name="txtUsuario" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="387,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtPassword" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="387,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="txtPassword" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="387,170,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbTipoRol" BorderBrush="Red" HorizontalAlignment="Left" Margin="387,201,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtIDRol" BorderBrush="Red" HorizontalAlignment="Left" Height="23" Margin="387,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
@@ -42,10 +42,20 @@
             </Button.Background>
         </Button>
 
-        <DataGrid x:Name="dgUsuario" BorderBrush="Red" BorderThickness="1" Height="240" Margin="25,272,25,25" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" />
-
-
-
+        <DataGrid x:Name="dgUsuario" BorderBrush="Red" BorderThickness="1" Height="240" Margin="180,274,180,26" IsReadOnly="True" Custom:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <!--NOMBRE IDENTIFICACION CORREO TELEFONO_CONTACTO ID_PAIS ID_CIUDAD -->
+                <DataGridTextColumn Header="IdUsuario" Binding="{Binding IdUsuario }"/>
+                <DataGridTextColumn Header="NomUsuario" Binding="{Binding NomUsuario}"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="IdAlumno" Binding="{Binding IdAlumno}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="IdAdministrativo" Binding="{Binding IdAdministrativo}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="IdFamilia" Binding="{Binding IdFamilia}" Visibility="Hidden" />
+                <DataGridTextColumn Header="IdEncargadoCel" Binding="{Binding IdEncargadoCel}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="IdEncargadoCem" Binding="{Binding IdEncargadoCem}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Page>

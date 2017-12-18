@@ -51,7 +51,7 @@ namespace WPF.Portafolio.Pages
                 Usuario _usuario = new Usuario();
 
                 _usuario.NomUsuario = txtUsuario.Text.Trim();
-                _usuario.Password = txtPassword.Text.Trim();
+                _usuario.Password = txtPassword.Password.ToString();
                 switch (cbTipoRol.SelectedIndex)
                 {
                     // Roles 0=Administrador, 1=Alumnos, 2=Familia, 3=EncargadoCEM, 4=EncargadoCEL
@@ -134,15 +134,16 @@ namespace WPF.Portafolio.Pages
 
                     txtIdUsuario.Text = _usuario.IdUsuario.ToString();
                     txtUsuario.Text = _usuario.NomUsuario.ToString();
-                    txtPassword.Text = _usuario.Password;
-                    cbTipoRol.SelectedValue = _usuario.Rol;
+                    txtPassword.Password = _usuario.Password.ToString();
+                    cbTipoRol.SelectedItem = _usuario.Rol;
+
                     // Roles 0=Administrador, 1=Alumnos, 2=Familia, 3=EncargadoCEM, 4=EncargadoCEL
                     switch (_usuario.Rol)
                     {
                         case "Administrador":
                             txtIDRol.Text = _usuario.IdAdministrativo.ToString();
                             break;
-                        case "Alumnos":
+                        case "Alumno":
                             txtIDRol.Text = _usuario.IdAlumno.ToString();
                             break;
                         case "Familia":
@@ -180,7 +181,7 @@ namespace WPF.Portafolio.Pages
                     if (_usuario.Read())
                     {
                         _usuario.IdUsuario = int.Parse(txtIdUsuario.Text.Trim());
-                        _usuario.Password = txtPassword.Text.Trim();
+                        _usuario.Password = txtPassword.Password.ToString();
                         switch (cbTipoRol.SelectedIndex)
                         {
                             // Roles 0=Administrador, 1=Alumnos, 2=Familia, 3=EncargadoCEM, 4=EncargadoCEL
@@ -274,7 +275,7 @@ namespace WPF.Portafolio.Pages
         {
             txtIdUsuario.Text = string.Empty;
             txtUsuario.Text = string.Empty;
-            txtPassword.Text = string.Empty;
+            txtPassword.Password = string.Empty;
             cbTipoRol.SelectedIndex = 0;
             txtIDRol.Text = string.Empty;
         }
